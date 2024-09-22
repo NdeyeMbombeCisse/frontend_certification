@@ -1,0 +1,314 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+}
+
+.header-content {
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    position: absolute; /* Positionner en absolu */
+    top: 0; /* Aligner en haut */
+    left: 0; /* Aligner à gauche */
+    right: 0; /* Prendre toute la largeur */
+    z-index: 1; /* S'assurer que c'est au-dessus de la bannière */
+}
+
+
+
+
+.logo {
+    width: 150px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    
+    margin-left: 60px;
+}
+
+nav ul li a {
+   
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+}
+
+.auth-buttons .btn {
+    margin-left: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+}
+
+.register {
+    background-color: #22933a;
+    font-size: 25px;
+    margin-right: 100px;
+}
+
+.login {
+    background-color: #28A745;
+}
+
+.baniere {
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+    text-align: center;
+    width: 100%;
+    height: 1160px;
+    background: linear-gradient(rgba(71, 146, 100, 0.5), rgba(13, 132, 52, 0.5)), 
+                url('../../../../assets/images/baniere.png') no-repeat center center/cover;
+    background-size: cover;
+    color: white;
+}
+.connexion-buttons .btn{
+    margin-left:70px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    
+
+}
+
+.baniere-content {
+    font-family: 'Times New Roman', Times, serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+    display: flex;
+    font-size: 25px;
+    flex-direction: column; /* Affiche le titre et le texte en colonne */
+    gap: 20px; /* Ajoute un espacement entre le titre et le texte */
+}
+
+.baniere-content h1 {
+    line-height: 1.5; /* Contrôle l'interligne du titre */
+}
+
+.baniere-content p {
+    line-height: 2; /* Contrôle l'interligne du paragraphe */
+}
+
+/* style du trait apres la baniere */
+
+header::after {
+    content: '';
+    display: block;
+    height: 2px; /* Épaisseur du trait */
+    background-color: #0D8434; ; /* Couleur du trait */
+    width: 346px; /* Ajuste la largeur selon tes préférences */
+    margin: 90px auto; /* Centre le trait et ajoute un espacement */
+    height: 5px;
+}
+
+
+/* stytilisation de la partie mission */
+
+.mission {
+    display: flex; /* Utilise Flexbox */
+    justify-content: space-between; /* Espace entre le contenu et l'image */
+    align-items: center; /* Aligne verticalement au centre */
+    padding: 20px; /* Ajoute un peu de padding */
+}
+
+.mission-content {
+    max-width: 50%; /* Limite la largeur du contenu */
+    margin-bottom: 100px;
+    margin-left: 60px;
+}
+
+.mission-content  h1{
+    font-size: 50px;
+    font-family: "Gilda Display", serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #0D8434;
+    line-height: 2.5;
+}
+
+.mission-content  p{
+    font-size: 35px;
+    line-height: 2;
+    text-align: justify;
+}
+
+.mission-content button{
+
+    margin-left: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #227093;
+    border: 1px solid #227093;
+    padding: 15px;
+    margin-top: 20px;
+    margin-left: 0;
+
+}
+
+.mission-content a{
+    text-decoration: none;
+    color: white;
+    font-size: 30px;
+    
+}
+
+
+.mission img {
+    width: 60rem; /* Ajuste la taille de l'image */
+    height: auto;  /* Conserve le ratio de l'image */
+    margin-right: 40px;
+}
+
+/* trait apres la section mission */
+
+.separator {
+    content: '';
+    display: block;
+    height: 2px; /* Épaisseur du trait */
+    width: 346px; /* Ajuste la largeur selon tes préférences */
+    margin: 90px auto; /* Ce de l'espace au-dessus */
+    background-color: #0D8434;
+    height: 7px;
+}
+
+
+/* stylisation de la partie mission */
+
+.vision {
+    display: flex; /* Utilise Flexbox pour la mise en page */
+    align-items: center; /* Centre verticalement les éléments */
+    padding: 20px; /* Ajoute du padding autour de la section */
+    
+}
+
+.vision img {
+    width: 60rem; /* Ajuste la taille de l'image */
+    height: auto;  /* Conserve le ratio de l'image */
+    margin-left: 60px;
+}
+
+.vision-content {
+    max-width: 50%; /* Limite la largeur du contenu texte */
+    margin-bottom: 100px;
+    margin-left: 300px;
+}
+
+.vision-content  h1{
+    font-size: 50px;
+    font-family: "Gilda Display", serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #0D8434;
+    line-height: 2.5;
+}
+
+.vision-content  p{
+    font-size: 35px;
+    line-height: 2;
+    text-align: justify;
+}
+
+.servicetitle{
+
+    font-size: 50px;
+    font-family: "Gilda Display", serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #0D8434;
+    text-align: center;
+    margin-top: 100px;
+
+}
+
+/* style de la partie service */
+
+.service {
+    display: flex;
+    margin: 80px auto; /* Ajoute une marge en haut et centre l'élément horizontalement */
+    flex-direction: column; /* Aligne les parties en colonne */
+    align-items: center;
+    background-image: url(../../../../assets/images/servicebackround.png);
+    background-size: cover;
+    max-width: 2177px; /* Définit une largeur maximale */
+    width: 100%; /* Ajustez selon vos besoins */
+    padding: 20px; /* Ajoute du padding à l'intérieur si nécessaire */
+    box-sizing: border-box; /* Inclut le padding dans la largeur totale */
+}
+
+
+
+.card {
+    background-color: white; /* Fond blanc */
+    border-radius: 20px; /* Arrondi des coins */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Ombre légère pour donner de la profondeur */
+    padding: 40px; /* Espacement intérieur */
+    width: 414px; /* Largeur de la carte */
+    margin: 20px; /* Espacement autour de la carte */
+    display: flex; /* Utilise Flexbox pour la mise en page */
+    flex-direction: column; /* Affiche les éléments en colonne */
+    align-items: flex-start; /* Aligne les éléments à gauche */
+}
+
+.firstpart, .secondpart {
+    margin-top: 70px;
+    display: flex; /* Utilise Flexbox pour les cartes */
+    justify-content: space-around; /* Espace égal entre les cartes */
+    width: 100%; /* Prend toute la largeur disponible */
+    margin-bottom: 20px; /* Espace entre les parties */
+}
+
+
+.card h2{
+    font-size: 30px;
+    font-family: "Gilda Display", serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #0D8434;
+    line-height: 1.5;
+
+
+}
+
+.card p{
+    font-size: 20px;
+    line-height: 2.5;
+    text-align: justify;
+
+}
+
+.notification-icon {
+    width: 40px; /* Largeur de l'icône */
+    height: 40px; /* Hauteur de l'icône */
+    margin-bottom: 10px; /* Espace entre l'icône et le titre */
+}
+
+.notification-icon img {
+    width: 100%; /* Rendre l'image responsive */
+    height: auto; /* Conserve le ratio de l'icône */
+}
+
+
+
+
+
+
+
+
