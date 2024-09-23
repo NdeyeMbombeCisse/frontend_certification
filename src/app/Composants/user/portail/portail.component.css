@@ -10,23 +10,21 @@ body {
 }
 
 .header-content {
-    
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    position: absolute; /* Positionner en absolu */
+    position: fixed; /* Position fixe */
     top: 0; /* Aligner en haut */
     left: 0; /* Aligner à gauche */
     right: 0; /* Prendre toute la largeur */
     z-index: 1; /* S'assurer que c'est au-dessus de la bannière */
+    background-color: #227093; /* 0.5 pour 50% d'opacité */
 }
-
-
-
 
 .logo {
     width: 150px;
+    margin-left: 30px;
 }
 
 nav ul {
@@ -35,37 +33,33 @@ nav ul {
 }
 
 nav ul li {
-    
     margin-left: 60px;
 }
 
 nav ul li a {
-   
     color: white;
     text-decoration: none;
     font-size: 30px;
-    color: white;
     font-family: 'Inter', sans-serif;
     font-weight: 700;
 }
 
 .auth-buttons .btn {
     margin-left: 20px;
-    padding: 10px 20px;
+    padding: 20px 20px;
     border-radius: 5px;
     text-decoration: none;
-    color: white;
+    color: #227093;
 }
 
 .register {
-    background-color: #22933a;
-    font-size: 25px;
+    background-color: white;
+    font-size: 35px;
     margin-right: 100px;
+    font-weight: bold;
 }
 
-.login {
-    background-color: #28A745;
-}
+
 
 .baniere {
     display: flex;
@@ -73,30 +67,31 @@ nav ul li a {
     align-items: center; /* Centre verticalement */
     text-align: center;
     width: 100%;
-    height: 1160px;
-    background: linear-gradient(rgba(71, 146, 100, 0.5), rgba(13, 132, 52, 0.5)), 
+    height: 1260px;
+    background: linear-gradient(rgba(106, 176, 204, 0.3), rgba(106, 176, 204, 0.3)), 
                 url('../../../../assets/images/baniere.png') no-repeat center center/cover;
-    background-size: cover;
     color: white;
 }
-.connexion-buttons .btn{
-    margin-left:70px;
-    padding: 10px 20px;
+
+.connexion-buttons .btn {
+    margin-left: 70px;
+    padding: 20px 20px;
     border-radius: 5px;
     text-decoration: none;
-    color: white;
+    color: #227093;
+    font-size: 40px;
     
-
 }
 
 .baniere-content {
     font-family: 'Times New Roman', Times, serif;
-  font-optical-sizing: auto;
-  font-style: normal;
+    font-optical-sizing: auto;
+    font-style: normal;
     display: flex;
-    font-size: 25px;
+    font-size: 40px;
     flex-direction: column; /* Affiche le titre et le texte en colonne */
     gap: 20px; /* Ajoute un espacement entre le titre et le texte */
+    font-weight: 600;
 }
 
 .baniere-content h1 {
@@ -107,17 +102,17 @@ nav ul li a {
     line-height: 2; /* Contrôle l'interligne du paragraphe */
 }
 
-/* style du trait apres la baniere */
-
+/* Style du trait après la bannière */
 header::after {
     content: '';
     display: block;
-    height: 2px; /* Épaisseur du trait */
-    background-color: #0D8434; ; /* Couleur du trait */
+    height: 5px; /* Épaisseur du trait */
+    background-color: #0D8434; /* Couleur du trait */
     width: 346px; /* Ajuste la largeur selon tes préférences */
     margin: 90px auto; /* Centre le trait et ajoute un espacement */
-    height: 5px;
 }
+
+
 
 
 /* stytilisation de la partie mission */
@@ -247,7 +242,7 @@ header::after {
     align-items: center;
     background-image: url(../../../../assets/images/servicebackround.png);
     background-size: cover;
-    max-width: 2177px; /* Définit une largeur maximale */
+    max-width: 2277px; /* Définit une largeur maximale */
     width: 100%; /* Ajustez selon vos besoins */
     padding: 20px; /* Ajoute du padding à l'intérieur si nécessaire */
     box-sizing: border-box; /* Inclut le padding dans la largeur totale */
@@ -260,7 +255,7 @@ header::after {
     border-radius: 20px; /* Arrondi des coins */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Ombre légère pour donner de la profondeur */
     padding: 40px; /* Espacement intérieur */
-    width: 414px; /* Largeur de la carte */
+    width: 600px; /* Largeur de la carte */
     margin: 20px; /* Espacement autour de la carte */
     display: flex; /* Utilise Flexbox pour la mise en page */
     flex-direction: column; /* Affiche les éléments en colonne */
@@ -277,20 +272,21 @@ header::after {
 
 
 .card h2{
-    font-size: 30px;
+    font-size: 40px;
     font-family: "Gilda Display", serif;
     font-weight: 400;
     font-style: normal;
     color: #0D8434;
-    line-height: 1.5;
+    line-height: 2;
+    margin-top: 30px;
 
 
 }
 
 .card p{
-    font-size: 20px;
-    line-height: 2.5;
-    text-align: justify;
+    font-size: 30px;
+    line-height: 2;
+    /* text-align: justify; */
 
 }
 
@@ -301,14 +297,358 @@ header::after {
 }
 
 .notification-icon img {
-    width: 100%; /* Rendre l'image responsive */
+    width: 4rem;
     height: auto; /* Conserve le ratio de l'icône */
+}
+
+
+/* style des horaires */
+
+.horaire {
+    display: flex;
+    justify-content: space-between; /* Place la première image à gauche et les deux autres à droite */
+    align-items: center; /* Aligne verticalement les éléments */
+    padding: 20px; /* Ajoute un peu d'espacement autour */
+    margin-top: 50px;
+}
+
+.img_zig_dak {
+    flex: 1; /* Donne de l'espace à la première image pour rester à gauche */
+    margin-left: 80px;
+    margin-top: 40px;
+}
+
+.zigdak {
+    display: flex;
+    flex-direction: column; /* Aligne les deux images en colonne */
+    flex: 1; /* Donne de l'espace aux images à droite */
+    align-items: flex-end; /* Aligne les images à droite */
+    margin-right: 100px;
+}
+
+/* .horaire img {
+    max-width: 100%; 
+    height: auto; 
+} */
+
+.title{
+    display: flex;
+    background-image: url(../../../../assets/images/titlebackround.png);
+    background-size: cover; /* Pour couvrir toute la zone */
+    background-position: center; /* Centre l'image */
+    padding: 20px; /* Ajoute de l'espace à l'intérieur de la div */
+    width: 752px;
+    margin-right: 70px;
+
+}
+
+.title .dak{
+    margin-left: 320px;
+}
+
+.title h1{
+    font-family: "Gilda Display", serif;
+    font-size: 40px;
+
+}
+.img_zig_dak img {
+    width: 70rem; /* Augmente la taille de la première image */
+    height: 42rem;
+    margin-top: 40px;
+}
+
+.zigdak img {
+    width: 55rem; /* Augmente la taille des deux images à droite */
+    margin-bottom: 10px; /* Ajoute un espacement entre les images */
+}
+
+/* horaire zig dakar */
+
+.horaire h2{
+    font-family: "Gilda Display", serif;
+    font-size: 35px;
+
+
+}
+.carte-horaires {
+    background-color: white; /* Fond blanc */
+    border: 7px solid #227093; /* Bordure bleue */
+    border-radius: 10px; /* Coins arrondis */
+    padding: 20px; /* Espacement interne */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+    margin-top: 20px; /* Espacement au-dessus de la carte */
+    width: 800px; /* Largeur de la carte */
+    height: 650px;
+    margin-right: 40px;
+}
+
+.titre-depart {
+    margin-left: 100px; /* Espacement autour du titre */
+}
+
+.jeu_dim {
+    display: flex; /* Flexbox pour les boutons sur la même ligne */
+    gap: 60px; /* Espacement entre les boutons */
+    padding: 10px; /* Padding autour des boutons */
+    margin-left: 100px;
+}
+
+.embarquement_depart {
+    display: flex; /* Flexbox pour l'embarquement et le départ */
+    margin-top: 20px; /* Ajoute de l'espace entre les sections */
+    gap: 60px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 100px;
+}
+
+.jour-button, .embarquement button, .depart button {
+    background-color: #227093; /* Fond bleu */
+    color: white;
+    border: none;
+    padding: 10px 20px; /* Espacement interne */
+    border-radius: 15px;
+    font-size: 30px;
+    cursor: pointer;
+    width: 210px; /* Largeur des boutons */
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+/* horaire dakar ziguichor */
+.carte-horaires_deux {
+    background-color: white; /* Fond blanc */
+    border: 7px solid #227093; /* Bordure bleue */
+    border-radius: 10px; /* Coins arrondis */
+    padding: 20px; /* Espacement interne */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+    margin-top: 20px; /* Espacement au-dessus de la carte */
+    width: 800px; /* Largeur de la carte */
+    height: 450px;
+    margin-right: 200px;
+}
+
+.img_dak_zig img {
+    width: 70rem; /* Augmente la taille de la première image */
+    height: 35rem;
+    margin-top: 40px;
+    margin-right: 120px;
+}
+
+.title_deux{
+    display: flex;
+    background-image: url(../../../../assets/images/titlebackround.png);
+    background-size: cover; /* Pour couvrir toute la zone */
+    background-position: center; /* Centre l'image */
+    padding: 20px; /* Ajoute de l'espace à l'intérieur de la div */
+    width: 752px;
+    margin-right: 220px;
+
+
+}
+
+.title_deux .dak{
+    margin-left: 320px;
+}
+
+.title_deux h1{
+    font-family: "Gilda Display", serif;
+    font-size: 40px;
+
 }
 
 
 
 
+/* style des tarifs */
+
+.tarif {
+    display: flex;
+    justify-content: center; /* Centre les cartes horizontalement */
+    align-items: center; /* Centre les cartes verticalement si nécessaire */
+    gap: 80px; /* Espacement entre les cartes de nationalité */
+    padding: 30px;
+    flex-wrap: wrap; /* Permet de passer sur plusieurs lignes si l'espace est insuffisant */
+    margin-top: 100px;
+    background-image: url(../../../../assets/images/backroungtarif2.png);
+    background-size: cover;
+    margin-bottom: 20px;
+    width: 100%;
+    height: 80rem;
+    
+
+
+}
+
+.nationalite-card {
+    background-color: #f1f1f1;
+    border-radius: 25px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 670px; /* Chaque carte occupe 30% de la largeur */
+    border: 3px solid #227093;
+    height: 780px;
+    margin-top: 50px;
+}
+
+
+.nationalite-card:nth-child(2) {
+    margin-bottom: 150px; /* Réduire la marge supérieure pour la deuxième carte */
+}
+.nationalite-card h1 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #227093;
+    font-family: "Gilda Display", serif;
+    font-size: 35px;
+    margin-top: 40px;
+    
+}
+
+.nationalite-card h1::after {
+    content: '';
+    display: block;
+    width: 100%; /* La longueur du trait */
+    height: 2px; /* Épaisseur du trait */
+    background-color: #227093; /* Couleur du trait */
+    margin: 40px auto 0; /* Espacement avec le texte */
+}
+
+/* Style des sous-cartes */
+.sub-cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    margin-left: 20px;
+}
 
 
 
 
+.sub-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    text-align: left;
+    width: 250px; /* Largeur fixe pour toutes les cartes */
+    height: 220px; /* Hauteur fixe pour uniformiser */
+    padding: 20px; /* Espacement interne */
+    border: 1px solid #ddd; /* Optionnel: bordure pour mieux visualiser */
+    border-radius: 17px; /* Coins arrondis */
+    background-color: #227093;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre légère pour l'esthétique */
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+
+
+.sub-card img {
+    width: 50px; /* Taille de l'icône */
+    height: 50px;
+    margin-bottom: 10px;
+    
+}
+
+.sub-card h4 {
+    font-size: 16px;
+    margin: 5px 0;
+    color: #ffffff;
+    font-size: 21px;
+    line-height: 2;
+}
+
+.sub-card h4:last-of-type {
+    font-weight: bold;
+    color: #f8f5f4; /* Couleur du prix */
+}
+
+/* style contact */
+.form-container {
+    display: flex; /* Utilise Flexbox pour le conteneur du formulaire */
+    flex-direction: column; /* Aligne les éléments verticalement */
+    justify-content: center; /* Centre les éléments verticalement */
+    align-items: center; /* Centre les éléments horizontalement */
+    width: 100rem; /* Largeur totale du conteneur */
+    margin: 50px auto; /* Marge supérieure et centrage horizontal */
+    background-image: url(../../../../assets/images/backroundcontact.png);
+    background-size: cover; /* Ajuste le fond */
+    padding: 20px; /* Ajoute un padding pour le contenu */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optionnel : ombre légère */
+    height: 35rem; /* Hauteur automatique pour s'adapter au contenu */
+}
+
+.input-row {
+    display: flex; /* Utilise Flexbox pour aligner les inputs */
+    gap: 20px; /* Espacement entre les inputs */
+}
+
+.input-row input {
+    width: 513px; /* Largeur fixée à 513 pixels */
+    height: 73px; /* Hauteur fixée à 73 pixels */
+    border-radius: 10px; /* Rayon de bordure de 10 pixels */
+    padding: 10px; /* Optionnel : ajout d'un padding pour le texte */
+    border: 1px solid #ccc; /* Optionnel : bordure pour les inputs */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optionnel : ombre légère */
+}
+
+.message-row {
+    margin-top: 20px; /* Espacement au-dessus du message */
+}
+
+.message-row textarea {
+    width: 1050px; /* Largeur identique aux inputs */
+    height: 150px; /* Hauteur fixe pour le message */
+    border-radius: 10px; /* Rayon de bordure de 10 pixels */
+    padding: 10px; /* Optionnel : ajout d'un padding pour le texte */
+    border: 1px solid #ccc; /* Optionnel : bordure pour le textarea */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optionnel : ombre légère */
+    margin-top: 20px; /* Ajuste l'espacement au-dessus du message */
+    margin-top: 50px;
+}
+
+.button-row {
+    align-self: flex-start; /* Aligne le bouton à gauche */
+    margin-top: 20px; /* Espacement au-dessus du bouton */
+}
+
+.button-row button {
+    width: 200px; /* Largeur du bouton */
+    height: 60px; /* Hauteur du bouton */
+    border-radius: 10px; /* Rayon de bordure du bouton */
+    border: none; /* Supprime la bordure par défaut */
+    background-color: #227093; /* Couleur de fond du bouton */
+    color: #fff; /* Couleur du texte */
+    cursor: pointer; /* Change le curseur au survol */
+    transition: background-color 0.3s; /* Transition pour le changement de couleur */
+    font-size: 30px;
+}
+
+.button-row button:hover {
+    background-color: #0B6A28; /* Couleur au survol */
+}
+
+
+footer {
+    background-color: #227093;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+footer ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin-top: 10px;
+}
+
+footer ul li {
+    margin-left: 20px;
+}
+
+/* responsivite */
+/* Styles pour mobiles (smartphones) */
