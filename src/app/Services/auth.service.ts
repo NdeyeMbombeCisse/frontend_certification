@@ -12,7 +12,7 @@ export class AuthService {
   private http =inject(HttpClient);
 
   register(identifienrts:any){
-    return this.http.post(`${apiUrl}/register`,identifienrts)
+    return this.http.post(`${apiUrl}/store`,identifienrts)
   }
 
   //Login
