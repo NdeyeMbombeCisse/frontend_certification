@@ -88,6 +88,19 @@ body {
   input::placeholder{
     font-size: 22px;
   }
+
+  .form-footer{
+    margin-left: 400px;
+    text-decoration: none;
+    color: white;
+  }
+
+  .form-footer a{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+
+  }
   
   @media (max-width: 480px) {
     body {
@@ -155,5 +168,19 @@ body {
         display: flex;
         flex-direction: column;
         justify-content: center; /* Centrer verticalement les éléments dans le conteneur */
+      }
+
+      .form-footer{
+        margin-left: 150px;
+        text-decoration: none;
+        color: white;
+        margin-top: 20px;
+      }
+    
+      .form-footer a{
+        text-decoration: none;
+        color: white;
+        font-size: 15px;
+    
       }
     }
