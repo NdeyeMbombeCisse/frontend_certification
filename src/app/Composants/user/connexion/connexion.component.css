@@ -1,0 +1,154 @@
+body {
+    margin: 0;
+    height: 100vh; /* Prend toute la hauteur de la page */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../../../../assets/images/backroundformu;aire.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  .login-container {
+    width: 780px;
+    height: 700px;
+    background-color: rgba(34, 112, 147, 0.6); /* Légère opacité pour voir l'image de fond */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centrer verticalement les éléments dans le conteneur */
+  }
+  
+  h1 {
+    text-align: center;
+    color: white;
+    font-size: 61px;
+    margin-bottom: 50px;
+    font-family: "Gilda Display", serif;
+  font-weight: 400;
+  font-style: normal;
+  
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrer horizontalement les inputs */
+  }
+
+  form input{
+    width: 530px;
+    height: 67px;
+    padding: 10px;
+    margin-bottom: 30px; /* Espacement entre les champs */
+    border-radius: 5px;
+    border: none;
+    /* display: block; */
+  }
+
+  button {
+    width: 545px;
+    height: 87px;
+    padding: 10px;
+    margin-bottom: 20px; /* Espacement entre les champs */
+    border-radius: 5px;
+    border: none;
+    
+    background-color: #227093;
+    color: white;
+    font-size: 35px;
+    font-weight: bold;
+   
+  } 
+
+  input::placeholder{
+    font-size: 22px;
+  }
+  .form-footer{
+    margin-left: 400px;
+    text-decoration: none;
+    color: white;
+  }
+
+  .form-footer a{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+
+  }
+
+  @media (max-width: 480px) {
+    body {
+        
+        height: 100vh; /* Prend toute la hauteur de la page */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: url(../../../../assets/images/backroundformu;aire.png);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+      h1{
+        font-size: 30px;
+      }
+
+      input::placeholder{
+        font-size: 12px;
+      }
+
+      form input{
+        width: 298px;
+        height: 27px;
+        padding: 10px;
+        margin-bottom: 20px; /* Espacement entre les champs */
+        border-radius: 5px;
+        border: none;
+        /* display: block; */
+      }
+
+      button {
+        width: 320px;
+        height: 47px;
+        padding: 10px;
+        margin-bottom: 20px; /* Espacement entre les champs */
+        border-radius: 5px;
+        border: none;
+        
+        background-color: #227093;
+        color: white;
+        font-size: 15px;
+        font-weight: bold;
+       
+      } 
+
+     
+      .login-container {
+        width: 480px;
+        height: 680px;
+        background-color: rgba(34, 112, 147, 0.6); /* Légère opacité pour voir l'image de fond */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Centrer verticalement les éléments dans le conteneur */
+      }
+
+      .form-footer{
+        margin-left: 150px;
+        text-decoration: none;
+        color: white;
+        margin-top: 20px;
+      }
+    
+      .form-footer a{
+        text-decoration: none;
+        color: white;
+        font-size: 15px;
+    
+      }
+    }

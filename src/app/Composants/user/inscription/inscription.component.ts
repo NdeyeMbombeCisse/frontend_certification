@@ -7,6 +7,8 @@ import { AuthService } from '../../../Services/auth.service';
 import { Router } from '@angular/router';
 import { UserModel } from '../user.model';
 import { FormsModule } from '@angular/forms';
+ import Swal from 'sweetalert2';
+
 
 
 @Component({
@@ -66,6 +68,14 @@ export class InscriptionComponent implements OnInit {
         (response: any) => {
           console.log('Réponse du serveur:', response);
           if (response && response.id) {
+
+            Swal.fire({
+              title: 'Succès!',
+              text: 'Utilisateur créé avec succès!',
+              icon: 'success',
+              confirmButtonText: 'OK'
+            });
+           
             this.user = {}; // Réinitialiser les champs après la soumission
             this.selectedFile = null; // Réinitialiser le fichier sélectionné
           } else {
