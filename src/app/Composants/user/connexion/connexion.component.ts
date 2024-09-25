@@ -38,11 +38,11 @@ connexion(){
         if (response.token) {
           console.log('Token:', response.token);
           localStorage.setItem("token", response.token);
-          this.router.navigateByUrl("portail");
+          this.router.navigateByUrl("/portail");
         } else if (response.data && response.data.token) { // Si le token est dans data
           console.log('Token in data:', response.data.token);
           localStorage.setItem("token", response.data.token);
-          this.router.navigateByUrl("portail");
+          this.router.navigateByUrl("/inscription_user");
         } else {
           console.error('No token in the response');
         }

@@ -1,1 +1,116 @@
-<p>afficher-trajet works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="afficher-trajet.component.css">
+</head>
+<body>
+
+     <!-- sidebar -->
+
+<div class="contenu">
+    <div class="sidebar">
+        <div class="logo">
+          <img src="../../../../assets/images/logo.png" alt="Logo">
+        </div>
+        <nav class="menu">
+            <!-- Lien vers le Dashboard -->
+            <a  class="menu-item active">
+                <img src="../../../../assets/images/icons/dashboard.svg" alt="">
+                Dashboard
+            </a>
+      
+            <!-- Lien vers la liste des projets (Projets mairie) -->
+            <a class="menu-item">
+                <i class="fa-solid fa-ship"></i> Trajet
+              </a>
+              
+      
+            <!-- Lien vers ajout de trajets -->
+            <a  href="ajoutTrojet" class="menu-item">
+              <img src="../../../../assets/images/icons/group.svg" alt="">
+              <i class="fa-solid fa-plus"></i> Ajouter un Trajet
+            </a>
+      
+            <!-- Lien vide pour Nouveau projet -->
+            <a href="#" class="menu-item">
+                <i class="fa-solid fa-list"></i>Reservation
+            </a>
+      
+            <!-- Lien vers les projets soumis -->
+           
+      
+            <!-- Lien vide pour Déconnexion -->
+            <a (click)="logout()" class="menu-item">
+              <img src="../../../../assets/images/icons/logout.svg" alt="">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i> Déconnexion
+            </a>
+        </nav>
+      </div>
+
+     <!-- sidebar fin -->
+
+    <div class="trajet-container">
+        <h1>LISTE DES TRAJETS</h1>
+        <table *ngIf="tabtrajet.length > 0; else noTrajets">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Date de départ</th>
+                    <th>Date d'arrivée</th>
+                    <th>Lieu de départ</th>
+                    <th>Lieu d'arrivée</th>
+                    <th>Heure d'embarquement</th>
+                    <th>Heure de départ</th>
+                    <th>Statut</th>
+                    <th>Bateau</th> <!-- Ou l'attribut que vous souhaitez afficher -->
+                    <th>Details</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                    <tr *ngFor="let trajet of getDisplayedTrajets()">
+                    <td>{{ trajet.id }}</td>
+                    <td>{{ trajet.date_depart }}</td>
+                    <td>{{ trajet.date_arrivee }}</td>
+                    <td>{{ trajet.lieu_depart }}</td>
+                    <td>{{ trajet.lieu_arrive }}</td>
+                    <td>{{ trajet.heure_embarquement }}</td>
+                    <td>{{ trajet.heure_depart }}</td>
+                    <td>{{ trajet.statut ? 'Actif' : 'Inactif' }}</td>
+                    <td>{{ trajet.bateau ? trajet.bateau.libelle : 'N/A' }}</td> 
+                    <td>
+                        <button><i class="fa-solid fa-circle-info "></i></button> <!-- Bouton pour voir les détails -->
+                        <button (click)="trajet ? editTrajet(trajet) : null">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </button>
+                        
+                                                <button  (click)="deleteTrajet(trajet.id)"  class="delete"><i class="fa-solid fa-delete-left "></i></button>
+                    </td>
+                </tr>
+                <!-- ModifierTrajet -->
+            </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            <button (click)="previousPage()" [disabled]="currentPage === 1"><i class="fa-solid fa-chevron-left fa-2x"></i></button>
+            <span>Page {{ currentPage }} sur {{ getTotalPages() }}</span>
+            <button (click)="nextPage()" [disabled]="currentPage === getTotalPages()"><i class="fa-solid fa-chevron-right fa-2x"></i></button>
+        </div>
+        <ng-template #noTrajets>
+            <p>Aucun trajet disponible.</p>
+        </ng-template>
+       
+    </div>
+</div>
+
+
+
+
+
+    
+</body>
+</html>

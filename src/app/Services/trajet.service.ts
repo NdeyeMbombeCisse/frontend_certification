@@ -20,14 +20,23 @@ export class TrajetService{
         return this.http.get(`${apiUrl}/trajets`);
     }
 
+    getTrajetById(id:any){
+        return this.http.get(`${apiUrl}/recupererTrajet/${id}`);
+    }
+
+    getAllBateaux(){
+        return this.http.get(`${apiUrl}/bateaux`);
+    }
+
     // methode pour modifer un livre
     updateTrajet(id:any,trajet:any){
-        return this.http.post(`${apiUrl}/${id}`,trajet);
+        return this.http.put(`${apiUrl}/trajets/${id}`,trajet);
     }
 
     // methode pour la supprsion d'un livre
-    deleteTrajet(id:any){
-        return this.http.delete(`${apiUrl}/${id}`);
+    deleteTrajet(id: any) {
+        return this.http.delete(`${apiUrl}/trajets/${id}`);
     }
+    
 
 }

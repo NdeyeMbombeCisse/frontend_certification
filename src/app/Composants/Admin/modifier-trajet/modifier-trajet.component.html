@@ -1,1 +1,176 @@
-<p>modifier-trajet works!</p>
+<div class="contenu">
+    <div class="sidebar">
+        <div class="logo">
+          <img src="../../../../assets/images/logo.png" alt="Logo">
+        </div>
+        <nav class="menu">
+            <!-- Lien vers le Dashboard -->
+            <a  class="menu-item active">
+                <img src="../../../../assets/images/icons/dashboard.svg" alt="">
+                Dashboard
+            </a>
+      
+            <!-- Lien vers la liste des projets (Projets mairie) -->
+            <a href="afficher_trajet" class="menu-item">
+                <i class="fa-solid fa-ship"></i> Trajet
+              </a>
+              
+      
+            <!-- Lien vers la liste des habitants -->
+            <a  href="ajoutTrojet" class="menu-item">
+              <img src="../../../../assets/images/icons/group.svg" alt="">
+              <i class="fa-solid fa-plus"></i> Ajouter un Trajet
+            </a>
+      
+            <!-- Lien vide pour Nouveau projet -->
+            <a href="#" class="menu-item">
+                <i class="fa-solid fa-list"></i>Reservation
+            </a>
+      
+            <!-- Lien vers les projets soumis -->
+           
+      
+            <!-- Lien vide pour Déconnexion -->
+            <a href="#" class="menu-item">
+              <img src="../../../../assets/images/icons/logout.svg" alt="">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i> Déconnexion
+            </a>
+        </nav>
+      </div>
+  
+   
+
+    <div class="ajout-trajet-container">
+        <h1 class="mb-4">MODIFIER UN TRAJET</h1>
+    
+        <form (ngSubmit)="saveTrajet()">
+            <!-- Date de départ et Date d'arrivée sur la même ligne -->
+            <div class="form-row">
+                <div class="form-group mb-3">
+                    <label for="date_depart">Date de départ</label>
+                    <input
+                        type="date"
+                        id="date_depart"
+                        class="form-control"
+                        [(ngModel)]="trajetObject.date_depart"
+                        name="date_depart"
+                        required
+                    />
+                </div>
+    
+                <div class="form-group mb-3">
+                    <label for="date_arrivee">Date d'arrivée</label>
+                    <input
+                        type="date"
+                        id="date_arrivee"
+                        class="form-control"
+                        [(ngModel)]="trajetObject.date_arrivee"
+                        name="date_arrivee"
+                        required
+                    />
+                </div>
+            </div>
+    
+            <!-- Lieu de départ et Lieu d'arrivée sur la même ligne -->
+            <div class="form-row">
+                <div class="form-group mb-3">
+                    <label for="lieu_depart">Lieu de départ</label>
+                    <input
+                        type="text"
+                        id="lieu_depart"
+                        class="form-control"
+                        [(ngModel)]="trajetObject.lieu_depart"
+                        name="lieu_depart"
+                        required
+                    />
+                </div>
+    
+                <div class="form-group mb-3">
+                    <label for="lieu_arrive">Lieu d'arrivée</label>
+                    <input
+                        type="text"
+                        id="lieu_arrive"
+                        class="form-control"
+                        [(ngModel)]="trajetObject.lieu_arrive"
+                        name="lieu_arrive"
+                        required
+                    />
+                </div>
+            </div>
+    
+            <div class="form-row">
+                <div class="form-group mb-3">
+                    <label for="statut">Statut</label>
+                    <select
+                        id="statut"
+                        class="form-control"
+                        [(ngModel)]="trajetObject.statut"
+                        name="statut"
+                        required
+                    >
+                        <option [value]="1">Actif</option>
+                        <option [value]="0">Inactif</option>
+                    </select>
+                </div>
+    
+                <!-- bateau -->
+                <div class="form-group mb-3">
+                    <label for="bateau_id">Bateau</label>
+                    <select 
+                        class="form-control" 
+                        id="bateau_id" 
+                        name="bateau_id" 
+                        [(ngModel)]="trajetObject.bateau_id" 
+                        required>
+                        <option value="" disabled>Choisissez votre bateau</option>
+                        <option *ngFor="let bateau of tabBateaux" [value]="bateau.id">
+                            {{ bateau.libelle }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+    
+            <div class="form-row">
+                <div class="form-group mb-3">
+                    <label for="heure_embarquement">Heure d'embarquement</label>
+                    <input
+                        type="time"
+                        id="heure_embarquement"
+                        class="form-control"
+                        [(ngModel)]="trajetObject.heure_embarquement"
+                        name="heure_embarquement"
+                        required
+                    />
+                </div>
+    
+                <div class="form-group mb-3">
+                    <label for="heure_depart">Heure de départ</label>
+                    <input
+                        type="time"
+                        id="heure_depart"
+                        class="form-control"
+                        [(ngModel)]="trajetObject.heure_depart"
+                        name="heure_depart"
+                        required
+                    />
+                </div>
+            </div>
+    
+            <!-- Champ d'image -->
+            <div class="form-group mb-3">
+                <label for="image">Image</label>
+                <input
+                    type="file"
+                    id="image"
+                    class="form-control"
+                    (change)="uploadImage($event)"
+                />
+            </div>
+    
+            <!-- Bouton de modification -->
+            <button type="submit" class="btn btn-primary">Modifier le trajet</button>
+        </form>
+    </div>
+    
+  </div>
+  

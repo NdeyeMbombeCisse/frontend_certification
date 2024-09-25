@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="ajout-trajet.component.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-</head>
-<body>
+<!-- <body> -->
 
      <!-- sidebar -->
 
@@ -25,7 +16,7 @@
                 </a>
           
                 <!-- Lien vers la liste des projets (Projets mairie) -->
-                <a class="menu-item">
+                <a href="afficher_trajet" class="menu-item">
                     <i class="fa-solid fa-ship"></i> Trajet
                   </a>
                   
@@ -132,19 +123,22 @@
                   </div>
     
                   <!-- bateau -->
-    
                   <div class="form-group mb-3">
-                    <label for="bateau_id">Bateau</label>
-                    <input
-                      type="number"
-                      id="bateau_id"
-                      class="form-control"
-                      [(ngModel)]="trajetObject.bateau_id"
-                      name="bateau_id"
-                      required
-                    />
+                    <div class="form-group mb-3">
+                        <label for="bateau_id">Bateau</label>
+                        <select 
+                          class="form-control" 
+                          id="bateau_id" 
+                          name="bateau_id" 
+                          [(ngModel)]="trajetObject.bateau_id" 
+                          required>
+                          <option value="" disabled selected>Choisissez votre bateau</option>
+                          <option *ngFor="let bateau of tabBateaux" [value]="bateau.id">
+                            {{ bateau.libelle }}
+                          </option>
+                        </select>
+                    </div>
                   </div>
-
               </div>
           
               <div class="form-row">
@@ -194,5 +188,5 @@
      </div>
       
     
-</body>
-</html>
+<!-- </body>
+</html> -->

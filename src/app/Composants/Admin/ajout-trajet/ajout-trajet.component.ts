@@ -3,11 +3,13 @@ import { TrajetService } from '../../../Services/trajet.service';
 import { TrajetModel } from '../trajet.model';
 import { storageUrl } from '../../../Services/apiUrl';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { BateauModel } from '../bateau.model';
 
 @Component({
   selector: 'app-ajout-trajet',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule,CommonModule],
   templateUrl: './ajout-trajet.component.html',
   styleUrl: './ajout-trajet.component.css'
 })
@@ -18,21 +20,34 @@ export class AjoutTrajetComponent {
   // declaration des variables
   tabtrajet:TrajetModel[]=[];
   trajetObject:TrajetModel = {};
+  tabBateaux:BateauModel[] =[];
   imageStorage:any= storageUrl;
 
   // declaration des methodes
   ngOnInit(): void {
+    this.fetchBateaux();
    
+  }
+
+  fetchBateaux(){
+    this.trajetService.getAllBateaux().subscribe(
+      (response:any)=>{
+        console.log(response.data);
+        if(response.data){
+          this.tabBateaux = response.data;
+        } 
+      },(error:any)=>{
+        console.log(error);
+      }
+    )
   }
 
   
 
   uploadImage(event:any){
     console.log(event.target.files[0]);
-    this.trajetObject.image = event.target.files[0]
-    
+    this.trajetObject.image = event.target.files[0] 
   }
-
   // methode pour la gestion de l'ajout
   ajoutLivre() {
     let formdata = new FormData();
@@ -68,7 +83,7 @@ export class AjoutTrajetComponent {
       formdata.append("statut", statutString); // Ajouter le boolean converti
       formdata.append("heure_embarquement", this.trajetObject.heure_embarquement);
       formdata.append("heure_depart", this.trajetObject.heure_depart);
-      formdata.append("bateau_id", this.trajetObject.bateau_id);
+      formdata.append("bateau_id", this.trajetObject.bateau_id.toString());
     }
   
     this.trajetService.createTrajet(formdata).subscribe(
