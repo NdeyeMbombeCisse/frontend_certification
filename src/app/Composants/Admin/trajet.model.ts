@@ -7,12 +7,14 @@ export interface TrajetModel{
     lieu_depart?:string;
     lieu_arrive?:string;
     image?:string | File; 
-    statut?:boolean;
+    statut?:boolean |undefined |number ;
     heure_embarquement?:string;
     heure_depart?:string;
     bateau_id?:number;
     timestamp?:Date;
     bateau?: BateauModel;
   }
+
+  
 
  

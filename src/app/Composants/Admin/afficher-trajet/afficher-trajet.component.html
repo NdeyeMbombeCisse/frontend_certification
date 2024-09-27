@@ -71,7 +71,8 @@
                 </tr>
             </thead>
             <tbody>
-                    <tr *ngFor="let trajet of getDisplayedTrajets()">
+                <tr *ngFor="let trajet of getDisplayedTrajets()" 
+                    [ngClass]="trajet.statut ? 'trajet-publie' : 'trajet-non-publie'">
                     <td>{{ trajet.id }}</td>
                     <td>{{ trajet.date_depart }}</td>
                     <td>{{ trajet.date_arrivee }}</td>
@@ -80,17 +81,18 @@
                     <td>{{ trajet.heure_embarquement }}</td>
                     <td>{{ trajet.heure_depart }}</td>
                     <td>{{ trajet.statut ? 'Actif' : 'Inactif' }}</td>
-                    <td>{{ trajet.bateau ? trajet.bateau.libelle : 'N/A' }}</td> 
+                    <td>{{ trajet.bateau ? trajet.bateau.libelle : 'N/A' }}</td>
                     <td>
-                        <button><i class="fa-solid fa-circle-info "></i></button> <!-- Bouton pour voir les détails -->
+                        <button><i class="fa-solid fa-circle-info "></i></button>
                         <button (click)="trajet ? editTrajet(trajet) : null">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </button>
-                        
-                                                <button  (click)="deleteTrajet(trajet.id)"  class="delete"><i class="fa-solid fa-delete-left "></i></button>
+                        <button (click)="deleteTrajet(trajet.id)" class="delete"><i class="fa-solid fa-delete-left "></i></button>
+                        <button (click)="changerStatut(trajet)">
+                            {{ trajet.statut ? 'Dépublier' : 'Publier' }}
+                        </button>
                     </td>
                 </tr>
-                <!-- ModifierTrajet -->
             </tbody>
         </table>
 

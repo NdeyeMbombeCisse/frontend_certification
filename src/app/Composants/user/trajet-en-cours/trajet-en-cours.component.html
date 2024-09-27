@@ -1,1 +1,137 @@
-<p>trajet-en-cours works!</p>
+<!-- 
+
+
+<select name="date_depart" id="">
+    <option value="">Choisir une date de départ</option>
+    <option *ngFor="let date of dateDepartOptions" [value]="date">{{ date }}</option>
+</select>
+
+
+<section class="trajet_enCours">
+    <h1>Trajets En cours</h1>
+
+    <div *ngFor="let trajet of getDisplayedTrajets()" class="trajets" [ngClass]="trajet.lieu_depart === 'aller' ? 'trajet-normal' : 'trajet-reverse'">
+        <img [src]="trajet.image" alt="Destination {{ trajet.lieu_arrive }}">
+        <div class="detailTrajet">
+            <h2>Destination {{ trajet.lieu_arrive }}</h2>
+            <ul>
+                <li>Date de départ prévue: {{ trajet.date_depart }}</li>
+                <li>Heure de départ prévue: {{ trajet.heure_depart }}</li>
+                <li>Heure d'embarquement estimée: {{ trajet.heure_embarquement }}</li>
+                <li>Nombre de places restantes: {{ trajet.places_restantes }}</li>
+            </ul>
+            <button (click)="reserverBillet(trajet, place_id)">Réserver mon Billet</button>
+        </div>
+    </div>
+</section> -->
+
+
+<header>
+    <div class="header-content">
+        <img src="../../../../assets/images/logo.png" alt="Cosoma Logo" class="logo">
+        <nav>
+            <ul>
+                <li><a href="#">Accueil</a></li>
+                <li><a href="#">Nouvelles Information</a></li>
+                <li><a href="#">Trajets en cours</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <a href="inscription_user" class="btn register">S'inscrire</a>
+        </div>
+    </div>
+    <div class="baniere"> 
+        <div class="baniere-content">
+            <h1>Bienvenue dans notre section  <br>
+                de réservation de trajets !</h1>
+            <p>Découvrez les trajets disponibles et  <br>
+                réservez votre voyage en toute simplicité.</p>
+        </div>
+    </div>
+</header>
+<section class="filtreTrajet">
+    <!-- <form action="">
+        <div class="backroundFiltre">
+            <select name="date_depart" id="">
+                <option value="">Choisir une date de départ</option>
+                <option *ngFor="let date of dateDepartOptions" [value]="date">{{ date }}</option>
+            </select>
+           <select name="date_depart" id="">
+            <option value="">Choiri un lieu de depart</option>
+            <option value="depart">Dakar</option>
+            <option value="depart">Ziguinchor</option>  
+         </select>
+         <button>Entrer</button>          
+        </div>
+    </form> -->
+
+    <form (ngSubmit)="filterTrajets()">
+        <div class="backroundFiltre">
+          <select id="dateDepart" [(ngModel)]="selectedDate" name="dateDepart" required>
+            <option value="" disabled selected>Choisir une date de départ</option>
+            <option *ngFor="let date of dateDepartOptions" [value]="date">{{ date }}</option>
+          </select>
+    
+          <select id="lieuDepart" [(ngModel)]="selectedLieuDepart" name="lieuDepart" required>
+            <option value="">Choisir un lieu de départ</option>
+            <option *ngFor="let lieu of lieuDepartOptions" [value]="lieu">{{ lieu }}</option>
+          </select>
+      
+          <button type="submit">Rechercher</button>          
+        </div>
+      
+      </form>
+</section>
+<section class="trajet_enCours">
+    <h1>Trajets En cours</h1>
+
+    <div *ngFor="let trajet of getDisplayedTrajets()">
+        <ng-container *ngIf="trajet.lieu_arrive === 'Ziguinchor'; else trajetReverse">
+            <div class="trajets trajet-normal">
+                <img src="../../../../assets/images/destination_zig.png" alt="Destination Ziguinchor">
+                <div class="detailTrajet">
+                    <h2>Destination Ziguinchor</h2>
+                    <ul>
+                        <li>Date de départ prévue: {{ trajet.date_depart }}</li>
+                        <li>Heure de départ prévue: {{ trajet.heure_depart }}</li>
+                        <li>Heure d'embarquement estimée: {{ trajet.heure_embarquement }}</li>
+                    </ul>
+                    <button>Réserver mon Billet</button>
+                </div>
+            </div>
+        </ng-container>
+
+        <ng-template #trajetReverse>
+            <div class="trajets trajet-reverse">
+                <div class="detailTrajet">
+                    <h2>Destination Dakar</h2>
+                    <ul>
+                        <li>Date de départ prévue: {{ trajet.date_depart }}</li>
+                        <li>Heure de départ prévue: {{ trajet.heure_depart }}</li>
+                        <li>Heure d'embarquement estimée: {{ trajet.heure_embarquement }}</li>
+                    </ul>
+                    <button>Réserver mon Billet</button>
+                </div>
+                <img src="../../../../assets/images/destination_dak.png" alt="Destination Dakar">
+            </div>
+        </ng-template>
+    </div>
+</section>
+
+
+
+
+
+
+<!-- footer -->
+<footer>
+    <!-- <img src="../../../../assets/images/logo.png" alt=""> -->
+    <p>&copy; 2024 Cosoma. All Rights Reserved.</p>
+    <ul class="social-media">
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">Google</a></li>
+        <li><a href="#">Twitter</a></li>
+    </ul>
+</footer>
+
+

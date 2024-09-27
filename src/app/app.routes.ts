@@ -32,7 +32,7 @@ export const routes: Routes = [
     {path:"",pathMatch:'full',redirectTo:'portail'},
     // route pour l'utilisateur simple
     {path:"portail", component:PortailComponent},
-    {path:"listre_trajet", component:TrajetEnCoursComponent},
+    {path:"liste_trajet", component:TrajetEnCoursComponent},
     {path:"ajoutReservation", component:AjoutReservationComponent},
     {path:"historique_reservation", component:HistoriqueComponent},
     {path:"profil", component:ProfilComponent},

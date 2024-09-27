@@ -218,5 +218,16 @@ h1 {
     cursor: not-allowed;
 }
 
+/* change apparence des ligne publier */
+.trajet-publie {
+  background-color: #d4edda; /* Vert clair */
+  color: #155724;
+}
+
+/* Classe pour un trajet non publié */
+.trajet-non-publie {
+  background-color: #f8d7da; /* Rouge clair */
+  color: #721c24;
+}
 
 

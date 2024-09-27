@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
 import { apiUrl } from "./apiUrl";
+import { TrajetModel } from "../Composants/Admin/trajet.model";
 
 @Injectable(
     {providedIn:'root'}
@@ -20,9 +21,7 @@ export class TrajetService{
         return this.http.get(`${apiUrl}/trajets`);
     }
 
-    getTrajetById(id:any){
-        return this.http.get(`${apiUrl}/recupererTrajet/${id}`);
-    }
+   
 
     getAllBateaux(){
         return this.http.get(`${apiUrl}/bateaux`);
@@ -37,6 +36,24 @@ export class TrajetService{
     deleteTrajet(id: any) {
         return this.http.delete(`${apiUrl}/trajets/${id}`);
     }
-    
 
-}
+    // changer le statut d'un trajet
+    updateStatutTrajet(id: number, statutData: { statut: boolean }) {
+        return this.http.patch(`${apiUrl}/trajets/${id}/statut`, statutData);
+      }
+
+    //   recuperer trajet pas id
+
+    getTrajetById(id:any){
+        return this.http.get(`${apiUrl}/recupererTrajet/${id}`);
+    }
+
+   
+  
+    }
+      
+      
+      
+      
+      
+      

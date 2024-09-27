@@ -134,7 +134,32 @@ editTrajet(trajet: TrajetModel) {
   this.router.navigate([`/ModifierTrajet/${trajet.id}`], { state: { trajet } });
 }
 
+// changer le statut
+changerStatut(trajet: any) {
+  if (trajet && trajet.id !== undefined) {
+    // Inverser le statut du trajet sélectionné
+    trajet.statut = !trajet.statut;
 
-
+    // Appel au service pour mettre à jour le statut
+    this.trajetService.updateStatutTrajet(trajet.id, { statut: trajet.statut }).subscribe(
+      (response: any) => {
+        console.log('Statut du trajet modifié:', response);
+        alert('Statut du trajet mis à jour avec succès.');
+      },
+      (error: any) => {
+        console.error('Erreur lors de la modification du statut du trajet:', error);
+      }
+    );
+  } else {
+    console.error('ID du trajet manquant.');
+  }
+}
 
 }
+
+
+
+
+
+
+
