@@ -1,7 +1,7 @@
 import { BateauModel } from "./bateau.model";
 
 export interface TrajetModel{
-    id?:number;
+    id?:number |undefined;
     date_depart?:Date;
     date_arrivee?:Date;
     lieu_depart?:string;

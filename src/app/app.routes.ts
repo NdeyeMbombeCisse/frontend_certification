@@ -34,6 +34,7 @@ export const routes: Routes = [
     {path:"portail", component:PortailComponent},
     {path:"liste_trajet", component:TrajetEnCoursComponent},
     {path:"ajoutReservation", component:AjoutReservationComponent},
+    { path: 'reservation/:id', component: AjoutReservationComponent},
     {path:"historique_reservation", component:HistoriqueComponent},
     {path:"profil", component:ProfilComponent},
     {path:"inscription_user", component:InscriptionComponent},

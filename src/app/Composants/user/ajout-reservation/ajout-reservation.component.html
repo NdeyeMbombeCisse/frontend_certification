@@ -1,1 +1,81 @@
-<p>ajout-reservation works!</p>
+
+<header>
+    <div class="header-content">
+        <img src="../../../../assets/images/logo.png" alt="Cosoma Logo" class="logo">
+        <nav>
+            <ul>
+                <li><a href="/">Accueil</a></li>
+                <li><a href="#">Nouvelles Information</a></li>
+                <li><a href="liste_trajet">Trajets En Cours</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <a href="inscription_user" class="btn register">S'inscrire</a>
+        </div>
+    </div>
+</header>
+
+
+<div class="reservation">
+    
+    <div class="reservation-container">
+        <img src="../../../../assets/images/image_reservation.png" alt="Image de réservation">
+
+        
+        <form (ngSubmit)="createReservation()">
+            <h1>Reserver mon billet</h1>
+          <div class="form-group">
+            <label for="trajet_id">ID du Trajet</label>
+            <input type="number" id="trajet_id" [(ngModel)]="reservationData.trajet_id" name="trajet_id" required>
+          </div>
+
+          <div class="form-group">
+            <label for="categorie">Choisissez une catégorie :</label>
+            <select id="categorie" [(ngModel)]="selectedCategorie" (change)="onCategorieChange($event)">
+              <option *ngFor="let categorie of categories" [value]="categorie.id">
+                {{ categorie.libelle }}
+              </option>
+            </select>
+          </div>
+          
+          <div *ngIf="places.length > 0">
+            <label for="place_id">Choisissez une place :</label>
+            <select id="place_id" [(ngModel)]="reservationData.place_id" name="place_id" required>
+              <option *ngFor="let place of places" [value]="place.id">
+                {{ place.libelle }}
+              </option>
+            </select>
+          </div>
+          
+
+          
+          
+          
+      
+          <div class="form-group">
+            <label for="user_id">ID de l'Utilisateur</label>
+            <input type="number" id="user_id" [(ngModel)]="reservationData.user_id" name="user_id" required>
+          </div>
+      <div class="boutton">
+        <button type="submit"  class="creer">Créer la Réservation</button>
+        <button type="button"  class="annuler" (click)="resetForm()">Réinitialiser</button>
+      </div>
+
+
+      <div *ngIf="tarif">
+        <p>Tarif: {{ tarif.tarif }}</p>
+        <p>Libellé: {{ tarif.libelle }}</p>
+    </div>
+        </form>
+      </div>
+  </div>
+    
+  <div *ngIf="qrCodeUrl">
+    <h3>Votre QR Code de réservation :</h3>
+    <img [src]="qrCodeUrl" alt="QR Code de réservation" />
+  </div>
+
+  
+   
+
+  

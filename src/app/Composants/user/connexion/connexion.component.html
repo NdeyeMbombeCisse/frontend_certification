@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -11,7 +11,7 @@
   
     
 </head>
-<body>
+
   <body>
     <div class="login-container">
       <h1 class="mb-4">CONNEXION</h1>
@@ -29,5 +29,17 @@
     </div>
   </body>
   
-</body>
-</html>
+
+</html> -->
+
+<div class="login-container">
+  <h1 class="mb-4">CONNEXION</h1>
+  <form [formGroup]="loginForm" (ngSubmit)="connexion()">
+    <input type="email" id="email" class="form-control" placeholder="Entrez votre email" formControlName="email" required />
+    <input type="password" id="password" class="form-control" placeholder="Entrez votre mot de passe" formControlName="password" required />
+    <button type="submit" class="btn btn-primary">Se connecter</button>
+  </form>
+  <div class="form-footer">
+    <a href="/inscription_user">Pas encore de compte ? Inscrivez-vous</a>
+  </div>
+</div>

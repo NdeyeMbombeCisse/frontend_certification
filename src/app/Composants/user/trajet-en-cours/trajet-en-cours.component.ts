@@ -1,35 +1,13 @@
 
 
-// reserverBillet(trajet: TrajetModel, placeId: number) {
-//   const reservationData = {
-//     date_reservation: new Date().toISOString(),
-//     trajet_id: trajet.id,
-//     user_id: 1, // Récupérer l'ID de l'utilisateur connecté
-//     place_id: placeId, // Utiliser le placeId passé en paramètre
-//   };
-
-//   this.reservationService.reserverTrajet(reservationData).subscribe(
-//     (response) => {
-//       console.log('Réservation réussie', response);
-//       alert('Votre réservation a été effectuée avec succès.');
-//     },
-//     (error) => {
-//       console.log('Erreur lors de la réservation', error);
-//       alert('Une erreur est survenue lors de la réservation.');
-//     }
-//   );
-// }
-
-
-// 
 
 
 import { Component, inject, OnInit } from '@angular/core';
 import { TrajetModel } from '../../Admin/trajet.model';
 import { TrajetService } from '../../../Services/trajet.service';
 import { CommonModule } from '@angular/common';
-import { ReservationService } from '../../../Services/reservation.service';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-trajet-en-cours',
@@ -40,7 +18,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class TrajetEnCoursComponent implements OnInit {
   private trajetService = inject(TrajetService);
-  private reservationService = inject(ReservationService);
+  private router = inject(Router)
 
   // Déclaration des variables
   tabtrajet: TrajetModel[] = [];
@@ -120,4 +98,8 @@ export class TrajetEnCoursComponent implements OnInit {
         }
     }
   
+    navigateToReservation(trajetId: any) {
+      // Redirige vers la page de réservation avec l'ID du trajet
+      this.router.navigate(['/reservation', trajetId]);
+    }
 }

@@ -96,8 +96,7 @@
                         <li>Heure de départ prévue: {{ trajet.heure_depart }}</li>
                         <li>Heure d'embarquement estimée: {{ trajet.heure_embarquement }}</li>
                     </ul>
-                    <button>Réserver mon Billet</button>
-                </div>
+                    <button (click)="navigateToReservation(trajet.id)">Réserver mon Billet</button>                </div>
             </div>
         </ng-container>
 

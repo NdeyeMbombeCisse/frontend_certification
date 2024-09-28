@@ -1,4 +1,5 @@
 export interface UserModel{
+  id?:number;
     prenom?:string;
     nom?:string;
     image?:string;
