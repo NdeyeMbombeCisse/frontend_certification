@@ -33,9 +33,10 @@ export class ReservationService{
 
     // les reservations d'un user
 
-    getUserReservations(userId: number) {
-      return this.http.get(`/api/user/reservations/${userId}`);
-    }
+    getUserReservations() {
+      return this.http.get(`${apiUrl}/user/reservations`);
+
+  }
     
    
   

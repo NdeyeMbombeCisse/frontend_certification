@@ -1,5 +1,8 @@
 import { TrajetModel } from "../Admin/trajet.model";
+import { CategorieModel } from "./categorie.model";
+import { TarifModel } from "./historique/tarif.model";
 import { PlaceModel } from "./place.model";
+import { UserModel } from "./user.model";
 
 export interface ReservationModel{
     id?:number;
@@ -8,9 +11,13 @@ export interface ReservationModel{
     user_id?:number |null; 
     place_id?:number |null;
     is_paid?:boolean;
-    timestamp?:Date;
+    created_at?:Date;
     place?:PlaceModel;
-    trajet?:TrajetModel
+    trajet?:TrajetModel;
+    qr_code?:string;
+    tarif?:TarifModel;
+    categorie?:CategorieModel;
+    user?:UserModel;
   }
 
   export interface ErrorModel {

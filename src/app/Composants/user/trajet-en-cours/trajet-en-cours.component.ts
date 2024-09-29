@@ -100,6 +100,8 @@ export class TrajetEnCoursComponent implements OnInit {
   
     navigateToReservation(trajetId: any) {
       // Redirige vers la page de réservation avec l'ID du trajet
-      this.router.navigate(['/reservation', trajetId]);
+      // this.router.navigate(['/reservation', trajetId]);
+      this.router.navigate([`/reservation/${trajetId}`]);
     }
+
 }

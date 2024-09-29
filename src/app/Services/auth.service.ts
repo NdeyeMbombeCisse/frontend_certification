@@ -8,6 +8,7 @@ import { Observable, tap } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
+  private isAuthenticated = false;
   
 
 
@@ -51,6 +52,10 @@ export class AuthService {
       return null;
     }
   }
+
+  isUserAuthenticated(): boolean {
+    return this.isAuthenticated; // Retourner l'état d'authentification
+}
 
 
 

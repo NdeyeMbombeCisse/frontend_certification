@@ -132,12 +132,13 @@
 import { Component, inject } from '@angular/core';
 import { AuthService } from '../../../Services/auth.service';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'; // Importer les classes nécessaires
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms'; // Importer les classes nécessaires
+import { UserModel } from '../user.model';
 
 @Component({
         selector: 'app-connexion',
         standalone: true,
-        imports: [ReactiveFormsModule],
+        imports: [ReactiveFormsModule,FormsModule],
         templateUrl: './connexion.component.html',
         styleUrl: './connexion.component.css'
       })
@@ -145,6 +146,7 @@ export class ConnexionComponent {
   private userService = inject(AuthService);
   private router = inject(Router);
   loginForm: FormGroup; // Déclarer le FormGroup
+  userObjet:UserModel = {}
 
   constructor(private fb: FormBuilder) { // Injecter FormBuilder
     // Initialiser le formulaire avec des contrôles et des validations

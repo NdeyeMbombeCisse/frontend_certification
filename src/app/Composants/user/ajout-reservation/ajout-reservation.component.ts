@@ -1,6 +1,140 @@
 
 
 
+// import { Component, inject, OnInit } from '@angular/core';
+// import { ReservationService } from '../../../Services/reservation.service';
+// import { ErrorModel, ReservationModel } from '../reservation.model';
+// import { CommonModule } from '@angular/common';
+// import { FormsModule } from '@angular/forms';
+// import { CategorieModel } from '../categorie.model';
+// import { PlaceModel } from '../place.model';
+// import { AuthService } from '../../../Services/auth.service'; // Assurez-vous d'importer AuthService
+// import { Router } from '@angular/router';
+
+// @Component({
+//   selector: 'app-ajout-reservation',
+//   standalone: true,
+//   imports: [CommonModule, FormsModule],
+//   templateUrl: './ajout-reservation.component.html',
+//   styleUrls: ['./ajout-reservation.component.css'], // Correction: use 'styleUrls' (pas 'styleUrl')
+// })
+// export class AjoutReservationComponent implements OnInit {
+//   private reservationService = inject(ReservationService);
+//   private authService = inject(AuthService); // Injecter AuthService
+//   private router = inject(Router); 
+//   qrCodeUrl: string | null = null; 
+//   tarif: any;
+//   error: string | null = null;
+  
+//   tabreservation: ReservationModel[] = [];
+//   categories: CategorieModel[] = [];
+//   places: PlaceModel[] = [];
+//   selectedCategorie: number | null = null;
+//   reservationData: ReservationModel = {};
+
+//   userId: number | null = null; // Assurez-vous que le type est `number | null`
+
+
+//   ngOnInit(): void {
+//     const userIdString = localStorage.getItem('user_id'); // Récupère l'ID utilisateur
+//     console.log('ID utilisateur récupéré:', userIdString); // Ajoute cette ligne pour le débogage
+
+//     if (userIdString) {
+//         this.userId = Number(userIdString); // Convertit l'ID en nombre
+//         console.log('ID utilisateur converti:', this.userId); // Ajoute cette ligne pour le débogage
+//     }
+
+//     if (!this.userId) {
+//         alert('Vous devez être connecté pour effectuer une réservation.');
+//         this.router.navigate(['/connexion']);
+//         return;
+//     }
+
+//     this.reservationService.getCategories().subscribe((data: any) => {
+//         this.categories = data;
+//     });
+// }
+
+
+
+//   onCategorieChange(event: Event): void {
+//     const target = event.target as HTMLSelectElement;
+//     const categorieId = Number(target.value);
+//     this.selectedCategorie = categorieId;
+
+//     this.reservationService.getPlacesByCategorie(categorieId).subscribe((data: any) => {
+//       this.places = data;
+//     });
+//   }
+
+//   // Méthode pour créer une réservation
+//   // createReservation() {
+//   //   this.reservationData.user_id = this.userId; // Assigne l'ID utilisateur (number) à `user_id`
+
+//   //   this.reservationService.createReservation(this.reservationData).subscribe(
+//   //     (response: any) => {
+//   //       alert(response.message || 'Réservation créée avec succès.');
+//   //       this.qrCodeUrl = response.qr_code; // Récupère l'URL du QR code
+//   //       this.resetForm();
+//   //     },
+//   //     (error: any) => {
+//   //       const errorMessage = error.error?.message || 'Erreur lors de la création de la réservation';
+//   //       alert(errorMessage);
+//   //     }
+//   //   );
+//   // }
+
+
+//   createReservation() {
+//     // Assignez l'ID de trajet ici
+//     this.reservationData.trajet_id = this.reservationData.trajet_id; // Assurez-vous que cet ID est défini
+
+//     this.reservationData.user_id = this.userId; // Assigne l'ID utilisateur (number) à `user_id`
+
+//     this.reservationService.createReservation(this.reservationData).subscribe(
+//       (response: any) => {
+//         alert(response.message || 'Réservation créée avec succès.');
+//         this.qrCodeUrl = response.qr_code; // Récupère l'URL du QR code
+//         this.resetForm();
+//       },
+//       (error: any) => {
+//         const errorMessage = error.error?.message || 'Erreur lors de la création de la réservation';
+//         alert(errorMessage);
+//       }
+//     );
+// }
+
+
+
+//   resetForm() {
+//     this.reservationData = {
+//       created_at: new Date(),
+//       place_id: undefined,
+//       trajet_id: undefined,
+//       user_id: this.userId, // Réinitialiser avec l'ID de l'utilisateur
+//     };
+//   }
+
+//   // tarif
+
+//   onCategorie(categorieId: number) {
+//     if (categorieId) {
+//       this.reservationService.getTarifByCategorie(categorieId).subscribe({
+//         next: (data) => {
+//           this.tarif = data; // Assigner le tarif récupéré
+//           this.error = null; // Réinitialiser l'erreur
+//         },
+//         error: (err) => {
+//           this.error = 'Tarif non trouvé'; // Gérer les erreurs
+//           this.tarif = null; // Réinitialiser le tarif
+//         }
+//       });
+//     } else {
+//       this.tarif = null; // Réinitialiser le tarif si aucune catégorie n'est sélectionnée
+//     }
+//   }
+// }
+
 import { Component, inject, OnInit } from '@angular/core';
 import { ReservationService } from '../../../Services/reservation.service';
 import { ErrorModel, ReservationModel } from '../reservation.model';
@@ -8,20 +142,22 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CategorieModel } from '../categorie.model';
 import { PlaceModel } from '../place.model';
-import { AuthService } from '../../../Services/auth.service'; // Assurez-vous d'importer AuthService
-import { Router } from '@angular/router';
+import { AuthService } from '../../../Services/auth.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-ajout-reservation',
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './ajout-reservation.component.html',
-  styleUrls: ['./ajout-reservation.component.css'], // Correction: use 'styleUrls' (pas 'styleUrl')
+  styleUrls: ['./ajout-reservation.component.css'],
 })
 export class AjoutReservationComponent implements OnInit {
   private reservationService = inject(ReservationService);
-  private authService = inject(AuthService); // Injecter AuthService
+  private authService = inject(AuthService);
   private router = inject(Router); 
+  private route = inject(ActivatedRoute); // Injecter ActivatedRoute pour accéder aux paramètres de l'URL
+
   qrCodeUrl: string | null = null; 
   tarif: any;
   error: string | null = null;
@@ -31,17 +167,16 @@ export class AjoutReservationComponent implements OnInit {
   places: PlaceModel[] = [];
   selectedCategorie: number | null = null;
   reservationData: ReservationModel = {};
-
-  userId: number | null = null; // Assurez-vous que le type est `number | null`
-
+  userId: number | null = null; 
+  trajetId: number | null = null; // Champ pour stocker l'ID du trajet
 
   ngOnInit(): void {
-    const userIdString = localStorage.getItem('user_id'); // Récupère l'ID utilisateur
-    console.log('ID utilisateur récupéré:', userIdString); // Ajoute cette ligne pour le débogage
+    const userIdString = localStorage.getItem('user_id');
+    console.log('ID utilisateur récupéré:', userIdString);
 
     if (userIdString) {
-        this.userId = Number(userIdString); // Convertit l'ID en nombre
-        console.log('ID utilisateur converti:', this.userId); // Ajoute cette ligne pour le débogage
+        this.userId = Number(userIdString);
+        console.log('ID utilisateur converti:', this.userId);
     }
 
     if (!this.userId) {
@@ -50,12 +185,19 @@ export class AjoutReservationComponent implements OnInit {
         return;
     }
 
+    // Récupérer l'ID du trajet depuis les paramètres de l'URL
+    this.route.paramMap.subscribe(params => {
+        const trajetIdString = params.get('id');
+        if (trajetIdString) {
+            this.trajetId = Number(trajetIdString);
+            console.log('ID du trajet récupéré:', this.trajetId);
+        }
+    });
+
     this.reservationService.getCategories().subscribe((data: any) => {
         this.categories = data;
     });
-}
-
-
+  }
 
   onCategorieChange(event: Event): void {
     const target = event.target as HTMLSelectElement;
@@ -67,51 +209,60 @@ export class AjoutReservationComponent implements OnInit {
     });
   }
 
-  // Méthode pour créer une réservation
   createReservation() {
-    this.reservationData.user_id = this.userId; // Assigne l'ID utilisateur (number) à `user_id`
+    if (this.trajetId) {
+        this.reservationData.trajet_id = this.trajetId; // Assigner l'ID du trajet
+    } else {
+        alert('Erreur : ID de trajet non disponible.');
+        return;
+    }
+
+    this.reservationData.user_id = this.userId; // Assigner l'ID utilisateur
 
     this.reservationService.createReservation(this.reservationData).subscribe(
-      (response: any) => {
-        alert(response.message || 'Réservation créée avec succès.');
-        this.qrCodeUrl = response.qr_code; // Récupère l'URL du QR code
-        this.resetForm();
-      },
-      (error: any) => {
-        const errorMessage = error.error?.message || 'Erreur lors de la création de la réservation';
-        alert(errorMessage);
-      }
+        (response: any) => {
+            alert(response.message || 'Réservation créée avec succès.');
+            this.qrCodeUrl = response.qr_code; // Récupère l'URL du QR code
+            this.resetForm();
+        },
+        (error: any) => {
+            const errorMessage = error.error?.message || 'Erreur lors de la création de la réservation';
+            alert(errorMessage);
+        }
     );
-  }
+}
+
+
 
   resetForm() {
     this.reservationData = {
-      timestamp: new Date(),
+      created_at: new Date(),
       place_id: undefined,
       trajet_id: undefined,
-      user_id: this.userId, // Réinitialiser avec l'ID de l'utilisateur
+      user_id: this.userId,
     };
   }
-
-  // tarif
 
   onCategorie(categorieId: number) {
     if (categorieId) {
       this.reservationService.getTarifByCategorie(categorieId).subscribe({
         next: (data) => {
-          this.tarif = data; // Assigner le tarif récupéré
-          this.error = null; // Réinitialiser l'erreur
+          this.tarif = data;
+          this.error = null;
         },
         error: (err) => {
-          this.error = 'Tarif non trouvé'; // Gérer les erreurs
-          this.tarif = null; // Réinitialiser le tarif
+          this.error = 'Tarif non trouvé';
+          this.tarif = null;
         }
       });
     } else {
-      this.tarif = null; // Réinitialiser le tarif si aucune catégorie n'est sélectionnée
+      this.tarif = null;
     }
   }
+
+  
 }
+
 
 
 // import { Component, inject, OnInit } from '@angular/core';

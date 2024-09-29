@@ -1,4 +1,4 @@
-
+<!-- 
 <header>
     <div class="header-content">
         <img src="../../../../assets/images/logo.png" alt="Cosoma Logo" class="logo">
@@ -78,4 +78,30 @@
   
    
 
+   -->
+
+   <form (ngSubmit)="createReservation()" #reservationForm="ngForm">
+    <!-- <div>
+      <label for="trajet">Trajet:</label>
+      <select id="trajet" [(ngModel)]="reservationData.trajet_id" name="trajet" required>
+        <option *ngFor="let trajet of trajets" [value]="trajet.id">{{ trajet.destination }} - {{ trajet.date }}</option>
+      </select>
+    </div> -->
+  
+    <div>
+      <label for="categorie">Catégorie:</label>
+      <select id="categorie" [(ngModel)]="selectedCategorie" (change)="onCategorieChange($event)" name="categorie" required>
+        <option *ngFor="let categorie of categories" [value]="categorie.id">{{ categorie.libelle }}</option>
+      </select>
+    </div>
+  
+    <div>
+      <label for="place">Place:</label>
+      <select id="place" [(ngModel)]="reservationData.place_id" name="place" required>
+        <option *ngFor="let place of places" [value]="place.id">{{ place.libelle }}</option>
+      </select>
+    </div>
+  
+    <button type="submit">Réserver</button>
+  </form>
   

@@ -1,0 +1,166 @@
+/* Styles globaux */
+body {
+    background-color: #CFEEF1;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Styles pour l'en-tête */
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background-color: #227093;
+}
+
+.logo {
+    width: 150px;
+    margin-left: 30px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 60px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+}
+
+.auth-buttons .btn {
+    margin-left: 20px;
+    padding: 20px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #227093;
+}
+
+.register {
+    background-color: white;
+    font-size: 35px;
+    margin-right: 100px;
+    font-weight: bold;
+}
+
+/* Styles pour les cartes de réservation */
+.reservation-card {
+    display: flex;
+    width: 1200px; /* Largeur initiale */
+    height: 1100px; /* Hauteur initiale */
+    border-radius: 10px;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background-color: white;
+    margin-top: 120px;
+}
+
+.reservation-details {
+    flex: 1; 
+    padding: 50px; 
+    margin-left: 40px; 
+}
+
+.reservation-qr {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    width: 300px; /* Réduire la largeur pour les petits écrans */
+    background-color: #fff; 
+    padding: 30px;
+}
+
+.reservation-qr img {
+    max-width: 100%; 
+    height: auto; 
+}
+
+p {
+    font-size: 30px; 
+}
+
+h1 {
+    font-size: 40px;
+    font-family: "Gilda Display", serif;
+    font-weight: bold;
+    text-align: center;
+    margin-left: 130px; 
+    color: #227093;
+}
+
+/* Media Queries pour la réactivité */
+@media (max-width: 1024px) {
+    .reservation-card {
+        flex-direction: column; /* Aligne les éléments verticalement */
+        width: 99%; /* Largeur en pourcentage */
+        height: auto; /* Ajuste la hauteur */
+        margin-top: 30px;
+    }
+    
+    .reservation-details {
+        padding: 10px; /* Réduit le remplissage pour les petits écrans */
+        margin-left: 0; /* Supprime la marge gauche */
+    }
+    .body{
+        margin-top: 230px;
+        margin-right: 40px;
+    }
+
+  
+    
+    .reservation-qr {
+        width: 30%; /* Remplit l'espace disponible */
+        padding: 10px; /* Ajoute un peu de remplissage */
+    }
+
+    h1 {
+        font-size: 20px; /* Réduit la taille de la police pour les petits écrans */
+        margin-left: 0; /* Centre le titre */
+    }
+    h2{
+        font-size: 22px;
+    }
+
+    p {
+        font-size: 16px; /* Réduit la taille de la police pour les petits écrans */
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column; /* Aligne les éléments verticalement */
+        padding: 2px; /* Réduit le remplissage */
+    }
+
+    nav ul {
+        flex-direction: column; /* Aligne les éléments verticalement */
+    }
+
+    nav ul li {
+        margin-left: 0; /* Supprime la marge gauche */
+        margin-top: 10px; /* Ajoute un peu d'espace entre les éléments */
+    }
+
+    nav ul li a {
+        font-size: 24px; /* Réduit la taille de la police pour les petits écrans */
+    }
+
+    .auth-buttons .btn {
+        font-size: 24px; /* Réduit la taille des boutons */
+    }
+}
