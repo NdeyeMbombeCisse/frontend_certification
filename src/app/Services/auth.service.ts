@@ -17,6 +17,13 @@ export class AuthService {
   register(identifienrts:any){
     return this.http.post(`${apiUrl}/store`,identifienrts)
   }
+  // affichage profil
+
+  profil(){
+    return this.http.get(`${apiUrl}/profil`)
+
+
+  }
 
   //Login
   login(identifienrts:any){

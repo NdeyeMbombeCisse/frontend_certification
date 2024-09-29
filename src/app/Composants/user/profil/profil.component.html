@@ -1,1 +1,57 @@
-<p>profil works!</p>
+
+
+   <header>
+    <div class="header-content">
+        <img src="../../../../assets/images/logo.png" alt="Cosoma Logo" class="logo">
+        <nav>
+            <ul>
+                <li><a href="/">Accueil</a></li>
+                <li><a href="#">Nouvelles Information</a></li>
+                <li><a href="liste_trajet">Trajets En Cours</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <a href="inscription_user" class="btn register">S'inscrire</a>
+        </div>
+    </div>
+  
+</header>
+   <div class="form-container">
+    <h1>Profil de {{ userObject.prenom }}  {{ userObject.nom }}</h1>
+    <form>
+      <div class="form-group">
+        <div class="field">
+          <label>Prenom :</label>
+          <input type="text" [(ngModel)]="userObject.prenom" name="prenom" readonly />
+        </div>
+        <div class="field">
+          <label>Nom :</label>
+          <input type="text" [(ngModel)]="userObject.nom" name="nom" readonly />
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <div class="field">
+          <label>Email :</label>
+          <input type="email" [(ngModel)]="userObject.email" name="email" readonly />
+        </div>
+        <div class="field">
+          <label>Téléphone :</label>
+          <input type="text" [(ngModel)]="userObject.telephone" name="telephone" readonly />
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <div class="field">
+          <label>Nationalité :</label>
+          <input type="text" [(ngModel)]="userObject.nationnalite" name="nationnalite" readonly />
+        </div>
+        <div class="field">
+          <label>CNI :</label>
+          <input type="text" [(ngModel)]="userObject.numero_identite" name="numero_identite" readonly />
+        </div>
+      </div>
+      <button>Modifier</button>
+    </form>
+  </div>
+  
