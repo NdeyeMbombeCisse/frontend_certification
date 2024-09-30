@@ -83,7 +83,9 @@
                     <td>{{ trajet.statut ? 'Actif' : 'Inactif' }}</td>
                     <td>{{ trajet.bateau ? trajet.bateau.libelle : 'N/A' }}</td>
                     <td>
-                        <button><i class="fa-solid fa-circle-info "></i></button>
+                        <button (click)="viewReservationDetails(reservations.id)">
+                            <i class="fa-solid fa-circle-info"></i>
+                          </button>
                         <button (click)="trajet ? editTrajet(trajet) : null">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </button>

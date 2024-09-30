@@ -1,32 +1,4 @@
-<!-- <div>
-    <h2>Historique des Réservations</h2>
-    <div *ngIf="userReservations.length > 0; else noReservations">
-      <ul>
-        <li *ngFor="let reservation of userReservations">
-          <p><strong>Prenom</strong> {{ reservation.user?.prenom }}</p>
-          <p><strong>Nom</strong> {{ reservation.user?.nom }}</p>
-          <p><strong>Telephone</strong> {{ reservation.user?.telephone }}</p>
-          <p><strong>email</strong> {{ reservation.user?.email }}</p>
-          <p><strong>Nationnalite</strong> {{ reservation.user?.nationnalite}}</p>
-          <p><strong>ID Réservation:</strong> {{ reservation.id }}</p>
-          <p><strong>Place:</strong> {{ reservation.place?.libelle }}</p>
-          <p><strong>Lieu d'arriver':</strong> {{ reservation.trajet?.lieu_arrive }}</p>
-          <p><strong>Lieu de depart</strong> {{ reservation.trajet?.lieu_depart }}</p>
-          <p><strong>Date reservation</strong> {{ reservation.created_at }}</p>
-          <p><strong>Embarquement</strong> {{ reservation.trajet?.heure_embarquement }}</p>
-          <p><strong>Heure de depart</strong> {{ reservation.trajet?.heure_depart }}</p>
-          <p><strong>Categorie</strong> {{ reservation.place?.categorie?.libelle }}</p>
-          <p><strong>Statut:</strong> {{ reservation.statut ? 'Confirmée' :'Non Confirmée' }}</p>
-          <img [src]="reservation.qr_code" alt="QR Code de réservation" />
-          <p><strong>Tarif:</strong> {{ reservation.tarif?.tarif }}</p>
-          <hr>
-        </li>
-      </ul>
-    </div>
-    <ng-template #noReservations>
-      <p>Aucune réservation trouvée.</p>
-    </ng-template>
-  </div> -->
+
 
   <!DOCTYPE html>
   <html lang="en">
@@ -45,12 +17,16 @@
                   <li><a href="#">Accueil</a></li>
                   <li><a href="#">Nouvelles Information</a></li>
                   <li><a href="#">Trajets en cours</a></li>
-              </ul>
+                  <li><a href="historique_reservation">Mes reservations</a></li>
+                </ul>
           </nav>
           <div class="auth-buttons">
-              <a href="inscription_user" class="btn register">S'inscrire</a>
+              <a href="inscription_user" class="btn register"> Deconnexion</a>
           </div>
-      </div>
+          <a href="profil">
+            <img [src]="userObject.image ? userObject.image : 'assets/images/image_reservation.png'" alt="Profil de l'utilisateur" class="profil" />
+          </a>          
+              </div>
   </header>
     
     <div class="body">

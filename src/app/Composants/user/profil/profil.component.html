@@ -1,21 +1,24 @@
 
 
    <header>
-    <div class="header-content">
-        <img src="../../../../assets/images/logo.png" alt="Cosoma Logo" class="logo">
-        <nav>
-            <ul>
-                <li><a href="/">Accueil</a></li>
-                <li><a href="#">Nouvelles Information</a></li>
-                <li><a href="liste_trajet">Trajets En Cours</a></li>
-            </ul>
-        </nav>
-        <div class="auth-buttons">
-            <a href="inscription_user" class="btn register">S'inscrire</a>
-        </div>
-    </div>
-  
-</header>
+      <div class="header-content">
+          <img src="../../../../assets/images/logo.png" alt="Cosoma Logo" class="logo">
+          <nav>
+              <ul>
+                  <li><a href="#">Accueil</a></li>
+                  <li><a href="#">Nouvelles Information</a></li>
+                  <li><a href="#">Trajets en cours</a></li>
+                  <li><a href="historique_reservation">Mes reservations</a></li>
+                </ul>
+          </nav>
+          <div class="auth-buttons">
+              <a href="inscription_user" class="btn register"> Deconnexion</a>
+          </div>
+          <a href="profil">
+            <img [src]="userObject.image" alt="Profil de l'utilisateur">
+        </a>
+              </div>
+  </header>
    <div class="form-container">
     <h1>Profil de {{ userObject.prenom }}  {{ userObject.nom }}</h1>
     <form>

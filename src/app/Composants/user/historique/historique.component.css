@@ -90,6 +90,12 @@ nav ul li a {
     height: auto; 
 }
 
+.profil{
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+}
+
 p {
     font-size: 30px; 
 }

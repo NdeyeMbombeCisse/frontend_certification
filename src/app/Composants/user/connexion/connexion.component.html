@@ -1,4 +1,4 @@
- <!-- <!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -8,38 +8,26 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gilda+Display&display=swap" rel="stylesheet">
-  
     
 </head>
 
   <body>
     <div class="login-container">
       <h1 class="mb-4">CONNEXION</h1>
-      <form (ngSubmit)="connexion()">
-       
-          <input type="email" id="email" class="form-control" placeholder="Entrez votre email" [(ngModel)]="userObjet.email" name="email" required>
-       
-          <input type="password" id="password" class="form-control" placeholder="Entrez votre mot de passe" [(ngModel)]="userObjet.password" name="password" required>
-        
+      <form [formGroup]="loginForm" (ngSubmit)="connexion()">
+        <input type="email" id="email" class="form-control" placeholder="Entrez votre email" formControlName="email" required />
+        <input type="password" id="password" class="form-control" placeholder="Entrez votre mot de passe" formControlName="password" required />
         <button type="submit" class="btn btn-primary">Se connecter</button>
       </form>
       <div class="form-footer">
         <a href="/inscription_user">Pas encore de compte ? Inscrivez-vous</a>
       </div>
     </div>
-  </body>
+
+  
+</body>    
+    
   
 
-</html>  -->
+</html>  
 
-<div class="login-container">
-  <h1 class="mb-4">CONNEXION</h1>
-  <form [formGroup]="loginForm" (ngSubmit)="connexion()">
-    <input type="email" id="email" class="form-control" placeholder="Entrez votre email" formControlName="email" required />
-    <input type="password" id="password" class="form-control" placeholder="Entrez votre mot de passe" formControlName="password" required />
-    <button type="submit" class="btn btn-primary">Se connecter</button>
-  </form>
-  <div class="form-footer">
-    <a href="/inscription_user">Pas encore de compte ? Inscrivez-vous</a>
-  </div>
-</div>

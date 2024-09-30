@@ -37,6 +37,17 @@ export class ReservationService{
       return this.http.get(`${apiUrl}/user/reservations`);
 
   }
+
+  getAllReservation(){
+    return this.http.get(`${apiUrl}/reservations`);
+}
+
+// les reservations d'un trajet
+getReservationsByTrajet(trajetId:any){
+  return this.http.get(`${apiUrl}/trajets/{trajetId}/reservations`,trajetId);
+
+
+}
     
    
   

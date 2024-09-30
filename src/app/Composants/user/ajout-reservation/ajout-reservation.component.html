@@ -80,22 +80,35 @@
 
    -->
 
-   <form (ngSubmit)="createReservation()" #reservationForm="ngForm">
-    <!-- <div>
-      <label for="trajet">Trajet:</label>
-      <select id="trajet" [(ngModel)]="reservationData.trajet_id" name="trajet" required>
-        <option *ngFor="let trajet of trajets" [value]="trajet.id">{{ trajet.destination }} - {{ trajet.date }}</option>
-      </select>
-    </div> -->
-  
-    <div>
+   <header>
+    <div class="header-content">
+        <img src="../../../../assets/images/logo.png" alt="Cosoma Logo" class="logo">
+        <nav>
+            <ul>
+                <li><a href="/">Accueil</a></li>
+                <li><a href="#">Nouvelles Information</a></li>
+                <li><a href="liste_trajet">Trajets En Cours</a></li>
+                <li><a href="historique_reservation">Mes reservations</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <a href="inscription_user" class="btn register">Se deconnexion</a>
+        </div>
+    </div>
+</header>
+
+<div class="reservation-container">
+  <img src="../../../../assets/images/image_reservation.png" alt="Image de réservation">
+
+  <form (ngSubmit)="createReservation()" #reservationForm="ngForm">
+    <div class="form-group">
       <label for="categorie">Catégorie:</label>
       <select id="categorie" [(ngModel)]="selectedCategorie" (change)="onCategorieChange($event)" name="categorie" required>
         <option *ngFor="let categorie of categories" [value]="categorie.id">{{ categorie.libelle }}</option>
       </select>
     </div>
   
-    <div>
+    <div class="form-group">
       <label for="place">Place:</label>
       <select id="place" [(ngModel)]="reservationData.place_id" name="place" required>
         <option *ngFor="let place of places" [value]="place.id">{{ place.libelle }}</option>
@@ -104,4 +117,10 @@
   
     <button type="submit">Réserver</button>
   </form>
+  
+
+
+</div>
+
+
   

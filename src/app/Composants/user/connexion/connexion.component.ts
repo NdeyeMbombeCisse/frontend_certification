@@ -176,7 +176,7 @@ export class ConnexionComponent {
                         console.error('Aucun ID utilisateur dans la réponse:', response); // Affiche la réponse pour débogage
                     }
 
-                    this.router.navigate(['/ajoutReservation']);
+                    this.router.navigate(['/historique_reservation']);
                 } else {
                     console.error('Aucun token dans la réponse');
                 }

@@ -1,3 +1,4 @@
+import { PlaceModel } from "../user/place.model";
 import { BateauModel } from "./bateau.model";
 
 export interface TrajetModel{
@@ -13,7 +14,8 @@ export interface TrajetModel{
     bateau_id?:number;
     timestamp?:Date;
     bateau?: BateauModel;
-  }
+    placesRestantes?: number ; 
+   }
 
   
 

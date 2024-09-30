@@ -1,29 +1,4 @@
-<!-- 
 
-
-<select name="date_depart" id="">
-    <option value="">Choisir une date de départ</option>
-    <option *ngFor="let date of dateDepartOptions" [value]="date">{{ date }}</option>
-</select>
-
-
-<section class="trajet_enCours">
-    <h1>Trajets En cours</h1>
-
-    <div *ngFor="let trajet of getDisplayedTrajets()" class="trajets" [ngClass]="trajet.lieu_depart === 'aller' ? 'trajet-normal' : 'trajet-reverse'">
-        <img [src]="trajet.image" alt="Destination {{ trajet.lieu_arrive }}">
-        <div class="detailTrajet">
-            <h2>Destination {{ trajet.lieu_arrive }}</h2>
-            <ul>
-                <li>Date de départ prévue: {{ trajet.date_depart }}</li>
-                <li>Heure de départ prévue: {{ trajet.heure_depart }}</li>
-                <li>Heure d'embarquement estimée: {{ trajet.heure_embarquement }}</li>
-                <li>Nombre de places restantes: {{ trajet.places_restantes }}</li>
-            </ul>
-            <button (click)="reserverBillet(trajet, place_id)">Réserver mon Billet</button>
-        </div>
-    </div>
-</section> -->
 
 
 <header>
@@ -31,13 +6,13 @@
         <img src="../../../../assets/images/logo.png" alt="Cosoma Logo" class="logo">
         <nav>
             <ul>
-                <li><a href="#">Accueil</a></li>
-                <li><a href="#">Nouvelles Information</a></li>
-                <li><a href="#">Trajets en cours</a></li>
+                <li><a href="/portail" [ngClass]="{ active: currentPage === 'portail' }" (click)="setPage('accueil')">Accueil</a></li>
+                <li><a href="/nouvelles" [ngClass]="{ active: currentPage === 'nouvelle_info' }" (click)="setPage('nouvelle_info')">Nouvelles Information</a></li>
+                <li><a href="/liste_trajet" [ngClass]="{ active: currentPage === 'liste_trajet' }" (click)="setPage('liste_trajet')">Trajets en cours</a></li>
             </ul>
         </nav>
         <div class="auth-buttons">
-            <a href="inscription_user" class="btn register">S'inscrire</a>
+            <a href="login" class="btn register">Se connecter</a>
         </div>
     </div>
     <div class="baniere"> 
@@ -49,76 +24,74 @@
         </div>
     </div>
 </header>
-<section class="filtreTrajet">
-    <!-- <form action="">
-        <div class="backroundFiltre">
-            <select name="date_depart" id="">
-                <option value="">Choisir une date de départ</option>
-                <option *ngFor="let date of dateDepartOptions" [value]="date">{{ date }}</option>
-            </select>
-           <select name="date_depart" id="">
-            <option value="">Choiri un lieu de depart</option>
-            <option value="depart">Dakar</option>
-            <option value="depart">Ziguinchor</option>  
-         </select>
-         <button>Entrer</button>          
-        </div>
-    </form> -->
 
+
+ <section class="filtreTrajet">
+    <!-- Formulaire de filtrage -->
     <form (ngSubmit)="filterTrajets()">
-        <div class="backroundFiltre">
-          <select id="dateDepart" [(ngModel)]="selectedDate" name="dateDepart" required>
-            <option value="" disabled selected>Choisir une date de départ</option>
-            <option *ngFor="let date of dateDepartOptions" [value]="date">{{ date }}</option>
-          </select>
-    
-          <select id="lieuDepart" [(ngModel)]="selectedLieuDepart" name="lieuDepart" required>
-            <option value="">Choisir un lieu de départ</option>
-            <option *ngFor="let lieu of lieuDepartOptions" [value]="lieu">{{ lieu }}</option>
-          </select>
-      
-          <button type="submit">Rechercher</button>          
-        </div>
-      
-      </form>
-</section>
-<section class="trajet_enCours">
+      <div class="backroundFiltre">
+        <!-- Sélecteur de date de départ -->
+
+        <select id="dateDepart" [(ngModel)]="selectedDate" name="dateDepart" required>
+          <option value="choisir" disabled selected>Choisir une date de départ</option>
+          <option *ngFor="let date of dateDepartOptions" [value]="date">{{ date }}</option>
+        </select>
+  
+        <!-- Sélecteur de lieu de départ -->
+        <select id="lieuDepart" [(ngModel)]="selectedLieuDepart" name="lieuDepart" required>
+          <option value="">Choisir un lieu de départ</option>
+          <option *ngFor="let lieu of lieuDepartOptions" [value]="lieu">{{ lieu }}</option>
+        </select>
+  
+        <!-- Bouton de soumission -->
+        <button type="submit">Rechercher</button>
+      </div>
+    </form>
+  </section>
+  
+  <section class="trajet_enCours">
     <h1>Trajets En cours</h1>
-
+  
+    <!-- Boucle pour afficher les trajets -->
     <div *ngFor="let trajet of getDisplayedTrajets()">
-        <ng-container *ngIf="trajet.lieu_arrive === 'Ziguinchor'; else trajetReverse">
-            <div class="trajets trajet-normal">
-                <img src="../../../../assets/images/destination_zig.png" alt="Destination Ziguinchor">
-                <div class="detailTrajet">
-                    <h2>Destination Ziguinchor</h2>
-                    <ul>
-                        <li>Date de départ prévue: {{ trajet.date_depart }}</li>
-                        <li>Heure de départ prévue: {{ trajet.heure_depart }}</li>
-                        <li>Heure d'embarquement estimée: {{ trajet.heure_embarquement }}</li>
-                    </ul>
-                    <button (click)="navigateToReservation(trajet.id)">Réserver mon Billet</button>                </div>
-            </div>
-        </ng-container>
+      <!-- Affichage conditionnel pour la destination Ziguinchor -->
+      <ng-container *ngIf="trajet.lieu_arrive === 'Ziguinchor'; else trajetReverse">
+        <div class="trajets trajet-normal">
+          <img src="../../../../assets/images/destination_zig.png" alt="Destination Ziguinchor">
+          <div class="detailTrajet">
+            <h2>Destination Ziguinchor</h2>
+            <ul>
+              <li>Date de départ prévue: {{ trajet.date_depart }}</li>
+              <li>Heure de départ prévue: {{ trajet.heure_depart }}</li>
+              <li>Heure d'embarquement estimée: {{ trajet.heure_embarquement }}</li>
+              <li>Nombre de places restantes: {{ trajet.placesRestantes }}</li>
 
-        <ng-template #trajetReverse>
-            <div class="trajets trajet-reverse">
-                <div class="detailTrajet">
-                    <h2>Destination Dakar</h2>
-                    <ul>
-                        <li>Date de départ prévue: {{ trajet.date_depart }}</li>
-                        <li>Heure de départ prévue: {{ trajet.heure_depart }}</li>
-                        <li>Heure d'embarquement estimée: {{ trajet.heure_embarquement }}</li>
-                    </ul>
-                    <button>Réserver mon Billet</button>
-                </div>
-                <img src="../../../../assets/images/destination_dak.png" alt="Destination Dakar">
-            </div>
-        </ng-template>
+
+            </ul>
+            <button (click)="navigateToReservation(trajet.id)">Réserver mon Billet</button>
+          </div>
+        </div>
+      </ng-container>
+  
+      <!-- Affichage alternatif pour la destination Dakar -->
+      <ng-template #trajetReverse>
+        <div class="trajets trajet-reverse">
+          <div class="detailTrajet">
+            <h2>Destination Dakar</h2>
+            <ul>
+              <li>Date de départ prévue: {{ trajet.date_depart }}</li>
+              <li>Heure de départ prévue: {{ trajet.heure_depart }}</li>
+              <li>Heure d'embarquement estimée: {{ trajet.heure_embarquement }}</li>
+              <li>Nombre de places restantes: {{ trajet.placesRestantes }}</li>
+            </ul>
+            <button (click)="navigateToReservation(trajet.id)">Réserver mon Billet</button>
+          </div>
+          <img src="../../../../assets/images/destination_dak.png" alt="Destination Dakar">
+        </div>
+      </ng-template>
     </div>
-</section>
-
-
-
+  </section>
+  
 
 
 

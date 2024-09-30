@@ -59,6 +59,7 @@ import { ReservationModel } from '../reservation.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
+import { UserModel } from '../user.model';
 
 @Component({
   selector: 'app-historique',
@@ -72,6 +73,8 @@ export class HistoriqueComponent implements OnInit {
   private authService = inject(AuthService);
   private router = inject(Router);
   isAuthenticated: boolean = false;
+
+  userObject: UserModel = {};
   
   userId: number | null = null; 
   userReservations: ReservationModel[] = [];
@@ -89,7 +92,22 @@ export class HistoriqueComponent implements OnInit {
 
   
       this.isAuthenticated = this.authService.isUserAuthenticated(); // Vérifier si l'utilisateur est authentifié
+
+
+      
  
+  }
+
+  fetchUserProfile() {
+    this.authService.profil().subscribe(
+      (response: any) => {
+        console.log(response); // Inspecter la structure de la réponse
+        this.userObject = response.user || response; // Si la donnée est directement dans response
+      },
+      (error: any) => {
+        console.log('Erreur de récupération du profil:', error);
+      }
+    );
   }
 
   loadUserReservations() {

@@ -1,1 +1,33 @@
-<p>detail-trajet works!</p>
+<div class="reservation-container">
+    <table *ngIf="tabreservation.length > 0; else noReservations" class="reservation-table">
+      <thead>
+        <tr>
+          <th>ID Réservation</th>
+          <th>Prénom</th>
+          <th>Nom</th>
+          <th>Nationalité</th>
+          <th>Lieu de départ</th>
+          <th>Lieu d'arrivée</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let reservation of tabreservation">
+          <td>{{ reservation.id }}</td>
+          <td>{{ reservation.user?.prenom }}</td>
+          <td>{{ reservation.user?.nom }}</td>
+          <td>{{ reservation.user?.nationnalite }}</td>
+          <td>{{ reservation.trajet?.lieu_depart }}</td>
+          <td>{{ reservation.trajet?.lieu_arrive }}</td>
+          <td>
+            <!-- <button (click)="openDetailsPopup(reservation)">Voir plus</button> -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <ng-template #noReservations>
+      <p>Aucune réservation trouvée pour ce trajet.</p>
+    </ng-template>
+  </div>
+  

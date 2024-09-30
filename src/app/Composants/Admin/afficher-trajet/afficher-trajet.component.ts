@@ -7,6 +7,7 @@ import { AuthService } from '../../../Services/auth.service';
 import { Router, RouterModule } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ReservationModel } from '../../user/reservation.model';
 
 @Component({
   selector: 'app-afficher-trajet',
@@ -26,6 +27,7 @@ export class AfficherTrajetComponent implements OnInit {
   trajetObject:TrajetModel = {};
   tabBateaux:BateauModel[] =[];
   selectedTrajet: TrajetModel | null = null; 
+  reservations: ReservationModel = {};
 
   // Variables de pagination
   currentPage: number = 1;
@@ -153,6 +155,10 @@ changerStatut(trajet: any) {
   } else {
     console.error('ID du trajet manquant.');
   }
+}
+
+viewReservationDetails(reservationId: any) {
+  this.router.navigate(['/reservations', reservationId]);
 }
 
 }
