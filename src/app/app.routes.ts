@@ -50,7 +50,7 @@ export const routes: Routes = [
     {path:"modifier_bateau", component:ModifierbateauComponent},
     {path:"ajouter_information", component:AjoutinformationComponent},
     {path:"modifier_information", component:ModifierinformationComponent},
-    {path:"Ajout_information", component:InformationComponent},
+    {path:"historique_information", component:InformationComponent},
     {path:"histaurique_reservation", component:HistoriqueReservationComponent},
     {path:"liste_trajet", component:ListeTrajetComponent},
     {path:"detailTrajet", component:DetailTrajetComponent},

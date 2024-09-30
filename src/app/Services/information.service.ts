@@ -13,4 +13,15 @@ export class InformationService {
     return this.http.post(`${apiUrl}/informations`,information);
 }
 
+// affichage
+getAllInformations(){
+    return this.http.get(`${apiUrl}/informations`);
+
+
+}
+
+deleteInformation(id: any) {
+    return this.http.delete(`${apiUrl}/informations/${id}`);
+}
+
 }

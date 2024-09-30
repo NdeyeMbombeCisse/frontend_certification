@@ -1,1 +1,122 @@
-<p>bateau works!</p>
+<div class="contenu">
+
+<div class="sidebar">
+    <div class="logo">
+        <img src="../../../../assets/images/logo.png" alt="Logo">
+    </div>
+    <nav class="menu">
+        <a [routerLink]="['/dasbaord_admin']" class="menu-item" [class.active]="isActive('/dasbaord_admin')">
+            <img src="../../../../assets/images/icons/dashboard.svg" alt="">
+            Dashboard
+        </a>
+
+        <a [routerLink]="['/afficher_trajet']" class="menu-item" [class.active]="isActive('/afficher_trajet')">
+            <i class="fa-solid fa-ship"></i> Trajet
+        </a>
+
+        <a [routerLink]="['/ajoutTrajet']" class="menu-item" [class.active]="isActive('/ajoutTrajet')">
+            <img src="../../../../assets/images/icons/group.svg" alt="">
+            <i class="fa-solid fa-plus"></i> Ajouter un Trajet
+        </a>
+
+        <a [routerLink]="['/liste_reservation']" class="menu-item" [class.active]="isActive('/liste_reservation')">
+            <i class="fa-solid fa-list"></i> Reservation
+        </a>
+
+        <a (click)="logout()" class="menu-item">
+            <img src="../../../../assets/images/icons/logout.svg" alt="">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i> Déconnexion
+        </a>
+    </nav>
+</div>
+<div class="popupp">
+    <button class="open-popup-btn" (click)="isModalOpen = true">Ajouter un bateau</button>
+</div>
+
+
+
+<div class="information-contenu">
+    <h1>Liste des Bateau</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Titre</th>
+          <th>Description</th>
+          <th>Date de création</th>
+          <th>Statuts</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bateau of tabBateaux">
+          <td>{{ bateau.id }}</td>
+          <td>{{ bateau.libelle }}</td>
+          <td>
+            <span *ngIf="!bateau.showFullDescription">
+              {{ bateau.description | slice: 0:50 }}...
+              <a href="javascript:void(0)" (click)="bateau.showFullDescription = true">Voir plus</a>
+            </span>
+            <span *ngIf="bateau.showFullDescription">
+              {{ bateau.description }}
+              <a href="javascript:void(0)" (click)="bateau.showFullDescription = false">Voir moins</a>
+            </span>
+          </td>          <td>{{ bateau.created_at | date }}</td>
+
+          <td>
+            <button (click)="changeStatut(bateau.id, bateau.statut)">
+              {{ bateau.statut === 1 ? 'Désactiver' : 'Activer' }}
+            </button>
+          </td>
+              <td class="actions">
+            <button (click)="editBateau(bateau.id)"> <i class="fa-solid fa-pen-to-square fa-2x"></i></button>
+            <button (click)="deleteBateau(bateau.id)" class="delete"><i class="fa-solid fa-delete-left  fa-2x"></i></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+</div>
+
+
+<div class="popup" [ngClass]="{'show-popup': isModalOpen}">
+    <div class="popup-content ">
+        <span class="close-button" (click)="isModalOpen = false">&times;</span>
+        <h2>Ajouter un bateau</h2>
+        <form (ngSubmit)="ajoutBateau()" #bateauForm="ngForm">
+            <div class="form-group">
+                <input 
+                    type="text" 
+                    id="libelle" 
+                    name="libelle" 
+                    [(ngModel)]="bateauObject.libelle" 
+                    required 
+                    class="form-control"
+                    placeholder="Entrez le libellé"
+                />
+            </div>
+    
+            <div class="form-group">
+                <textarea 
+                    id="description" 
+                    name="description" 
+                    [(ngModel)]="bateauObject.description" 
+                    required 
+                    class="form-control"
+                    placeholder="Entrez la description"
+                ></textarea>
+            </div>
+    
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary" [disabled]="bateauForm.invalid">Ajouter</button>
+            </div>
+            
+            <!-- Affichage des messages d'erreur -->
+            <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+        </form>
+    </div>
+</div>
+
+  
+  
