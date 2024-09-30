@@ -62,11 +62,11 @@ export const routes: Routes = [
 
 // route pour admin
     {path:"dasbaord_admin", component:DashboadAdminComponent},
-    {path:"ajoutTrqjet", component:AjoutTrajetComponent},
+    {path:"ajoutTrajet", component:AjoutTrajetComponent},
     {path:"ModifierTrajet/:id", component:ModifierTrajetComponent},
     {path:"afficher_trajet", component:AfficherTrajetComponent},
     {path:"afficher_trajet", component:AfficherTrajetComponent},
-    { path: 'reservations/:id',component:DetailTrajetComponent },
+    { path: 'trajet/:trajetId/reservations',component:DetailTrajetComponent },
     {path:"liste_reservation", component:ReservationComponent},
 
 

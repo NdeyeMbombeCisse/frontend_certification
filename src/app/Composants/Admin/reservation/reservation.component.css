@@ -115,7 +115,11 @@ line-height: 2;
 }
 
 .reservation-container {
-    padding: 60px;
+  padding: 60px;
+  display: flex; /* Use flexbox for alignment */
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center children horizontally */
+  margin: 0 auto;
 }
 
 table {
@@ -276,4 +280,21 @@ h1 {
     color: red;
   }
   
+  h1 {
+    width: 1000px; /* Fixed width */
+    height: 190px; /* Fixed height */
+    background-image: url(../../../../assets/Group\ 900\ \(1\).png);
+    background-size: cover; /* Cover the entire container */
+    color: #ffffff;
+    font-family: gilda;
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    margin: 0 auto; /* Center the title in its container */
+    text-align: center; /* Center the text inside */
+    font-size: 50px; /* Font size */
+    margin-bottom: 40px; /* Space below the heading */
+    border-radius: 20px; /* Rounded corners */
+    margin-top: 100px;
+}
 

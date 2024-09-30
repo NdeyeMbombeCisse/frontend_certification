@@ -43,10 +43,8 @@ export class ReservationService{
 }
 
 // les reservations d'un trajet
-getReservationsByTrajet(trajetId:any){
-  return this.http.get(`${apiUrl}/trajets/{trajetId}/reservations`,trajetId);
-
-
+getReservationsByTrajet(trajetId: number) {
+  return this.http.get(`${apiUrl}/trajets/${trajetId}/reservations`);
 }
     
    

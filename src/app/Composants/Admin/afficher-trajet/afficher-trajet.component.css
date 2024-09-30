@@ -178,21 +178,22 @@ button:hover {
     background-color: #0D8434; /* Couleur au survol */
 }
 h1 {
-    /* background-image: url(../../../../assets/patern.png); */
-    width: 920px; /* Largeur fixe */
-    height: 100px; /* Hauteur fixe */
-    background-size: cover; /* Couvrir l'ensemble du conteneur */
-    color: #ffffff;
-    font-family: gilda;
-    display: flex; /* Utilise flexbox */
-    justify-content: center; /* Centre horizontalement */
-    align-items: center; /* Centre verticalement */
-    margin: 0 auto; /* Centre le titre dans son conteneur */
-    text-align: center; /* Centre le texte à l'intérieur */
-    font-size: 40px;
-    margin-bottom: 40px;
+  width: 1200px; /* Fixed width */
+  height: 190px; /* Fixed height */
+  background-image: url(../../../../assets/Group\ 900\ \(1\).png);
+  background-size: cover; /* Cover the entire container */
+  color: #ffffff;
+  font-family: gilda;
+  display: flex; /* Use flexbox */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  margin: 0 auto; /* Center the title in its container */
+  text-align: center; /* Center the text inside */
+  font-size: 50px; /* Font size */
+  margin-bottom: 40px; /* Space below the heading */
+  border-radius: 20px; /* Rounded corners */
+  margin-top: 100px;
 }
-
 /* pagination */
 
 .pagination {

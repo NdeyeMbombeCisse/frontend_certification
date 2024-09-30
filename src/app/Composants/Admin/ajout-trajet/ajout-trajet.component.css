@@ -163,19 +163,21 @@ input::placeholder
 }
 
 h1 {
-    background-image: url(../../../../assets/images/backroungtarif2.png);
-    width: 820px; /* Largeur fixe */
-    height: 180px; /* Hauteur fixe */
-    background-size: cover; /* Couvrir l'ensemble du conteneur */
-    color: #ffffff;
-    font-family: gilda;
-    display: flex; /* Utilise flexbox */
-    justify-content: center; /* Centre horizontalement */
-    align-items: center; /* Centre verticalement */
-    margin: 0 auto; /* Centre le titre dans son conteneur */
-    text-align: center; /* Centre le texte à l'intérieur */
-    font-size: 40px;
-    margin-bottom: 40px;
+  width: 900px; /* Fixed width */
+  height: 190px; /* Fixed height */
+  background-image: url(../../../../assets/Group\ 900\ \(1\).png);
+  background-size: cover; /* Cover the entire container */
+  color: #ffffff;
+  font-family: gilda;
+  display: flex; /* Use flexbox */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  margin: 0 auto; /* Center the title in its container */
+  text-align: center; /* Center the text inside */
+  font-size: 50px; /* Font size */
+  margin-bottom: 40px; /* Space below the heading */
+  border-radius: 20px; /* Rounded corners */
+  margin-top: 30px;
 }
 button{
     width: 520px; /* Assure que tous les champs occupent la largeur complète */
@@ -191,3 +193,4 @@ button{
 
 }
 
+/* accentuer lien des pages */

@@ -33,7 +33,7 @@
         <!-- Sélecteur de date de départ -->
 
         <select id="dateDepart" [(ngModel)]="selectedDate" name="dateDepart" required>
-          <option value="choisir" disabled selected>Choisir une date de départ</option>
+          <option value="choisir" >Choisir une date de départ</option>
           <option *ngFor="let date of dateDepartOptions" [value]="date">{{ date }}</option>
         </select>
   

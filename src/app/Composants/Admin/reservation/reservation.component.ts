@@ -6,13 +6,13 @@ import { ReservationModel } from '../../user/reservation.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../../Services/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-reservation',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,RouterModule],
   templateUrl: './reservation.component.html',
   styleUrls: ['./reservation.component.css'] // Correction: 'styleUrl' => 'styleUrls'
 })
@@ -64,7 +64,7 @@ export class ReservationComponent implements OnInit {
         // Optionnel : Effacer les informations de l'utilisateur
         localStorage.removeItem('token');
         // Rediriger vers la page de connexion ou la page d'accueil
-        this.router.navigate(['/portail']);
+        this.router.navigate(['/connexion']);
       },
       (error: HttpErrorResponse) => { // Spécifiez le type pour 'error'
         console.error('Erreur de déconnexion', error);
@@ -93,5 +93,9 @@ export class ReservationComponent implements OnInit {
 
   getTotalPages() {
     return Math.ceil(this.tabreservation.length / this.itemsPerPage);
+  }
+
+  isActive(route: string): boolean {
+    return this.router.url === route;
   }
 }

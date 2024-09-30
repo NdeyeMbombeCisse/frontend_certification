@@ -4,44 +4,36 @@
      <!-- sidebar -->
 
      <div class="contenu">
-        <div class="sidebar">
-            <div class="logo">
-              <img src="../../../../assets/images/logo.png" alt="Logo">
-            </div>
-            <nav class="menu">
-                <!-- Lien vers le Dashboard -->
-                <a  class="menu-item active">
-                    <img src="../../../../assets/images/icons/dashboard.svg" alt="">
-                    Dashboard
-                </a>
-          
-                <!-- Lien vers la liste des projets (Projets mairie) -->
-                <a href="afficher_trajet" class="menu-item">
-                    <i class="fa-solid fa-ship"></i> Trajet
-                  </a>
-                  
-          
-                <!-- Lien vers la liste des habitants -->
-                <a  class="menu-item">
-                  <img src="../../../../assets/images/icons/group.svg" alt="">
-                  <i class="fa-solid fa-plus"></i> Ajouter un Trajet
-                </a>
-          
-                <!-- Lien vide pour Nouveau projet -->
-                <a href="#" class="menu-item">
-                    <i class="fa-solid fa-list"></i>Reservation
-                </a>
-          
-                <!-- Lien vers les projets soumis -->
-               
-          
-                <!-- Lien vide pour Déconnexion -->
-                <a href="#" class="menu-item">
-                  <img src="../../../../assets/images/icons/logout.svg" alt="">
-                  <i class="fa-solid fa-arrow-right-from-bracket"></i> Déconnexion
-                </a>
-            </nav>
-          </div>
+      <div class="sidebar">
+        <div class="logo">
+            <img src="../../../../assets/images/logo.png" alt="Logo">
+        </div>
+        <nav class="menu">
+            <a [routerLink]="['/dasbaord_admin']" class="menu-item" [class.active]="isActive('/dasbaord_admin')">
+                <img src="../../../../assets/images/icons/dashboard.svg" alt="">
+                Dashboard
+            </a>
+    
+            <a [routerLink]="['/afficher_trajet']" class="menu-item" [class.active]="isActive('/afficher_trajet')">
+                <i class="fa-solid fa-ship"></i> Trajet
+            </a>
+    
+            <a [routerLink]="['/ajoutTrajet']" class="menu-item" [class.active]="isActive('/ajoutTrajet')">
+                <img src="../../../../assets/images/icons/group.svg" alt="">
+                <i class="fa-solid fa-plus"></i> Ajouter un Trajet
+            </a>
+    
+            <a [routerLink]="['/liste_reservation']" class="menu-item" [class.active]="isActive('/liste_reservation')">
+                <i class="fa-solid fa-list"></i> Reservation
+            </a>
+    
+            <a (click)="logout()" class="menu-item">
+                <img src="../../../../assets/images/icons/logout.svg" alt="">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i> Déconnexion
+            </a>
+        </nav>
+    </div>
+    
     
          <!-- sidebar fin -->
     

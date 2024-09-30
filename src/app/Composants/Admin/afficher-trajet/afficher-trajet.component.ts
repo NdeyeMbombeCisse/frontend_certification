@@ -92,7 +92,7 @@ export class AfficherTrajetComponent implements OnInit {
         // Optionnel : Effacer les informations de l'utilisateur
         localStorage.removeItem('token');
         // Rediriger vers la page de connexion ou la page d'accueil
-        this.router.navigate(['/portail']);
+        this.router.navigate(['/connexion']);
       },
       (error: HttpErrorResponse) => { // Spécifiez le type pour 'error'
         console.error('Erreur de déconnexion', error);
@@ -157,8 +157,15 @@ changerStatut(trajet: any) {
   }
 }
 
-viewReservationDetails(reservationId: any) {
-  this.router.navigate(['/reservations', reservationId]);
+
+
+viewReservationDetails(trajetId: any) {
+  this.router.navigate([`/trajet/${trajetId}/reservations`]);
+}
+
+
+isActive(route: string): boolean {
+  return this.router.url === route;
 }
 
 }
