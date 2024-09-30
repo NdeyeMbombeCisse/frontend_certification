@@ -21,7 +21,7 @@
             <img src="../../../../assets/images/logo.png" alt="Cosoma Logo" class="logo">
             <nav>
                 <ul>
-                    <li><a href="/">Accueil</a></li>
+                    <li> <a [routerLink]="['/portail']" class="menu-item" [class.active]="isActive('/portail')">Acceuil</a></li>
                     <li><a href="#">Nouvelles Information</a></li>
                     <li><a href="liste_trajet">Trajets En Cours</a></li>
                 </ul>

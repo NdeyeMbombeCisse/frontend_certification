@@ -55,7 +55,7 @@ export class AjoutTrajetComponent {
     this.trajetObject.image = event.target.files[0] 
   }
   // methode pour la gestion de l'ajout
-  ajoutLivre() {
+  ajoutTrajet() {
     let formdata = new FormData();
   
     // Convertir les valeurs Date en chaînes

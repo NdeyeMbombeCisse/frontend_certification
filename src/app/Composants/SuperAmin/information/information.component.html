@@ -1,1 +1,35 @@
-<p>information works!</p>
+<div class="information-form">
+    <h2>Ajouter un Livre</h2>
+  
+    <form (ngSubmit)="ajoutInformation()">
+      <div>
+        <label for="titre">Titre :</label>
+        <input 
+          type="text" 
+          id="titre" 
+          [(ngModel)]="informationObject.titre" 
+          name="titre" 
+          required
+        />
+      </div>
+  
+      <div>
+        <label for="description">Description :</label>
+        <textarea 
+          id="description" 
+          [(ngModel)]="informationObject.description" 
+          name="description" 
+          required
+        ></textarea>
+      </div>
+  
+      <div>
+        <button type="submit">Ajouter</button>
+      </div>
+  
+      <div *NgIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+    </form>
+  </div>
+  

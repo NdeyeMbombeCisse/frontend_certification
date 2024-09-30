@@ -6,13 +6,15 @@
         <img src="../../../../assets/images/logo.png" alt="Cosoma Logo" class="logo">
         <nav>
             <ul>
-                <li><a href="/portail" [ngClass]="{ active: currentPage === 'portail' }" (click)="setPage('accueil')">Accueil</a></li>
+                <li> <a [routerLink]="['/portail']" class="menu-item" [class.active]="isActive('/portail')">Acceuil</a></li>
                 <li><a href="/nouvelles" [ngClass]="{ active: currentPage === 'nouvelle_info' }" (click)="setPage('nouvelle_info')">Nouvelles Information</a></li>
-                <li><a href="/liste_trajet" [ngClass]="{ active: currentPage === 'liste_trajet' }" (click)="setPage('liste_trajet')">Trajets en cours</a></li>
+                <li> <a [routerLink]="['/liste_trajet']" class="menu-item" [class.active]="isActive('/liste_trajet')">Trajet en cours</a></li>
+
+               
             </ul>
         </nav>
         <div class="auth-buttons">
-            <a href="login" class="btn register">Se connecter</a>
+            <a href="connexion" class="btn register">Se connecter</a>
         </div>
     </div>
     <div class="baniere"> 

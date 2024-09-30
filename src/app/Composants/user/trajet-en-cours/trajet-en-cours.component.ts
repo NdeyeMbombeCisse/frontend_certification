@@ -6,12 +6,12 @@ import { TrajetModel } from '../../Admin/trajet.model';
 import { TrajetService } from '../../../Services/trajet.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-trajet-en-cours',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,RouterModule],
   templateUrl: './trajet-en-cours.component.html',
   styleUrls: ['./trajet-en-cours.component.css'] 
 })
@@ -93,6 +93,11 @@ export class TrajetEnCoursComponent implements OnInit {
   setPage(page: string) {
     this.currentPage = page;
   }
+
+  isActive(route: string): boolean {
+    return this.router.url === route;
+  }
 }
+
 
 
