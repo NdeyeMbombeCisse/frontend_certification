@@ -134,6 +134,8 @@ import { AuthService } from '../../../Services/auth.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms'; // Importer les classes nécessaires
 import { UserModel } from '../user.model';
+import Swal from 'sweetalert2';
+
 
 @Component({
         selector: 'app-connexion',
@@ -175,8 +177,24 @@ export class ConnexionComponent {
                     } else {
                         console.error('Aucun ID utilisateur dans la réponse:', response); // Affiche la réponse pour débogage
                     }
+                    Swal.fire({
+                        title: 'Succès!',
+                        text: 'Authentification faite  avec succès!',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                      });
+                      if(response.role=="user"){
+                        this.router.navigate(['/historique_reservation']);
 
-                    this.router.navigate(['/historique_reservation']);
+
+                      }else if(response.role=="superAdmin"){
+                        this.router.navigate(['/dasbaord_Sadmin']);
+
+                      } else if(response.role=="admin"){
+                        this.router.navigate(['/dasbaord_admin']);
+
+                      }
+
                 } else {
                     console.error('Aucun token dans la réponse');
                 }

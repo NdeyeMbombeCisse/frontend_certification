@@ -1,8 +1,6 @@
-
 .contenu{
     display: flex;
     background-color: rgba(34, 112, 147, 0.3);
-
 }
 .sidebar {
   background-color: #618062; /* Background color */
@@ -19,25 +17,21 @@
   color: #FFF;
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
-
   font-style: normal;
 font-size: 27px;
 font-style: normal; 
 font-weight: 400;
 line-height: 2;
 }
-
 .logo img {
   max-width: 100%;
   margin-bottom: 50px;
   margin-top: 50px;
   margin-right: 20px;
 }
-
 .menu {
   width: 100%;
 }
-
 .menu-item {
   display: flex;
   align-items: center;
@@ -49,7 +43,6 @@ line-height: 2;
   margin-bottom: 10px;
   border-radius: 5px;
 }
-
 .menu-item.active, .menu-item:hover {
   background-color: #ffffff; /* Highlight color for active/hovered menu items */
   color: #000; /* Text color when active/hovered */
@@ -58,54 +51,41 @@ line-height: 2;
 {
   color: #000;
 }
-
 .menu-item i {
   margin-right: 10px;
   font-size: 1.2em; /* Icon size */
 }
-
 /* Placeholder for icons (use actual icons/fonts or images) */
 .icon-dashboard:before {
   content: ''; /* Dashboard icon placeholder */
 }
-
 .icon-projects:before {
   content: ''; /* Projects icon placeholder */
 }
-
 .icon-inhabitants:before {
   content: ''; /* Inhabitants icon placeholder */
 }
-
 .icon-new-project:before {
   content: ""; /* New project icon placeholder */
 }
-
 .icon-submitted-projects:before {
   content: ''; /* Submitted projects icon placeholder */
 }
-
 .icon-logout:before {
   content: ''; /* Logout icon placeholder */
 }
-
 .svg-container {
   display: inline-block;
 }
-
 .svg-container:hover .svg-path {
   fill: #000000; /* Change to black on hover */
 }
-
 .menu-item img {
   transition: filter 0.3s ease;
 }
-
 .menu-item:hover img {
   filter: grayscale(100%);
 }
-
-
 .ajout-trajet-container {
     max-width: 800px; /* Largeur maximale de votre formulaire */
     margin: 0 auto; /* Centre le conteneur horizontalement */
@@ -114,26 +94,22 @@ line-height: 2;
     align-items: center;
     margin-top: 200px;
 }
-
 .form-row {
     display: flex;
     justify-content: space-between;
     gap: 20px; /* Espace entre les groupes d'inputs */
 }
-
 .form-group {
     flex: 1; /* Chaque input prend la même proportion de l'espace */
     margin-bottom: 20px; /* Espacement entre les champs dans la même ligne */
     margin-left: 40px;
 }
-
 .form-control {
     width: 100%; /* Pour s'assurer que l'input occupe toute la place de son parent */
     height: 60px; /* Hauteur personnalisée */
     padding: 10px;
     font-size: 16px;
 }
-
 .form-group input {
     width: 500px; /* Assure que tous les champs occupent la largeur complète */
     height: 50px;
@@ -141,7 +117,6 @@ line-height: 2;
     border-radius: 7px;
     border: 1px solid #ccc;
 }
-
 .form-group select {
     width: 520px; /* Assure que tous les champs occupent la largeur complète */
     height: 75px;
@@ -155,29 +130,25 @@ label{
     color: #1d1e1f;
     font-family: inter;
 }
-
 input::placeholder
 {
     font-size: 20px; /* Taille de police */
     opacity: 1; /* Opacité (1 = opaque, 0 = transparent) */
 }
-
 h1 {
-  width: 900px; /* Fixed width */
-  height: 190px; /* Fixed height */
-  background-image: url(../../../../assets/Group\ 900\ \(1\).png);
-  background-size: cover; /* Cover the entire container */
-  color: #ffffff;
-  font-family: gilda;
-  display: flex; /* Use flexbox */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  margin: 0 auto; /* Center the title in its container */
-  text-align: center; /* Center the text inside */
-  font-size: 50px; /* Font size */
-  margin-bottom: 40px; /* Space below the heading */
-  border-radius: 20px; /* Rounded corners */
-  margin-top: 30px;
+    background-image: url(../../../../assets/images/backroungtarif2.png);
+    width: 820px; /* Largeur fixe */
+    height: 180px; /* Hauteur fixe */
+    background-size: cover; /* Couvrir l'ensemble du conteneur */
+    color: #ffffff;
+    font-family: gilda;
+    display: flex; /* Utilise flexbox */
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+    margin: 0 auto; /* Centre le titre dans son conteneur */
+    text-align: center; /* Centre le texte à l'intérieur */
+    font-size: 40px;
+    margin-bottom: 40px;
 }
 button{
     width: 520px; /* Assure que tous les champs occupent la largeur complète */
@@ -190,7 +161,4 @@ button{
     font-weight: bold;
     color: white;
     margin-left: 35px;
-
 }
-
-/* accentuer lien des pages */

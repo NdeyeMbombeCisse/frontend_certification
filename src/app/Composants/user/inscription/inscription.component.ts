@@ -67,7 +67,7 @@ export class InscriptionComponent implements OnInit {
       this.userService.register(formData).subscribe(
         (response: any) => {
           console.log('Réponse du serveur:', response);
-          if (response && response.id) {
+          if (response ) {
 
             Swal.fire({
               title: 'Succès!',

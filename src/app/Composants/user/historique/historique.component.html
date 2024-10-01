@@ -52,16 +52,23 @@
               <p><strong>Statut:</strong> {{ reservation.statut ? 'Confirmée' :'Non Confirmée' }}</p>
               <p><strong>Tarif:</strong> {{ reservation.tarif?.tarif }}</p>
             </div>
+
             <div class="reservation-qr">
+
               <img [src]="reservation.qr_code" alt="QR Code de réservation" />
+
             </div>
+
           </li>
+
         </ul>
       </div>
       <ng-template #noReservations>
         <p>Aucune réservation trouvée.</p>
       </ng-template>
     </div>
+    <button><a href="https://checkout.naboopay.com/checkout/ec597225-ad9d-40ac-9339-3095bdb5615d">Confirmer ma reservation</a></button>
+
     
   </body>
   </html>

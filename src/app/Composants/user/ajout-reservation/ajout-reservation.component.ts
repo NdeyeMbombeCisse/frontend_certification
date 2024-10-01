@@ -144,6 +144,8 @@ import { CategorieModel } from '../categorie.model';
 import { PlaceModel } from '../place.model';
 import { AuthService } from '../../../Services/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-ajout-reservation',
@@ -221,7 +223,14 @@ export class AjoutReservationComponent implements OnInit {
 
     this.reservationService.createReservation(this.reservationData).subscribe(
         (response: any) => {
-            alert(response.message || 'Réservation créée avec succès.');
+          Swal.fire({
+            title: 'Succès!',
+            text: 'Reservation faite  avec succès!',
+            icon: 'success',
+            confirmButtonText: 'OK'
+          });
+         
+            // alert(response.message || 'Réservation créée avec succès.');
             this.qrCodeUrl = response.qr_code; // Récupère l'URL du QR code
             this.resetForm();
         },

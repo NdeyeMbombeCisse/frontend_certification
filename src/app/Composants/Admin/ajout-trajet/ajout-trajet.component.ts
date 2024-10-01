@@ -1,3 +1,16 @@
+// import { Component } from '@angular/core';
+
+// @Component({
+//   selector: 'app-ajout-trajet',
+//   standalone: true,
+//   imports: [],
+//   templateUrl: './ajout-trajet.component.html',
+//   styleUrl: './ajout-trajet.component.css'
+// })
+// export class AjoutTrajetComponent {
+
+// }
+
 import { Component, inject } from '@angular/core';
 import { TrajetService } from '../../../Services/trajet.service';
 import { TrajetModel } from '../trajet.model';
@@ -5,34 +18,28 @@ import { storageUrl } from '../../../Services/apiUrl';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BateauModel } from '../bateau.model';
-import { HttpErrorResponse } from '@angular/common/http';
-import { AuthService } from '../../../Services/auth.service';
-import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-ajout-trajet',
   standalone: true,
-  imports: [FormsModule,CommonModule,RouterModule],
+  imports: [FormsModule,CommonModule],
   templateUrl: './ajout-trajet.component.html',
   styleUrl: './ajout-trajet.component.css'
 })
 export class AjoutTrajetComponent {
 
   private trajetService = inject(TrajetService);
-  private userService = inject(AuthService);
-  private router = inject(Router);
 
   // declaration des variables
   tabtrajet:TrajetModel[]=[];
   trajetObject:TrajetModel = {};
   tabBateaux:BateauModel[] =[];
   imageStorage:any= storageUrl;
-  
 
   // declaration des methodes
   ngOnInit(): void {
     this.fetchBateaux();
-   
+
   }
 
   fetchBateaux(){
@@ -48,28 +55,29 @@ export class AjoutTrajetComponent {
     )
   }
 
-  
 
   uploadImage(event:any){
     console.log(event.target.files[0]);
+    this.trajetObject.image = event.target.files[0]
+    
     this.trajetObject.image = event.target.files[0] 
   }
   // methode pour la gestion de l'ajout
-  ajoutTrajet() {
+  saveTrajet() {
     let formdata = new FormData();
-  
+
     // Convertir les valeurs Date en chaînes
     const dateDepartString = this.trajetObject.date_depart instanceof Date
       ? this.trajetObject.date_depart.toISOString()
       : this.trajetObject.date_depart;
-  
+
     const dateArriveeString = this.trajetObject.date_arrivee instanceof Date
       ? this.trajetObject.date_arrivee.toISOString()
       : this.trajetObject.date_arrivee;
-  
+
     // Convertir le boolean en chaîne
     const statutString = this.trajetObject.statut ? '0' : '1';
-  
+
     if (
       dateDepartString &&
       dateArriveeString &&
@@ -91,7 +99,7 @@ export class AjoutTrajetComponent {
       formdata.append("heure_depart", this.trajetObject.heure_depart);
       formdata.append("bateau_id", this.trajetObject.bateau_id.toString());
     }
-  
+
     this.trajetService.createTrajet(formdata).subscribe(
       (response: any) => {
         console.log(response);
@@ -102,26 +110,5 @@ export class AjoutTrajetComponent {
     );
   }
 
-  logout(): void {
-    this.userService.logout().subscribe(
-      () => {
-        // Optionnel : Effacer les informations de l'utilisateur
-        localStorage.removeItem('token');
-        // Rediriger vers la page de connexion ou la page d'accueil
-        this.router.navigate(['/connexion']);
-      },
-      (error: HttpErrorResponse) => { // Spécifiez le type pour 'error'
-        console.error('Erreur de déconnexion', error);
-      }
-    );
-  }
-  
-  // route
-  isActive(route: string): boolean {
-    return this.router.url === route;
-  }
-  
-  
-
-
 }
+

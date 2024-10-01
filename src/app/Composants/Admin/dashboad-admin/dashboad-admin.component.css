@@ -1,0 +1,112 @@
+/* style sidebar */
+
+
+.contenu{
+    display: flex;
+    background-color: rgba(34, 112, 147, 0.3);
+
+}
+.sidebar {
+  background-color: #618062; /* Background color */
+  color: #fff;
+  width: 300px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  border-radius: 0px 12px 12px 0px;
+  background: #227093;
+  overflow-y: hidden;
+  color: #FFF;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+
+  font-style: normal;
+font-size: 27px;
+font-style: normal; 
+font-weight: 400;
+line-height: 2;
+}
+
+.logo img {
+  max-width: 100%;
+  margin-bottom: 50px;
+  margin-top: 50px;
+  margin-right: 20px;
+}
+
+.menu {
+  width: 100%;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1em;
+  font-weight: 500;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.menu-item.active, .menu-item:hover {
+  background-color: #ffffff; /* Highlight color for active/hovered menu items */
+  color: #000; /* Text color when active/hovered */
+}
+.menu-item svg:hover
+{
+  color: #000;
+}
+
+.menu-item i {
+  margin-right: 10px;
+  font-size: 1.2em; /* Icon size */
+}
+
+/* Placeholder for icons (use actual icons/fonts or images) */
+.icon-dashboard:before {
+  content: ''; /* Dashboard icon placeholder */
+}
+
+.icon-projects:before {
+  content: ''; /* Projects icon placeholder */
+}
+
+.icon-inhabitants:before {
+  content: ''; /* Inhabitants icon placeholder */
+}
+
+.icon-new-project:before {
+  content: ""; /* New project icon placeholder */
+}
+
+.icon-submitted-projects:before {
+  content: ''; /* Submitted projects icon placeholder */
+}
+
+.icon-logout:before {
+  content: ''; /* Logout icon placeholder */
+}
+
+.svg-container {
+  display: inline-block;
+}
+
+.svg-container:hover .svg-path {
+  fill: #000000; /* Change to black on hover */
+}
+
+.menu-item img {
+  transition: filter 0.3s ease;
+}
+
+.menu-item:hover img {
+  filter: grayscale(100%);
+}
+
+
+
+/* fin sidebar */
