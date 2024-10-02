@@ -1,18 +1,75 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../../Services/auth.service';
+import { TrajetService } from '../../../Services/trajet.service';
+import { ReservationService } from '../../../Services/reservation.service';
+import { CommonModule } from '@angular/common';
+import { TrajetModel } from '../trajet.model';
 
 @Component({
   selector: 'app-dashboad-admin',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule,CommonModule],
   templateUrl: './dashboad-admin.component.html',
   styleUrl: './dashboad-admin.component.css'
 })
-export class DashboadAdminComponent {
+export class DashboadAdminComponent implements OnInit {
+  private trajetService = inject(TrajetService);
+  private reservationService = inject(ReservationService);
   private router = inject(Router);
-  private userService = inject(AuthService)
+  private userService = inject(AuthService);
+  count: number = 0;
+  countreservation: number = 0;
+  placesRestantes:number =0;
+  totalPlacesRestantes:number=0;
+  trajetsEnCours: TrajetModel[] = [];
+
+  ngOnInit(): void {
+    // this.trajetService.getCount().subscribe(
+    //  (response:any)  => {
+    //     this.count = response.count;
+    //   },
+    //   error => {
+    //     console.error('Erreur lors de la récupération du nombre de trajets', error);
+    //   }
+    // );
+
+    // this.reservationService.getCount().subscribe((response:any)=>{
+    //   this.countreservation = response.countreservation
+    // });
+
+    
+
+    // this.trajetService.getPlacesRestantes().subscribe((response: any) => {
+    //   this.placesRestantes = response.data; // Récupère les places restantes
+    //   this.totalPlacesRestantes = Object.values(this.placesRestantes).reduce((a, b) => a + b, 0); // Calcule le total
+    // });
+
+    
+
+    this.loadTrajets()
+  
+
+   
+    
+  }
+
+ 
+ 
+  loadTrajets(){
+    this.trajetService.getTrajetsEnCours().subscribe(
+      (response: any) => {
+        console.log(response.data); // Vérifiez la structure ici
+        this.trajetsEnCours = response.data; // Vérifiez si response.data est un tableau
+      },
+      (error) => {
+        console.error('Erreur lors de la récupération des trajets', error);
+      }
+    );
+  }
+  
+
   isActive(route: string): boolean {
     return this.router.url === route;
   }

@@ -32,7 +32,7 @@ export class TrajetService{
         return this.http.put(`${apiUrl}/trajets/${id}`,trajet);
     }
 
-    // methode pour la supprsion d'un livre
+    // methode pour la supprsion d'un trajet
     deleteTrajet(id: any) {
         return this.http.delete(`${apiUrl}/trajets/${id}`);
     }
@@ -48,6 +48,22 @@ export class TrajetService{
         return this.http.get(`${apiUrl}/recupererTrajet/${id}`);
     }
 
+    // le nombre d etrajet en cours
+    getCount() {
+        return this.http.get(`${apiUrl}/count`);
+    }
+
+    // places restantes pour tous les trajets
+    getPlacesRestantes(){
+        return this.http.get(`${apiUrl}/trajetsPlaces-restantes`); // Appelle la méthode pour obtenir le nombre de places restantes
+      }
+
+    //   afficher les trajet en cours
+
+    getTrajetsEnCours() {
+        return this.http.get(`${apiUrl}/trajetsEncours`);
+      }
+    
    
   
     }

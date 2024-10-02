@@ -110,3 +110,185 @@ line-height: 2;
 
 
 /* fin sidebar */
+
+.container {
+    display: flex;
+    align-items: center; /* Centrer verticalement */
+    justify-content: space-between; /* Espace entre le texte et l'image */
+    background-image: url('../../../../assets/Group\ 900\ \(1\).png');
+    background-size: cover; /* Pour que l'image couvre tout le div */
+    background-position: center; /* Pour centrer l'image d'arrière-plan */
+    padding: 20px; /* Espacement intérieur */
+    height: 400px; /* Hauteur du div */
+    width: 1300px;
+    color: white; /* Couleur du texte */
+    border-radius: 30px;
+    margin-left: 300px;
+    margin-top: 100px;
+}
+
+.container:hover {
+    transform: scale(1.05); /* Augmente la taille de la carte au survol */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /
+}
+
+
+
+.container img{
+    width: 500px;
+    height: 350px;
+    margin-top: -30px;
+}
+.container h1{
+    font-size: 40px;
+    font-style: normal;
+    color: white;
+    line-height: 1.5;
+    margin-top: -40px;
+}
+
+.container p{
+    font-size: 30px;
+    margin-top: -20px;
+    font-style: normal;
+    color: white;
+    line-height: 1.5;
+
+}
+
+.content {
+    max-width: 50%; /* Largeur maximum du contenu */
+}
+
+.ajout {
+    background-color: #227093;
+    padding: 20px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    font-size: 30px;
+    transition: background-color 0.3s ease;
+    border: solid 1px white;
+    margin-top: -10px;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+
+.ajout:hover {
+    background-color: #FFC107; /* Couleur au survol */
+}
+
+.right-image {
+    max-width: 40%; /* Largeur maximale de l'image */
+    height: auto; /* Hauteur automatique pour conserver le ratio */
+}
+/* statistique */
+.statistiques {
+    display: flex; /* Utilise flexbox pour aligner les cartes */
+    justify-content: space-between; /* Espace entre les cartes */
+    flex-wrap: wrap; /* Permet aux cartes de passer à la ligne si nécessaire */
+    padding: 20px; /* Espacement autour de la section */
+    margin-left: 280px;
+}
+
+.contenu-statistique {
+    width: 430px; /* Largeur de la carte */
+    height: 250px; /* Hauteur de la carte */
+    background-color: #fff; /* Couleur de fond de la carte */
+    border-radius: 8px; /* Arrondi des coins */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour donner du relief */
+    display: flex; /* Utilise flexbox pour le contenu à l'intérieur */
+    flex-direction: column; /* Organise le contenu en colonne */
+    align-items: center; /* Centre le contenu horizontalement */
+    justify-content: center; /* Centre le contenu verticalement */
+    margin: 10px; /* Espacement entre les cartes */
+}
+
+.contenu-statistique:hover {
+    transform: scale(1.05); /* Augmente la taille de la carte au survol */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Ombre au survol */
+    background-color: #b2ebf2; /* Couleur de fond au survol */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Transition pour une animation douce */
+}
+
+
+
+.contenu-statistique h1 {
+    font-size: 56px; /* Taille du titre */
+    margin: 0; /* Enlève la marge par défaut */
+    color: #227093;
+}
+
+.contenu-statistique h2 {
+    font-size: 44px; /* Taille du sous-titre */
+    /* color: #6D9773;  */
+    margin-top: 5px; /* Espacement au-dessus du sous-titre */
+    color: #227093;
+
+}
+
+/* style trajet */
+.trajets_encours {
+    display: flex; /* Utiliser flexbox pour aligner les cartes */
+    flex-wrap: wrap; /* Permet aux cartes de passer à la ligne si nécessaire */
+    justify-content: center; /* Centre les cartes horizontalement */
+    padding: 20px; /* Espacement autour de la section */
+    margin-left: 280px;
+}
+
+.trajet {
+    width: 630px; /* Largeur de chaque carte */
+    background-color: #fff; /* Couleur de fond de la carte */
+    border-radius: 8px; /* Arrondi des coins */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour donner du relief */
+    margin: 10px; /* Marge pour espacer les cartes */
+    padding: 15px; /* Espacement interne de la carte */
+    text-align: left; /* Alignement du texte à gauche */
+    height: 280px;
+}
+
+
+.reservation{
+    font-size: 50px; /* Taille du titre */
+    margin: 0 0 10px 0; /* Espacement sous le titre */
+    color: #5a7d5e;
+    margin-left: 300px;
+}
+
+
+
+.trajet h2 {
+    font-size: 40px; /* Taille du titre */
+    margin: 0 0 10px 0; /* Espacement sous le titre */
+    color: #227093;
+}
+
+.trajet ul {
+    list-style-type: none; /* Enlève les puces de la liste */
+    padding: 0; /* Enlève le padding par défaut */
+}
+
+.trajet li {
+    margin-bottom: 5px; /* Espacement entre les éléments de la liste */
+    font-size: 30px;
+}
+
+.trajet button {
+    background-color: #227093;
+    padding: 20px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    font-size: 20px;
+    transition: background-color 0.3s ease;
+    border: solid 1px white;
+    margin-top: 10px;
+}
+
+.trajet button:hover {
+    background-color: #5a7d5e; /* Changement de couleur au survol */
+}

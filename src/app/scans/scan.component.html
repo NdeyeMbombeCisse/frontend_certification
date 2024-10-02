@@ -1,0 +1,12 @@
+<div>
+    <ngx-scanner-qrcode 
+    (event)="onEvent($event)"
+    [src]="''" 
+    [config]="{}">
+  </ngx-scanner-qrcode>
+  
+    <div *ngIf="scannedData">
+      <p>Code QR scanné : {{ scannedData }}</p>
+    </div>
+  </div>
+  

@@ -21,6 +21,7 @@ import { AfficherTrajetComponent } from './Composants/Admin/afficher-trajet/affi
 import { ReservationComponent } from './Composants/Admin/reservation/reservation.component';
 import { InformationEncoursComponent } from './Composants/user/information-encours/information-encours.component';
 import { AjoutTrajetComponent } from './Composants/Admin/ajout-trajet/ajout-trajet.component';
+import { ScanComponent } from './Composants/scan/scan.component';
 
 export const routes: Routes = [
     {path:"",pathMatch:'full',redirectTo:'portail'},
@@ -56,6 +57,9 @@ export const routes: Routes = [
     {path:"afficher_trajet", component:AfficherTrajetComponent},
     { path: 'trajet/:trajetId/reservations',component:DetailTrajetComponent },
     {path:"liste_reservation", component:ReservationComponent},
+    {path:"sca", component:ScanComponent},
+    
+
 
 
     

@@ -47,7 +47,15 @@ getReservationsByTrajet(trajetId: number) {
   return this.http.get(`${apiUrl}/trajets/${trajetId}/reservations`);
 }
     
-   
+  //  nombre de rservation
+  getCount() {
+    return this.http.get(`${apiUrl}/countReservation`);
+}
+
+// valider code qr
+validateQRCode(data: { code: string }) {
+  return this.http.post(`${apiUrl}validate-qr`, data);
+}
   
 
   
