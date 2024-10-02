@@ -20,8 +20,17 @@
     </div>
   </div>
 
+  <!-- afficher resultat scan -->
+  <div>
+    <h1>Scanner QR Code</h1>
+    <ngx-scanner-qrcode #action [config]="config" (event)="onEvent($event)"></ngx-scanner-qrcode>
+    
+    <!-- Display the response message -->
+    <p *ngIf="responseMessage">{{ responseMessage }}</p>
+  </div>
+
   <!-- ngx-scanner-qrcode -->
-  <ngx-scanner-qrcode #action="scanner" [config]="config" (event)="onEvent($event, action)"></ngx-scanner-qrcode>
+  <ngx-scanner-qrcode #action="scanner" [config]="config" (event)="onEvent($event)"></ngx-scanner-qrcode>
 
   <!-- data  -->
   <!-- <p class="data">{{ (action.data | async | json) }}</p> -->

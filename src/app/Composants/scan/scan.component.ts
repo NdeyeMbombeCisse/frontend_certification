@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, inject, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {
   ScannerQRCodeConfig,
@@ -8,8 +8,13 @@ import {
   ScannerQRCodeSelectedFiles,
   NgxScannerQrcodeModule,
   
+  
 } from 'ngx-scanner-qrcode';
 import { SafePipe } from "../../scans/safe.pipe";
+import { HttpClient } from '@angular/common/http'; 
+import Swal from 'sweetalert2';
+import { CommonModule } from '@angular/common';
+
 
 
 @Component({
@@ -20,6 +25,7 @@ import { SafePipe } from "../../scans/safe.pipe";
     FormsModule, // For form handling in Angular
     NgxScannerQrcodeModule // Importing the scanner QR code module
     ,
+    CommonModule,
     SafePipe
 ],  standalone: true,
   
@@ -49,6 +55,8 @@ export class ScanComponent implements AfterViewInit {
 
   public qrCodeResult: ScannerQRCodeSelectedFiles[] = [];
   public qrCodeResult2: ScannerQRCodeSelectedFiles[] = [];
+  public responseMessage: string = '';
+
 
   @ViewChild('action') action!: NgxScannerQrcodeComponent;
 
@@ -56,16 +64,69 @@ export class ScanComponent implements AfterViewInit {
   public quality = 100;
 
   constructor(private qrcode: NgxScannerQrcodeService) { }
+  private http = inject(HttpClient)
 
   ngAfterViewInit(): void {
-    this.action.isReady.subscribe((res: any) => {
+    this.action.isReady.subscribe((response: any) => {
       // this.handle(this.action, 'start');
     });
   }
 
-  public onEvent(e: ScannerQRCodeResult[], action?: any): void {
-    // e && action && action.pause();
-    console.log(e);
+  public onEvent(e: ScannerQRCodeResult[]): void {
+    if (e.length) {
+      const qrCodeData = e[0].value; // Capture the QR code value
+      this.validateReservation(qrCodeData); // Call validation function
+    }
+  }
+
+  // public validateReservation(qrCodeData: string) {
+  //   this.http.post('http://127.0.0.1:8000/api/validate-qr', { code: qrCodeData })
+  //     .subscribe(
+  //       (response: any) => {
+  //         Swal.fire({
+  //           title: 'Succès!',
+  //           text: 'Voyage confirmee avec success!',
+  //           icon: 'success',
+  //           confirmButtonText: 'OK'
+  //         });
+  //         console.log('Response:', response);
+  //       },
+  //       (error: any) => {
+  //         Swal.fire({
+  //           icon: "error",
+  //           title: "voyage deja effectue pour ce trajet",
+  //           text: "Something went wrong!",
+  //           footer: '<a href="#">Why do I have this issue?</a>'
+  //         });
+  //         console.error('Error:', error);
+  //       }
+  //     );
+  // }
+
+  public validateReservation(qrCodeData: string) {
+    this.http.post('http://127.0.0.1:8000/api/validate-qr', { code: qrCodeData })
+      .subscribe(
+        (response: any) => {
+          this.responseMessage = 'Voyage confirmé avec succès!'; // Update the response message
+          Swal.fire({
+            title: 'Succès!',
+            text: this.responseMessage,
+            icon: 'success',
+            confirmButtonText: 'OK'
+          });
+          console.log('Response:', response);
+        },
+        (error: any) => {
+          this.responseMessage = 'Erreur: voyage déjà effectué pour ce trajet.'; // Update the response message on error
+          Swal.fire({
+            icon: 'error',
+            title: 'Erreur!',
+            text: this.responseMessage,
+            footer: '<a href="#">Pourquoi ai-je ce problème?</a>'
+          });
+          console.error('Error:', error);
+        }
+      );
   }
 
   public handle(action: any, fn: string): void {
