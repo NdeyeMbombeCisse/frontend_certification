@@ -1,24 +1,29 @@
 
 
-   <header>
-      <div class="header-content">
-          <img src="../../../../assets/images/logo.png" alt="Cosoma Logo" class="logo">
-          <nav>
-              <ul>
-                  <li><a href="#">Accueil</a></li>
-                  <li><a href="#">Nouvelles Information</a></li>
-                  <li><a href="#">Trajets en cours</a></li>
-                  <li><a href="historique_reservation">Mes reservations</a></li>
-                </ul>
-          </nav>
-          <div class="auth-buttons">
-              <a href="inscription_user" class="btn register"> Deconnexion</a>
-          </div>
-          <a href="profil">
-            <img [src]="userObject.image" alt="Profil de l'utilisateur">
-        </a>
-              </div>
-  </header>
+<header>
+  <div class="header-content">
+      <img src="../../../../assets/images/logo.png" alt="Cosoma Logo" class="logo">
+      
+      <!-- Menu burger pour mobile -->
+      <button class="burger-menu" (click)="toggleMenu()" aria-label="Toggle menu">            <span></span>
+      <span></span>
+      <span></span>
+  </button>
+      
+      <nav>
+          <ul class="nav-list" [class.active]="isMenuOpen">
+            <li><a [routerLink]="['/portail']" class="menu-item" [class.active]="isActive('/portail')">Acceuil</a></li>
+            <li><a href="#">Nouvelles Information</a></li>
+            <li><a href="liste_trajet">Trajets En Cours</a></li>
+            <li><a href="historique_reservation">Mes reservations</a></li>
+
+          </ul>
+        </nav>
+        <div class="auth-buttons">
+          <a href="inscription_user" class="btn register">Se deconnexion</a>
+      </div>
+  </div>
+</header>
    <div class="form-container">
     <h1>Profil de {{ userObject.prenom }}  {{ userObject.nom }}</h1>
     <form>

@@ -14,4 +14,9 @@ export class PortailComponent {
     return this.router.url === route;
   }
 
+  isMenuOpen = false;
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
 }

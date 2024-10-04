@@ -97,6 +97,12 @@ export class TrajetEnCoursComponent implements OnInit {
   isActive(route: string): boolean {
     return this.router.url === route;
   }
+
+  isMenuOpen = false;
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
 }
 
 

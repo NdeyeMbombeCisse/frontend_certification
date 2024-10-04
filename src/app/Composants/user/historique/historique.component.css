@@ -1,12 +1,26 @@
-/* Styles globaux */
+
+
 body {
-    background-color: #CFEEF1;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
 }
 
-/* Styles pour l'en-tête */
+.burger-menu {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.burger-menu span {
+  width: 30px;
+  height: 4px;
+  background-color: white;
+  border-radius: 2px;
+} 
+
+/* Styles par défaut */
 .header-content {
     display: flex;
     justify-content: space-between;
@@ -18,45 +32,46 @@ body {
     right: 0;
     z-index: 1;
     background-color: #227093;
-}
-
-.logo {
+  }
+  
+  .logo {
     width: 150px;
     margin-left: 30px;
-}
-
-nav ul {
+  }
+  
+  nav ul {
     display: flex;
     list-style: none;
-}
-
-nav ul li {
+  }
+  
+  nav ul li {
     margin-left: 60px;
-}
-
-nav ul li a {
+  }
+  
+  nav ul li a {
     color: white;
     text-decoration: none;
     font-size: 30px;
     font-family: 'Inter', sans-serif;
     font-weight: 700;
-}
-
-.auth-buttons .btn {
+  }
+  
+  
+  .auth-buttons .btn {
     margin-left: 20px;
     padding: 20px 20px;
     border-radius: 5px;
     text-decoration: none;
     color: #227093;
-}
-
-.register {
+  }
+  
+  .register {
     background-color: white;
     font-size: 35px;
     margin-right: 100px;
     font-weight: bold;
-}
-
+  }
+  
 /* Styles pour les cartes de réservation */
 .reservation-card {
     display: flex;
@@ -145,28 +160,81 @@ h1 {
     p {
         font-size: 16px; /* Réduit la taille de la police pour les petits écrans */
     }
+
+    @media (max-width: 768px) {
+        /* Masquer les éléments de navigation par défaut et afficher le menu burger */
+        nav ul {
+            display: none;
+        }
+    
+        .logo {
+            width: 90px;
+            margin-left: 40px;
+            margin-left: -5px;
+            margin-top: 10px;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1;
+            background-color: #227093;
+        }
+        
+     
+    
+        .burger-menu {
+            display: flex;
+            margin-left: 220px;
+            align-items: center;
+        }
+    
+        .auth-buttons .register {
+            display: none; /* Masquer le bouton d'inscription sur mobile */
+        }
+    
+       
+        
+    
+        /* Afficher le menu quand le burger est activé */
+        .nav-list.active {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            background-color: rgba(34, 112, 147, 0.95);
+        }
+    
+        .nav-list li {
+            margin: 10px 0;
+            text-align: center;
+        }
+    
+    }  
+    
+    .reservation-card {
+        display: flex;
+        width: 400px; /* Largeur initiale */
+        margin-left: -40px;
+        height: 750px; /* Hauteur initiale */
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        background-color: white;
+    }
+
+    .body{
+        margin-top: 150px;
+
+    }
 }
 
-@media (max-width: 768px) {
-    .header-content {
-        flex-direction: column; /* Aligne les éléments verticalement */
-        padding: 2px; /* Réduit le remplissage */
-    }
 
-    nav ul {
-        flex-direction: column; /* Aligne les éléments verticalement */
-    }
 
-    nav ul li {
-        margin-left: 0; /* Supprime la marge gauche */
-        margin-top: 10px; /* Ajoute un peu d'espace entre les éléments */
-    }
-
-    nav ul li a {
-        font-size: 24px; /* Réduit la taille de la police pour les petits écrans */
-    }
-
-    .auth-buttons .btn {
-        font-size: 24px; /* Réduit la taille des boutons */
-    }
-}

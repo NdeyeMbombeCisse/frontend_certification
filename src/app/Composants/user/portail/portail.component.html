@@ -19,31 +19,39 @@
     <header>
         <div class="header-content">
             <img src="../../../../assets/images/logo.png" alt="Cosoma Logo" class="logo">
+            
+            <!-- Menu burger pour mobile -->
+            <button class="burger-menu" (click)="toggleMenu()" aria-label="Toggle menu">            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+            
+            
+
             <nav>
-                <ul>
-                    <li> <a [routerLink]="['/portail']" class="menu-item" [class.active]="isActive('/portail')">Acceuil</a></li>
-                    <li><a href="#">Nouvelles Information</a></li>
-                    <li><a href="liste_trajet">Trajets En Cours</a></li>
+                <ul class="nav-list" [class.active]="isMenuOpen">
+                  <li><a [routerLink]="['/portail']" class="menu-item" [class.active]="isActive('/portail')">Acceuil</a></li>
+                  <li><a href="#">Nouvelles Information</a></li>
+                  <li><a href="liste_trajet">Trajets En Cours</a></li>
                 </ul>
-            </nav>
+              </nav>
             <div class="auth-buttons">
                 <a href="inscription_user" class="btn register">S'inscrire</a>
             </div>
         </div>
         <div class="baniere">
-            
             <div class="baniere-content">
                 <h1>Bienvenue Sur Cosoma Reservation</h1>
                 <p>Simplifiez vos réservations de billets pour voyager en toute sérénité. Planifiez <br>
-                      votre trajet maritime en quelques clics et profitez d'une expérience fluide et  <br>
-                     pratique.</p>
-                     <div class="connexion-buttons">
-                        <a href="connexion" class="btn register">Se Connecter</a>
-                    </div>
-
+                   votre trajet maritime en quelques clics et profitez d'une expérience fluide et  <br>
+                   pratique.</p>
+                <div class="connexion-buttons">
+                    <a href="connexion" class="btn register">Se Connecter</a>
+                </div>
             </div>
         </div>
     </header>
+    
 <section class="mission">
     <div class="mission-content">
         <h1>Notre Mission</h1>
@@ -182,46 +190,7 @@
 
 <h1 class="servicetitle">Nos Horaires</h1>
 
-<!-- <section class="horaire">
-    <div class="img_zig_dak">
-        <img src="../../../../assets/images/zigdak.png" alt="">
-    </div>
-    <div class="zigdak">
-        <img src="../../../../assets/images/zigdakTitle.png" alt="">
-        <div class="les_horaires">
-            <h2 class="titre-depart">Jours de départ</h2>
-            <div class="jeu_dim">
-                <button class="jour-button">Jeudi</button>
-                <button class="jour-button">Dimanche</button>
-            </div>
-            <div class="embarquement_depart">
-                <div class="embarquement">
-                    <h2>Embarquement</h2>
-                    <button>09h-11h45</button>
-                </div>
-                <div class="depart">
-                    <h2>Départ</h2>
-                    <button>13h00</button>
-                </div>
-            </div>
-            <h2 class="titre-depart">Jours de départ</h2>
-            <div class="jeu_dim">
-                <button class="jour-button">Mardi</button>
-                <button class="jour-button">Vendredi</button>
-            </div>
-            <div class="embarquement_depart">
-                <div class="embarquement">
-                    <h2>Embarquement</h2>
-                    <button>12h-14h</button>
-                </div>
-                <div class="depart">
-                    <h2>Départ</h2>
-                    <button>15h00</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> -->
+
 
 <div class="horaire">
     <div class="img_zig_dak">
@@ -313,88 +282,109 @@
 
 <h1 class="servicetitle">Nos Tarifs</h1>
 
-<section class="tarif">
-    <!-- Pour les sénégalais -->
-    <div class="tarif_senegalais nationalite-card">
-        <h1>Pour les sénégalais</h1>
-        <div class="sub-cards">
-            <div class="sub-card">
-                <img src="../../../../assets/images/cabine4.png" alt="Icône Cabine 4 personnes">
-                <h4>Cabine 4 personnes</h4>
-                <h4>Prix: 24 500 FCFA</h4>
-            </div>
-            <div class="sub-card">
-                <img src="../../../../assets/images/cabine2.png" alt="Icône Cabine 2 personnes">
-                <h4>Cabine 2 personnes</h4>
-                <h4>Prix: 26 500 FCFA</h4>
-            </div>
-            <div class="sub-card">
-                <!-- <img src="" alt="Icône Cabine 8 personnes"> -->
-                <i class="fa-solid fa-user-plus fa-3x" style="color:white;"></i>
-                <h4>Cabine 8 personnes</h4>
-                <h4>Prix: 12 500 FCFA</h4>
-            </div>
-            <div class="sub-card">
-                <img src="../../../../assets/images/fauteuil.png" alt="Icône Fauteuil">
-                <h4>Fauteuil </h4>
-                <h4>Prix: 5 000 FCFA</h4>
-            </div>
-        </div>
-    </div>
 
-    <!-- Pour les étrangers résidents -->
-    <div class="tarif_etranger_resident nationalite-card">
-        <h1>Pour les étrangers résidents</h1>
-        <div class="sub-cards">
-            <div class="sub-card">
-                <img src="../../../../assets/images/cabine4.png" alt="Icône Cabine 4 personnes">
-                <h4>Cabine 4 personnes</h4>
-                <h4>Prix: 24 900 FCFA</h4>
-            </div>
-            <div class="sub-card">
-                <img src="../../../../assets/images/cabine2.png" alt="Icône Cabine 2 personnes">
-                <h4>Cabine 2 personnes</h4>
-                <h4>Prix: 26 900 FCFA</h4>
-            </div>
-            <div class="sub-card">
-                <i class="fa-solid fa-user-plus fa-3x" style="color:white;"></i>
-                <h4>Cabine 8 personnes</h4>
-                <h4>Prix: 12 900 FCFA</h4>
-            </div>
-            <div class="sub-card">
-                <img src="../../../../assets/images/fauteuil.png" alt="Icône Fauteuil">
-                <h4>Fauteuil</h4>
-                <h4>Prix: 10 900 FCFA</h4>
-            </div>
-        </div>
-    </div>
 
-    <!-- Pour les étrangers non résidents -->
-    <div class="tarif_etranger_non_resident nationalite-card">
-        <h1>Pour les étrangers non résidents</h1>
-        <div class="sub-cards">
-            <div class="sub-card">
-                <img src="../../../../assets/images/cabine4.png" alt="Icône Cabine 4 personnes">
-                <h4>Cabine 4 personnes</h4>
-                <h4>Prix: 28 900 FCFA</h4>
-            </div>
-            <div class="sub-card">
-                <img src="../../../../assets/images/cabine2.png" alt="Icône Cabine 2 personnes">
-                <h4>Cabine 2 personnes</h4>
-                <h4>Prix: 30 900 FCFA</h4>
-            </div>
-            <div class="sub-card">
-                <i class="fa-solid fa-user-plus fa-3x" style="color:white;"></i>
-                <h4>Cabine 8 personnes</h4>
-                <h4>Prix: 18 900 FCFA</h4>
-            </div>
-            <div class="sub-card">
-                <img src="../../../../assets/images/fauteuil.png" alt="Icône Fauteuil">
-                <h4>Fauteuil</h4>
-                <h4>Prix: 15 900 FCFA</h4>
+    <section class="tarif">
+        <div class="tarif_senegalais nationalite-card">
+            <h1>Pour les sénégalais</h1>
+            <div class="sub-cards">
+                <div class="first">
+                    <div class="sub-card">
+                        <img src="../../../../assets/images/cabine4.png" alt="Icône Cabine 4 personnes">
+                        <h4>Cabine 4 personnes</h4>
+                        <h4>Prix: 24 500 FCFA</h4>
+                    </div>
+                    <div class="sub-card">
+                        <img src="../../../../assets/images/cabine2.png" alt="Icône Cabine 2 personnes">
+                        <h4>Cabine 2 personnes</h4>
+                        <h4>Prix: 26 500 FCFA</h4>
+                    </div>
+                </div>
+                <div class="fisrt">
+                    <div class="sub-card">
+                        <i class="fa-solid fa-user-plus fa-3x" style="color:white;"></i>
+                        <h4>Cabine 8 personnes</h4>
+                        <h4>Prix: 12 500 FCFA</h4>
+                    </div>
+                    <div class="sub-card">
+                        <img src="../../../../assets/images/fauteuil.png" alt="Icône Fauteuil">
+                        <h4>Fauteuil </h4>
+                        <h4>Prix: 5 000 FCFA</h4>
+                    </div>
+                </div>
+            
+               
             </div>
         </div>
-    </div>
+
+  
+
+     
+
+            <div class="tarif_senegalais nationalite-card">
+                <h1>Pour les sénégalais</h1>
+                <div class="sub-cards">
+                    <div class="first">
+                        <div class="sub-card">
+                            <img src="../../../../assets/images/cabine4.png" alt="Icône Cabine 4 personnes">
+                            <h4>Cabine 4 personnes</h4>
+                            <h4>Prix: 24 900 FCFA</h4>
+                        </div>
+                        <div class="sub-card">
+                            <img src="../../../../assets/images/cabine2.png" alt="Icône Cabine 2 personnes">
+                            <h4>Cabine 2 personnes</h4>
+                            <h4>Prix: 26 900 FCFA</h4>
+                        </div>
+                    </div>
+                    <div class="fisrt">
+                        <div class="sub-card">
+                            <i class="fa-solid fa-user-plus fa-3x" style="color:white;"></i>
+                            <h4>Cabine 8 personnes</h4>
+                            <h4>Prix: 12 900 FCFA</h4>
+                        </div>
+                        <div class="sub-card">
+                            <img src="../../../../assets/images/fauteuil.png" alt="Icône Fauteuil">
+                            <h4>Fauteuil </h4>
+                            <h4>Prix: 10 900 FCFA</h4>
+                        </div>
+                    </div>
+                
+                   
+                </div>
+            </div>
+
+  
+        <div class="tarif_senegalais nationalite-card">
+            <h1>Pour les sénégalais</h1>
+            <div class="sub-cards">
+                <div class="first">
+                    <div class="sub-card">
+                        <img src="../../../../assets/images/cabine4.png" alt="Icône Cabine 4 personnes">
+                        <h4>Cabine 4 personnes</h4>
+                        <h4>Prix: 28 900 FCFA</h4>
+                    </div>
+                    <div class="sub-card">
+                        <img src="../../../../assets/images/cabine2.png" alt="Icône Cabine 2 personnes">
+                        <h4>Cabine 2 personnes</h4>
+                        <h4>Prix: 30 900 FCFA</h4>
+                    </div>
+                </div>
+                <div class="fisrt">
+                    <div class="sub-card">
+                        <i class="fa-solid fa-user-plus fa-3x" style="color:white;"></i>
+                        <h4>Cabine 8 personnes</h4>
+                        <h4>Prix: 18 500 FCFA</h4>
+                    </div>
+                    <div class="sub-card">
+                        <img src="../../../../assets/images/fauteuil.png" alt="Icône Fauteuil">
+                        <h4>Fauteuil </h4>
+                        <h4>Prix: 15 900 FCFA</h4>
+                    </div>
+                </div>
+            
+               
+            </div>
+        </div>
 </section>
 
 <h1 class="servicetitle">Nous contacter</h1>
@@ -425,7 +415,11 @@
     </ul>
 </footer>
 
-    
+<script>
+    document.querySelector('.burger-menu').addEventListener('click', function() {
+        document.querySelector('.nav-list').classList.toggle('active');
+    });
+</script>
 </body>
 
 </html>

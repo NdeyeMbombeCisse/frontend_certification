@@ -2,29 +2,43 @@
 
 
 <header>
-    <div class="header-content">
-        <img src="../../../../assets/images/logo.png" alt="Cosoma Logo" class="logo">
-        <nav>
-            <ul>
-                <li> <a [routerLink]="['/portail']" class="menu-item" [class.active]="isActive('/portail')">Acceuil</a></li>
-                <li><a href="/nouvelles" [ngClass]="{ active: currentPage === 'nouvelle_info' }" (click)="setPage('nouvelle_info')">Nouvelles Information</a></li>
-                <li> <a [routerLink]="['/liste_trajet']" class="menu-item" [class.active]="isActive('/liste_trajet')">Trajet en cours</a></li>
+  <div class="header-content">
+      <img src="../../../../assets/images/logo.png" alt="Cosoma Logo" class="logo">
+      
+      <!-- Menu burger pour mobile -->
+      <button class="burger-menu" (click)="toggleMenu()" aria-label="Toggle menu">            <span></span>
+      <span></span>
+      <span></span>
+  </button>
+      
+      <!-- <nav>
+          <ul class="nav-list">
+              <li> <a [routerLink]="['/portail']" class="menu-item" [class.active]="isActive('/portail')">Acceuil</a></li>
+              <li><a href="#">Nouvelles Information</a></li>
+              <li><a href="liste_trajet">Trajets En Cours</a></li>
+          </ul>
+      </nav> -->
 
-               
-            </ul>
+      <nav>
+          <ul class="nav-list" [class.active]="isMenuOpen">
+            <li><a [routerLink]="['/portail']" class="menu-item" [class.active]="isActive('/portail')">Acceuil</a></li>
+            <li><a href="#">Nouvelles Information</a></li>
+            <li><a href="liste_trajet">Trajets En Cours</a></li>
+          </ul>
         </nav>
-        <div class="auth-buttons">
-            <a href="connexion" class="btn register">Se connecter</a>
-        </div>
-    </div>
-    <div class="baniere"> 
-        <div class="baniere-content">
-            <h1>Bienvenue dans notre section  <br>
-                de réservation de trajets !</h1>
-            <p>Découvrez les trajets disponibles et  <br>
-                réservez votre voyage en toute simplicité.</p>
-        </div>
-    </div>
+      <div class="auth-buttons">
+          <a href="inscription_user" class="btn register">S'inscrire</a>
+      </div>
+  </div>
+  <div class="baniere">
+      <div class="baniere-content">
+          <h1>Bienvenue Sur Cosoma Reservation</h1>
+          <p>Simplifiez vos réservations de billets pour voyager en toute sérénité. Planifiez <br>
+             votre trajet maritime en quelques clics et profitez d'une expérience fluide et  <br>
+             pratique.</p>
+        
+      </div>
+  </div>
 </header>
 
 

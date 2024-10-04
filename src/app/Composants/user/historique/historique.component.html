@@ -1,33 +1,26 @@
 
-
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-  </head>
-  <body>
-    
-    <header>
-      <div class="header-content">
-          <img src="../../../../assets/images/logo.png" alt="Cosoma Logo" class="logo">
-          <nav>
-              <ul>
-                  <li><a href="#">Accueil</a></li>
-                  <li><a href="#">Nouvelles Information</a></li>
-                  <li><a href="#">Trajets en cours</a></li>
-                  <li><a href="historique_reservation">Mes reservations</a></li>
-                </ul>
-          </nav>
-          <div class="auth-buttons">
-              <a href="inscription_user" class="btn register"> Deconnexion</a>
-          </div>
-          <a href="profil">
-            <img [src]="userObject.image ? userObject.image : 'assets/images/image_reservation.png'" alt="Profil de l'utilisateur" class="profil" />
-          </a>          
-              </div>
-  </header>
+<header>
+  <div class="header-content">
+      <img src="../../../../assets/images/logo.png" alt="Cosoma Logo" class="logo">
+      
+      <!-- Menu burger pour mobile -->
+      <button class="burger-menu" (click)="toggleMenu()" aria-label="Toggle menu">            <span></span>
+      <span></span>
+      <span></span>
+  </button>
+      
+      <nav>
+          <ul class="nav-list" [class.active]="isMenuOpen">
+            <li><a  href="portail" class="menu-item" [class.active]="isActive('/portail')">Acceuil</a></li>
+            <li><a href="#">Nouvelles Information</a></li>
+            <li><a href="liste_trajet">Trajets En Cours</a></li>
+            <li><a [routerLink]="['/historique_reservation']">Mes reservations</a></li>
+            <li><a (click)="logout()" class="btn register">Se deconnexion</a></li>
+          </ul>
+        </nav>
+      
+  </div>
+</header>
     
     <div class="body">
       <h1>Historique des Réservations</h1>
@@ -70,5 +63,5 @@
     <button><a href="https://checkout.naboopay.com/checkout/ec597225-ad9d-40ac-9339-3095bdb5615d">Confirmer ma reservation</a></button>
 
     
-  </body>
-  </html>
+ 
+ 

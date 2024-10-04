@@ -54,7 +54,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ReservationService } from '../../../Services/reservation.service';
 import { AuthService } from '../../../Services/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ReservationModel } from '../reservation.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -64,7 +64,7 @@ import { UserModel } from '../user.model';
 @Component({
   selector: 'app-historique',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,RouterModule],
   templateUrl: './historique.component.html',
   styleUrls: ['./historique.component.css']
 })
@@ -133,5 +133,15 @@ export class HistoriqueComponent implements OnInit {
         console.error('Erreur de déconnexion', error);
       }
     );
+  }
+
+  isActive(route: string): boolean {
+    return this.router.url === route;
+  }
+
+  isMenuOpen = false;
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
   }
 }

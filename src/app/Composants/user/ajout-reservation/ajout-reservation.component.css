@@ -1,94 +1,83 @@
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background-color: #f4f4f4;
+}
+
+.burger-menu {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.burger-menu span {
+  width: 30px;
+  height: 4px;
+  background-color: white;
+  border-radius: 2px;
+}
+
+/* Styles par défaut */
 .header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    position: fixed; /* Position fixe */
-    top: 0; /* Aligner en haut */
-    left: 0; /* Aligner à gauche */
-    right: 0; /* Prendre toute la largeur */
-    z-index: 1; /* S'assurer que c'est au-dessus de la bannière */
-    background-color: #227093; /* 0.5 pour 50% d'opacité */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-color: #227093;
 }
 
 .logo {
-    width: 150px;
-    margin-left: 30px;
+  width: 150px;
+  margin-left: 30px;
 }
 
 nav ul {
-    display: flex;
-    list-style: none;
+  display: flex;
+  list-style: none;
 }
 
 nav ul li {
-    margin-left: 60px;
+  margin-left: 60px;
 }
 
 nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 30px;
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
+  color: white;
+  text-decoration: none;
+  font-size: 30px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
 }
 
+
 .auth-buttons .btn {
-    margin-left: 20px;
-    padding: 20px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    color: #227093;
+  margin-left: 20px;
+  padding: 20px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #227093;
 }
 
 .register {
-    background-color: white;
-    font-size: 35px;
-    margin-right: 100px;
-    font-weight: bold;
+  background-color: white;
+  font-size: 35px;
+  margin-right: 100px;
+  font-weight: bold;
 }
 
-
-
-.baniere {
-    display: flex;
-    justify-content: center; /* Centre horizontalement */
-    align-items: center; /* Centre verticalement */
-    text-align: center;
-    width: 100%;
-    height: 1260px;
-    color: white;
-}
-
-.connexion-buttons .btn {
-    margin-left: 70px;
-    padding: 20px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    color: #227093;
-    font-size: 40px;
-    
-}
-
-.baniere-content {
-    font-family: 'Times New Roman', Times, serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-    display: flex;
-    font-size: 40px;
-    flex-direction: column; /* Affiche le titre et le texte en colonne */
-    gap: 20px; /* Ajoute un espacement entre le titre et le texte */
-    font-weight: 600;
-}
-
-.baniere-content h1 {
-    line-height: 1.5; /* Contrôle l'interligne du titre */
-}
-
-.baniere-content p {
-    line-height: 2; /* Contrôle l'interligne du paragraphe */
-}
 
 /* formulaire */
 
@@ -192,5 +181,124 @@ nav ul li a {
   .btn-primary:hover,
   .btn-secondary:hover {
     opacity: 0.9;
+  }
+
+  /* responsivite */
+  @media (max-width: 768px) {
+    /* Masquer les éléments de navigation par défaut et afficher le menu burger */
+    nav ul {
+        display: none;
+    }
+
+    .logo {
+        width: 90px;
+        margin-left: 40px;
+        margin-left: -5px;
+    }
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1;
+        background-color: #227093;
+    }
+    
+ 
+
+    .burger-menu {
+        display: flex;
+        margin-left: 220px;
+    }
+
+    .auth-buttons .register {
+        display: none; /* Masquer le bouton d'inscription sur mobile */
+    }
+
+   
+    
+
+    /* Afficher le menu quand le burger est activé */
+    .nav-list.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: rgba(34, 112, 147, 0.95);
+    }
+
+    .nav-list li {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+
+    /* Responsivité pour les écrans de 768px et moins */
+@media (max-width: 768px) {
+  .reservation-container {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    padding: 15px; 
+    margin-top: 140px;
+  }
+  .reservation-container img {
+    width: 100%; /* Image occupe toute la largeur */
+    height: auto; /* Hauteur automatique pour éviter la distorsion */
+    margin-bottom: 20px; /* Espacement en bas de l'image */
+    width: 50%;
+    height: auto;
+    margin-left: 50px;
+  }
+
+  .reservation-container form {
+    width: 100%; /* Formulaire occupe toute la largeur */
+    margin-top: -200px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column; /* Aligne les labels et les champs de saisie en colonne */
+    width: 100%; /* Chaque groupe occupe toute la largeur */
+    margin-bottom: 15px; /* Ajoute un espacement entre les groupes de formulaire */
+  }
+
+  .form-group label {
+    font-size: 16px; /* Taille du texte ajustée pour mobile */
+    margin-bottom: 5px; /* Espacement entre le label et l'input */
+    margin-left: -170px;
+  }
+
+    
+  .form-group select{
+    width: 360px; /* L'input occupe toute la largeur de son conteneur */
+    height: 55px;
+    margin-left: -190px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+  }
+
+  button[type="submit"] {
+
+    width: 360px; /* L'input occupe toute la largeur de son conteneur */
+    height: 55px;
+    margin-left: -190px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    background-color: #FEB906; /* Couleur de fond du bouton */
+  }
+}
+
   }
   

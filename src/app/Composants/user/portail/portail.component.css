@@ -9,17 +9,34 @@ body {
     background-color: #f4f4f4;
 }
 
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.burger-menu span {
+    width: 30px;
+    height: 4px;
+    background-color: white;
+    border-radius: 2px;
+}
+
+/* Styles par défaut */
 .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    position: fixed; /* Position fixe */
-    top: 0; /* Aligner en haut */
-    left: 0; /* Aligner à gauche */
-    right: 0; /* Prendre toute la largeur */
-    z-index: 1; /* S'assurer que c'est au-dessus de la bannière */
-    background-color: #227093; /* 0.5 pour 50% d'opacité */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background-color: #227093;
 }
 
 .logo {
@@ -43,6 +60,7 @@ nav ul li a {
     font-family: 'Inter', sans-serif;
     font-weight: 700;
 }
+
 
 .auth-buttons .btn {
     margin-left: 20px;
@@ -216,22 +234,11 @@ header::after {
 }
 
 .vision-content  p{
-    font-size: 35px;
+    font-size: 30px;
     line-height: 2;
-    text-align: justify;
 }
 
-.servicetitle{
 
-    font-size: 50px;
-    font-family: "Gilda Display", serif;
-    font-weight: 400;
-    font-style: normal;
-    color: #0D8434;
-    text-align: center;
-    margin-top: 100px;
-
-}
 
 /* style de la partie service */
 
@@ -250,17 +257,26 @@ header::after {
 
 
 
+
+
 .card {
-    background-color: white; /* Fond blanc */
-    border-radius: 20px; /* Arrondi des coins */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Ombre légère pour donner de la profondeur */
-    padding: 40px; /* Espacement intérieur */
-    width: 600px; /* Largeur de la carte */
-    margin: 20px; /* Espacement autour de la carte */
-    display: flex; /* Utilise Flexbox pour la mise en page */
-    flex-direction: column; /* Affiche les éléments en colonne */
-    align-items: flex-start; /* Aligne les éléments à gauche */
+    background-color: white; 
+    border-radius: 20px; 
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 40px; 
+    width: 600px; 
+    margin: 20px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: flex-start; 
+    transition: transform 0.3s, box-shadow 0.3s;
 }
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
 
 .firstpart, .secondpart {
     margin-top: 70px;
@@ -475,9 +491,6 @@ header::after {
     margin-bottom: 20px;
     width: 100%;
     height: 80rem;
-    
-
-
 }
 
 .nationalite-card {
@@ -662,3 +675,521 @@ footer ul li {
     background-color: #feb906; /* Change background on hover */
     color: #000; /* Change color on hover */
   }
+  /* responsivite */
+  @media (max-width: 768px) {
+    /* Masquer les éléments de navigation par défaut et afficher le menu burger */
+    nav ul {
+        display: none;
+    }
+
+    .connexion-buttons .btn {
+        margin-left: 70px;
+        padding: 15px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        color: #227093;
+        font-size: 15px;
+        
+    }
+
+    .logo {
+        width: 90px;
+        margin-left: 40px;
+        margin-left: -5px;
+    }
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1;
+        background-color: #227093;
+    }
+    
+    .baniere {
+        display: flex;
+        justify-content: center; /* Centre horizontalement */
+        align-items: center; /* Centre verticalement */
+        text-align: center;
+        width: 100%;
+        height: 760px;
+        background: linear-gradient(rgba(106, 176, 204, 0.3), rgba(106, 176, 204, 0.3)), 
+                    url('../../../../assets/images/baniere.png') no-repeat center center/cover;
+        color: white;
+    }
+
+    .burger-menu {
+        display: flex;
+        margin-left: 150px;
+    }
+
+    .auth-buttons .register {
+        display: none; /* Masquer le bouton d'inscription sur mobile */
+    }
+
+    .baniere-content h1 {
+        font-size: 30px;
+        line-height: 1.5;
+    }
+    .baniere-content p {
+        font-size: 20px;
+        line-height: 2;
+    }
+
+    
+
+    /* Afficher le menu quand le burger est activé */
+    .nav-list.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: rgba(34, 112, 147, 0.95);
+    }
+
+    .nav-list li {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    /* trit aprea baniere */
+    header::after {
+        content: '';
+        display: block;
+        height: 5px; /* Épaisseur du trait */
+        background-color: #0D8434; /* Couleur du trait */
+        width: 246px; /* Ajuste la largeur selon tes préférences */
+        margin: 70px auto; /* Centre le trait et ajoute un espacement */
+    }
+    /* section mission */
+    .mission {
+        display: block; /* Utilise Flexbox */
+        padding: 10px; /* Ajoute un peu de padding */
+        margin-top: -60px;
+    }
+    
+    .mission-content {
+        max-width: 100%; /* Limite la largeur du contenu */
+        margin-bottom: 100px;
+        margin-left: 10px;
+        text-align: justify;
+
+    }
+    
+    .mission-content  h1{
+        font-size: 28px;
+        font-family: "Gilda Display", serif;
+        font-weight: 400;
+        font-style: normal;
+        color: #0D8434;
+        text-align: center;
+    }
+    
+    .mission-content  p{
+        font-size: 15px;
+        line-height: 1.7;
+    text-align: justify;
+        
+    }
+    
+    .mission-content button{
+        padding: 10px;
+        border-radius: 5px;
+        text-decoration: none;
+        color: #227093;
+        font-size: 10px;
+        margin-left: 0;
+    }
+    
+    
+    .mission img {
+        width: 22rem; /* Ajuste la taille de l'image */
+        height: auto;  /* Conserve le ratio de l'image */
+        margin-left: 10px;
+        margin-top: -70px;
+    }
+    
+    /* trait apres la section mission */
+    
+    .separator {
+        content: '';
+        display: block;
+        height: 5px; /* Épaisseur du trait */
+        background-color: #0D8434; /* Couleur du trait */
+        width: 246px; /* Ajuste la largeur selon tes préférences */
+        margin: 70px auto;
+    }
+    /* vision */
+    @media (max-width: 768px) {
+        .vision {
+            flex-direction: column; /* Aligne les éléments verticalement sur mobile */
+            text-align: center; /* Centre le texte */
+        }
+    
+        .vision-content {
+            max-width: 100%; /* Supprime la limite de largeur sur mobile */
+            margin: 20px 0; /* Réduit l'espace autour du contenu */
+        }
+    
+        .vision img {
+            width: 22rem;
+            margin: 0; /* Supprime le margin horizontal */
+            order: 2;
+
+        }
+    
+        .vision-content h1 {
+            font-size: 2rem; /* Réduit la taille de la police pour mobile */
+            order: 1;
+        }
+    
+        .vision-content p {
+            font-size: 1.2rem; /* Réduit la taille de la police pour mobile */
+        }
+/*     
+        .servicetitle {
+            font-size: 2rem; 
+        } */
+    }
+
+    /* service */
+   
+        .firstpart, .secondpart {
+            flex-direction: column; /* Aligne les cartes verticalement sur les petits écrans */
+            align-items: center; /* Centre les cartes horizontalement */
+        }
+    
+        .card {
+            flex: 1 1 100%; /* Chaque carte prend 100% de la largeur sur les petits écrans */
+            margin: 10px 0; /* Espace vertical entre les cartes */
+        }
+
+        .card {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 40px; 
+            width: 350px; 
+            margin: 20px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: flex-start; 
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card h2{
+            font-size: 22px;
+            font-family: "Gilda Display", serif;
+            font-weight: 400;
+            font-style: normal;
+            color: #0D8434;
+            line-height: 2;
+            margin-top: 30px;
+        
+        
+        }
+        
+        .card p{
+            font-size: 15px;
+            line-height: 2;
+            text-align: justify;
+        
+        }
+        .service {
+            display: flex;
+            margin-top: 90px;
+            flex-direction: column; /* Aligne les parties en colonne */
+            align-items: center;
+            background-image:none;
+            background-size: cover;
+            width: 100%; /* Ajustez selon vos besoins */
+            box-sizing: border-box; /* Inclut le padding dans la largeur totale */
+        }
+
+        .notification-icon img {
+            width: 3rem;
+            height: auto; /* Conserve le ratio de l'icône */
+        }
+
+     
+
+        .firstpart, .secondpart {
+            margin-top: 0;
+            display: flex; /* Utilise Flexbox pour les cartes */
+            justify-content: space-around; /* Espace égal entre les cartes */
+            width: 100%; /* Prend toute la largeur disponible */
+            margin-bottom: 20px; /* Espace entre les parties */
+        
+    }
+
+    /* horaire */
+
+    .horaire {
+        flex-direction: column; /* Change la direction en colonne sur les écrans petits */
+        align-items: center; /* Centre tous les éléments horizontalement */
+    }
+
+    .img_zig_dak {
+        margin-left: 0; /* Enlève le margin pour centrer l'image */
+        margin-right: 0; /* Assure qu'il n'y a pas de marge à droite */
+    }
+
+    .img_zig_dak img {
+        width: 100%; /* Prend 100% de la largeur du conteneur */
+        height: 15rem; /* Ajuste la hauteur pour garder les proportions */
+        margin-top: -70px;
+    }
+
+    .zigdak {
+        align-items: center; /* Centre également les éléments à droite */
+        margin-right: 0; /* Enlève la marge à droite */
+    }
+
+    .servicetitle{
+        font-size: 30px;
+    font-family: "Gilda Display", serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #0D8434;
+    text-align: center;
+    margin-top: -70px;
+
+    }
+    .title{
+        display: flex;
+        background-image: url(../../../../assets/images/titlebackround.png);
+        background-size: cover; /* Pour couvrir toute la zone */
+        background-position: center; /* Centre l'image */
+        padding: 20px; /* Ajoute de l'espace à l'intérieur de la div */
+        width: 370px;
+        margin-right: 10px;
+        margin-top: 20px;
+    
+    }
+
+    .title .dak{
+        margin-left: 120px;
+    }
+    
+    .title h1{
+        font-family: "Gilda Display", serif;
+        font-size: 20px;
+    
+    }
+    /* horaire */
+
+    .carte-horaires {
+        background-color: white; /* Fond blanc */
+        border: 7px solid #227093; /* Bordure bleue */
+        border-radius: 10px; /* Coins arrondis */
+        padding: 10px; /* Espacement interne */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+        margin-top: 20px; /* Espacement au-dessus de la carte */
+        width: 350px; /* Largeur de la carte */
+        height: 420px;
+        margin-right: 10px;
+    }
+
+    .horaire h2{
+        font-family: "Gilda Display", serif;
+        font-size: 15px;
+    }
+
+    .titre-depart {
+        margin-left: 10px; /* Espacement autour du titre */
+    }
+
+    .jour-button, .embarquement button, .depart button {
+        background-color: #227093; /* Fond bleu */
+        color: white;
+        border: none;
+        padding: 10px 20px; /* Espacement interne */
+        border-radius: 5px;
+        font-size: 12px;
+        cursor: pointer;
+        width: 100px; /* Largeur des boutons */
+        font-weight: 700;
+        margin-top: 10px;
+    }
+
+    .jeu_dim {
+        display: flex; /* Flexbox pour les boutons sur la même ligne */
+        gap: 40px; /* Espacement entre les boutons */
+        padding: 10px; /* Padding autour des boutons */
+        margin-left: 10px;
+    }
+    
+    .embarquement_depart {
+        display: flex; /* Flexbox pour l'embarquement et le départ */
+        margin-top: 20px; /* Ajoute de l'espace entre les sections */
+        gap: 60px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        margin-left: 10px;
+    }
+    /* dakar-zig */
+    .carte-horaires_deux {
+        background-color: white; /* Fond blanc */
+        border: 7px solid #227093; /* Bordure bleue */
+        border-radius: 10px; /* Coins arrondis */
+        padding: 10px; /* Espacement interne */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+        margin-top: 10px; /* Espacement au-dessus de la carte */
+        width: 350px; /* Largeur de la carte */
+        height: 320px;
+        margin-right: 10px;
+    }
+    
+    .img_dak_zig img {
+        width: 70rem; /* Augmente la taille de la première image */
+        height: 35rem;
+        margin-top: 40px;
+        margin-right: 120px;
+    }
+    
+    .title_deux{
+        display: flex;
+        background-image: url(../../../../assets/images/titlebackround.png);
+        background-size: cover; /* Pour couvrir toute la zone */
+        background-position: center; /* Centre l'image */
+        padding: 20px; /* Ajoute de l'espace à l'intérieur de la div */
+        width: 350px;
+        margin-right: 10px;
+    
+    
+    }
+
+    .title_deux .dak{
+        margin-left: 130px;
+    }
+    
+    .title_deux h1{
+        font-family: "Gilda Display", serif;
+        font-size: 20px;
+    
+    }
+
+    .img_dak_zig {
+        margin-left: 0; /* Enlève le margin pour centrer l'image */
+        margin-right: 0; /* Assure qu'il n'y a pas de marge à droite */
+    }
+
+    .img_dak_zig img {
+        width: 100%; /* Prend 100% de la largeur du conteneur */
+        height: 15rem; /* Ajuste la hauteur pour garder les proportions */
+        margin-top: 20px;
+    }
+
+    /* tarif */
+
+    .tarif {
+        display: flex;
+        margin-bottom: 20px;
+        height: auto;
+        background-image: none;
+
+    flex-direction: column; /* Arrange les cartes verticalement */
+    gap: 20px; /* Espace vertical entre les cartes */
+    padding: 10px;
+
+    }
+
+   
+    .nationalite-card {
+        width: 370px; /* Chaque carte occupera toute la largeur */
+        margin-bottom: 20px; /* Espace entre les cartes */
+        height: 620px;
+    }
+
+    .nationalite-card h1 {
+        font-size: 25px;
+        text-align: center;
+        margin-bottom: 0;
+        margin-top: 10px;
+     
+     }
+    
+    .sub-cards {
+        display: flex; 
+        flex-wrap: nowrap; 
+        margin-left: 8px;
+        margin-top: -2px;
+    }
+
+    .sub-card {
+        max-width: 65%; /* Optionnel : limite la largeur maximale des sous-cartes */
+        flex-direction: column;
+        margin-left: -20px;
+
+
+    }
+
+    .sub-card img {
+        width: 25px; /* Taille de l'icône */
+        height: 25px;
+        margin-bottom: 10px;
+        
+    }  
+    .sub-card h4 {
+        margin: 5px 0;
+        color: #ffffff;
+        font-size: 16px;
+        line-height: 2;
+    }   
+  .fisrt{
+    margin-left: -100px;
+  } 
+
+  /* contact */
+  .form-container {
+    width: 100%; /* Utilise toute la largeur de l'écran */
+    padding: 10px;
+    height: auto; /* Hauteur automatique pour le contenu */
+}
+
+.input-row {
+    display: flex;
+    flex-direction: column; /* Disposer les inputs verticalement */
+    gap: 15px; /* Réduire l'espacement entre les inputs */
+    margin-top: 50px;
+}
+
+.input-row input {
+    width: 320px; /* Les inputs occupent toute la largeur disponible */
+    height: 50px; /* Hauteur ajustée pour les petits écrans */
+    border-radius: 5px;
+}
+
+.message-row textarea {
+    width: 100%; /* Le textarea occupe toute la largeur disponible */
+    height: 100px; /* Hauteur réduite pour mobile */
+    margin-top: -10px;
+    border-radius: 5px;
+
+    
+}
+
+.button-row {
+    align-self: center; /* Centre le bouton sur mobile */
+    margin-top: 20px;
+}
+
+.button-row button {
+    width: 100%; /* Le bouton occupe toute la largeur sur mobile */
+    height: 50px; /* Hauteur ajustée pour mobile */
+    font-size: 20px; /* Taille de police ajustée */
+}
+
+
+  
+   
+    
+
+   
+  
+}

@@ -5,17 +5,20 @@ import { AuthService } from '../../../Services/auth.service';
 import { UserModel } from '../user.model';
 import { CommonModule } from '@angular/common'; // Importer si vous avez besoin de directives comme ngIf, ngFor
 import { FormsModule } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-profil',
   standalone: true,
-  imports: [CommonModule,FormsModule], // Ajouter CommonModule si vous utilisez des directives comme ngIf
+  imports: [CommonModule,FormsModule,RouterModule], // Ajouter CommonModule si vous utilisez des directives comme ngIf
   templateUrl: './profil.component.html',
   styleUrls: ['./profil.component.css'] // Correction de 'styleUrl' en 'styleUrls'
 })
 export class ProfilComponent implements OnInit {
 
   private authService = inject(AuthService);
+  private router = inject(Router)
+
 
   userObject: UserModel = {}; // Initialiser à null pour indiquer l'absence de données au début
 
@@ -33,6 +36,16 @@ export class ProfilComponent implements OnInit {
         console.log('Erreur de récupération du profil:', error);
       }
     );
+  }
+
+  isActive(route: string): boolean {
+    return this.router.url === route;
+  }
+
+  isMenuOpen = false;
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
   }
   
 }
