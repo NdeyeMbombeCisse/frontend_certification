@@ -433,7 +433,7 @@ footer ul li {
       height: auto; /* Hauteur ajustable selon le contenu */
       padding: 20px; /* Conserver l'espace interne */
       margin-top: -180px;
-      margin-left: -20px;
+      margin-left: -5px;
     }
   
     .filtreTrajet select {

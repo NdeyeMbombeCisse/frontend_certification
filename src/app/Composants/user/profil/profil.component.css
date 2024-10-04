@@ -3,11 +3,10 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
+
   }
   
-  body {
-    background-color: #f4f4f4;
-  }
+
   
   .burger-menu {
     display: none;
@@ -119,8 +118,8 @@ h1 {
 }
 
 button {
-    width: 725px; /* Prend toute la largeur disponible */
-    height: 90px;
+    width: 705px; /* Prend toute la largeur disponible */
+    height: 70px;
     padding: 10px;
     font-size: 25px;
     border: 1px solid #ccc;

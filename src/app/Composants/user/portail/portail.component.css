@@ -101,6 +101,14 @@ nav ul li a {
     
 }
 
+.servicetitle{
+    text-align: center;
+    font-size: 50px;
+    font-family: "Gilda Display", serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #0D8434;
+}
 .baniere-content {
     font-family: 'Times New Roman', Times, serif;
     font-optical-sizing: auto;
@@ -710,6 +718,10 @@ footer ul li {
         z-index: 1;
         background-color: #227093;
     }
+
+    body{
+        overflow-x: hidden;
+    }
     
     .baniere {
         display: flex;
@@ -761,12 +773,7 @@ footer ul li {
 
     /* trit aprea baniere */
     header::after {
-        content: '';
-        display: block;
-        height: 5px; /* Épaisseur du trait */
-        background-color: #0D8434; /* Couleur du trait */
-        width: 246px; /* Ajuste la largeur selon tes préférences */
-        margin: 70px auto; /* Centre le trait et ajoute un espacement */
+       display: none;
     }
     /* section mission */
     .mission {
@@ -789,7 +796,7 @@ footer ul li {
         font-weight: 400;
         font-style: normal;
         color: #0D8434;
-        text-align: center;
+        margin-top: 80px;
     }
     
     .mission-content  p{
@@ -819,18 +826,12 @@ footer ul li {
     /* trait apres la section mission */
     
     .separator {
-        content: '';
-        display: block;
-        height: 5px; /* Épaisseur du trait */
-        background-color: #0D8434; /* Couleur du trait */
-        width: 246px; /* Ajuste la largeur selon tes préférences */
-        margin: 70px auto;
+      display: none;
     }
     /* vision */
     @media (max-width: 768px) {
         .vision {
             flex-direction: column; /* Aligne les éléments verticalement sur mobile */
-            text-align: center; /* Centre le texte */
         }
     
         .vision-content {
@@ -840,26 +841,35 @@ footer ul li {
     
         .vision img {
             width: 22rem;
-            margin: 0; /* Supprime le margin horizontal */
+            /* margin: 0; */
             order: 2;
+            margin-left: -15px;
+            margin-bottom: 100px;
 
         }
     
         .vision-content h1 {
-            font-size: 2rem; /* Réduit la taille de la police pour mobile */
+            font-size: 30px; /* Réduit la taille de la police pour mobile */
             order: 1;
+            margin-top: -30px;
         }
+
     
         .vision-content p {
-            font-size: 1.2rem; /* Réduit la taille de la police pour mobile */
+            font-size: 15px; /* Réduit la taille de la police pour mobile */
         }
-/*     
-        .servicetitle {
-            font-size: 2rem; 
-        } */
     }
 
     /* service */
+
+    .servicetitle{
+        font-size: 28px;
+        font-family: "Gilda Display", serif;
+        font-weight: 400;
+        font-style: normal;
+        color: #0D8434;
+        margin-top: 80px;
+    }
    
         .firstpart, .secondpart {
             flex-direction: column; /* Aligne les cartes verticalement sur les petits écrans */
@@ -902,7 +912,7 @@ footer ul li {
         }
         .service {
             display: flex;
-            margin-top: 90px;
+            margin-top: 10px;
             flex-direction: column; /* Aligne les parties en colonne */
             align-items: center;
             background-image:none;
@@ -1050,6 +1060,7 @@ footer ul li {
         height: 35rem;
         margin-top: 40px;
         margin-right: 120px;
+        margin-bottom: 100px;
     }
     
     .title_deux{
@@ -1087,23 +1098,36 @@ footer ul li {
 
     /* tarif */
 
+   
+    
+
+
+
+
+
+
     .tarif {
         display: flex;
-        margin-bottom: 20px;
         height: auto;
         background-image: none;
-
-    flex-direction: column; /* Arrange les cartes verticalement */
-    gap: 20px; /* Espace vertical entre les cartes */
-    padding: 10px;
+         flex-direction: column; /* Arrange les cartes verticalement */
+        padding: 10px;
+        margin-top: 10px;
+        gap: 1px;
+        margin-bottom: 100px;
+        
 
     }
 
+    .nationalite-card:nth-child(2) {
+        margin-bottom: 40px; /* Réduire la marge supérieure pour la deuxième carte */
+        margin-top: 40px;
+    }
    
     .nationalite-card {
         width: 370px; /* Chaque carte occupera toute la largeur */
-        margin-bottom: 20px; /* Espace entre les cartes */
         height: 620px;
+        margin-top: 12px;
     }
 
     .nationalite-card h1 {

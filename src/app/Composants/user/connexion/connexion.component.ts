@@ -1,212 +1,173 @@
 
 
-
 // import { Component, inject } from '@angular/core';
 // import { AuthService } from '../../../Services/auth.service';
 // import { Router } from '@angular/router';
+// import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms'; // Importer les classes nécessaires
 // import { UserModel } from '../user.model';
-// import { FormsModule } from '@angular/forms';
+// import Swal from 'sweetalert2';
+
 
 // @Component({
-//     selector: 'app-connexion',
-//     standalone: true,
-//     imports: [FormsModule],
-//     templateUrl: './connexion.component.html',
-//     styleUrl: './connexion.component.css'
-//   })
-// export class ConnexionComponent{
-
-// // injection des dependences
-
-// private userService = inject(AuthService);
-
-// private router = inject(Router);
-
-// userObjet:UserModel = {}
-
-
-
-// connexion(){
-//   console.log(this.userObjet);
-//   if (this.userObjet.email && this.userObjet.password) {
-//     this.userService.login(this.userObjet).subscribe(
-//       (response: any) => {
-//         // Log pour voir toute la structure de la réponse
-//         console.log('Response structure:', response);
-
-//         // Vérifie si le token est directement dans response ou dans une autre structure
-//         if (response.token) {
-//           console.log('Token:', response.token);
-//           localStorage.setItem("token", response.token);
-//           this.router.navigate(['/ajoutReservation']);
-//         } else if (response.data && response.data.token) { // Si le token est dans data
-//           console.log('Token in data:', response.data.token);
-//           localStorage.setItem("token", response.data.token);
-//           this.router.navigate(['/inscription_user']);
-//         } else {
-//           console.error('No token in the response');
-//         }
-//       },
-//       (error: any) => {
-//         console.error('Error during login:', error);
-//       }
-//     );
-//   }
-// }
-
-
-
-
-
-
-
-// logout(): void {
-//   this.userService.logout();
-// }
-
-
-// }
-
-
-
-// import { Component, inject } from '@angular/core';
-// import { AuthService } from '../../../Services/auth.service';
-// import { Router } from '@angular/router';
-// import { UserModel } from '../user.model';
-// import { FormsModule } from '@angular/forms';
-
-// @Component({
-//       selector: 'app-connexion',
-//       standalone: true,
-//       imports: [FormsModule],
-//       templateUrl: './connexion.component.html',
-//       styleUrl: './connexion.component.css'
-//     })
-// export class ConnexionComponent{
+//         selector: 'app-connexion',
+//         standalone: true,
+//         imports: [ReactiveFormsModule,FormsModule],
+//         templateUrl: './connexion.component.html',
+//         styleUrl: './connexion.component.css'
+//       })
+// export class ConnexionComponent {
 //   private userService = inject(AuthService);
-
 //   private router = inject(Router);
-  
+//   loginForm: FormGroup; // Déclarer le FormGroup
 //   userObjet:UserModel = {}
 
-
-//   connexion() {
-//     console.log('Début de la méthode connexion');
-//     console.log(this.userObjet);
-  
-//     if (this.userObjet.email && this.userObjet.password) {
-//       console.log('Email et mot de passe fournis');
-  
-//       this.userService.login(this.userObjet).subscribe(
-//         (response: any) => {
-//           console.log('Réponse de l\'API:', response);
-  
-//           // Vérifiez si le access_token est présent dans la réponse
-//           if (response.access_token) {
-//             const token = response.access_token; // Extraire le access_token
-//             console.log('Token:', token);
-            
-//             // Enregistrer le token dans le localStorage
-//             localStorage.setItem("access_token", token);
-            
-//             // Redirection après la connexion
-//             this.router.navigate(['/ajoutReservation']);
-//           } else {
-//             console.error('Aucun token dans la réponse');
-//           }
-//         },
-//         (error: any) => {
-//           console.error('Erreur lors de la connexion:', error);
-//         }
-//       );
-//     } else {
-//       console.error('Email et mot de passe sont requis');
-//     }
+//   constructor(private fb: FormBuilder) { // Injecter FormBuilder
+//     // Initialiser le formulaire avec des contrôles et des validations
+//     this.loginForm = this.fb.group({
+//       email: ['', [Validators.required, Validators.email]],
+//       password: ['', [Validators.required]]
+//     });
 //   }
-  
-  
-  
-  
+//   connexion() {
+//     if (this.loginForm.valid) {
+//         console.log('Formulaire valide', this.loginForm.value);
+//         this.userService.login(this.loginForm.value).subscribe(
+//             (response: any) => {
+//                 console.log('Réponse de l\'API:', response);
+//                 if (response.access_token) {
+//                     const token = response.access_token;
+//                     localStorage.setItem("access_token", token);
+//                     if (response.user) {
+//                       localStorage.setItem("user_id", response.user.id.toString());
+//                       localStorage.setItem("user_first_name", response.user.telephone); // Assurez-vous que le champ est correct
+//                       localStorage.setItem("user_phone", response.user.prenom); // Assurez-vous que le champ est correct
+//                   }
+//                     // Vérifie si l'ID utilisateur est dans la réponse
+//                     if (response.user_id) {
+//                         localStorage.setItem('user_id', response.user_id.toString()); // Stocke l'ID utilisateur
+//                     } else {
+//                         console.error('Aucun ID utilisateur dans la réponse:', response); // Affiche la réponse pour débogage
+//                     }
+//                     Swal.fire({
+//                         title: 'Succès!',
+//                         text: 'Authentification faite  avec succès!',
+//                         icon: 'success',
+//                         confirmButtonText: 'OK'
+//                       });
+//                       if(response.role=="user"){
+//                         this.router.navigate(['/historique_reservation']);
+
+
+//                       }else if(response.role=="superAdmin"){
+//                         this.router.navigate(['/dasbaord_Sadmin']);
+
+//                       } else if(response.role=="admin"){
+//                         this.router.navigate(['/dasbaord_admin']);
+
+//                       }
+
+//                 } else {
+//                     console.error('Aucun token dans la réponse');
+//                 }
+//             },
+//             (error: any) => {
+//                 console.error('Erreur lors de la connexion:', error);
+//             }
+//         );
+//     } else {
+//         console.error('Le formulaire n\'est pas valide');
+//     }
 // }
+
+
+// }
+
 
 import { Component, inject } from '@angular/core';
 import { AuthService } from '../../../Services/auth.service';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms'; // Importer les classes nécessaires
-import { UserModel } from '../user.model';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
-
+import { CommonModule } from '@angular/common';
 
 @Component({
-        selector: 'app-connexion',
-        standalone: true,
-        imports: [ReactiveFormsModule,FormsModule],
-        templateUrl: './connexion.component.html',
-        styleUrl: './connexion.component.css'
-      })
+  selector: 'app-connexion',
+  standalone: true,
+  imports: [ReactiveFormsModule, FormsModule,CommonModule],
+  templateUrl: './connexion.component.html',
+  styleUrl: './connexion.component.css'
+})
 export class ConnexionComponent {
   private userService = inject(AuthService);
   private router = inject(Router);
-  loginForm: FormGroup; // Déclarer le FormGroup
-  userObjet:UserModel = {}
+  loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder) { // Injecter FormBuilder
+  constructor(private fb: FormBuilder) {
     // Initialiser le formulaire avec des contrôles et des validations
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]]
+      password: ['', [Validators.required, Validators.minLength(7)]]
     });
   }
+
+  // Méthode pour gérer la connexion
   connexion() {
     if (this.loginForm.valid) {
-        console.log('Formulaire valide', this.loginForm.value);
         this.userService.login(this.loginForm.value).subscribe(
             (response: any) => {
-                console.log('Réponse de l\'API:', response);
                 if (response.access_token) {
-                    const token = response.access_token;
-                    localStorage.setItem("access_token", token);
+                    localStorage.setItem("access_token", response.access_token);
                     if (response.user) {
-                      localStorage.setItem("user_id", response.user.id.toString());
-                      localStorage.setItem("user_first_name", response.user.telephone); // Assurez-vous que le champ est correct
-                      localStorage.setItem("user_phone", response.user.prenom); // Assurez-vous que le champ est correct
-                  }
-                    // Vérifie si l'ID utilisateur est dans la réponse
-                    if (response.user_id) {
-                        localStorage.setItem('user_id', response.user_id.toString()); // Stocke l'ID utilisateur
-                    } else {
-                        console.error('Aucun ID utilisateur dans la réponse:', response); // Affiche la réponse pour débogage
+                        localStorage.setItem("user_id", response.user.id.toString());
+                        localStorage.setItem("user_first_name", response.user.telephone);
+                        localStorage.setItem("user_phone", response.user.prenom);
                     }
+
                     Swal.fire({
                         title: 'Succès!',
-                        text: 'Authentification faite  avec succès!',
+                        text: 'Authentification réussie!',
                         icon: 'success',
                         confirmButtonText: 'OK'
-                      });
-                      if(response.role=="user"){
-                        this.router.navigate(['/historique_reservation']);
+                    });
 
-
-                      }else if(response.role=="superAdmin"){
-                        this.router.navigate(['/dasbaord_Sadmin']);
-
-                      } else if(response.role=="admin"){
-                        this.router.navigate(['/dasbaord_admin']);
-
-                      }
-
-                } else {
-                    console.error('Aucun token dans la réponse');
+                    // Redirection selon le rôle de l'utilisateur
+                    
+                        if (response.role == "user") {
+                            this.router.navigate(['/historique_reservation']);
+                        } else if (response.role == "superAdmin") {
+                            this.router.navigate(['/dashboard_Sadmin']);
+                        } else if (response.role == "admin") {
+                            this.router.navigate(['/dashboard_admin']);
+                        } else {
+                            console.error('Rôle non reconnu:', response.role);
+                        }
+                    } else {
+                        console.error('Aucun rôle dans la réponse');
+                    
                 }
             },
             (error: any) => {
-                console.error('Erreur lors de la connexion:', error);
+                Swal.fire('Erreur', 'Une erreur est survenue lors de la connexion', 'error');
             }
         );
     } else {
-        console.error('Le formulaire n\'est pas valide');
+        this.displayFormErrors();
     }
 }
 
 
+  // Méthode pour afficher les erreurs
+  displayFormErrors() {
+    if (this.loginForm.get('email')?.hasError('required')) {
+      Swal.fire('Erreur', 'L\'email est obligatoire', 'error');
+    } else if (this.loginForm.get('email')?.hasError('email')) {
+      Swal.fire('Erreur', 'L\'email n\'est pas valide', 'error');
+    }
+
+    if (this.loginForm.get('password')?.hasError('required')) {
+      Swal.fire('Erreur', 'Le mot de passe est obligatoire', 'error');
+    } else if (this.loginForm.get('password')?.hasError('minlength')) {
+      Swal.fire('Erreur', 'Le mot de passe doit contenir au moins 7 caractères', 'error');
+    }
+  }
 }

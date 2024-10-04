@@ -13,34 +13,56 @@
     <div class="form-container">
         <h1>INSCRIPTION</h1>
         <form (ngSubmit)="ajoutUser()">
-          <!-- <label for="prenom">Prénom:</label> -->
-          <input type="text" id="prenom" [(ngModel)]="user.prenom" name="prenom" required placeholder="Prenom" />
-      
-          <!-- <label for="nom">Nom:</label> -->
-          <input type="text" id="nom" [(ngModel)]="user.nom" name="nom" required placeholder="Nom" />
-      
-          <!-- <label for="numero_identite">CNI:</label> -->
-          <input type="text" id="numero_identite" [(ngModel)]="user.numero_identite" name="numero_identite" placeholder="CNI" required />
-      
-          <!-- <label for="telephone">Téléphone:</label> -->
-          <input type="text" id="telephone" [(ngModel)]="user.telephone" name="telephone" required  placeholder="Telephone"/>
-      
-          <!-- <label for="email">Email:</label> -->
-          <input type="email" id="email" [(ngModel)]="user.email" name="email" required  placeholder="Email"/>
-      
-          <!-- <label for="password">Mot de passe:</label> -->
-          <input type="password" id="password" [(ngModel)]="user.password" name="password" required  placeholder="Password"/>
-      
-          <!-- <label for="nationnalite">Nationalité:</label> -->
-          <select id="nationnalite" [(ngModel)]="user.nationnalite" name="nationnalite"  required placeholder="nationalité">
-            <option value="" disabled selected>Sélectionner une nationalité</option>
-            <option value="senegalais">Sénégalais</option>
-            <option value="stranger resident">Étranger résident</option>
-            <option value="etranger non resident">Étranger non résident</option>
-          </select>
-      
-          <!-- <label for="image">Photo:</label> -->
-          <input type="file" id="image" (change)="onFileSelected($event)" placeholder="image" />
+        <!-- Champ Prénom avec validation -->
+<input type="text" id="prenom" [(ngModel)]="user.prenom" name="prenom" required placeholder="Prénom" />
+<div *ngIf="errors.prenom" class="error-message">
+  <small>{{ errors.prenom }}</small>
+</div>
+
+<!-- Champ Nom avec validation -->
+<input type="text" id="nom" [(ngModel)]="user.nom" name="nom" required placeholder="Nom" />
+<div *ngIf="errors.nom" class="error-message">
+  <small>{{ errors.nom }}</small>
+</div>
+
+<!-- Champ CNI avec validation -->
+<input type="text" id="numero_identite" [(ngModel)]="user.numero_identite" name="numero_identite" required placeholder="CNI" />
+<div *ngIf="errors.numero_identite" class="error-message">
+  <small>{{ errors.numero_identite }}</small>
+</div>
+
+<!-- Champ Téléphone avec validation -->
+<input type="text" id="telephone" [(ngModel)]="user.telephone" name="telephone" required placeholder="Téléphone" />
+<div *ngIf="errors.telephone" class="error-message">
+  <small>{{ errors.telephone }}</small>
+</div>
+
+<!-- Champ Email avec validation -->
+<input type="email" id="email" [(ngModel)]="user.email" name="email" required placeholder="Email" />
+<div *ngIf="errors.email" class="error-message">
+  <small>{{ errors.email }}</small>
+</div>
+
+<!-- Champ Mot de passe avec validation -->
+<input type="password" id="password" [(ngModel)]="user.password" name="password" required placeholder="Mot de passe" />
+<div *ngIf="errors.password" class="error-message">
+  <small>{{ errors.password }}</small>
+</div>
+
+<!-- Sélection Nationalité avec validation -->
+<select id="nationnalite" [(ngModel)]="user.nationnalite" name="nationnalite" required>
+  <option value="" disabled selected>Sélectionner une nationalité</option>
+  <option value="senegalais">Sénégalais</option>
+  <option value="stranger resident">Étranger résident</option>
+  <option value="etranger non resident">Étranger non résident</option>
+</select>
+<div *ngIf="errors.nationnalite" class="error-message">
+  <small>{{ errors.nationnalite }}</small>
+</div>
+
+<input type="file" id="image" (change)="onFileSelected($event)" placeholder="image" />
+
+
       
           <button type="submit">S'inscrire</button>
         </form>

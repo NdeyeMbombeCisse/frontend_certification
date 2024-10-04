@@ -1,7 +1,7 @@
 
 
-body {
-  background-color: #f4f4f4;
+.body {
+  background-image: url(../../../../assets/images/backround_dashboard.png);
 }
 
 .burger-menu {
@@ -83,6 +83,7 @@ body {
     overflow: hidden;
     background-color: white;
     margin-top: 120px;
+    border: solid 1px rgb(212, 197, 197);
 }
 
 .reservation-details {
@@ -185,12 +186,15 @@ h1 {
             z-index: 1;
             background-color: #227093;
         }
+
+
+
         
      
     
         .burger-menu {
             display: flex;
-            margin-left: 220px;
+            margin-left: 150px;
             align-items: center;
         }
     
