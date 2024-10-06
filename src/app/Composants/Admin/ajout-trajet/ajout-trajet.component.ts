@@ -1,15 +1,4 @@
-// import { Component } from '@angular/core';
 
-// @Component({
-//   selector: 'app-ajout-trajet',
-//   standalone: true,
-//   imports: [],
-//   templateUrl: './ajout-trajet.component.html',
-//   styleUrl: './ajout-trajet.component.css'
-// })
-// export class AjoutTrajetComponent {
-
-// }
 
 import { Component, inject } from '@angular/core';
 import { TrajetService } from '../../../Services/trajet.service';
@@ -18,23 +7,30 @@ import { storageUrl } from '../../../Services/apiUrl';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BateauModel } from '../bateau.model';
+import { Router, RouterModule } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+import { AuthService } from '../../../Services/auth.service';
 
 @Component({
   selector: 'app-ajout-trajet',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule,CommonModule,RouterModule],
   templateUrl: './ajout-trajet.component.html',
   styleUrl: './ajout-trajet.component.css'
 })
 export class AjoutTrajetComponent {
 
   private trajetService = inject(TrajetService);
+  private userService = inject(AuthService);
+
 
   // declaration des variables
   tabtrajet:TrajetModel[]=[];
   trajetObject:TrajetModel = {};
   tabBateaux:BateauModel[] =[];
   imageStorage:any= storageUrl;
+  private router= inject(Router);
+
 
   // declaration des methodes
   ngOnInit(): void {
@@ -110,5 +106,22 @@ export class AjoutTrajetComponent {
     );
   }
 
+  isActive(route: string): boolean {
+    return this.router.url === route;
+  }
+
+  logout(): void {
+    this.userService.logout().subscribe(
+      () => {
+        // Optionnel : Effacer les informations de l'utilisateur
+        localStorage.removeItem('token');
+        // Rediriger vers la page de connexion ou la page d'accueil
+        this.router.navigate(['/connexion']);
+      },
+      (error: HttpErrorResponse) => { // Spécifiez le type pour 'error'
+        console.error('Erreur de déconnexion', error);
+      }
+    );
+  }
 }
 

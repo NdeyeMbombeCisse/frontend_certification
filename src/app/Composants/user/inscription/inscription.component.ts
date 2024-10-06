@@ -59,8 +59,11 @@ export class InscriptionComponent implements OnInit {
             icon: 'success',
             confirmButtonText: 'OK'
           });
+
           this.user = {}; // Réinitialiser les champs après la soumission
           this.selectedFile = null; // Réinitialiser le fichier sélectionné
+          this.router.navigate(['connexion']);
+
         },
         (error: any) => {
           console.error('Erreur lors de la création de l\'utilisateur', error);

@@ -5,6 +5,11 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+/* souligner la page de navigation */
+.menu-item{
+    border-bottom: 5px solid #feb906;
+}
+
 body {
     background-color: #f4f4f4;
 }
@@ -162,7 +167,7 @@ header::after {
     font-weight: 400;
     font-style: normal;
     color: #0D8434;
-    line-height: 2.5;
+    line-height: 1.5;
 }
 
 .mission-content  p{
@@ -196,7 +201,24 @@ header::after {
     width: 60rem; /* Ajuste la taille de l'image */
     height: auto;  /* Conserve le ratio de l'image */
     margin-right: 40px;
-}
+    
+    /* Initialement, l'image est hors écran à gauche (translateX(-100%)) */
+    transform: translateX(-100%);
+    
+    /* Appliquer l'animation */
+    animation: slideIn 2s ease-out forwards; /* L'animation dure 2 secondes et va dans une direction fluide */
+  }
+  
+  /* Définir l'animation de déplacement */
+  @keyframes slideIn {
+    0% {
+      transform: translateX(-100%); /* L'image commence hors de l'écran à gauche */
+    }
+    100% {
+      transform: translateX(0); /* L'image arrive à sa position normale */
+    }
+  }
+  
 
 /* trait apres la section mission */
 
@@ -220,11 +242,22 @@ header::after {
     
 }
 
-.vision img {
-    width: 60rem; /* Ajuste la taille de l'image */
-    height: auto;  /* Conserve le ratio de l'image */
+/* .vision img {
+    width: 60rem; 
+    height: auto;  
     margin-left: 60px;
+} */
+
+.vision img {
+    width: 60rem;
+    height: auto;
+    margin-left: 60px;
+    
+    /* Animation */
+    animation: zoomIn 1.5s ease forwards; /* Animation sur 1.5 secondes */
 }
+
+
 
 .vision-content {
     max-width: 50%; /* Limite la largeur du contenu texte */
@@ -368,6 +401,10 @@ header::after {
 
 .title .dak{
     margin-left: 320px;
+    color: #227093;
+}
+.title .zig{
+    color: white;
 }
 
 .title h1{
@@ -473,8 +510,12 @@ header::after {
 
 .title_deux .dak{
     margin-left: 320px;
+    color:#227093;
 }
 
+.title_deux .zig{
+    color:white;
+}
 .title_deux h1{
     font-family: "Gilda Display", serif;
     font-size: 40px;
@@ -729,7 +770,7 @@ footer ul li {
         align-items: center; /* Centre verticalement */
         text-align: center;
         width: 100%;
-        height: 760px;
+        height: 700px;
         background: linear-gradient(rgba(106, 176, 204, 0.3), rgba(106, 176, 204, 0.3)), 
                     url('../../../../assets/images/baniere.png') no-repeat center center/cover;
         color: white;
@@ -737,7 +778,7 @@ footer ul li {
 
     .burger-menu {
         display: flex;
-        margin-left: 150px;
+        margin-left: 220px;
     }
 
     .auth-buttons .register {
@@ -749,7 +790,7 @@ footer ul li {
         line-height: 1.5;
     }
     .baniere-content p {
-        font-size: 20px;
+        font-size: 15px;
         line-height: 2;
     }
 
@@ -791,12 +832,13 @@ footer ul li {
     }
     
     .mission-content  h1{
-        font-size: 28px;
+        font-size: 25px;
         font-family: "Gilda Display", serif;
         font-weight: 400;
         font-style: normal;
         color: #0D8434;
         margin-top: 80px;
+        line-height: 1.5;
     }
     
     .mission-content  p{
@@ -1115,6 +1157,7 @@ footer ul li {
         margin-top: 10px;
         gap: 1px;
         margin-bottom: 100px;
+        margin-left: -6px;
         
 
     }

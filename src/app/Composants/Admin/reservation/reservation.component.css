@@ -1,10 +1,28 @@
 /* style sidebar */
 
+.contenu {
+  display: flex;
+  position: relative; /* Nécessaire pour le positionnement du pseudo-élément */
+  background-color: rgba(222, 222, 222, 0.3); /* Couleur de fond semi-transparente */
+}
 
-.contenu{
-    display: flex;
-    background-color: rgba(34, 112, 147, 0.3);
+/* Pseudo-élément pour l'image de fond */
+.contenu::before {
+  content: '';
+  position: absolute; /* Pour le positionner en arrière-plan */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url(../../../../assets/images/backround_dashboard.png);
+  background-size: cover; /* Pour couvrir tout le conteneur */
+  opacity: 0.5; /* Ajustez l'opacité ici */
+  z-index: 1; /* S'assure que l'image de fond est derrière le contenu */
+}
 
+.contenu > * {
+  position: relative; /* Pour garder le contenu au-dessus de l'image */
+  z-index: 2; /* Pour s'assurer que le contenu est visible au-dessus de l'image de fond */
 }
 .sidebar {
   background-color: #618062; /* Background color */

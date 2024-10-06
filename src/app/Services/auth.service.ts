@@ -64,6 +64,12 @@ export class AuthService {
     return this.isAuthenticated; // Retourner l'état d'authentification
 }
 
+// mofier profil
+updateProfile(userData: any, id:any) {
+  return this.http.put(`${apiUrl}/updateUser/${id}`,userData)
+}
+
+
 
 
 }

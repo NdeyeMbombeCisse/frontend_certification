@@ -30,7 +30,7 @@
 
             <nav>
                 <ul class="nav-list" [class.active]="isMenuOpen">
-                  <li><a [routerLink]="['/portail']" class="menu-item" [class.active]="isActive('/portail')">Acceuil</a></li>
+                  <li><a href="portail" class="menu-item" >Acceuil</a></li>
                   <li><a href="#">Nouvelles Information</a></li>
                   <li><a href="liste_trajet">Trajets En Cours</a></li>
                 </ul>
@@ -54,15 +54,16 @@
     
 <section class="mission">
     <div class="mission-content">
-        <h1>Notre Mission</h1>
+        <h1>Présentation de Cosoma Réservation</h1>
         <p>
-            Notre engagement est d'offrir à nos utilisateurs une <br>
-            expérience fluide, sécurisée et transparente, tout en  <br>
-            assurant la fiabilité des services offerts. Nous <br>
-            croyons en l'importance de l'innovation pour répondre <br>
-            aux besoins actuels et futurs de nos clients.
+            Bienvenue dans l'ère numérique avec Cosoma Réservation,  <br>
+            votre solution innovante pour l'achat et la vente de billets <br>
+            en ligne pour le trajet maritime entre Dakar et Ziguinchor. <br>
+            Notre plateforme vise à simplifier et à moderniser le <br>
+            processus de réservation, tout en offrant une expérience <br>
+            utilisateur fluide et intuitive.
         </p>
-        <button ><a href="" class="mission_button">Voir les trajets</a></button>
+        <button ><a href="liste_trajet" class="mission_button">Voir les trajets</a></button>
     </div>
     <img src="../../../../assets/images/mission.png" alt="">
 </section>
@@ -415,11 +416,7 @@
     </ul>
 </footer>
 
-<script>
-    document.querySelector('.burger-menu').addEventListener('click', function() {
-        document.querySelector('.nav-list').classList.toggle('active');
-    });
-</script>
+
 </body>
 
 </html>

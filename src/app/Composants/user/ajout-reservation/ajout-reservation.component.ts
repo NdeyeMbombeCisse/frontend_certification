@@ -36,10 +36,15 @@ export class AjoutReservationComponent implements OnInit {
   reservationData: ReservationModel = {};
   userId: number | null = null; 
   trajetId: number | null = null; // Champ pour stocker l'ID du trajet
-
+  reservedPlaces: number[] = [];
   ngOnInit(): void {
     const userIdString = localStorage.getItem('user_id');
     console.log('ID utilisateur récupéré:', userIdString);
+    // Récupérer l'ID du trajet depuis les paramètres de la route
+    this.route.params.subscribe(params => {
+      this.trajetId = +params['trajetId']; // Le `+` convertit la chaîne en nombre
+      this.getReservedPlaces(this.trajetId);
+    });
 
     if (userIdString) {
         this.userId = Number(userIdString);
@@ -47,8 +52,8 @@ export class AjoutReservationComponent implements OnInit {
     }
 
     if (!this.userId) {
-        alert('Vous devez être connecté pour effectuer une réservation.');
-        this.router.navigate(['/connexion']);
+      Swal.fire('Erreur', 'Connectez pour pouvoir effectuer une reservation', 'error');
+      this.router.navigate(['/connexion']);
         return;
     }
 
@@ -76,34 +81,81 @@ export class AjoutReservationComponent implements OnInit {
     });
   }
 
-  createReservation() {
-    if (this.trajetId) {
-        this.reservationData.trajet_id = this.trajetId; // Assigner l'ID du trajet
-    } else {
-        alert('Erreur : ID de trajet non disponible.');
-        return;
-    }
+//   createReservation() {
+//     if (this.trajetId) {
+//         this.reservationData.trajet_id = this.trajetId; // Assigner l'ID du trajet
+//     } else {
+//         alert('Erreur : ID de trajet non disponible.');
+//         return;
+//     }
 
-    this.reservationData.user_id = this.userId; // Assigner l'ID utilisateur
+//     this.reservationData.user_id = this.userId; // Assigner l'ID utilisateur
 
-    this.reservationService.createReservation(this.reservationData).subscribe(
-        (response: any) => {
-          Swal.fire({
-            title: 'Succès!',
-            text: 'Reservation faite  avec succès!',
-            icon: 'success',
-            confirmButtonText: 'OK'
-          });
+//     this.reservationService.createReservation(this.reservationData).subscribe(
+//         (response: any) => {
+//           Swal.fire({
+//             title: 'Succès!',
+//             text: 'Reservation faite  avec succès!',
+//             icon: 'success',
+//             confirmButtonText: 'OK'
+//           });
          
-            // alert(response.message || 'Réservation créée avec succès.');
-            this.qrCodeUrl = response.qr_code; // Récupère l'URL du QR code
-            this.resetForm();
-        },
-        (error: any) => {
-            const errorMessage = error.error?.message || 'Erreur lors de la création de la réservation';
-            alert(errorMessage);
-        }
-    );
+//             // alert(response.message || 'Réservation créée avec succès.');
+//             this.qrCodeUrl = response.qr_code; // Récupère l'URL du QR code
+//             this.resetForm();
+
+//         },
+//         (error: any) => {
+//           const errorMessage = error.error?.message || 'Erreur lors de la création de la réservation';
+      
+//           Swal.fire({
+//               icon: 'error',
+//               title: 'Oops...',
+//               text: errorMessage,
+//               confirmButtonText: 'OK'
+//           });
+//       }
+//     );
+// }
+
+
+createReservation() {
+  if (this.trajetId) {
+      this.reservationData.trajet_id = this.trajetId; // Assigner l'ID du trajet
+  } else {
+      alert('Erreur : ID de trajet non disponible.');
+      return;
+  }
+
+  this.reservationData.user_id = this.userId; // Assigner l'ID utilisateur
+
+  this.reservationService.createReservation(this.reservationData).subscribe(
+      (response: any) => {
+        Swal.fire({
+          title: 'Succès!',
+          text: 'Réservation faite avec succès!',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        }).then(() => {
+          // Rediriger vers la page de paiement après que l'utilisateur clique sur "OK"
+          window.location.href = 'https://checkout.naboopay.com/checkout/ec597225-ad9d-40ac-9339-3095bdb5615d';
+        });
+        
+        this.qrCodeUrl = response.qr_code; // Récupère l'URL du QR code
+        this.resetForm();
+          
+      },
+      (error: any) => {
+        const errorMessage = error.error?.message || 'Erreur lors de la création de la réservation';
+    
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: errorMessage,
+            confirmButtonText: 'OK'
+        });
+    }
+  );
 }
 
 
@@ -134,6 +186,26 @@ export class AjoutReservationComponent implements OnInit {
     }
   }
 
+  // places deja reservee
+
+  getReservedPlaces(trajetId: number): void {
+    if (trajetId) {
+      this.reservationService.getReservedPlaces(trajetId).subscribe
+        ((response: any) => {
+          if (response && response.data) {
+            this.reservedPlaces = response.data; 
+          } else {
+            this.error = 'Aucune place réservée trouvée.';
+            this.reservedPlaces = [];
+          }
+          this.error = null;
+        })
+        
+    } else {
+      this.reservedPlaces = []; 
+    }
+  }
+  
   isActive(route: string): boolean {
     return this.router.url === route;
   }
@@ -142,6 +214,10 @@ export class AjoutReservationComponent implements OnInit {
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  isPlaceReserved(placeId?: number): boolean {
+    return this.reservedPlaces.includes(placeId as number);
   }
 
   

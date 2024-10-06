@@ -1,0 +1,15 @@
+<div class="notification-container">
+    <div class="notification-card card card-custom shadow-lg p-3" *ngFor="let notification of notifications">
+        <div class="d-flex align-items-center mb-3">
+            <img [src]="notification.image || 'assets/images/bgStatistique.png'" alt="Illustration" class="rounded-circle me-3">
+            <div>
+                <h2 class="h6 mb-0">{{ notification.title }}</h2>
+                <p class="mb-0 text-muted-foreground">{{ notification.description }}</p>
+                <div class="text-muted-foreground small">
+                    <p class="mb-0">Publié par {{ notification.author }}</p>
+                    <p class="mb-01">{{ notification.date | date: 'dd/MM/yyyy' }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

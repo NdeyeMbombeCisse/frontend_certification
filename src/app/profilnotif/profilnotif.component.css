@@ -1,0 +1,16 @@
+.elements{
+    display: flex;
+}
+
+.notif{
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: rgb(72, 115, 153);
+    margin-left: 50px;
+}
+
+.notif img{
+   margin-left: 10px;
+   margin-top: 7px;
+}

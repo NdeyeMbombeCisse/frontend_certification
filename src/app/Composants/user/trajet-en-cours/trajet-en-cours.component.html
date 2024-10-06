@@ -11,19 +11,13 @@
       <span></span>
   </button>
       
-      <!-- <nav>
-          <ul class="nav-list">
-              <li> <a [routerLink]="['/portail']" class="menu-item" [class.active]="isActive('/portail')">Acceuil</a></li>
-              <li><a href="#">Nouvelles Information</a></li>
-              <li><a href="liste_trajet">Trajets En Cours</a></li>
-          </ul>
-      </nav> -->
+      
 
       <nav>
           <ul class="nav-list" [class.active]="isMenuOpen">
-            <li><a [routerLink]="['/portail']" class="menu-item" [class.active]="isActive('/portail')">Acceuil</a></li>
+            <li><a href="portail"  >Acceuil</a></li>
             <li><a href="#">Nouvelles Information</a></li>
-            <li><a href="liste_trajet">Trajets En Cours</a></li>
+            <li><a href="liste_trajet" class="menu-item">Trajets En Cours</a></li>
           </ul>
         </nav>
       <div class="auth-buttons">

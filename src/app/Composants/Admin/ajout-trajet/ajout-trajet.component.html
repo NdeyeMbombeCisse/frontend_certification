@@ -1,46 +1,36 @@
 <div class="contenu">
     <div class="sidebar">
         <div class="logo">
-          <img src="../../../../assets/images/logo.png" alt="Logo">
+            <img src="../../../../assets/images/logo.png" alt="Logo">
         </div>
         <nav class="menu">
-            <!-- Lien vers le Dashboard -->
-            <a  class="menu-item active">
+            <a [routerLink]="['/dasbaord_admin']" class="menu-item" [class.active]="isActive('/dasbaord_admin')">
                 <img src="../../../../assets/images/icons/dashboard.svg" alt="">
                 Dashboard
             </a>
-      
-            <!-- Lien vers la liste des projets (Projets mairie) -->
-            <a href="afficher_trajet" class="menu-item">
+    
+            <a [routerLink]="['/afficher_trajet']" class="menu-item" [class.active]="isActive('/afficher_trajet')">
                 <i class="fa-solid fa-ship"></i> Trajet
-              </a>
-              
-      
-            <!-- Lien vers la liste des habitants -->
-            <a  href="ajoutTrojet" class="menu-item">
-              <img src="../../../../assets/images/icons/group.svg" alt="">
-              <i class="fa-solid fa-plus"></i> Ajouter un Trajet
             </a>
-      
-            <!-- Lien vide pour Nouveau projet -->
-            <a href="#" class="menu-item">
-                <i class="fa-solid fa-list"></i>Reservation
+    
+            <a [routerLink]="['/ajouterTrajet']" class="menu-item" [class.active]="isActive('/ajouterTrajet')">
+                <img src="../../../../assets/images/icons/group.svg" alt="">
+                <i class="fa-solid fa-plus"></i> Ajouter un Trajet
             </a>
-      
-            <!-- Lien vers les projets soumis -->
-           
-      
-            <!-- Lien vide pour Déconnexion -->
-            <a href="#" class="menu-item">
-              <img src="../../../../assets/images/icons/logout.svg" alt="">
-              <i class="fa-solid fa-arrow-right-from-bracket"></i> Déconnexion
+    
+            <a [routerLink]="['/liste_reservation']" class="menu-item" [class.active]="isActive('/liste_reservation')">
+                <i class="fa-solid fa-list"></i> Reservation
+            </a>
+    
+            <a (click)="logout()" class="menu-item">
+                <img src="../../../../assets/images/icons/logout.svg" alt="">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i> Déconnexion
             </a>
         </nav>
-      </div>
-  
+    </div>
    
     <div class="ajout-trajet-container">
-        <h1 class="mb-4">MODIFIER UN TRAJET</h1>
+        <h1 class="mb-4">AJOUTER UN TRAJET</h1>
     
         <form (ngSubmit)="saveTrajet()">
             <!-- Date de départ et Date d'arrivée sur la même ligne -->
@@ -167,7 +157,7 @@
             </div>
     
             <!-- Bouton de modification -->
-            <button type="submit" class="btn btn-primary">Modifier le trajet</button>
+            <button type="submit" class="btn btn-primary">Ajouter le trajet</button>
         </form>
     </div>
     

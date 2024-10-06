@@ -4,6 +4,11 @@
   background-image: url(../../../../assets/images/backround_dashboard.png);
 }
 
+/* souligner la page de navigation */
+.menu-item{
+    border-bottom: 5px solid #feb906;
+}
+
 .burger-menu {
   display: none;
   flex-direction: column;

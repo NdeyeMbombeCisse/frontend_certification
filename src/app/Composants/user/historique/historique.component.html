@@ -11,12 +11,12 @@
       
       <nav>
           <ul class="nav-list" [class.active]="isMenuOpen">
-            <li><a  href="portail" class="menu-item" [class.active]="isActive('/portail')">Acceuil</a></li>
+            <li><a  href="portail" >Acceuil</a></li>
             <li><a href="#">Nouvelles Information</a></li>
             <li><a href="liste_trajet">Trajets En Cours</a></li>
-            <li><a [routerLink]="['/historique_reservation']">Mes reservations</a></li>
+            <li><a href="historique_reservation" class="menu-item">Mes reservations</a></li>
             <li><a (click)="logout()" >Se deconnexion</a></li>
-            <li><a href="profil">Voir mon Profil</a></li>
+            <li><a href="profil"><img src="../../../../assets/images/account_circle 1.png" alt=""></a></li>
 
             
 

@@ -1,14 +1,34 @@
 /* style sidebar */
-
-
-.contenu{
-    display: flex;
-    background-color: rgba(34, 112, 147, 0.3);
-    background-image: url(../../../../assets/images/backround_dashboard.png);
-
+.profil{
+  display: flex;
 }
-.sidebar {
-  background-color: #618062; /* Background color */
+.contenu {
+  display: flex;
+  position: relative; /* Nécessaire pour le positionnement du pseudo-élément */
+  background-color: rgba(222, 222, 222, 0.3); /* Couleur de fond semi-transparente */
+}
+
+/* Pseudo-élément pour l'image de fond */
+.contenu::before {
+  content: '';
+  position: absolute; /* Pour le positionner en arrière-plan */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url(../../../../assets/images/backround_dashboard.png);
+  background-size: cover; /* Pour couvrir tout le conteneur */
+  opacity: 0.5; /* Ajustez l'opacité ici */
+  z-index: 1; /* S'assure que l'image de fond est derrière le contenu */
+}
+
+.contenu > * {
+  position: relative; /* Pour garder le contenu au-dessus de l'image */
+  z-index: 2; /* Pour s'assurer que le contenu est visible au-dessus de l'image de fond */
+}
+ 
+ .sidebar {
+  background-color: #618062; 
   color: #fff;
   width: 300px;
   padding: 20px;
@@ -22,13 +42,17 @@
   color: #FFF;
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
-
   font-style: normal;
 font-size: 27px;
 font-style: normal; 
 font-weight: 400;
 line-height: 2;
-}
+
+} 
+
+
+
+
 
 .logo img {
   max-width: 100%;
@@ -120,12 +144,13 @@ line-height: 2;
     background-size: cover; /* Pour que l'image couvre tout le div */
     background-position: center; /* Pour centrer l'image d'arrière-plan */
     padding: 20px; /* Espacement intérieur */
-    height: 400px; /* Hauteur du div */
-    width: 1400px;
+    height: 500px; /* Hauteur du div */
+    margin-left: 60px;
+    width: 92%;
     color: white; /* Couleur du texte */
-    border-radius: 40px;
-    margin-left: 100px;
+    border-radius: 50px;
     margin-top: 100px;
+
 }
 
 
@@ -135,6 +160,8 @@ line-height: 2;
     width: 600px;
     height: 450px;
     margin-top: -120px;
+    margin-right: 60px;
+    font-family:inter;
 }
 .container h1{
     font-size: 50px;
@@ -142,7 +169,6 @@ line-height: 2;
     color: white;
     line-height: 1.5;
     margin-top: -40px;
-    font-family: gilda;
 }
 
 .container p{
@@ -186,14 +212,13 @@ a{
 /* statistique */
 .statistiques {
     display: flex; /* Utilise flexbox pour aligner les cartes */
-    flex-wrap: wrap; /* Permet aux cartes de passer à la ligne si nécessaire */
     padding: 20px; /* Espacement autour de la section */
-    margin-left: 70px;
+    margin-top: -25px;
 }
 
 .contenu-statistique {
-    width: 430px; /* Largeur de la carte */
-    height: 250px; /* Hauteur de la carte */
+    width: 400px; /* Largeur de la carte */
+    height: 200px; /* Hauteur de la carte */
     background-color: #fff; /* Couleur de fond de la carte */
     border-radius: 8px; /* Arrondi des coins */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour donner du relief */
@@ -201,8 +226,40 @@ a{
     flex-direction: column; /* Organise le contenu en colonne */
     align-items: center; /* Centre le contenu horizontalement */
     justify-content: center; /* Centre le contenu verticalement */
-    margin: 35px; /* Espacement entre les cartes */
+    margin: 44px; /* Espacement entre les cartes */
+    flex-direction: row;
 }
+
+.icon-container {
+  background-color: #f0f0f0; /* Couleur de fond */
+  border-radius: 50%; /* Rend le conteneur circulaire */
+  padding: 10px; /* Espace autour de l'icône */
+  display: flex; /* Utiliser Flexbox pour centrer l'icône */
+  justify-content: center; /* Centrer horizontalement */
+  align-items: center; /* Centrer verticalement */
+  width: 70px;
+  height: 70px;
+}
+
+.contenu-statistique {
+  display: flex; /* Utiliser Flexbox pour disposer les éléments */
+  align-items: center; /* Aligner verticalement au centre */
+}
+
+.statistiques-texte {
+  display: flex;
+  flex-direction: column; /* Aligner les titres en colonne */
+  margin-left: 10px; /* Espace entre l'icône et les titres */
+}
+
+
+.statistiques-texte {
+  display: flex;
+  flex-direction: column; /* Aligner les titres en colonne */
+  margin-left: 40px; /* Espace entre l'icône et les titres */
+}
+
+
 
 .contenu-statistique:hover {
     transform: scale(1.05); /* Augmente la taille de la carte au survol */
@@ -214,81 +271,72 @@ a{
 
 
 .contenu-statistique h1 {
-    font-size: 56px; /* Taille du titre */
+    font-size: 36px; /* Taille du titre */
     margin: 0; /* Enlève la marge par défaut */
-    color: #227093;
+    color:black;
 }
 
 .contenu-statistique h2 {
-    font-size: 44px; /* Taille du sous-titre */
+    font-size: 34px; /* Taille du sous-titre */
     /* color: #6D9773;  */
     margin-top: 5px; /* Espacement au-dessus du sous-titre */
-    color: #227093;
+    color:black;
 
 }
-
-/* style trajet */
-.trajets_encours {
-    display: flex; /* Utiliser flexbox pour aligner les cartes */
-    flex-wrap: wrap; /* Permet aux cartes de passer à la ligne si nécessaire */
-    justify-content: center; /* Centre les cartes horizontalement */
-    padding: 20px; /* Espacement autour de la section */
-    margin-left: 5px;
+/* trajets */
+table {
+  width: 40%;
+  border-collapse: collapse;
+  margin-left: 70px;
+}
+.titlediv{
+  margin-left: 70px;
+  font-size: 20px;
+  font-family: "Gilda Display", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #0D8434;
+  margin-top: -30px;
+  
 }
 
-.trajet {
-    width: 630px; /* Largeur de chaque carte */
-    background-color: #fff; /* Couleur de fond de la carte */
-    border-radius: 8px; /* Arrondi des coins */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour donner du relief */
-    margin: 10px; /* Marge pour espacer les cartes */
-    padding: 15px; /* Espacement interne de la carte */
-    text-align: left; /* Alignement du texte à gauche */
-    height: 280px;
+tbody tr:nth-child(odd) {
+  background-color: #f2f2f2; /* Couleur pour les lignes impaires */
 }
 
-
-.reservation{
-    font-size: 50px; /* Taille du titre */
-    margin: 0 0 10px 0; /* Espacement sous le titre */
-    color: #5a7d5e;
-    margin-left: 125px;
+tbody tr:nth-child(even) {
+  background-color: #ffffff; /* Couleur pour les lignes paires */
 }
 
-
-
-.trajet h2 {
-    font-size: 40px; /* Taille du titre */
-    margin: 0 0 10px 0; /* Espacement sous le titre */
-    color: #227093;
+th, td {
+  padding: 20px;
+  text-align: left;
+  font-size: 24px;
 }
 
-.trajet ul {
-    list-style-type: none; /* Enlève les puces de la liste */
-    padding: 0; /* Enlève le padding par défaut */
+th {
+  background-color: #227093;
+  color: white;
 }
 
-.trajet li {
-    margin-bottom: 5px; /* Espacement entre les éléments de la liste */
-    font-size: 30px;
+tr:nth-child(even) {
+  background-color: #f2f2f2;
 }
 
-.trajet button {
-    background-color: #227093;
-    padding: 20px 10px;
-    border-radius: 5px;
-    text-decoration: none;
-    color: white;
-    font-weight: 700;
-    font-size: 20px;
-    transition: background-color 0.3s ease;
-    border: solid 1px white;
-    margin-top: 10px;
+button {
+  background-color: #227093;
+  color: white;
+  padding: 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 20px;
 }
 
-.trajet button:hover {
-    background-color: #5a7d5e; /* Changement de couleur au survol */
+button:hover {
+  background-color: #1e5985;
 }
+
 
 /* Autre */
 .autres {

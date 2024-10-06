@@ -11,58 +11,67 @@
   </button>
       
       <nav>
-          <ul class="nav-list" [class.active]="isMenuOpen">
-            <li><a [routerLink]="['/portail']" class="menu-item" [class.active]="isActive('/portail')">Acceuil</a></li>
-            <li><a href="#">Nouvelles Information</a></li>
-            <li><a href="liste_trajet">Trajets En Cours</a></li>
-            <li><a href="historique_reservation">Mes reservations</a></li>
+        <ul class="nav-list" [class.active]="isMenuOpen">
+          <li><a  href="portail" >Acceuil</a></li>
+          <li><a href="#">Nouvelles Information</a></li>
+          <li><a href="liste_trajet">Trajets En Cours</a></li>
+          <li><a href="historique_reservation" class="menu-item">Mes reservations</a></li>
+          <li><a (click)="logout()" >Se deconnexion</a></li>
+          <li><a href="profil"><img src="../../../../assets/images/account_circle 1.png" alt=""></a></li>
 
-          </ul>
+          
+
+        </ul>
         </nav>
-        <div class="auth-buttons">
-          <a href="inscription_user" class="btn register">Se deconnexion</a>
-      </div>
+       
   </div>
 </header>
 <div class="body">
-  <div class="form-container">
-    <h1>Profil de {{ userObject.prenom }}  {{ userObject.nom }}</h1>
-    <form>
-      <div class="form-group">
-        <div class="field">
-          <label>Prenom :</label>
-          <input type="text" [(ngModel)]="userObject.prenom" name="prenom" readonly />
+  <div class="body">
+    <div class="form-container">
+      <h1>Profil de {{ userObject.prenom }} {{ userObject.nom }}</h1>
+      <form (ngSubmit)="saveProfile()">
+        <div class="form-group">
+          <div class="field">
+            <label>Prenom :</label>
+            <input type="text" [(ngModel)]="userObject.prenom" name="prenom" [readonly]="!isEditing" />
+          </div>
+          <div class="field">
+            <label>Nom :</label>
+            <input type="text" [(ngModel)]="userObject.nom" name="nom" [readonly]="!isEditing" />
+          </div>
         </div>
-        <div class="field">
-          <label>Nom :</label>
-          <input type="text" [(ngModel)]="userObject.nom" name="nom" readonly />
+    
+        <div class="form-group">
+          <div class="field">
+            <label>Email :</label>
+            <input type="email" [(ngModel)]="userObject.email" name="email" [readonly]="!isEditing" />
+          </div>
+          <div class="field">
+            <label>Téléphone :</label>
+            <input type="text" [(ngModel)]="userObject.telephone" name="telephone" [readonly]="!isEditing" />
+          </div>
         </div>
-      </div>
+    
+        <div class="form-group">
+          <div class="field">
+            <label>Nationalité :</label>
+            <input type="text" [(ngModel)]="userObject.nationnalite" name="nationnalite" [readonly]="!isEditing" />
+          </div>
+          <div class="field">
+            <label>CNI :</label>
+            <input type="text" [(ngModel)]="userObject.numero_identite" name="numero_identite" [readonly]="!isEditing" />
+          </div>
+        </div>
   
-      <div class="form-group">
-        <div class="field">
-          <label>Email :</label>
-          <input type="email" [(ngModel)]="userObject.email" name="email" readonly />
-        </div>
-        <div class="field">
-          <label>Téléphone :</label>
-          <input type="text" [(ngModel)]="userObject.telephone" name="telephone" readonly />
-        </div>
-      </div>
-  
-      <div class="form-group">
-        <div class="field">
-          <label>Nationalité :</label>
-          <input type="text" [(ngModel)]="userObject.nationnalite" name="nationnalite" readonly />
-        </div>
-        <div class="field">
-          <label>CNI :</label>
-          <input type="text" [(ngModel)]="userObject.numero_identite" name="numero_identite" readonly />
-        </div>
-      </div>
-      <button>Modifier</button>
-    </form>
+        <!-- Boutons de modification et d'enregistrement -->
+        <button type="button" (click)="toggleEdit()" *ngIf="!isEditing">Modifier</button>
+        <button type="submit" *ngIf="isEditing">Enregistrer</button>
+        <button type="button" (click)="toggleEdit()" *ngIf="isEditing">Annuler</button>
+      </form>
+    </div>
   </div>
+  
 </div>
  
   

@@ -5,8 +5,11 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-body {
-    background-color: #f4f4f4;
+
+
+/* souligner la page de navigation */
+.menu-item{
+    border-bottom: 5px solid #feb906;
 }
 
 /* menu burger */
@@ -44,22 +47,6 @@ body {
     margin-left: 30px;
 }
 
-/* nav ul {
-    display: flex;
-    list-style: none;
-}
-
-nav ul li {
-    margin-left: 60px;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 30px;
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
-} */
 
 
 nav ul {
@@ -377,7 +364,7 @@ footer ul li {
 
     .burger-menu {
         display: flex;
-        margin-left: 150px;
+        margin-left: 200px;
     }
 
     .auth-buttons .register {
@@ -479,6 +466,7 @@ footer ul li {
       width: 100%; /* Les images occupent toute la largeur */
       height: auto; /* Hauteur ajustée automatiquement */
       margin-bottom: 15px; /* Espacement en bas de l'image */
+      margin-top:20px;
     }
   
     .detailTrajet {
@@ -505,12 +493,8 @@ footer ul li {
       margin-bottom: 10px; /* Ajouter un espacement entre les lignes */
     }
   
-    .detailTrajet button {
-      width: 100%; /* Bouton prend toute la largeur */
-      font-size: 18px; /* Taille de la police réduite pour le bouton */
-      padding: 10px 0; /* Ajustement du padding */
-      margin-top: 10px; /* Espacement supérieur */
-    }
+   
+  
   
     /* Gestion de l'espacement pour les trajets inversés */
     .trajet-reverse {
@@ -544,12 +528,12 @@ footer ul li {
     .detailTrajet button {
         background-color: #227093;
         margin-left: 0;
-        padding: 20px 20px;
+        padding: 10px ;
         border-radius: 5px;
         text-decoration: none;
         color: white;
         font-weight: 700;
-        font-size: 25px;
+        font-size: 20px;
         transition: background-color 0.3s ease;
         border: solid 1px white;
         margin-top: 20px;

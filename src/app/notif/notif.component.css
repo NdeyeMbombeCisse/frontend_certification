@@ -1,0 +1,59 @@
+
+.card-custom {
+  width: 355px;
+  height: 104px;
+  flex-shrink: 0;
+  border-radius: 12px;
+background: #FFF;
+display: flex;
+justify-content: center;
+vertical-align: middle;
+
+}
+.card-custom img{
+  margin-left: -10px;
+  width: 70px;
+height: 70px;
+flex-shrink: 0;
+}
+.card-custom h2{
+  color: #000;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+margin-top: 22px;
+margin-left: -12;
+
+}
+.card-custom p{
+  color: #8E8989;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+
+
+}
+.text-muted-foreground {
+  color: #6c757d;
+}
+.text-muted-foreground{
+  margin-top: 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 22px;
+  width: 300px;
+}
+
+.text-muted-foreground .mb-01{
+  color: #8E8989;
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+
+}

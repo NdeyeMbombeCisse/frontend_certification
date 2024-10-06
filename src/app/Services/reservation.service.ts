@@ -56,6 +56,12 @@ getReservationsByTrajet(trajetId: number) {
 validateQRCode(data: { code: string }) {
   return this.http.post(`${apiUrl}validate-qr`, data);
 }
+
+// places reservee
+getReservedPlaces(trajetId: number) {
+  return this.http.get(`${apiUrl}/trajets/${trajetId}/places-reservees`);
+}
+
   
 
   

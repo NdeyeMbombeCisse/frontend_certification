@@ -1,0 +1,25 @@
+.search-bar {
+    position: relative;
+    margin: 0 auto;
+    max-width: 100%;
+    text-align: center;
+
+  }
+  
+  .search-bar input[type="text"] {
+    padding-left: 40px; /* Space for the search icon */
+    border-radius: 50px; /* Make the input rounded */
+    border: 1px solid #ccc;
+    height: 50px;
+    width: 50%;
+  }
+  
+  .search-bar::before {
+    content: '\1F50E'; /* Unicode for search icon */
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 455px;
+    transform: translateY(-50%);
+    color: #999;
+  }

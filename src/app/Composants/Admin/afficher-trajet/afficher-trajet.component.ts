@@ -8,11 +8,14 @@ import { Router, RouterModule } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ReservationModel } from '../../user/reservation.model';
+import { BarrechercheComponent } from '../../../barrecherche/barrecherche.component';
+import { ProfilComponent } from '../../user/profil/profil.component';
+import { ProfilnotifComponent } from '../../../profilnotif/profilnotif.component';
 
 @Component({
   selector: 'app-afficher-trajet',
   standalone: true,
-  imports: [CommonModule,FormsModule,RouterModule],
+  imports: [CommonModule,FormsModule,RouterModule,BarrechercheComponent,ProfilnotifComponent],
   templateUrl: './afficher-trajet.component.html',
   styleUrl: './afficher-trajet.component.css'
 })
