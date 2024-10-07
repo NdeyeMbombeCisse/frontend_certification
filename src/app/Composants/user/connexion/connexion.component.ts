@@ -137,8 +137,10 @@ export class ConnexionComponent {
                         } else if (response.role == "superAdmin") {
                             this.router.navigate(['/dashboard_Sadmin']);
                         } else if (response.role == "admin") {
-                            this.router.navigate(['/dashboard_admin']);
-                        } else {
+                            this.router.navigate(['/dasbaord_admin']);
+                        }else if (response.role == "vigile") {
+                          this.router.navigate(['/sca']);
+                      } else {
                             console.error('Rôle non reconnu:', response.role);
                         }
                     } else {

@@ -66,7 +66,6 @@ nav ul li a {
     font-weight: 700;
 }
 
-
 .auth-buttons .btn {
     margin-left: 20px;
     padding: 20px 20px;
@@ -81,8 +80,6 @@ nav ul li a {
     margin-right: 100px;
     font-weight: bold;
 }
-
-
 
 .baniere {
     display: flex;
@@ -102,8 +99,7 @@ nav ul li a {
     border-radius: 5px;
     text-decoration: none;
     color: #227093;
-    font-size: 40px;
-    
+    font-size: 40px;   
 }
 
 .servicetitle{
@@ -143,9 +139,6 @@ header::after {
     margin: 90px auto; /* Centre le trait et ajoute un espacement */
 }
 
-
-
-
 /* stytilisation de la partie mission */
 
 .mission {
@@ -177,7 +170,6 @@ header::after {
 }
 
 .mission-content button{
-
     margin-left: 20px;
     padding: 10px 20px;
     border-radius: 5px;
@@ -186,17 +178,13 @@ header::after {
     padding: 15px;
     margin-top: 20px;
     margin-left: 0;
-
 }
 
 .mission-content a{
     text-decoration: none;
     color: white;
-    font-size: 30px;
-    
+    font-size: 30px;   
 }
-
-
 .mission img {
     width: 60rem; /* Ajuste la taille de l'image */
     height: auto;  /* Conserve le ratio de l'image */
@@ -219,7 +207,6 @@ header::after {
     }
   }
   
-
 /* trait apres la section mission */
 
 .separator {
@@ -232,7 +219,6 @@ header::after {
     height: 7px;
 }
 
-
 /* stylisation de la partie mission */
 
 .vision {
@@ -242,12 +228,6 @@ header::after {
     
 }
 
-/* .vision img {
-    width: 60rem; 
-    height: auto;  
-    margin-left: 60px;
-} */
-
 .vision img {
     width: 60rem;
     height: auto;
@@ -256,8 +236,6 @@ header::after {
     /* Animation */
     animation: zoomIn 1.5s ease forwards; /* Animation sur 1.5 secondes */
 }
-
-
 
 .vision-content {
     max-width: 50%; /* Limite la largeur du contenu texte */
@@ -273,16 +251,11 @@ header::after {
     color: #0D8434;
     line-height: 2.5;
 }
-
 .vision-content  p{
     font-size: 30px;
-    line-height: 2;
+  line-height: 2;
 }
-
-
-
 /* style de la partie service */
-
 .service {
     display: flex;
     margin: 80px auto; /* Ajoute une marge en haut et centre l'élément horizontalement */
@@ -295,11 +268,6 @@ header::after {
     padding: 20px; /* Ajoute du padding à l'intérieur si nécessaire */
     box-sizing: border-box; /* Inclut le padding dans la largeur totale */
 }
-
-
-
-
-
 .card {
     background-color: white; 
     border-radius: 20px; 
@@ -312,13 +280,10 @@ header::after {
     align-items: flex-start; 
     transition: transform 0.3s, box-shadow 0.3s;
 }
-
 .card:hover {
     transform: translateY(-10px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
-
-
 .firstpart, .secondpart {
     margin-top: 70px;
     display: flex; /* Utilise Flexbox pour les cartes */
@@ -326,8 +291,6 @@ header::after {
     width: 100%; /* Prend toute la largeur disponible */
     margin-bottom: 20px; /* Espace entre les parties */
 }
-
-
 .card h2{
     font-size: 40px;
     font-family: "Gilda Display", serif;
@@ -336,69 +299,50 @@ header::after {
     color: #0D8434;
     line-height: 2;
     margin-top: 30px;
-
-
 }
-
 .card p{
     font-size: 30px;
     line-height: 2;
-    /* text-align: justify; */
-
 }
 
 .notification-icon {
-    width: 40px; /* Largeur de l'icône */
-    height: 40px; /* Hauteur de l'icône */
-    margin-bottom: 10px; /* Espace entre l'icône et le titre */
+    width: 40px; 
+    height: 40px; 
+    margin-bottom: 10px;
 }
-
 .notification-icon img {
     width: 4rem;
-    height: auto; /* Conserve le ratio de l'icône */
+    height: auto; 
 }
-
-
 /* style des horaires */
-
 .horaire {
     display: flex;
-    justify-content: space-between; /* Place la première image à gauche et les deux autres à droite */
-    align-items: center; /* Aligne verticalement les éléments */
-    padding: 20px; /* Ajoute un peu d'espacement autour */
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 20px; 
     margin-top: 50px;
 }
-
 .img_zig_dak {
     flex: 1; /* Donne de l'espace à la première image pour rester à gauche */
     margin-left: 80px;
     margin-top: 40px;
 }
-
 .zigdak {
     display: flex;
     flex-direction: column; /* Aligne les deux images en colonne */
-    flex: 1; /* Donne de l'espace aux images à droite */
-    align-items: flex-end; /* Aligne les images à droite */
+    flex: 1; 
+    align-items: flex-end; 
     margin-right: 100px;
 }
-
-/* .horaire img {
-    max-width: 100%; 
-    height: auto; 
-} */
-
 .title{
     display: flex;
     background-image: url(../../../../assets/images/titlebackround.png);
-    background-size: cover; /* Pour couvrir toute la zone */
-    background-position: center; /* Centre l'image */
-    padding: 20px; /* Ajoute de l'espace à l'intérieur de la div */
+    background-size: cover; 
+    background-position: center; 
+    padding: 20px; 
     width: 752px;
     margin-right: 70px;
-
 }
-
 .title .dak{
     margin-left: 320px;
     color: #227093;
@@ -406,30 +350,23 @@ header::after {
 .title .zig{
     color: white;
 }
-
 .title h1{
     font-family: "Gilda Display", serif;
     font-size: 40px;
-
 }
 .img_zig_dak img {
     width: 70rem; /* Augmente la taille de la première image */
     height: 42rem;
     margin-top: 40px;
 }
-
 .zigdak img {
     width: 55rem; /* Augmente la taille des deux images à droite */
     margin-bottom: 10px; /* Ajoute un espacement entre les images */
 }
-
 /* horaire zig dakar */
-
 .horaire h2{
     font-family: "Gilda Display", serif;
     font-size: 35px;
-
-
 }
 .carte-horaires {
     background-color: white; /* Fond blanc */
@@ -504,8 +441,6 @@ header::after {
     padding: 20px; /* Ajoute de l'espace à l'intérieur de la div */
     width: 752px;
     margin-right: 220px;
-
-
 }
 
 .title_deux .dak{
@@ -519,14 +454,8 @@ header::after {
 .title_deux h1{
     font-family: "Gilda Display", serif;
     font-size: 40px;
-
 }
-
-
-
-
 /* style des tarifs */
-
 .tarif {
     display: flex;
     justify-content: center; /* Centre les cartes horizontalement */
@@ -553,7 +482,6 @@ header::after {
     margin-top: 50px;
 }
 
-
 .nationalite-card:nth-child(2) {
     margin-bottom: 150px; /* Réduire la marge supérieure pour la deuxième carte */
 }
@@ -564,8 +492,7 @@ header::after {
     color: #227093;
     font-family: "Gilda Display", serif;
     font-size: 35px;
-    margin-top: 40px;
-    
+    margin-top: 40px;  
 }
 
 .nationalite-card h1::after {
@@ -576,7 +503,6 @@ header::after {
     background-color: #227093; /* Couleur du trait */
     margin: 40px auto 0; /* Espacement avec le texte */
 }
-
 /* Style des sous-cartes */
 .sub-cards {
     display: flex;
@@ -586,10 +512,6 @@ header::after {
     margin-top: 40px;
     margin-left: 20px;
 }
-
-
-
-
 .sub-card {
     display: flex;
     flex-direction: column;
@@ -606,15 +528,11 @@ header::after {
     margin-right: 20px;
 }
 
-
-
 .sub-card img {
     width: 50px; /* Taille de l'icône */
     height: 50px;
-    margin-bottom: 10px;
-    
+    margin-bottom: 10px;  
 }
-
 .sub-card h4 {
     font-size: 16px;
     margin: 5px 0;
@@ -622,12 +540,10 @@ header::after {
     font-size: 21px;
     line-height: 2;
 }
-
 .sub-card h4:last-of-type {
     font-weight: bold;
     color: #f8f5f4; /* Couleur du prix */
 }
-
 /* style contact */
 .form-container {
     display: flex; /* Utilise Flexbox pour le conteneur du formulaire */
@@ -642,12 +558,10 @@ header::after {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optionnel : ombre légère */
     height: 35rem; /* Hauteur automatique pour s'adapter au contenu */
 }
-
 .input-row {
     display: flex; /* Utilise Flexbox pour aligner les inputs */
     gap: 20px; /* Espacement entre les inputs */
 }
-
 .input-row input {
     width: 513px; /* Largeur fixée à 513 pixels */
     height: 73px; /* Hauteur fixée à 73 pixels */
@@ -656,11 +570,9 @@ header::after {
     border: 1px solid #ccc; /* Optionnel : bordure pour les inputs */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optionnel : ombre légère */
 }
-
 .message-row {
     margin-top: 20px; /* Espacement au-dessus du message */
 }
-
 .message-row textarea {
     width: 1050px; /* Largeur identique aux inputs */
     height: 150px; /* Hauteur fixe pour le message */
@@ -676,7 +588,6 @@ header::after {
     align-self: flex-start; /* Aligne le bouton à gauche */
     margin-top: 20px; /* Espacement au-dessus du bouton */
 }
-
 .button-row button {
     width: 200px; /* Largeur du bouton */
     height: 60px; /* Hauteur du bouton */
@@ -688,7 +599,6 @@ header::after {
     transition: background-color 0.3s; /* Transition pour le changement de couleur */
     font-size: 30px;
 }
-
 .button-row button:hover {
     background-color: #0B6A28; /* Couleur au survol */
 }
@@ -700,37 +610,31 @@ footer {
     text-align: center;
     padding: 20px;
 }
-
 footer ul {
     display: flex;
     justify-content: center;
     list-style: none;
     margin-top: 10px;
 }
-
 footer ul li {
     margin-left: 20px;
 }
 
-/* responsivite */
-/* Styles pour mobiles (smartphones) */
 .menu-item {
     color: #333; /* Default color */
     padding: 10px 15px; /* Add padding for better spacing */
     transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
   }
-  
   .menu-item:hover {
     background-color: #feb906; /* Change background on hover */
     color: #000; /* Change color on hover */
   }
-  /* responsivite */
+ /* responsivite */
   @media (max-width: 768px) {
     /* Masquer les éléments de navigation par défaut et afficher le menu burger */
     nav ul {
         display: none;
     }
-
     .connexion-buttons .btn {
         margin-left: 70px;
         padding: 15px 15px;
@@ -740,7 +644,6 @@ footer ul li {
         font-size: 15px;
         
     }
-
     .logo {
         width: 90px;
         margin-left: 40px;
@@ -759,11 +662,9 @@ footer ul li {
         z-index: 1;
         background-color: #227093;
     }
-
     body{
         overflow-x: hidden;
     }
-    
     .baniere {
         display: flex;
         justify-content: center; /* Centre horizontalement */
@@ -775,16 +676,13 @@ footer ul li {
                     url('../../../../assets/images/baniere.png') no-repeat center center/cover;
         color: white;
     }
-
     .burger-menu {
         display: flex;
         margin-left: 220px;
     }
-
     .auth-buttons .register {
         display: none; /* Masquer le bouton d'inscription sur mobile */
     }
-
     .baniere-content h1 {
         font-size: 30px;
         line-height: 1.5;
@@ -793,9 +691,6 @@ footer ul li {
         font-size: 15px;
         line-height: 2;
     }
-
-    
-
     /* Afficher le menu quand le burger est activé */
     .nav-list.active {
         display: flex;
@@ -806,12 +701,10 @@ footer ul li {
         width: 100%;
         background-color: rgba(34, 112, 147, 0.95);
     }
-
     .nav-list li {
         margin: 10px 0;
         text-align: center;
     }
-
     /* trit aprea baniere */
     header::after {
        display: none;
@@ -822,15 +715,12 @@ footer ul li {
         padding: 10px; /* Ajoute un peu de padding */
         margin-top: -60px;
     }
-    
     .mission-content {
         max-width: 100%; /* Limite la largeur du contenu */
         margin-bottom: 100px;
         margin-left: 10px;
         text-align: justify;
-
     }
-    
     .mission-content  h1{
         font-size: 25px;
         font-family: "Gilda Display", serif;
@@ -840,14 +730,12 @@ footer ul li {
         margin-top: 80px;
         line-height: 1.5;
     }
-    
     .mission-content  p{
         font-size: 15px;
         line-height: 1.7;
     text-align: justify;
         
     }
-    
     .mission-content button{
         padding: 10px;
         border-radius: 5px;
@@ -856,17 +744,13 @@ footer ul li {
         font-size: 10px;
         margin-left: 0;
     }
-    
-    
     .mission img {
         width: 22rem; /* Ajuste la taille de l'image */
         height: auto;  /* Conserve le ratio de l'image */
         margin-left: 10px;
         margin-top: -70px;
     }
-    
     /* trait apres la section mission */
-    
     .separator {
       display: none;
     }
@@ -875,35 +759,27 @@ footer ul li {
         .vision {
             flex-direction: column; /* Aligne les éléments verticalement sur mobile */
         }
-    
         .vision-content {
             max-width: 100%; /* Supprime la limite de largeur sur mobile */
             margin: 20px 0; /* Réduit l'espace autour du contenu */
         }
-    
         .vision img {
             width: 22rem;
             /* margin: 0; */
             order: 2;
             margin-left: -15px;
             margin-bottom: 100px;
-
         }
-    
         .vision-content h1 {
             font-size: 30px; /* Réduit la taille de la police pour mobile */
             order: 1;
             margin-top: -30px;
         }
-
-    
         .vision-content p {
             font-size: 15px; /* Réduit la taille de la police pour mobile */
         }
     }
-
     /* service */
-
     .servicetitle{
         font-size: 28px;
         font-family: "Gilda Display", serif;
@@ -912,17 +788,14 @@ footer ul li {
         color: #0D8434;
         margin-top: 80px;
     }
-   
         .firstpart, .secondpart {
             flex-direction: column; /* Aligne les cartes verticalement sur les petits écrans */
             align-items: center; /* Centre les cartes horizontalement */
         }
-    
         .card {
             flex: 1 1 100%; /* Chaque carte prend 100% de la largeur sur les petits écrans */
             margin: 10px 0; /* Espace vertical entre les cartes */
         }
-
         .card {
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             padding: 40px; 
@@ -933,7 +806,6 @@ footer ul li {
             align-items: flex-start; 
             transition: transform 0.3s, box-shadow 0.3s;
         }
-
         .card h2{
             font-size: 22px;
             font-family: "Gilda Display", serif;
@@ -942,15 +814,11 @@ footer ul li {
             color: #0D8434;
             line-height: 2;
             margin-top: 30px;
-        
-        
         }
-        
         .card p{
             font-size: 15px;
             line-height: 2;
             text-align: justify;
-        
         }
         .service {
             display: flex;
@@ -962,46 +830,35 @@ footer ul li {
             width: 100%; /* Ajustez selon vos besoins */
             box-sizing: border-box; /* Inclut le padding dans la largeur totale */
         }
-
         .notification-icon img {
             width: 3rem;
             height: auto; /* Conserve le ratio de l'icône */
         }
-
-     
-
         .firstpart, .secondpart {
             margin-top: 0;
             display: flex; /* Utilise Flexbox pour les cartes */
             justify-content: space-around; /* Espace égal entre les cartes */
             width: 100%; /* Prend toute la largeur disponible */
-            margin-bottom: 20px; /* Espace entre les parties */
-        
+            margin-bottom: 20px; /* Espace entre les parties */ 
     }
-
     /* horaire */
-
     .horaire {
         flex-direction: column; /* Change la direction en colonne sur les écrans petits */
         align-items: center; /* Centre tous les éléments horizontalement */
     }
-
     .img_zig_dak {
         margin-left: 0; /* Enlève le margin pour centrer l'image */
         margin-right: 0; /* Assure qu'il n'y a pas de marge à droite */
     }
-
     .img_zig_dak img {
         width: 100%; /* Prend 100% de la largeur du conteneur */
         height: 15rem; /* Ajuste la hauteur pour garder les proportions */
         margin-top: -70px;
     }
-
     .zigdak {
         align-items: center; /* Centre également les éléments à droite */
         margin-right: 0; /* Enlève la marge à droite */
     }
-
     .servicetitle{
         font-size: 30px;
     font-family: "Gilda Display", serif;
@@ -1021,20 +878,15 @@ footer ul li {
         width: 370px;
         margin-right: 10px;
         margin-top: 20px;
-    
     }
-
     .title .dak{
         margin-left: 120px;
     }
-    
     .title h1{
         font-family: "Gilda Display", serif;
         font-size: 20px;
-    
     }
     /* horaire */
-
     .carte-horaires {
         background-color: white; /* Fond blanc */
         border: 7px solid #227093; /* Bordure bleue */
@@ -1046,16 +898,13 @@ footer ul li {
         height: 420px;
         margin-right: 10px;
     }
-
     .horaire h2{
         font-family: "Gilda Display", serif;
         font-size: 15px;
     }
-
     .titre-depart {
         margin-left: 10px; /* Espacement autour du titre */
     }
-
     .jour-button, .embarquement button, .depart button {
         background-color: #227093; /* Fond bleu */
         color: white;
@@ -1068,14 +917,12 @@ footer ul li {
         font-weight: 700;
         margin-top: 10px;
     }
-
     .jeu_dim {
         display: flex; /* Flexbox pour les boutons sur la même ligne */
         gap: 40px; /* Espacement entre les boutons */
         padding: 10px; /* Padding autour des boutons */
         margin-left: 10px;
     }
-    
     .embarquement_depart {
         display: flex; /* Flexbox pour l'embarquement et le départ */
         margin-top: 20px; /* Ajoute de l'espace entre les sections */
@@ -1096,7 +943,6 @@ footer ul li {
         height: 320px;
         margin-right: 10px;
     }
-    
     .img_dak_zig img {
         width: 70rem; /* Augmente la taille de la première image */
         height: 35rem;
@@ -1104,7 +950,6 @@ footer ul li {
         margin-right: 120px;
         margin-bottom: 100px;
     }
-    
     .title_deux{
         display: flex;
         background-image: url(../../../../assets/images/titlebackround.png);
@@ -1113,41 +958,24 @@ footer ul li {
         padding: 20px; /* Ajoute de l'espace à l'intérieur de la div */
         width: 350px;
         margin-right: 10px;
-    
-    
     }
-
     .title_deux .dak{
         margin-left: 130px;
     }
-    
     .title_deux h1{
         font-family: "Gilda Display", serif;
         font-size: 20px;
-    
     }
-
     .img_dak_zig {
         margin-left: 0; /* Enlève le margin pour centrer l'image */
         margin-right: 0; /* Assure qu'il n'y a pas de marge à droite */
     }
-
     .img_dak_zig img {
         width: 100%; /* Prend 100% de la largeur du conteneur */
         height: 15rem; /* Ajuste la hauteur pour garder les proportions */
         margin-top: 20px;
     }
-
     /* tarif */
-
-   
-    
-
-
-
-
-
-
     .tarif {
         display: flex;
         height: auto;
@@ -1158,49 +986,37 @@ footer ul li {
         gap: 1px;
         margin-bottom: 100px;
         margin-left: -6px;
-        
-
     }
-
     .nationalite-card:nth-child(2) {
         margin-bottom: 40px; /* Réduire la marge supérieure pour la deuxième carte */
         margin-top: 40px;
     }
-   
     .nationalite-card {
         width: 370px; /* Chaque carte occupera toute la largeur */
         height: 620px;
         margin-top: 12px;
     }
-
     .nationalite-card h1 {
         font-size: 25px;
         text-align: center;
         margin-bottom: 0;
         margin-top: 10px;
-     
      }
-    
     .sub-cards {
         display: flex; 
         flex-wrap: nowrap; 
         margin-left: 8px;
         margin-top: -2px;
     }
-
     .sub-card {
         max-width: 65%; /* Optionnel : limite la largeur maximale des sous-cartes */
         flex-direction: column;
         margin-left: -20px;
-
-
     }
-
     .sub-card img {
         width: 25px; /* Taille de l'icône */
         height: 25px;
-        margin-bottom: 10px;
-        
+        margin-bottom: 10px;   
     }  
     .sub-card h4 {
         margin: 5px 0;
@@ -1211,52 +1027,36 @@ footer ul li {
   .fisrt{
     margin-left: -100px;
   } 
-
   /* contact */
   .form-container {
     width: 100%; /* Utilise toute la largeur de l'écran */
     padding: 10px;
     height: auto; /* Hauteur automatique pour le contenu */
 }
-
 .input-row {
     display: flex;
     flex-direction: column; /* Disposer les inputs verticalement */
     gap: 15px; /* Réduire l'espacement entre les inputs */
     margin-top: 50px;
 }
-
 .input-row input {
     width: 320px; /* Les inputs occupent toute la largeur disponible */
     height: 50px; /* Hauteur ajustée pour les petits écrans */
     border-radius: 5px;
 }
-
 .message-row textarea {
     width: 100%; /* Le textarea occupe toute la largeur disponible */
     height: 100px; /* Hauteur réduite pour mobile */
     margin-top: -10px;
-    border-radius: 5px;
-
-    
+    border-radius: 5px;   
 }
-
 .button-row {
     align-self: center; /* Centre le bouton sur mobile */
     margin-top: 20px;
 }
-
 .button-row button {
     width: 100%; /* Le bouton occupe toute la largeur sur mobile */
     height: 50px; /* Hauteur ajustée pour mobile */
     font-size: 20px; /* Taille de police ajustée */
-}
-
-
-  
-   
-    
-
-   
-  
+} 
 }
