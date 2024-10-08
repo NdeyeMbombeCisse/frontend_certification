@@ -4,6 +4,8 @@
 .contenu{
     display: flex;
     background-color: rgba(34, 112, 147, 0.3);
+    background-image: url(../../../../assets/images/backround_dashboard.png);
+
 
 }
 .sidebar {

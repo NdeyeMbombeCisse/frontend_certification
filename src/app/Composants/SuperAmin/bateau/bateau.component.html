@@ -1,31 +1,22 @@
 <div class="contenu">
 
-<div class="sidebar">
+  <div class="sidebar">
     <div class="logo">
         <img src="../../../../assets/images/logo.png" alt="Logo">
     </div>
     <nav class="menu">
-        <a [routerLink]="['/dasbaord_admin']" class="menu-item" [class.active]="isActive('/dasbaord_admin')">
+        <a [routerLink]="['/dasbaord_Sadmin']" class="menu-item" [class.active]="isActive('/dasbaord_Sadmin')">
             <img src="../../../../assets/images/icons/dashboard.svg" alt="">
             Dashboard
         </a>
 
-        <a [routerLink]="['/afficher_trajet']" class="menu-item" [class.active]="isActive('/afficher_trajet')">
-            <i class="fa-solid fa-ship"></i> Trajet
+        <a [routerLink]="['/historique_information']" class="menu-item" [class.active]="isActive('/historique_information')">
+            <i class="fa-solid fa-ship"></i> Information
         </a>
 
-        <a [routerLink]="['/ajoutTrajet']" class="menu-item" [class.active]="isActive('/ajoutTrajet')">
+        <a [routerLink]="['/liste_bateau']" class="menu-item" [class.active]="isActive('/liste_bateau')">
             <img src="../../../../assets/images/icons/group.svg" alt="">
-            <i class="fa-solid fa-plus"></i> Ajouter un Trajet
-        </a>
-
-        <a [routerLink]="['/liste_reservation']" class="menu-item" [class.active]="isActive('/liste_reservation')">
-            <i class="fa-solid fa-list"></i> Reservation
-        </a>
-
-        <a (click)="logout()" class="menu-item">
-            <img src="../../../../assets/images/icons/logout.svg" alt="">
-            <i class="fa-solid fa-arrow-right-from-bracket"></i> Déconnexion
+            <i class="fa-solid fa-plus"></i> Bateau
         </a>
     </nav>
 </div>

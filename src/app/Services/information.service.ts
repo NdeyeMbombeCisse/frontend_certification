@@ -24,4 +24,11 @@ deleteInformation(id: any) {
     return this.http.delete(`${apiUrl}/informations/${id}`);
 }
 
+// modification
+
+updateInformation(id:any,info:any){
+  return this.http.put(`${apiUrl}/informations/${id}`,info);
+
+}
+
 }

@@ -6,6 +6,8 @@ import { BateauModel } from '../../Admin/bateau.model';
 import { CommonModule } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-bateau',
@@ -22,6 +24,8 @@ export class BateauComponent  implements OnInit{
   tabBateaux:BateauModel[] =[];
   errorMessage: string = '';
   isModalOpen = false;
+  bateauId: string | null = null;
+
   currentPage: number = 1;
   itemsPerPage: number = 9;
   ngOnInit(): void {
@@ -29,22 +33,7 @@ export class BateauComponent  implements OnInit{
       
   }
 
-  // liste des bateau
-  // fetchInformations(){
-  //   this.bateauService.getAllBateaux().subscribe(
-  //     (response:any)=>{
-  //       console.log(response.data);
 
-  //       if(response.data){
-  //         this.tabInformation = response.data;
-  //       }
-        
-  //     },(error:any)=>{
-  //       console.log(error);
-  //     }
-  //   )
-
-  // }
 
   fetchBateaux() {
     this.bateauService.getAllBateaux().subscribe(
@@ -52,7 +41,6 @@ export class BateauComponent  implements OnInit{
         console.log(response.data);
   
         if (response.data) {
-          // Ajouter la propriété showFullDescription à chaque bateau
           this.tabBateaux = response.data.map((bateau: any) => {
             return {
               ...bateau,
@@ -100,50 +88,102 @@ export class BateauComponent  implements OnInit{
   }
 
 
-  editBateau(id:any){
-
-  }
-
-  // supprssion
  
 
-  deleteBateau(id: any) {
-    if (confirm("Êtes-vous sûr de vouloir supprimer ce trajet ?")) {
-      this.bateauService.deleteBateau(id).subscribe(
-        (response: any) => {
-          console.log('Trajet supprimé', response);
-          
-        },
-        (error: any) => {
-          console.error('Erreur lors de la suppression de l\'information', error);
+  ajoutBateau() {
+    let formdata = new FormData();
+
+    // Vérification que le libelle et la description sont remplis
+    if (this.bateauObject.libelle && this.bateauObject.description) {
+        
+        // Validation: le libelle ne doit pas contenir de chiffres
+        const hasNumbers = /\d/;
+        if (hasNumbers.test(this.bateauObject.libelle)) {
+            this.errorMessage = 'Le titre ne doit pas contenir de chiffres';
+            return; // Arrêter la fonction si la validation échoue
         }
-      );
-    }}
 
-    // ajout
-
-    ajoutBateau() {
-      let formdata = new FormData();
-  
-      if (this.bateauObject.libelle && this.bateauObject.description) {
         formdata.append("libelle", this.bateauObject.libelle);
         formdata.append("description", this.bateauObject.description);
-  
+
         this.bateauService.createBateau(formdata).subscribe(
-          (response: any) => {
-            console.log(response);
-            if (response.data) {
-              this.bateauObject = {}; // Réinitialiser le formulaire
-              this.errorMessage = ''; // Réinitialiser le message d'erreur
+            (response: any) => {
+                console.log(response);
+                if (response.data) {
+                    this.bateauObject = {}; // Réinitialiser le formulaire
+                    this.errorMessage = ''; // Réinitialiser le message d'erreur
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Ajout Réussi',
+                        text: 'Le bateau a été ajouté avec succès!',
+                        timer: 2000,
+                        timerProgressBar: true,
+                        showConfirmButton: false
+                    });
+                    this.fetchBateaux(); // Rafraîchir la liste des bateaux après ajout
+                }
+            },
+            (error) => {
+                console.error(error);
+                this.errorMessage = 'Erreur lors de l\'ajout de l\'information'; // Gérer les erreurs
             }
-          },
-          (error) => {
-            console.error(error);
-            this.errorMessage = 'Erreur lors de l\'ajout de l\'information'; // Gérer les erreurs
-          }
         );
-      } else {
+    } else {
         this.errorMessage = 'Veuillez remplir tous les champs'; // Message d'erreur pour les champs vides
-      }
     }
 }
+
+  deleteBateau(id: any) {
+    Swal.fire({
+      title: 'Êtes-vous sûr?',
+      text: "Cette action est irréversible!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Oui, supprimer!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.bateauService.deleteBateau(id).subscribe(
+          (response: any) => {
+            Swal.fire({
+              icon: 'success',
+              title: 'Supprimé!',
+              text: 'Le bateau a été supprimé avec succès.',
+              timer: 2000,
+              timerProgressBar: true,
+              showConfirmButton: false
+            });
+            this.fetchBateaux(); // Refresh the list
+          },
+          (error: any) => {
+            console.error('Erreur lors de la suppression du bateau', error);
+            Swal.fire({
+              icon: 'error',
+              title: 'Erreur',
+              text: 'Une erreur est survenue lors de la suppression du bateau.'
+            });
+          }
+        );
+      }
+    });
+  }
+
+  openModal(): void {
+    this.isModalOpen = true;
+  }
+  editBateau(id:any){
+    const bateau = this.tabBateaux.find(bateau => bateau.id === id);
+    if(bateau){
+      this.bateauObject = {...bateau};
+      this.bateauId =id;
+      this.openModal();
+
+    }
+  }
+
+   
+}
+
+
+

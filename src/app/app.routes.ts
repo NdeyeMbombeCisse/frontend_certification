@@ -44,9 +44,7 @@ export const routes: Routes = [
     {path:"modifier_bateau", component:ModifierbateauComponent},
     {path:"modifier_information", component:ModifierinformationComponent},
     {path:"historique_information", component:InformationComponent},
-    {path:"histaurique_reservation", component:HistoriqueReservationComponent},
-    {path:"liste_trajetAdmin", component:ListeTrajetComponent},
-    {path:"detailTrajet", component:DetailTrajetComponent},
+   
 
 
 // route pour admin

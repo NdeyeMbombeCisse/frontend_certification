@@ -1,1 +1,118 @@
-<p>dashboard works!</p>
+<div class="contenu">
+    <div class="sidebar">
+        <div class="logo">
+            <img src="../../../../assets/images/logo.png" alt="Logo">
+        </div>
+        <nav class="menu">
+            <a [routerLink]="['/dasbaord_Sadmin']" class="menu-item" [class.active]="isActive('/dasbaord_admin')">
+                <img src="../../../../assets/images/icons/dashboard.svg" alt="">
+                Dashboard
+            </a>
+    
+            <a [routerLink]="['/historique_information']" class="menu-item" [class.active]="isActive('/afficher_trajet')">
+                <i class="fa-solid fa-ship"></i> Information
+            </a>
+    
+            <a [routerLink]="['/liste_bateau']" class="menu-item" [class.active]="isActive('/ajoutTrajet')">
+                <img src="../../../../assets/images/icons/group.svg" alt="">
+                <i class="fa-solid fa-plus"></i> Bateau
+            </a>
+        </nav>
+    </div>
+    <div class="dashboard">
+        <div class="container">
+            <div class="content">
+                <h1>Bienvenu Ndeye MBombe Cisse dans votre dashboard</h1>
+                <p>Obtenez les informations sur le trajet maritime dakar ziguinchor a temps reel</p>
+                <button class="ajout"><a href="ajouterTrajet">Ajouter un trajet</a></button>
+            </div>
+            <img src="../../../../assets/images/welcomedashboard.png" alt="">
+        </div>
+        <!-- statitique -->
+        <div class="statistiques">
+            <div class="contenu-statistique">
+                <div class="icon-container">
+                    <i class="fa-solid fa-user fa-3x" style="color: #737f39;"></i>
+                </div>            
+                <div class="statistiques-texte">
+                    <h1>3</h1>
+                    <h2>Trajets en cours</h2>
+                </div>
+            </div>
+        
+            <div class="contenu-statistique">
+                <div class="icon-container">
+                    <i class="fa-solid fa-user fa-3x" style="color: #6a6565;"></i>
+                </div>            
+                <div class="statistiques-texte">
+                    <h1>34</h1>
+                    <h2>Reservations</h2>
+                </div>
+            </div>
+        
+            <div class="contenu-statistique">
+                <div class="icon-container">
+                    <i class="fa-solid fa-user fa-3x" style="color: #e74c3c;"></i>
+                </div>            
+                <div class="statistiques-texte">
+                    <h1>23</h1>
+                    <h2>Places restantes</h2>
+                </div>
+            </div> 
+            <div class="contenu-statistique">
+                <div class="icon-container">
+                    <i class="fa-solid fa-user fa-3x" style="color: #1d4c2d;"></i>
+                </div>            
+                <div class="statistiques-texte">
+                    <h1>43</h1>
+                    <h2>Reservations</h2>
+                </div>
+            </div> 
+        </div>
+        <div class="titlediv">
+            <h1 class="reservation">Les Trajets en cours</h1>
+    
+        </div>
+        <div class="trajets_encours">
+            <table  style="width: 93%; border-collapse: collapse;">
+              <thead>
+                <tr>
+                  <th>Destination</th>
+                  <th>Réservations</th>
+                  <th>Places Restantes</th>
+                  <th>Date de Publication</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Destination Ziguinchor</td>
+                  <td>26 réservations</td>
+                  <td>30 places restantes</td>
+                  <td>Publiée le 12/12/2023</td>
+                  <td><button>Voir les réservations</button></td>
+                </tr>
+                <tr>
+                  <td>Destination Ziguinchor</td>
+                  <td>26 réservations</td>
+                  <td>30 places restantes</td>
+                  <td>Publiée le 12/12/2023</td>
+                  <td><button>Voir les réservations</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+    
+        
+        
+    </div>
+    
+      
+      
+      
+    
+    
+    
+    
+</div>

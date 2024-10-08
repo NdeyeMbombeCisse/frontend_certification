@@ -29,4 +29,9 @@ updateBateauStatut(id: number, statut: number) {
     return this.http.put(`${apiUrl}/bateaux/${id}/statut`, { statut });
   }
 
+  updateBateau(id:any,bateau:any){
+    return this.http.put(`${apiUrl}/bateaux/${id}`, bateau);
+
+  }
+
 }

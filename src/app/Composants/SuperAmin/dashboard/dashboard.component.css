@@ -1,0 +1,386 @@
+/* style sidebar */
+.profil{
+    display: flex;
+  }
+  .contenu {
+    display: flex;
+    position: relative; /* Nécessaire pour le positionnement du pseudo-élément */
+    background-color: rgba(222, 222, 222, 0.3); /* Couleur de fond semi-transparente */
+  }
+  
+  /* Pseudo-élément pour l'image de fond */
+  .contenu::before {
+    content: '';
+    position: absolute; /* Pour le positionner en arrière-plan */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(../../../../assets/images/backround_dashboard.png);
+    background-size: cover; /* Pour couvrir tout le conteneur */
+    opacity: 0.5; /* Ajustez l'opacité ici */
+    z-index: 1; /* S'assure que l'image de fond est derrière le contenu */
+  }
+  
+  .contenu > * {
+    position: relative; /* Pour garder le contenu au-dessus de l'image */
+    z-index: 2; /* Pour s'assurer que le contenu est visible au-dessus de l'image de fond */
+  }
+   
+   .sidebar {
+    background-color: #618062; 
+    color: #fff;
+    width: 300px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    border-radius: 0px 12px 12px 0px;
+    background: #227093;
+    overflow-y: hidden;
+    color: #FFF;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+  font-size: 27px;
+  font-style: normal; 
+  font-weight: 400;
+  line-height: 2;
+  
+  } 
+  
+  
+  
+  
+  
+  .logo img {
+    max-width: 100%;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    margin-right: 20px;
+  }
+  
+  .menu {
+    width: 100%;
+  }
+  
+  .menu-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 500;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
+  .menu-item.active, .menu-item:hover {
+    background-color: #ffffff; /* Highlight color for active/hovered menu items */
+    color: #000; /* Text color when active/hovered */
+  }
+  .menu-item svg:hover
+  {
+    color: #000;
+  }
+  
+  .menu-item i {
+    margin-right: 10px;
+    font-size: 1.2em; /* Icon size */
+  }
+  
+  /* Placeholder for icons (use actual icons/fonts or images) */
+  .icon-dashboard:before {
+    content: ''; /* Dashboard icon placeholder */
+  }
+  
+  .icon-projects:before {
+    content: ''; /* Projects icon placeholder */
+  }
+  
+  .icon-inhabitants:before {
+    content: ''; /* Inhabitants icon placeholder */
+  }
+  
+  .icon-new-project:before {
+    content: ""; /* New project icon placeholder */
+  }
+  
+  .icon-submitted-projects:before {
+    content: ''; /* Submitted projects icon placeholder */
+  }
+  
+  .icon-logout:before {
+    content: ''; /* Logout icon placeholder */
+  }
+  
+  .svg-container {
+    display: inline-block;
+  }
+  
+  .svg-container:hover .svg-path {
+    fill: #000000; /* Change to black on hover */
+  }
+  
+  .menu-item img {
+    transition: filter 0.3s ease;
+  }
+  
+  .menu-item:hover img {
+    filter: grayscale(100%);
+  }
+  
+  
+  
+  /* fin sidebar */
+  
+  .container {
+      display: flex;
+      align-items: center; /* Centrer verticalement */
+      justify-content: space-between; /* Espace entre le texte et l'image */
+      background-image: url('../../../../assets/Group\ 900\ \(1\).png');
+      background-size: cover; /* Pour que l'image couvre tout le div */
+      background-position: center; /* Pour centrer l'image d'arrière-plan */
+      padding: 20px; /* Espacement intérieur */
+      height: 500px; /* Hauteur du div */
+      margin-left: 60px;
+      width: 92%;
+      color: white; /* Couleur du texte */
+      border-radius: 50px;
+      margin-top: 100px;
+  
+  }
+  
+  
+  
+  
+  .container img{
+      width: 600px;
+      height: 450px;
+      margin-top: -120px;
+      margin-right: 60px;
+      font-family:inter;
+  }
+  .container h1{
+      font-size: 50px;
+      font-style: normal;
+      color: white;
+      line-height: 1.5;
+      margin-top: -40px;
+  }
+  
+  .container p{
+      font-size: 30px;
+      margin-top: -20px;
+      font-style: normal;
+      color: white;
+      line-height: 1.5;
+  
+  }
+  
+  .content {
+      max-width: 50%; /* Largeur maximum du contenu */
+  }
+  
+  .ajout {
+      background-color: #227093;
+      padding: 20px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      color: white;
+      font-weight: 700;
+      font-size: 30px;
+      transition: background-color 0.3s ease;
+      border: solid 1px white;
+      margin-top: -10px;
+  }
+  a{
+      text-decoration: none;
+      color: white;
+  }
+  
+  .ajout:hover {
+      background-color: #FFC107; /* Couleur au survol */
+  }
+  
+  .right-image {
+      max-width: 40%; /* Largeur maximale de l'image */
+      height: auto; /* Hauteur automatique pour conserver le ratio */
+  }
+  /* statistique */
+  .statistiques {
+      display: flex; /* Utilise flexbox pour aligner les cartes */
+      padding: 20px; /* Espacement autour de la section */
+      margin-top: -25px;
+  }
+  
+  .contenu-statistique {
+      width: 400px; /* Largeur de la carte */
+      height: 200px; /* Hauteur de la carte */
+      background-color: #fff; /* Couleur de fond de la carte */
+      border-radius: 8px; /* Arrondi des coins */
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour donner du relief */
+      display: flex; /* Utilise flexbox pour le contenu à l'intérieur */
+      flex-direction: column; /* Organise le contenu en colonne */
+      align-items: center; /* Centre le contenu horizontalement */
+      justify-content: center; /* Centre le contenu verticalement */
+      margin: 44px; /* Espacement entre les cartes */
+      flex-direction: row;
+  }
+  
+  .icon-container {
+    background-color: #f0f0f0; /* Couleur de fond */
+    border-radius: 50%; /* Rend le conteneur circulaire */
+    padding: 10px; /* Espace autour de l'icône */
+    display: flex; /* Utiliser Flexbox pour centrer l'icône */
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center; /* Centrer verticalement */
+    width: 70px;
+    height: 70px;
+  }
+  
+  .contenu-statistique {
+    display: flex; /* Utiliser Flexbox pour disposer les éléments */
+    align-items: center; /* Aligner verticalement au centre */
+  }
+  
+  .statistiques-texte {
+    display: flex;
+    flex-direction: column; /* Aligner les titres en colonne */
+    margin-left: 10px; /* Espace entre l'icône et les titres */
+  }
+  
+  
+  .statistiques-texte {
+    display: flex;
+    flex-direction: column; /* Aligner les titres en colonne */
+    margin-left: 40px; /* Espace entre l'icône et les titres */
+  }
+  
+  
+  
+  .contenu-statistique:hover {
+      transform: scale(1.05); /* Augmente la taille de la carte au survol */
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Ombre au survol */
+      background-color: #b2ebf2; /* Couleur de fond au survol */
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Transition pour une animation douce */
+  }
+  
+  
+  
+  .contenu-statistique h1 {
+      font-size: 36px; /* Taille du titre */
+      margin: 0; /* Enlève la marge par défaut */
+      color:black;
+  }
+  
+  .contenu-statistique h2 {
+      font-size: 34px; /* Taille du sous-titre */
+      /* color: #6D9773;  */
+      margin-top: 5px; /* Espacement au-dessus du sous-titre */
+      color:black;
+  
+  }
+  /* trajets */
+  table {
+    width: 40%;
+    border-collapse: collapse;
+    margin-left: 70px;
+  }
+  .titlediv{
+    margin-left: 70px;
+    font-size: 20px;
+    font-family: "Gilda Display", serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #0D8434;
+    margin-top: -30px;
+    
+  }
+  
+  tbody tr:nth-child(odd) {
+    background-color: #f2f2f2; /* Couleur pour les lignes impaires */
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #ffffff; /* Couleur pour les lignes paires */
+  }
+  
+  th, td {
+    padding: 20px;
+    text-align: left;
+    font-size: 24px;
+  }
+  
+  th {
+    background-color: #227093;
+    color: white;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  button {
+    background-color: #227093;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+  button:hover {
+    background-color: #1e5985;
+  }
+  
+  
+  /* Autre */
+  .autres {
+    margin: 20px;
+    margin-top: 70px;
+  }
+  
+  .autres h2 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .autres .cartes {
+    width: 400px;
+    height: 400px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: auto; 
+    margin-top: 20px;
+  }
+  
+  .autres .card img {
+    width: 100%;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .autres .card h1 {
+    font-size: 12px;
+    color: #555;
+    margin-bottom: 5px;
+  }
+  
+  .autres .card p {
+    font-size: 10px;
+    color: #777;
+    margin-bottom: 5px;
+  }
+  

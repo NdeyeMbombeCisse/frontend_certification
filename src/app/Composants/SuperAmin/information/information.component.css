@@ -4,6 +4,8 @@
 .contenu{
     display: flex;
     background-color: rgba(34, 112, 147, 0.3);
+    background-image: url(../../../../assets/images/backround_dashboard.png);
+
 
 }
 .sidebar {
@@ -176,7 +178,7 @@ form {
 }
 
 table {
-    width: 183%;
+    width: 150%;
     background-color: white;
     border-collapse: separate; /* Nécessaire pour border-spacing */
     border-spacing: 0 10px;
@@ -248,25 +250,34 @@ th {
 button:hover {
     background-color: #0D8434; /* Couleur au survol */
 }
-h1 {
-    width: 800px; /* Fixed width */
-    height: 190px; /* Fixed height */
-    background-image: url(../../../../assets/Group\ 900\ \(1\).png);
-    background-size: cover; /* Cover the entire container */
-    color: #ffffff;
-    font-family: gilda;
-    display: flex; /* Use flexbox */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    margin: 0 auto; /* Center the title in its container */
-    text-align: center; /* Center the text inside */
-    font-size: 50px; /* Font size */
-    margin-bottom: 40px; /* Space below the heading */
-    border-radius: 20px; /* Rounded corners */
-    margin-top: 100px; /* Space above the heading */
+.information-contenu {
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  text-align: center; 
+  padding: 20px; 
+  margin-left: 450px;
 
-  }
-  
+}
+
+.information-contenu h1 {
+  width: 800px; 
+  height: 190px;
+  background-image: url(../../../../assets/Group\ 900\ \(1\).png);
+  background-size: cover; 
+  background-position: center; 
+  color: #ffffff; 
+  font-family: gilda; 
+  font-size: 50px; 
+  margin: 100px auto 40px auto; 
+  border-radius: 20px; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  padding: 20px; 
+}
+
 /* pagination */
 
 .pagination {
