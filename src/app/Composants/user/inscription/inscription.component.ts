@@ -135,3 +135,5 @@ export class InscriptionComponent implements OnInit {
     return isValid;
   }
 }
+
+

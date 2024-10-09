@@ -22,6 +22,7 @@ import { ReservationComponent } from './Composants/Admin/reservation/reservation
 import { InformationEncoursComponent } from './Composants/user/information-encours/information-encours.component';
 import { AjoutTrajetComponent } from './Composants/Admin/ajout-trajet/ajout-trajet.component';
 import { ScanComponent } from './Composants/scan/scan.component';
+import { AuthGuardAdmin } from './Composants/admin.guard';
 
 export const routes: Routes = [
     {path:"",pathMatch:'full',redirectTo:'portail'},
@@ -48,14 +49,14 @@ export const routes: Routes = [
 
 
 // route pour admin
-    {path:"dasbaord_admin", component:DashboadAdminComponent},
-    {path:"ajouterTrajet", component:AjoutTrajetComponent},
-    {path:"ModifierTrajet/:id", component:ModifierTrajetComponent},
-    {path:"afficher_trajet", component:AfficherTrajetComponent},
-    {path:"afficher_trajet", component:AfficherTrajetComponent},
-    { path: 'trajet/:trajetId/reservations',component:DetailTrajetComponent },
-    {path:"liste_reservation", component:ReservationComponent},
-    {path:"sca", component:ScanComponent},
+    {path:"dasbaord_admin", component:DashboadAdminComponent,canActivate:[AuthGuardAdmin]},
+    {path:"ajouterTrajet", component:AjoutTrajetComponent,canActivate:[AuthGuardAdmin]},
+    {path:"ModifierTrajet/:id", component:ModifierTrajetComponent ,canActivate:[AuthGuardAdmin]},
+    {path:"afficher_trajet", component:AfficherTrajetComponent,canActivate:[AuthGuardAdmin]},
+    {path:"afficher_trajet", component:AfficherTrajetComponent,canActivate:[AuthGuardAdmin]},
+    { path: 'trajet/:trajetId/reservations',component:DetailTrajetComponent ,canActivate:[AuthGuardAdmin]},
+    {path:"liste_reservation", component:ReservationComponent,canActivate:[AuthGuardAdmin]},
+    {path:"sca", component:ScanComponent,canActivate:[AuthGuardAdmin]},
     
 
 

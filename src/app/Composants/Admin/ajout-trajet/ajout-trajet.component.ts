@@ -10,6 +10,8 @@ import { BateauModel } from '../bateau.model';
 import { Router, RouterModule } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from '../../../Services/auth.service';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-ajout-trajet',
@@ -22,6 +24,7 @@ export class AjoutTrajetComponent {
 
   private trajetService = inject(TrajetService);
   private userService = inject(AuthService);
+  errors: { [key: string]: string } = {};
 
 
   // declaration des variables
@@ -103,8 +106,12 @@ export class AjoutTrajetComponent {
           this.trajetObject = {};
         }
       }
+      
     );
   }
+
+
+
 
   isActive(route: string): boolean {
     return this.router.url === route;
@@ -123,5 +130,8 @@ export class AjoutTrajetComponent {
       }
     );
   }
+
+
+  
 }
 
