@@ -41,17 +41,27 @@
     <form (ngSubmit)="filterTrajets()">
       <div class="backroundFiltre">
         <!-- Sélecteur de date de départ -->
+<!-- Sélecteur de date de départ -->
+<!-- Sélecteur de date de départ -->
+<!-- HTML -->
+<div class="form-group">
+  <label for="dateDepart">Choisir une date de départ :</label>
+  <select id="dateDepart" [(ngModel)]="selectedDate" name="dateDepart" required>
+    <option value="" disabled selected>Choisir une date de départ</option>
+    <option *ngFor="let date of dateDepartOptions" [value]="date">{{ date }}</option>
+  </select>
+</div>
 
-        <select id="dateDepart" [(ngModel)]="selectedDate" name="dateDepart" required>
-          <option value="choisir" disabled selected >Choisir une date de départ</option>
-          <option *ngFor="let date of dateDepartOptions" [value]="date">{{ date }}</option>
-        </select>
-  
-        <!-- Sélecteur de lieu de départ -->
-        <select id="lieuDepart" [(ngModel)]="selectedLieuDepart" name="lieuDepart" required>
-          <option value="">Choisir un lieu de départ</option>
-          <option *ngFor="let lieu of lieuDepartOptions" [value]="lieu">{{ lieu }}</option>
-        </select>
+<div class="form-group">
+  <label for="lieuDepart"> Choisir un lieu de départ :</label>
+  <select id="lieuDepart" [(ngModel)]="selectedLieuDepart" name="lieuDepart" required>
+    <option value="" disabled selected>Choisir un lieu de départ</option>
+    <option *ngFor="let lieu of lieuDepartOptions" [value]="lieu">{{ lieu }}</option>
+  </select>
+</div>
+
+
+
   
         <!-- Bouton de soumission -->
         <button type="submit">Rechercher</button>

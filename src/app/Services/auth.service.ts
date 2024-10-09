@@ -1,8 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { apiUrl } from './apiUrl';
-import { UserModel } from '../Composants/user/user.model';
-import { Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -52,8 +50,8 @@ export class AuthService {
 
   decodeToken(token: string): any {
     try {
-      const payload = token.split('.')[1]; // JWT structure: header.payload.signature
-      return JSON.parse(atob(payload)); // Décoder le payload
+      const payload = token.split('.')[1]; 
+      return JSON.parse(atob(payload)); 
     } catch (error) {
       console.error('Erreur lors du décodage du token', error);
       return null;

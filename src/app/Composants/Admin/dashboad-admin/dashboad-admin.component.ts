@@ -26,25 +26,7 @@ export class DashboadAdminComponent implements OnInit {
   trajetsEnCours: TrajetModel[] = [];
 
   ngOnInit(): void {
-    // this.trajetService.getCount().subscribe(
-    //  (response:any)  => {
-    //     this.count = response.count;
-    //   },
-    //   error => {
-    //     console.error('Erreur lors de la récupération du nombre de trajets', error);
-    //   }
-    // );
-
-    // this.reservationService.getCount().subscribe((response:any)=>{
-    //   this.countreservation = response.countreservation
-    // });
-
-    
-
-    // this.trajetService.getPlacesRestantes().subscribe((response: any) => {
-    //   this.placesRestantes = response.data; // Récupère les places restantes
-    //   this.totalPlacesRestantes = Object.values(this.placesRestantes).reduce((a, b) => a + b, 0); // Calcule le total
-    // });
+  
 
     
 

@@ -6,6 +6,18 @@
 }
 
 
+.form-group {
+    margin-bottom: 20px; /* Espacement entre les groupes de champs */
+  }
+  
+  label {
+    display: block; /* Affiche le label en bloc */
+    margin-bottom: 20px; /* Espacement entre le label et le sélecteur */
+    font-weight: bold; /* Met le texte en gras */
+    color: white;
+    margin-left: 40px;
+    font-size: 30px;
+  }
 
 /* souligner la page de navigation */
 .menu-item{

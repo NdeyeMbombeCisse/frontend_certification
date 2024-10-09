@@ -135,7 +135,7 @@ export class ConnexionComponent {
                         if (response.role == "user") {
                             this.router.navigate(['/historique_reservation']);
                         } else if (response.role == "superAdmin") {
-                            this.router.navigate(['/dashboard_Sadmin']);
+                            this.router.navigate(['/liste_bateau']);
                         } else if (response.role == "admin") {
                             this.router.navigate(['/dasbaord_admin']);
                         }else if (response.role == "vigile") {
