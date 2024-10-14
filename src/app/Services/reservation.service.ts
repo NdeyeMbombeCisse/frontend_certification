@@ -62,9 +62,10 @@ getReservedPlaces(trajetId: number) {
   return this.http.get(`${apiUrl}/trajets/${trajetId}/places-reservees`);
 }
 
-  
+getAvailablePlacesForTrajet(trajetId: number){
+  return this.http.get(`${apiUrl}/trajets/${trajetId}/places`);
+}
 
-  
     }
       
       

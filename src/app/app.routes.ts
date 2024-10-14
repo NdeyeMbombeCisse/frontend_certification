@@ -22,7 +22,9 @@ import { ReservationComponent } from './Composants/Admin/reservation/reservation
 import { InformationEncoursComponent } from './Composants/user/information-encours/information-encours.component';
 import { AjoutTrajetComponent } from './Composants/Admin/ajout-trajet/ajout-trajet.component';
 import { ScanComponent } from './Composants/scan/scan.component';
-import { AuthGuardAdmin } from './Composants/admin.guiar';
+import { AuthGuardAdmin } from './Composants/admin.guard';
+import { AuthGuardsuperAdmin } from './Composants/supadmin.guard';
+import { AuthGuardsuperVigile } from './Composants/vigile.guard';
 
 export const routes: Routes = [
     {path:"",pathMatch:'full',redirectTo:'portail'},
@@ -39,24 +41,23 @@ export const routes: Routes = [
     {path:"nouvelle_info", component:InformationEncoursComponent},
 
 //Route pour SuperAdimin
-
-    {path:"dasbaord_Sadmin", component:DashboardComponent},
-    {path:"liste_bateau", component:BateauComponent},
-    {path:"modifier_bateau", component:ModifierbateauComponent},
-    {path:"modifier_information", component:ModifierinformationComponent},
-    {path:"historique_information", component:InformationComponent},
+    {path:"dasbaord_Sadmin", component:DashboardComponent,canActivate:[AuthGuardsuperAdmin]},
+    {path:"liste_bateau", component:BateauComponent,canActivate:[AuthGuardsuperAdmin]},
+    {path:"modifier_bateau", component:ModifierbateauComponent,canActivate:[AuthGuardsuperAdmin]},
+    {path:"modifier_information", component:ModifierinformationComponent,canActivate:[AuthGuardsuperAdmin]},
+    {path:"historique_information", component:InformationComponent,canActivate:[AuthGuardsuperAdmin]},
    
 
 
 // route pour admin
-    {path:"dasbaord_admin", component:DashboadAdminComponent},
-    {path:"ajouterTrajet", component:AjoutTrajetComponent},
-    {path:"ModifierTrajet/:id", component:ModifierTrajetComponent},
-    {path:"afficher_trajet", component:AfficherTrajetComponent},
-    {path:"afficher_trajet", component:AfficherTrajetComponent},
-    { path: 'trajet/:trajetId/reservations',component:DetailTrajetComponent },
-    {path:"liste_reservation", component:ReservationComponent},
-    {path:"sca", component:ScanComponent},
+    {path:"dasbaord_admin", component:DashboadAdminComponent,canActivate:[AuthGuardAdmin]},
+    {path:"ajouterTrajet", component:AjoutTrajetComponent,canActivate:[AuthGuardAdmin]},
+    {path:"ModifierTrajet/:id", component:ModifierTrajetComponent,canActivate:[AuthGuardAdmin]},
+    {path:"afficher_trajet", component:AfficherTrajetComponent,canActivate:[AuthGuardAdmin]},
+    {path:"afficher_trajet", component:AfficherTrajetComponent,canActivate:[AuthGuardAdmin]},
+    { path: 'trajet/:trajetId/reservations',component:DetailTrajetComponent ,canActivate:[AuthGuardAdmin]},
+    {path:"liste_reservation", component:ReservationComponent,canActivate:[AuthGuardAdmin]},
+    {path:"sca", component:ScanComponent,canActivate:[AuthGuardsuperVigile]},
     
 
 

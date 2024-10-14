@@ -30,37 +30,49 @@
 <div class="reservation-container">
   <img src="../../../../assets/images/image_reservation.png" alt="Image de réservation">
 
-  <form (ngSubmit)="createReservation()" #reservationForm="ngForm">
-    <div class="form-group">
-      <label for="categorie">Catégorie:</label>
-      <select id="categorie" [(ngModel)]="selectedCategorie" (change)="onCategorieChange($event)" name="categorie" required>
-        <option *ngFor="let categorie of categories" [value]="categorie.id">{{ categorie.libelle }}</option>
-      </select>
+
+
+   <form (ngSubmit)="createReservation()" #reservationForm="ngForm">
+ 
+
+  <div class="categories">
+    <div
+      *ngFor="let categorie of categories"
+      class="category-card"
+      [class.selected]="categorie.id === selectedCategorie"
+      (click)="onCategorieSelect(categorie.id)"
+    >
+      <img [src]="getIconForCategorie(categorie.id)" alt="{{ categorie.libelle }}" class="category-image" />
+      <h3>{{ categorie.libelle }}</h3>
     </div>
-    <!-- <div class="form-group">
-      <label for="place">Place:</label>
-      <select id="place" [(ngModel)]="reservationData.place_id" name="place" required>
-        <option *ngFor="let place of places" [value]="place.id">{{ place.libelle }}</option>
-      </select>
-    </div> -->
+  </div>
 
-    <div class="form-group">
-  <label for="place">Place:</label>
-  <select id="place" [(ngModel)]="reservationData.place_id" name="place" required>
-      <option *ngFor="let place of places" 
-              [value]="place.id" 
-              [disabled]="isPlaceReserved(place.id)">
-          {{ place.libelle }}
-      </option>
-  </select>
+<div class="form-group">
+  <label for="place">Places disponibles :</label>
+  <div class="place-container">
+    <div *ngFor="let place of places" 
+         class="place-icon" 
+         [ngClass]="{
+           'disabled': place.is_reserved === 1,
+           'selected': selectPlaceId === place.id
+         }" 
+         (click)="selectPlace(place)">
+      <img [src]="getImageForCategorie(place.categorie_id)" 
+           alt="{{ place.libelle }}" />
+      <span>{{ place.libelle }}</span>
+    </div>
+  </div>
 </div>
-    
-  
-    <button type="submit">Réserver</button>
-  </form>
-  
 
 
+
+
+
+
+
+
+  <button type="submit" [disabled]="!reservationForm.form.valid">Réserver</button>
+</form>
 </div>
 
 

@@ -6,7 +6,8 @@ export interface PlaceModel{
     categorie_id?:number;
     is_reserved?:number; 
     id_bateau?:number;
-    categorie?:CategorieModel
+    categorie?:CategorieModel;
+    type: string;  
    
   }
 

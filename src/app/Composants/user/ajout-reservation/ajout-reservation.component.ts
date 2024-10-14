@@ -37,6 +37,9 @@ export class AjoutReservationComponent implements OnInit {
   userId: number | null = null; 
   trajetId: number | null = null; // Champ pour stocker l'ID du trajet
   reservedPlaces: number[] = [];
+  availablePlaces: PlaceModel[] = [];
+  selectedPlace: PlaceModel | null = null; 
+  selectPlaceId: any| null = null; 
   ngOnInit(): void {
     const userIdString = localStorage.getItem('user_id');
     console.log('ID utilisateur récupéré:', userIdString);
@@ -44,7 +47,12 @@ export class AjoutReservationComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.trajetId = +params['trajetId']; // Le `+` convertit la chaîne en nombre
       this.getReservedPlaces(this.trajetId);
+
+      
     });
+
+    
+
 
     if (userIdString) {
         this.userId = Number(userIdString);
@@ -71,15 +79,90 @@ export class AjoutReservationComponent implements OnInit {
     });
   }
 
-  onCategorieChange(event: Event): void {
-    const target = event.target as HTMLSelectElement;
-    const categorieId = Number(target.value);
-    this.selectedCategorie = categorieId;
 
-    this.reservationService.getPlacesByCategorie(categorieId).subscribe((data: any) => {
-      this.places = data;
-    });
+
+  onCategorieSelect(id: any) {
+    this.selectedCategorie = id;
+  
+    // Récupérer les places de la catégorie sélectionnée
+    this.reservationService.getPlacesByCategorie(id).subscribe(
+      (data: any) => {
+        this.places = data;
+        console.log('Places de la catégorie sélectionnée:', this.places); // Log pour le débogage
+      },
+      (error) => {
+        console.error('Erreur lors de la récupération des places:', error);
+      }
+    );
   }
+  getIconForCategorie(categorieId: any): string {
+    switch (categorieId) {
+      case 1: // ID pour fauteuils
+        return '../../../../assets/images/categoriefeuteuil.png';
+      case 2: // ID pour cabine 2 personnes
+        return '../../../../assets/images/cabine2personnes.png';
+      case 3: // ID pour cabine 4 personnes
+        return '../../../../assets/images/categorie4.png'; // Chemin pour l'image cabine 4 personnes
+      default:
+        return '../../../../assets/images/cabine8.png'; // Image par défaut
+    }
+  }
+  
+
+
+onCategorieChange(event: Event): void {
+  const target = event.target as HTMLSelectElement;
+  const categorieId = Number(target.value);
+  this.selectedCategorie = categorieId;
+
+  this.reservationService.getPlacesByCategorie(categorieId).subscribe(
+    (data: any) => {
+      // Récupère toutes les places, sans filtrer celles qui sont réservées
+      this.places = data;
+      console.log('Toutes les places:', this.places); // Log pour le débogage
+    },
+    (error) => {
+      console.error('Erreur lors de la récupération des places:', error);
+    }
+  );
+}
+
+
+getCategories(): void {
+  this.reservationService.getCategories().subscribe(
+    (data: any) => {
+      this.categories = data;
+    },
+    (error) => {
+      console.error('Erreur lors de la récupération des catégories:', error);
+    }
+  );
+}
+
+
+
+
+
+getImageForCategorie(categorieId: any): string {
+  switch (categorieId) {
+    case 1: // ID pour fauteuils
+      return '../../../../assets/images/fauteil\ pullman.png';
+    case 2: // ID pour cabines
+      return '../../../../assets/images/cabines.png';
+    default:
+      return '../../../../assets/images/cabines.png'; // Image par défaut
+  }
+}
+
+
+
+
+
+
+
+
+ 
+  
 
 //   createReservation() {
 //     if (this.trajetId) {
@@ -220,7 +303,23 @@ createReservation() {
     return this.reservedPlaces.includes(placeId as number);
   }
 
+
+  selectPlace(place: PlaceModel): void {
+    if (place.is_reserved === 0) { // Vérifie si la place n'est pas réservée
+      this.selectPlaceId = place.id; // Définit l'ID de la place sélectionnée
+      this.reservationData.place_id = place.id; // Met à jour le champ de données de réservation
+      console.log('Place sélectionnée:', place); // Log pour le débogage
+    } else {
+      console.warn('Cette place est déjà réservée.'); // Avertir l'utilisateur si la place est réservée
+    }
+  }
+
+
+
+  
+
   
 }
+
 
 

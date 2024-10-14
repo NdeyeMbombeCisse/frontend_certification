@@ -122,6 +122,10 @@ export class ConnexionComponent {
                         localStorage.setItem("user_first_name", response.user.telephone);
                         localStorage.setItem("user_phone", response.user.prenom);
                     }
+                    if(response.role){
+                      localStorage.setItem("role", response.role);
+
+                    }
 
                     Swal.fire({
                         title: 'Succès!',

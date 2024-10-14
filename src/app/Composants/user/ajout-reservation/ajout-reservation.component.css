@@ -6,6 +6,81 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+/* categorie */
+.categories {
+  display: flex;
+  gap: 20px; /* Espacement entre les cartes */
+  flex-wrap: wrap; /* Permet de passer à la ligne si nécessaire */
+  justify-content: center; /* Centre les cartes dans le conteneur principal */
+}
+
+.category-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centre le contenu dans la carte */
+  justify-content: center; /* Centre verticalement l'image et le titre */
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 40px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  width: 350px; /* Ajustez selon vos besoins */
+  height: 300px;
+  background-color: #CFEEF1;
+}
+
+.category-card img {
+  width: 10rem; /* Ajustez pour la taille souhaitée */
+  height: 8rem;
+  margin-bottom: 10px; 
+}
+
+.category-card h3 {
+  font-size: 30px;
+  color: #333;
+  margin: 0;
+}
+
+/* phot place */
+
+.place-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 10px;
+}
+
+.place-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  min-width: 150px;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+
+.place-icon.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.place-icon.selected {
+  border: 2px solid #227093;
+  opacity: 1;
+  background-color: #227093;
+  align-items: center;
+  border-radius: 40%;
+  color: white;
+  font-weight: 900;
+  font-size: 50px;
+}
+
+/* phot place */
+
 body {
   background-color: #f4f4f4;
 }
@@ -299,6 +374,7 @@ nav ul li a {
     background-color: #FEB906; /* Couleur de fond du bouton */
   }
 }
+
 
   }
   

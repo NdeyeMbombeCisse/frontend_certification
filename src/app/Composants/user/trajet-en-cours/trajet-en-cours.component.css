@@ -7,13 +7,13 @@
 
 
 .form-group {
-    margin-bottom: 20px; /* Espacement entre les groupes de champs */
+    margin-bottom: 20px; 
   }
   
   label {
-    display: block; /* Affiche le label en bloc */
-    margin-bottom: 20px; /* Espacement entre le label et le sélecteur */
-    font-weight: bold; /* Met le texte en gras */
+    display: block; 
+    margin-bottom: 20px; 
+    font-weight: bold;
     color: white;
     font-size: 30px;
   }
@@ -210,8 +210,10 @@ nav ul li a.active {
 .trajet_enCours {
     width: 100%;
     padding: 20px;
-    background-color: #f4f4f4;
+    background-color: #efefef;
     margin-top: 200px;
+    /* background-image: url(../../../../assets/images/da.png); */
+    /* background-size: cover; */
 }
 
 .trajets {

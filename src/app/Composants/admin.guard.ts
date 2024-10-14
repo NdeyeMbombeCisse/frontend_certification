@@ -1,7 +1,7 @@
 import { inject } from "@angular/core";
 import { Router } from "@angular/router";
 
-export const AuthGuardsuperAdmin = () =>{
+export const AuthGuardAdmin = () =>{
     let router =inject(Router)
     let access_token;
     let role;
@@ -11,7 +11,7 @@ export const AuthGuardsuperAdmin = () =>{
         role = localStorage.getItem("role") || "";
 
     }
-    if (!access_token || (role !="superAdmin" )){ 
+    if (!access_token || (role !="admin" )){ 
         router.navigateByUrl("/portail");
         return false;
 
