@@ -33,6 +33,17 @@
 
       <!-- tableau -->
       <div class="reservation-container">
+      
+  
+          <div class="container mt-5">
+         <div class="search-bar" >
+             <input type="text" class="form-control" placeholder="Rechercher" [(ngModel)]="searchTerm" (input)="searchTrajets()">
+         </div>
+       </div>
+     
+     
+
+    
         <h1>LISTE DES RESERVATIONS</h1>
         <table *ngIf="tabreservation.length > 0; else noReservations" class="reservation-table">
           <thead>

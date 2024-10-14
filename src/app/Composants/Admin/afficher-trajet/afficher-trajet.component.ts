@@ -31,6 +31,10 @@ export class AfficherTrajetComponent implements OnInit {
   tabBateaux:BateauModel[] =[];
   selectedTrajet: TrajetModel | null = null; 
   reservations: ReservationModel = {};
+  dateDepart: string | null = null;  // Pour stocker la date de départ
+  dateArrivee: string | null = null;  // Pour stocker la date d'arrivée
+  searchTerm: string = '';
+  filteredTrajets: TrajetModel[] = [];
 
   // Variables de pagination
   currentPage: number = 1;
@@ -170,6 +174,28 @@ viewReservationDetails(trajetId: any) {
 isActive(route: string): boolean {
   return this.router.url === route;
 }
+
+
+
+
+
+
+searchTrajets() {
+    const term = this.searchTerm?.toLowerCase() || '';
+
+    this.tabtrajet = this.tabtrajet.filter((trajet: TrajetModel) => {
+        // Vérifiez si date_depart et date_arrivee existent avant d'appliquer toLowerCase
+        const departDateString = trajet.date_depart ? new Date(trajet.date_depart).toISOString() : '';
+        const arriveeDateString = trajet.date_arrivee ? new Date(trajet.date_arrivee).toISOString() : '';
+
+        return (
+            departDateString.includes(term) || 
+            arriveeDateString.includes(term)
+        );
+    });
+}
+
+
 
 }
 

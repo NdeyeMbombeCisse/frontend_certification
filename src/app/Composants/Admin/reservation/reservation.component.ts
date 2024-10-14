@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../../Services/auth.service';
 import { Router, RouterModule } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { TrajetModel } from '../trajet.model';
 
 @Component({
   selector: 'app-reservation',
@@ -19,15 +20,21 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class ReservationComponent implements OnInit {
   private reservationService = inject(ReservationService);
   private userService = inject(AuthService);
+  tabtrajet:TrajetModel[]=[];
   private router = inject(Router)
   tabreservation: ReservationModel[] = [];
   selectedTrajetId: number | null = null; // ID du trajet sélectionné
+  filteredReservations: ReservationModel[] = [];
 
+  Prenom: string | null = null;  // Pour stocker la date de départ
+  Nom: string | null = null;  // Pour stocker la date d'arrivée
   reservationObject: ReservationModel = {};
   selectedReservation: ReservationModel | null = null;
   isModalOpen: boolean = false;
   currentPage: number = 1;
   itemsPerPage: number = 9;
+  searchTerm: string = '';
+
 
   ngOnInit(): void {
     this.fetchReservations(); // Appel à fetchTrajets() pour charger les réservations au démarrage
@@ -98,4 +105,20 @@ export class ReservationComponent implements OnInit {
   isActive(route: string): boolean {
     return this.router.url === route;
   }
+
+
+  // rechercher
+  searchTrajets() {
+    const term = this.searchTerm?.toLowerCase() || '';
+  
+    // Filtrer les réservations sans modifier tabreservation
+    this.tabreservation = this.tabreservation.filter((reservation: ReservationModel) => {
+      const prenom = reservation.user?.prenom?.toLowerCase() || '';
+      const nom = reservation.user?.nom?.toLowerCase() || '';
+  
+      return prenom.includes(term) || nom.includes(term);
+    });
+  }
 }
+
+

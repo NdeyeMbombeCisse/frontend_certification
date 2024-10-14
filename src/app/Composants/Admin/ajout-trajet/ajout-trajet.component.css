@@ -1,6 +1,16 @@
 .contenu{
     display: flex;
     background-color: rgba(34, 112, 147, 0.3);
+    background-image: url(../../../../assets/images/backround_dashboard.png);
+
+}
+
+
+
+.error-message{
+  color: red;
+  font-size: 25px;
+  margin-top: 10px;
 }
 .sidebar {
   background-color: #618062; /* Background color */
@@ -86,18 +96,36 @@ line-height: 2;
 .menu-item:hover img {
   filter: grayscale(100%);
 }
+
+
+
 .ajout-trajet-container {
-    max-width: 800px; /* Largeur maximale de votre formulaire */
+    max-width: 1230px; /* Largeur maximale de votre formulaire */
+    width: 100%; /* Permet au conteneur de s'adapter à la largeur de l'écran */
     margin: 0 auto; /* Centre le conteneur horizontalement */
     display: flex; /* Utilise flexbox pour centrer le contenu */
     flex-direction: column; /* Aligne les éléments en colonne */
-    align-items: center;
-    margin-top: 200px;
+    align-items: center; /* Centre les éléments à l'intérieur */
+    margin-top: 200px; /* Espace au-dessus du conteneur */
+    padding: 20px; /* Espacement interne */
+    background-color: white; /* Fond blanc pour le conteneur */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombre pour le conteneur */
+    border-radius: 8px; /* Coins arrondis */
+    height: 940px;
 }
+
+
+
 .form-row {
     display: flex;
     justify-content: space-between;
     gap: 20px; /* Espace entre les groupes d'inputs */
+}
+
+
+#image{
+  display: flex;
+  flex-direction: column;
 }
 .form-group {
     flex: 1; /* Chaque input prend la même proportion de l'espace */
@@ -126,7 +154,7 @@ line-height: 2;
     background-color: #ffffff;
 }
 label{
-    font-size: 25px;
+    font-size: 30px;
     color: #1d1e1f;
     font-family: inter;
 }
@@ -160,5 +188,6 @@ button{
     font-size: 30px;
     font-weight: bold;
     color: white;
-    margin-left: 35px;
+    margin-top: 30px;
+    margin-left: 375px;
 }

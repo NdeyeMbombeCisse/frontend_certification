@@ -46,7 +46,16 @@
     <div class="trajet-container">
         <!-- app-barrecherche -->
         <div class="profil">
-        <app-barrecherche></app-barrecherche>
+       
+
+             <div class="container mt-5">
+            <div class="search-bar" >
+                <input type="date" class="form-control" placeholder="Rechercher" [(ngModel)]="searchTerm" (input)="searchTrajets()">
+            </div>
+          </div>
+        
+        
+
         <!-- <app-profilnotif></app-profilnotif> -->
         </div>
         <h1>LISTE DES TRAJETS</h1>

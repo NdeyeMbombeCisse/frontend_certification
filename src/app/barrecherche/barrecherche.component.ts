@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-barrecherche',
@@ -8,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrl: './barrecherche.component.css'
 })
 export class BarrechercheComponent {
+  @Output() rechercheEffectuée: EventEmitter<string> = new EventEmitter<string>();
+  termeRecherche: string = '';
 
+  onSearch() {
+    this.rechercheEffectuée.emit(this.termeRecherche);
+  }
 }
