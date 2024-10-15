@@ -66,6 +66,12 @@ getAvailablePlacesForTrajet(trajetId: number){
   return this.http.get(`${apiUrl}/trajets/${trajetId}/places`);
 }
 
+
+// notification
+getNotifications() {
+  return this.http.get(`${apiUrl}/notifications`);
+}
+
     }
       
       

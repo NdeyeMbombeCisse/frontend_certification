@@ -32,6 +32,30 @@
        
     </div>
     <div class="dashboard">
+        <div class="header">
+
+                <!-- <i class="fa-regular fa-bell fa-3x  notification-icon" (click)="toggleNotifications()"></i>    -->
+                <i class="fa-regular fa-bell fa-3x notification-icon" (click)="toggleNotifications()">
+                    <span *ngIf="unreadCount > 0" class="notification-badge">{{ unreadCount }}</span> <!-- Badge pour notifications non lues -->
+                </i>
+                <!-- Affichage des notifications si `showNotifications` est vrai -->
+                <div *ngIf="showNotifications" class="notification-box">
+                  <div *ngIf="notifications.length > 0; else noNotifications">
+                    <ul>
+                      <li *ngFor="let notification of notifications">
+                        {{ notification.data.message }} - {{ notification.created_at | date:'short' }}
+                      </li>
+                    </ul>
+                  </div>
+                  <ng-template #noNotifications>
+                    <p>Aucune notification à afficher.</p>
+                  </ng-template>
+                </div>
+              </div>
+
+            <!-- Icône de notification avec clic pour afficher les notifications -->
+          
+          
         <div class="container">
             <div class="content">
                 <h1>Bienvenu Ndeye MBombe Cisse dans votre dashboard</h1>
@@ -116,45 +140,7 @@
           </div>
           
 
-        <!-- <div *ngIf="trajetsEnCours.length > 0; else noTrajets">
-            <div *ngFor="let trajet of trajetsEnCours" class="trajet-card">
-              <h3>{{ trajet?.bateau?.libelle }}</h3>
-              <p>Places restantes: {{ trajet.placesRestantes }}</p>
-            </div>
-          </div>
-          
-          <ng-template #noTrajets>
-            <p>Aucun trajet disponible.</p>
-          </ng-template>
-           -->
         
-    </div>
-    <!-- <div class="autres">
-        <h2>Les dernières réservations</h2>
-        <div class="cartes">
-          <img src="image.jpg" alt="Image réservation">
-          <h1>Réservation de Oumou Cissé</h1>
-          <p>Pour le trajet Dakar -> Ziguinchor</p>
-          <p>Réservation de Mamadou Diallo</p>
-          <p>Pour le trajet Saint-Louis -> Kaolack</p>
-          <p>Réservation de Fatou Ndiaye</p>
-          <p>Pour le trajet Thiès -> Dakar</p>
-        </div>
-        <div class="cartes">
-            <img src="image.jpg" alt="Image réservation">
-            <h1>Réservation de Oumou Cissé</h1>
-            <p>Pour le trajet Dakar -> Ziguinchor</p>
-            <p>Réservation de Mamadou Diallo</p>
-            <p>Pour le trajet Saint-Louis -> Kaolack</p>
-            <p>Réservation de Fatou Ndiaye</p>
-            <p>Pour le trajet Thiès -> Dakar</p>
-          </div>
-      </div> -->
-      
-      
-      
-
-    
- 
+    </div>   
 </div>
 

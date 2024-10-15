@@ -23,8 +23,8 @@
 }
 
 .contenu > * {
-  position: relative; /* Pour garder le contenu au-dessus de l'image */
-  z-index: 2; /* Pour s'assurer que le contenu est visible au-dessus de l'image de fond */
+  position: relative; 
+  z-index: 2; 
 }
  
  .sidebar {
@@ -50,6 +50,44 @@ line-height: 2;
 
 } 
 
+.header {
+  position: relative; /* Pour positionner la boîte de notifications relative à l'icône */
+}
+
+.notification-box {
+  position: absolute; /* Positionnez-le par rapport à l'icône */
+  right: 0; /* Alignement à droite */
+  top: 80px; /* Ajustez selon votre mise en page */
+  background-color: white; /* Couleur de fond */
+  border: 1px solid #ccc; /* Bordure */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Ombre */
+  padding: 10px;
+  border-radius: 5px; /* Coins arrondis */
+  z-index: 1000; /* Assurez-vous qu'il soit au-dessus des autres éléments */
+  font-size: 30px;
+  margin-left: 10px;
+}
+
+.notification-icon {
+  color: #FF5733; /* Remplacez cette couleur par celle que vous souhaitez */
+  cursor: pointer; /* Change le curseur pour indiquer que l'icône est cliquable */
+}
+
+
+
+.header{
+  width: 105%;
+  background-color: #ffffff;
+  height: 100px;
+  margin-left: 3px;
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.2); 
+  margin-top: 10px;
+}
+
+.header i{
+margin-left: 1900px;
+margin-top: 30px;
+}
 
 
 

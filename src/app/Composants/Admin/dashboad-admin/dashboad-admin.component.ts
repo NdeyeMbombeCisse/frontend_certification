@@ -6,6 +6,7 @@ import { TrajetService } from '../../../Services/trajet.service';
 import { ReservationService } from '../../../Services/reservation.service';
 import { CommonModule } from '@angular/common';
 import { TrajetModel } from '../trajet.model';
+import { NotificationModel } from '../notification.model';
 
 @Component({
   selector: 'app-dashboad-admin',
@@ -24,17 +25,15 @@ export class DashboadAdminComponent implements OnInit {
   placesRestantes:number =0;
   totalPlacesRestantes:number=0;
   trajetsEnCours: TrajetModel[] = [];
+  notifications:any;
+  showNotifications: boolean = false; // État d'affichage
+  unreadCount: number = 0;
+
 
   ngOnInit(): void {
-  
-
-    
-
-    this.loadTrajets()
-  
-
-   
-    
+    this.loadNotifications();
+    this.updateUnreadCount();
+    this.loadTrajets()  
   }
 
  
@@ -69,4 +68,26 @@ export class DashboadAdminComponent implements OnInit {
       }
     );
   }
+
+
+  // notification
+
+  loadNotifications(): void {
+    this.reservationService.getNotifications().subscribe(
+      (data: any) => {
+        this.notifications = data;
+      },
+      (error) => {
+        console.error('Erreur lors de la récupération des notifications', error);
+      }
+    );
+  }
+
+  toggleNotifications(): void {
+    this.showNotifications = !this.showNotifications; // Alterner l'état d'affichage
+  }
+
+  updateUnreadCount() {
+    this.unreadCount = this.notifications.filter((notification: NotificationModel) => !notification.data).length;
+}
 }
