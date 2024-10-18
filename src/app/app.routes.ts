@@ -25,6 +25,8 @@ import { ScanComponent } from './Composants/scan/scan.component';
 import { AuthGuardAdmin } from './Composants/admin.guard';
 import { AuthGuardsuperAdmin } from './Composants/supadmin.guard';
 import { AuthGuardsuperVigile } from './Composants/vigile.guard';
+import { PlaceAdminComponent } from './Composants/Admin/place-admin/place-admin.component';
+import { DiagrammeComponent } from './diagramme/diagramme.component';
 
 export const routes: Routes = [
     {path:"",pathMatch:'full',redirectTo:'portail'},
@@ -57,6 +59,11 @@ export const routes: Routes = [
     {path:"afficher_trajet", component:AfficherTrajetComponent,canActivate:[AuthGuardAdmin]},
     { path: 'trajet/:trajetId/reservations',component:DetailTrajetComponent ,canActivate:[AuthGuardAdmin]},
     {path:"liste_reservation", component:ReservationComponent,canActivate:[AuthGuardAdmin]},
+    {path:'trajet/:id', component:PlaceAdminComponent,canActivate:[AuthGuardAdmin]},
+    {path:"diagramme", component:DiagrammeComponent,canActivate:[AuthGuardAdmin]},
+
+    
+// vigile
     {path:"sca", component:ScanComponent,canActivate:[AuthGuardsuperVigile]},
     
 

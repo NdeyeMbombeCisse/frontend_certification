@@ -112,7 +112,9 @@ line-height: 2;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombre pour le conteneur */
     border-radius: 8px; /* Coins arrondis */
     height: 940px;
+    margin-left: 370px;
 }
+
 
 
 
@@ -177,6 +179,10 @@ h1 {
     text-align: center; /* Centre le texte à l'intérieur */
     font-size: 40px;
     margin-bottom: 40px;
+}
+
+.deux{
+  display: flex;
 }
 button{
     width: 520px; /* Assure que tous les champs occupent la largeur complète */

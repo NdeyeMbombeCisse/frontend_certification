@@ -10,6 +10,7 @@ import { PlaceModel } from '../place.model';
 import { AuthService } from '../../../Services/auth.service';
 import { Router, ActivatedRoute, RouterModule } from '@angular/router';
 import Swal from 'sweetalert2';
+import { forkJoin } from 'rxjs';
 
 
 @Component({
@@ -40,15 +41,18 @@ export class AjoutReservationComponent implements OnInit {
   availablePlaces: PlaceModel[] = [];
   selectedPlace: PlaceModel | null = null; 
   selectPlaceId: any| null = null; 
+
   ngOnInit(): void {
     const userIdString = localStorage.getItem('user_id');
     console.log('ID utilisateur récupéré:', userIdString);
     // Récupérer l'ID du trajet depuis les paramètres de la route
     this.route.params.subscribe(params => {
       this.trajetId = +params['trajetId']; // Le `+` convertit la chaîne en nombre
-      this.getReservedPlaces(this.trajetId);
-
       
+      const trajetId = this.route.snapshot.paramMap.get('id'); // Supposons que vous récupériez l'ID du trajet depuis l'URL
+      this.loadReservedPlacesForTrajet(trajetId);
+      // this.getReservedPlaces(trajetId);
+
     });
 
     
@@ -81,20 +85,76 @@ export class AjoutReservationComponent implements OnInit {
 
 
 
-  onCategorieSelect(id: any) {
+  onCategorieSelect(id: any, trajetId: any) {
     this.selectedCategorie = id;
   
-    // Récupérer les places de la catégorie sélectionnée
-    this.reservationService.getPlacesByCategorie(id).subscribe(
-      (data: any) => {
-        this.places = data;
-        console.log('Places de la catégorie sélectionnée:', this.places); // Log pour le débogage
+    // Charger à la fois les places réservées et les places de la catégorie sélectionnée
+    forkJoin({
+      reservedPlaces: this.reservationService.getReservedPlaces(trajetId),
+      availablePlaces: this.reservationService.getPlacesByCategorie(id, trajetId)
+    }).subscribe({
+      next: ({ reservedPlaces, availablePlaces }: any) => {
+        // Stocker les places réservées
+        this.reservedPlaces = reservedPlaces.data.map((item: any) => item.place.id);
+        console.log('Places réservées (IDs):', this.reservedPlaces); // Debugging
+  
+        // Filtrer les places disponibles pour ne garder que celles qui ne sont pas réservées
+        this.places = availablePlaces.filter((place: any) => {
+          const reserved = this.isPlaceReserved(place.id); // Vérifie si la place est réservée
+          console.log(`Place ID: ${place.id}, Réservée: ${reserved}`); // Debugging
+          return !reserved; // Ne garder que les places non réservées
+        });
+  
+        console.log('Places non réservées pour la catégorie sélectionnée:', this.places); // Debugging
       },
-      (error) => {
-        console.error('Erreur lors de la récupération des places:', error);
+      error: (error) => {
+        console.error('Erreur lors du chargement des données:', error);
       }
-    );
+    });
   }
+  
+
+  // les places deja reserver
+  loadReservedPlacesForTrajet(trajetId: any): void {
+    this.reservationService.getReservedPlaces(trajetId).subscribe({
+        next: (response: any) => {
+            this.reservedPlaces = response.data.map((item: any) => item.place); // Récupère toutes les places
+            
+            console.log('Places réservées pour le trajet:', this.reservedPlaces); // Debugging
+        },
+        error: (error) => {
+            console.error('Erreur lors du chargement des places réservées:', error);
+            // Gérer l'affichage d'un message d'erreur à l'utilisateur si nécessaire
+        }
+    });
+}
+
+isPlaceReserved(id?: number): boolean {
+  const reserved = this.reservedPlaces.includes(id as number);
+  // console.log(`Place ID: ${id}, Réservée: ${reserved}`);
+  return reserved;
+}
+
+
+selectPlace(place: PlaceModel): void {
+  if (this.isPlaceReserved(place.id)) { 
+    // Si la place est réservée, afficher un message d'alerte
+    Swal.fire({
+      icon: 'warning',
+      title: 'Place réservée',
+      text: 'Cette place est déjà réservée. Veuillez en choisir une autre.',
+      confirmButtonText: 'OK'
+    });
+  } else {
+    // Sélection de la place non réservée
+    this.selectPlaceId = place.id;
+    this.reservationData.place_id = place.id;
+  }
+}
+
+  
+
+
   getIconForCategorie(categorieId: any): string {
     switch (categorieId) {
       case 1: // ID pour fauteuils
@@ -110,22 +170,42 @@ export class AjoutReservationComponent implements OnInit {
   
 
 
-onCategorieChange(event: Event): void {
-  const target = event.target as HTMLSelectElement;
-  const categorieId = Number(target.value);
-  this.selectedCategorie = categorieId;
+// onCategorieChange(event: Event): void {
+//   const target = event.target as HTMLSelectElement;
+//   const categorieId = Number(target.value);
+//   this.selectedCategorie = categorieId;
 
-  this.reservationService.getPlacesByCategorie(categorieId).subscribe(
-    (data: any) => {
-      // Récupère toutes les places, sans filtrer celles qui sont réservées
-      this.places = data;
-      console.log('Toutes les places:', this.places); // Log pour le débogage
-    },
-    (error) => {
-      console.error('Erreur lors de la récupération des places:', error);
-    }
-  );
-}
+//   this.reservationService.getPlacesByCategorie(categorieId).subscribe(
+//     (data: any) => {
+//       // Récupère toutes les places, sans filtrer celles qui sont réservées
+//       this.places = data;
+//       console.log('Toutes les places:', this.places); // Log pour le débogage
+//     },
+//     (error) => {
+//       console.error('Erreur lors de la récupération des places:', error);
+//     }
+//   );
+// }
+
+
+// onCategorieChange(event: Event, trajetId: any): void {
+//   const target = event.target as HTMLSelectElement;
+//   const categorieId = Number(target.value);
+//   this.selectedCategorie = categorieId;
+
+//   // Récupérer les places de la catégorie sélectionnée et du trajet
+//   this.reservationService.getPlacesByCategorie(categorieId, trajetId).subscribe(
+//     (data: any) => {
+//       // Récupère toutes les places, sans filtrer celles qui sont réservées
+//       this.places = data;
+//       console.log('Toutes les places:', this.places); // Log pour le débogage
+//     },
+//     (error) => {
+//       console.error('Erreur lors de la récupération des places:', error);
+//     }
+//   );
+// }
+
 
 
 getCategories(): void {
@@ -164,42 +244,6 @@ getImageForCategorie(categorieId: any): string {
  
   
 
-//   createReservation() {
-//     if (this.trajetId) {
-//         this.reservationData.trajet_id = this.trajetId; // Assigner l'ID du trajet
-//     } else {
-//         alert('Erreur : ID de trajet non disponible.');
-//         return;
-//     }
-
-//     this.reservationData.user_id = this.userId; // Assigner l'ID utilisateur
-
-//     this.reservationService.createReservation(this.reservationData).subscribe(
-//         (response: any) => {
-//           Swal.fire({
-//             title: 'Succès!',
-//             text: 'Reservation faite  avec succès!',
-//             icon: 'success',
-//             confirmButtonText: 'OK'
-//           });
-         
-//             // alert(response.message || 'Réservation créée avec succès.');
-//             this.qrCodeUrl = response.qr_code; // Récupère l'URL du QR code
-//             this.resetForm();
-
-//         },
-//         (error: any) => {
-//           const errorMessage = error.error?.message || 'Erreur lors de la création de la réservation';
-      
-//           Swal.fire({
-//               icon: 'error',
-//               title: 'Oops...',
-//               text: errorMessage,
-//               confirmButtonText: 'OK'
-//           });
-//       }
-//     );
-// }
 
 
 createReservation() {
@@ -271,23 +315,30 @@ createReservation() {
 
   // places deja reservee
 
-  getReservedPlaces(trajetId: number): void {
-    if (trajetId) {
-      this.reservationService.getReservedPlaces(trajetId).subscribe
-        ((response: any) => {
-          if (response && response.data) {
-            this.reservedPlaces = response.data; 
-          } else {
-            this.error = 'Aucune place réservée trouvée.';
-            this.reservedPlaces = [];
-          }
-          this.error = null;
-        })
-        
-    } else {
-      this.reservedPlaces = []; 
-    }
-  }
+//   getReservedPlaces(trajetId: any): void {
+//     if (this.trajetId) {
+//         this.reservationService.getReservedPlaces(this.trajetId).subscribe(
+//             (response: any) => {
+//                 if (response && response.data) { // Changer reserved_places à data
+//                     this.reservedPlaces = response.data; // Correction
+//                     console.log('Places réservées récupérées:', this.reservedPlaces); // Debugging
+//                 } else {
+//                     this.error = 'Aucune place réservée trouvée.';
+//                     this.reservedPlaces = [];
+//                 }
+//                 this.error = null;
+//             },
+//             (error) => {
+//                 this.error = 'Erreur lors de la récupération des places réservées.';
+//                 console.error('Erreur:', error);
+//             }
+//         );
+//     } else {
+//         this.reservedPlaces = [];
+//     }
+// }
+
+  
   
   isActive(route: string): boolean {
     return this.router.url === route;
@@ -299,26 +350,11 @@ createReservation() {
     this.isMenuOpen = !this.isMenuOpen;
   }
 
-  isPlaceReserved(placeId?: number): boolean {
-    return this.reservedPlaces.includes(placeId as number);
-  }
-
-
-  selectPlace(place: PlaceModel): void {
-    if (place.is_reserved === 0) { // Vérifie si la place n'est pas réservée
-      this.selectPlaceId = place.id; // Définit l'ID de la place sélectionnée
-      this.reservationData.place_id = place.id; // Met à jour le champ de données de réservation
-      console.log('Place sélectionnée:', place); // Log pour le débogage
-    } else {
-      console.warn('Cette place est déjà réservée.'); // Avertir l'utilisateur si la place est réservée
-    }
-  }
-
-
 
   
 
-  
+
+
 }
 
 

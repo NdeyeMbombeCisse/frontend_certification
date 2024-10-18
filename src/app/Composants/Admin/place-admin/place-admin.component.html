@@ -1,0 +1,103 @@
+
+
+<div class="contenu">
+  <div class="sidebar">
+    <div class="logo">
+        <img src="../../../../assets/images/logo.png" alt="Logo">
+    </div>
+    <nav class="menu">
+        <a [routerLink]="['/dasbaord_admin']" class="menu-item" [class.active]="isActive('/dasbaord_admin')">
+            <img src="../../../../assets/images/icons/dashboard.svg" alt="">
+            Dashboard
+        </a>
+
+        <a [routerLink]="['/afficher_trajet']" class="menu-item" [class.active]="isActive('/afficher_trajet')">
+            <i class="fa-solid fa-ship"></i> Trajet
+        </a>
+
+        <a [routerLink]="['/ajouterTrajet']" class="menu-item" [class.active]="isActive('/ajouterTrajet')">
+            <img src="../../../../assets/images/icons/group.svg" alt="">
+            <i class="fa-solid fa-plus"></i> Ajouter un Trajet
+        </a>
+
+        <a [routerLink]="['/liste_reservation']" class="menu-item" [class.active]="isActive('/liste_reservation')">
+            <i class="fa-solid fa-list"></i> Reservation
+        </a>
+
+        <a [routerLink]="['/liste_placeAdmin']" class="menu-item" [class.active]="isActive('/liste_placeAdmin')">
+          <i class="fa-solid fa-chair"></i> Liste des places
+        </a>
+
+        <a (click)="logout()" class="menu-item">
+            <img src="../../../../assets/images/icons/logout.svg" alt="">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i> Déconnexion
+        </a>
+    </nav>
+
+   
+</div>
+
+
+
+
+  <div>
+    <h1>Liste des Catégories</h1>
+    <div class="categories">
+      <button 
+        *ngFor="let category of categories" 
+        (click)="onCategorieSelect(category.id, trajetId)"        class="category-button">
+        {{ category.libelle }}
+      </button>
+    </div>
+<!--   
+    <div class="places">
+      <div *ngFor="let place of places" class="place-card" >
+        <img [src]="getImageForPlace(place.categorie_id)" alt="Image de la place" class="place-image">
+        <p>Libelle: {{ place.libelle }}</p>
+        <button 
+          *ngIf="place.is_reserved" 
+          class="reserved-button" 
+          disabled>
+          Déjà réservée
+        </button>
+        <button class="reserver"
+          *ngIf="!place.is_reserved" 
+          (click)="togglePlaceReservation(place)">
+          Réserver
+        </button>
+      </div>
+    </div>
+  </div>
+   -->
+  
+   <div class="places">
+    <div *ngFor="let place of places" 
+         [ngClass]="{
+           'selected': selectPlaceId === place.id
+         }" 
+         (click)="selectPlace(place)">
+      
+      <img [src]="getImageForCategorie(place.categorie_id)" 
+           alt="{{ place.libelle }}" />
+      
+      <span>{{ place.libelle }}</span>
+  
+      <!-- Bouton pour réserver, affiché uniquement si la place n'est pas réservée -->
+      <button class="reserver"
+          *ngIf="!isPlaceReserved(place.id)" 
+          (click)="togglePlaceReservation(place, $event)">
+          Réserver
+      </button>
+    </div>
+  </div>
+  
+
+ 
+  
+
+
+
+
+  
+  
+</div>

@@ -21,17 +21,27 @@
             <a [routerLink]="['/liste_reservation']" class="menu-item" [class.active]="isActive('/liste_reservation')">
                 <i class="fa-solid fa-list"></i> Reservation
             </a>
+
+            <a [routerLink]="['/liste_placeAdmin']" class="menu-item" [class.active]="isActive('/liste_placeAdmin')">
+                <i class="fa-solid fa-chair"></i> Liste des places
+            </a>
     
             <a (click)="logout()" class="menu-item">
                 <img src="../../../../assets/images/icons/logout.svg" alt="">
                 <i class="fa-solid fa-arrow-right-from-bracket"></i> Déconnexion
             </a>
         </nav>
-    </div>
+
+
    
+    
+       
+    </div>
+
+    
+
         <div class="ajout-trajet-container">
-            <h1 class="mb-4">AJOUTER UN TRAJET</h1>
-        
+                <h1 class="mb-4">AJOUTER UN TRAJET</h1>
             <form (ngSubmit)="saveTrajet()">
                 <!-- Date de départ et Date d'arrivée sur la même ligne -->
                 <div class="form-row row">
@@ -160,12 +170,7 @@
                     </div>
                 </div>
         
-                <!-- Champ d'image -->
-               
-
-
-
-                
+                <!-- Champ d'image -->   
                     <div class="form-group mb-3 col-md-6" id="image">
                         <label for="image">Image</label>
                         <input
@@ -176,13 +181,14 @@
                         />
                     </div>
                 
-                
-        
                 <!-- Bouton de soumission -->
                 <button type="submit" class="btn btn-primary">Ajouter le trajet</button>
             </form>
         </div>
+   
+      
     </div>
+   
 
  
     

@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
 import { apiUrl } from "./apiUrl";
-import { map } from "rxjs";
+import { map, Observable, tap } from "rxjs";
 
 @Injectable(
     {providedIn:'root'}
@@ -21,9 +21,12 @@ export class ReservationService{
         return this.http.get(`${apiUrl}/categories`);
       }
     
-      getPlacesByCategorie(categorieId: any) {
-        return this.http.get(`${apiUrl}/categories/${categorieId}/places`);
+      getPlacesByCategorie(categorieId: any, trajetId:any) {
+        return this.http.get(`${apiUrl}/trajets/${trajetId}/categories/${categorieId}/places`);
+
       }
+
+    
 
       // gestion tarif
 
@@ -62,6 +65,11 @@ getReservedPlaces(trajetId: number) {
   return this.http.get(`${apiUrl}/trajets/${trajetId}/places-reservees`);
 }
 
+
+
+
+
+
 getAvailablePlacesForTrajet(trajetId: number){
   return this.http.get(`${apiUrl}/trajets/${trajetId}/places`);
 }
@@ -71,6 +79,29 @@ getAvailablePlacesForTrajet(trajetId: number){
 getNotifications() {
   return this.http.get(`${apiUrl}/notifications`);
 }
+
+
+// changer le sattut de la place
+
+updatePlaceReservation(placeId: number, isReserved: boolean){
+  return this.http.put(`${apiUrl}/placeReservee/${placeId}`, { is_reserved: isReserved });
+}
+
+
+getPlacesByTrajet(trajet:any){
+  return this.http.get(`${apiUrl}/places/trajet/${trajet}`);
+
+
+}
+
+
+// '/trajets/{trajetId}/places'
+
+getReservedPlacesForTrajet(trajetId: number) {
+  return this.http.get(`${apiUrl}/reservations/trajet/${trajetId}`);
+}
+
+
 
     }
       

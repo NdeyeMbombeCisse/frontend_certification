@@ -7,11 +7,13 @@ import { ReservationService } from '../../../Services/reservation.service';
 import { CommonModule } from '@angular/common';
 import { TrajetModel } from '../trajet.model';
 import { NotificationModel } from '../notification.model';
+import { Chart, registerables, ChartOptions } from 'chart.js';
+import { DiagrammeComponent } from '../../../diagramme/diagramme.component';
 
 @Component({
   selector: 'app-dashboad-admin',
   standalone: true,
-  imports: [RouterModule,CommonModule],
+  imports: [RouterModule,CommonModule,DiagrammeComponent],
   templateUrl: './dashboad-admin.component.html',
   styleUrl: './dashboad-admin.component.css'
 })
@@ -29,11 +31,13 @@ export class DashboadAdminComponent implements OnInit {
   showNotifications: boolean = false; // État d'affichage
   unreadCount: number = 0;
 
+  
 
   ngOnInit(): void {
     this.loadNotifications();
     this.updateUnreadCount();
-    this.loadTrajets()  
+    this.loadTrajets()  ;
+    
   }
 
  
@@ -90,4 +94,10 @@ export class DashboadAdminComponent implements OnInit {
   updateUnreadCount() {
     this.unreadCount = this.notifications.filter((notification: NotificationModel) => !notification.data).length;
 }
+
+
+
+// Définir chartType comme 'bar'
+
+
 }

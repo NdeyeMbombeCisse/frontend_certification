@@ -40,7 +40,7 @@
       *ngFor="let categorie of categories"
       class="category-card"
       [class.selected]="categorie.id === selectedCategorie"
-      (click)="onCategorieSelect(categorie.id)"
+      (click)="onCategorieSelect(categorie.id, trajetId)" 
     >
       <img [src]="getIconForCategorie(categorie.id)" alt="{{ categorie.libelle }}" class="category-image" />
       <h3>{{ categorie.libelle }}</h3>
@@ -48,9 +48,8 @@
   </div>
 
 <div class="form-group">
-  <label for="place">Places disponibles :</label>
-  <div class="place-container">
-    <div *ngFor="let place of places" 
+  <!-- <div class="place-container">
+     <div *ngFor="let place of places" 
          class="place-icon" 
          [ngClass]="{
            'disabled': place.is_reserved === 1,
@@ -60,8 +59,62 @@
       <img [src]="getImageForCategorie(place.categorie_id)" 
            alt="{{ place.libelle }}" />
       <span>{{ place.libelle }}</span>
+    </div> 
+  </div> -->
+
+
+<!-- <div class="place-container">
+    <div *ngFor="let place of places" 
+         class="place-icon" 
+         [ngClass]="{
+           'disabled': isPlaceReserved(place.id),
+           'selected': selectPlaceId === place.id
+         }" 
+         (click)="selectPlace(place)">
+      <img [src]="getImageForCategorie(place.categorie_id)" 
+           alt="{{ place.libelle }}" />
+      <span>{{ place.libelle }}</span>
+    </div> 
+  </div> -->
+
+<!-- 
+  <div class="place-container">
+    <div *ngFor="let place of places" 
+         class="place-icon" 
+         [ngClass]="{
+           'disabled': isPlaceReserved(place.id),
+           'selected': selectPlaceId === place.id
+         }" 
+         (click)="!isPlaceReserved(place.id) && selectPlace(place)"
+         [attr.aria-disabled]="isPlaceReserved(place.id)">
+      <img [src]="getImageForCategorie(place.categorie_id)" 
+           alt="{{ place.libelle }}" />
+      <span>{{ place.libelle }}</span>
+    </div> 
+  </div> -->
+
+  <div class="place-container">
+    <div *ngFor="let place of places" 
+         class="place-icon" 
+         [ngClass]="{
+           'selected': selectPlaceId === place.id
+         }" 
+         (click)="selectPlace(place)">
+      <img [src]="getImageForCategorie(place.categorie_id)" 
+           alt="{{ place.libelle }}" />
+      <span>{{ place.libelle }}</span>
     </div>
   </div>
+  
+
+  
+
+  
+  
+
+  
+    
+  
 </div>
 
 

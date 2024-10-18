@@ -33,12 +33,18 @@
             <a [routerLink]="['/liste_reservation']" class="menu-item" [class.active]="isActive('/liste_reservation')">
                 <i class="fa-solid fa-list"></i> Reservation
             </a>
+
+            <a [routerLink]="['/liste_placeAdmin']" class="menu-item" [class.active]="isActive('/liste_placeAdmin')">
+                <i class="fa-solid fa-chair"></i>Liste des places
+            </a>
     
             <a (click)="logout()" class="menu-item">
                 <img src="../../../../assets/images/icons/logout.svg" alt="">
                 <i class="fa-solid fa-arrow-right-from-bracket"></i> Déconnexion
             </a>
         </nav>
+    
+       
     </div>
 
      <!-- sidebar fin -->
@@ -77,7 +83,11 @@
             </thead>
             <tbody>
                 <tr *ngFor="let trajet of getDisplayedTrajets()" 
-                    [ngClass]="trajet.statut ? 'trajet-publie' : 'trajet-non-publie'">
+                    [ngClass]="trajet.statut ? 'trajet-publie' : 'trajet-non-publie'"
+
+                    (click)="navigateToplace(trajet.id)" style="cursor: pointer;"
+                    style="cursor: pointer;"
+                    >
                     <td>{{ trajet.id }}</td>
                     <td>{{ trajet.date_depart }}</td>
                     <td>{{ trajet.date_arrivee }}</td>

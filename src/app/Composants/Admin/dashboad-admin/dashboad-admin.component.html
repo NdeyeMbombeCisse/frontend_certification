@@ -22,6 +22,10 @@
             <a [routerLink]="['/liste_reservation']" class="menu-item" [class.active]="isActive('/liste_reservation')">
                 <i class="fa-solid fa-list"></i> Reservation
             </a>
+
+            <a [routerLink]="['/liste_placeAdmin']" class="menu-item" [class.active]="isActive('/liste_placeAdmin')">
+                <i class="fa-solid fa-chair"></i> Liste des places
+            </a>
     
             <a (click)="logout()" class="menu-item">
                 <img src="../../../../assets/images/icons/logout.svg" alt="">
@@ -139,8 +143,12 @@
             </table>
           </div>
           
-
+<div class="diagramme">
+    <app-diagramme></app-diagramme>
+</div>
         
     </div>   
+    <!-- app-diagramme -->
+  
 </div>
 

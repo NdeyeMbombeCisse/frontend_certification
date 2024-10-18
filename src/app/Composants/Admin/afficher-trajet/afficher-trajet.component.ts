@@ -11,6 +11,7 @@ import { ReservationModel } from '../../user/reservation.model';
 import { BarrechercheComponent } from '../../../barrecherche/barrecherche.component';
 import { ProfilComponent } from '../../user/profil/profil.component';
 import { ProfilnotifComponent } from '../../../profilnotif/profilnotif.component';
+import { ReservationService } from '../../../Services/reservation.service';
 
 @Component({
   selector: 'app-afficher-trajet',
@@ -24,6 +25,7 @@ export class AfficherTrajetComponent implements OnInit {
   private trajetService = inject(TrajetService);
   private userService = inject(AuthService);
   private router= inject(Router);
+  private reservationService = inject(ReservationService)
 
   // declaration des variables
   tabtrajet:TrajetModel[]=[];
@@ -162,6 +164,10 @@ changerStatut(trajet: any) {
   } else {
     console.error('ID du trajet manquant.');
   }
+}
+
+navigateToplace(trajetId: any): void {
+  this.router.navigate([`trajet/${trajetId}`]);
 }
 
 
