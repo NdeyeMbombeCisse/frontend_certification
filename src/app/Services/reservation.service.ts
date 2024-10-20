@@ -102,6 +102,18 @@ getReservedPlacesForTrajet(trajetId: number) {
 }
 
 
+// resrvation dans la semaine
+
+getReservationsByWeek(){
+  return this.http.get(`${apiUrl}/reservation/weekly`);
+}
+
+// voyage enregstrer
+getVoyagesEffectuesByWeek(){
+  return this.http.get(`${apiUrl}/voyages/effectues/semaine`);
+}
+
+
 
     }
       

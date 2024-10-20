@@ -65,6 +65,11 @@ export class TrajetService{
       }
     
    
+    //   statitistique trajet
+
+  getTrajetsByWeek(){
+    return this.http.get(`${apiUrl}/trajets-by-week`);
+}
   
     }
       

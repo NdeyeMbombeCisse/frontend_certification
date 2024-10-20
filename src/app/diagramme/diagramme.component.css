@@ -1,0 +1,18 @@
+.chart-container {
+    position: relative;
+    width: 50%; /* Largeur du conteneur : ajustable */
+    height: auto; /* Laisser l'ajustement dynamique */
+    margin: 0 auto; /* Centrer le graphique */
+    padding: 20px;
+    margin-left: 60px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Effet d'ombre pour un look moderne */
+  }
+  
+  canvas {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  
