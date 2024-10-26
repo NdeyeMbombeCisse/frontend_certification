@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
 import { apiUrl } from "./apiUrl";
 import { map, Observable, tap } from "rxjs";
@@ -8,6 +8,7 @@ import { map, Observable, tap } from "rxjs";
 )
 
 export class ReservationService{
+  // private apiUrl = 'https://api.naboopay.com/api/v1/transaction/create-transaction';
     // injection de dependance
     private http = inject(HttpClient);
 
@@ -113,6 +114,9 @@ getVoyagesEffectuesByWeek(){
   return this.http.get(`${apiUrl}/voyages/effectues/semaine`);
 }
 
+createTransaction(reservationId: number) {
+  return this.http.post(`${apiUrl}/create-transaction/${reservationId}`, {});
+}
 
 
     }

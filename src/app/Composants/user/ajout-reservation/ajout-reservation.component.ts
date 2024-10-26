@@ -41,6 +41,7 @@ export class AjoutReservationComponent implements OnInit {
   availablePlaces: PlaceModel[] = [];
   selectedPlace: PlaceModel | null = null; 
   selectPlaceId: any| null = null; 
+  reservationId: number | null = null;
 
   ngOnInit(): void {
     const userIdString = localStorage.getItem('user_id');
@@ -246,44 +247,112 @@ getImageForCategorie(categorieId: any): string {
 
 
 
+// createReservation() {
+//   if (this.trajetId) {
+//       this.reservationData.trajet_id = this.trajetId; // Assigner l'ID du trajet
+//   } else {
+//       alert('Erreur : ID de trajet non disponible.');
+//       return;
+//   }
+
+//   this.reservationData.user_id = this.userId; // Assigner l'ID utilisateur
+
+//   this.reservationService.createReservation(this.reservationData).subscribe(
+//       (response: any) => {
+//         Swal.fire({
+//           title: 'Succès!',
+//           text: 'Réservation faite avec succès!',
+//           icon: 'success',
+//           confirmButtonText: 'OK'
+//         }).then(() => {
+//           // Rediriger vers la page de paiement après que l'utilisateur clique sur "OK"
+//           // window.location.href = 'https://checkout.naboopay.com/checkout/ec597225-ad9d-40ac-9339-3095bdb5615d';
+//         });
+        
+//         this.qrCodeUrl = response.qr_code; // Récupère l'URL du QR code
+//         this.resetForm();
+          
+//       },
+//       (error: any) => {
+//         const errorMessage = error.error?.message || 'Erreur lors de la création de la réservation';
+    
+//         Swal.fire({
+//             icon: 'error',
+//             title: 'Oops...',
+//             text: errorMessage,
+//             confirmButtonText: 'OK'
+//         });
+//     }
+//   );
+// }
+
+
+
 createReservation() {
-  if (this.trajetId) {
-      this.reservationData.trajet_id = this.trajetId; // Assigner l'ID du trajet
-  } else {
-      alert('Erreur : ID de trajet non disponible.');
-      return;
+  if (!this.trajetId || !this.userId) {
+    alert('Erreur : ID de trajet ou utilisateur non disponible.');
+    return;
   }
 
-  this.reservationData.user_id = this.userId; // Assigner l'ID utilisateur
+  this.reservationData.trajet_id = this.trajetId;
+  this.reservationData.user_id = this.userId;
 
   this.reservationService.createReservation(this.reservationData).subscribe(
-      (response: any) => {
-        Swal.fire({
-          title: 'Succès!',
-          text: 'Réservation faite avec succès!',
-          icon: 'success',
-          confirmButtonText: 'OK'
-        }).then(() => {
-          // Rediriger vers la page de paiement après que l'utilisateur clique sur "OK"
-          window.location.href = 'https://checkout.naboopay.com/checkout/ec597225-ad9d-40ac-9339-3095bdb5615d';
-        });
-        
-        this.qrCodeUrl = response.qr_code; // Récupère l'URL du QR code
-        this.resetForm();
-          
-      },
-      (error: any) => {
-        const errorMessage = error.error?.message || 'Erreur lors de la création de la réservation';
-    
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: errorMessage,
-            confirmButtonText: 'OK'
-        });
+    (response: any) => {
+      Swal.fire({
+        title: 'Succès!',
+        text: 'Réservation faite avec succès!',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      }).then(() => {
+        const reservationId = response.reservation?.id; // Utilisez response.reservation.id
+        if (reservationId) {
+          this.initiatePayment(reservationId); // Appel de la méthode de paiement
+        } else {
+          console.error("ID de réservation non trouvé dans la réponse");
+        }
+      });
+    },
+    (error: any) => {
+      const errorMessage = error.error?.message || 'Erreur lors de la création de la réservation';
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: errorMessage,
+        confirmButtonText: 'OK'
+      });
     }
   );
 }
+
+private initiatePayment(reservationId: number) {
+  this.reservationService.createTransaction(reservationId).subscribe(
+    (paymentResponse: any) => {
+      const checkoutUrl = paymentResponse.payment_response?.checkout_url;
+
+      if (checkoutUrl) {
+        // Redirection automatique vers l'URL de paiement
+        window.location.href = checkoutUrl; 
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Erreur de paiement',
+          text: 'URL de paiement non disponible.',
+          confirmButtonText: 'OK'
+        });
+      }
+    },
+    (error: any) => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Erreur de paiement',
+        text: error.error?.message || 'Erreur lors de l’initiation du paiement',
+        confirmButtonText: 'OK'
+      });
+    }
+  );
+}
+
 
 
 
@@ -354,6 +423,7 @@ createReservation() {
   
 
 
+  
 
 }
 
