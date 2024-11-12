@@ -18,6 +18,8 @@ export interface ReservationModel{
     tarif?:TarifModel;
     categorie?:CategorieModel;
     user?:UserModel;
+    no_connect_id?:number;
+   
   }
 
   export interface ErrorModel {

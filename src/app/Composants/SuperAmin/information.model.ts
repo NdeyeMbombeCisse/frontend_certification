@@ -3,6 +3,8 @@ export interface InformationModel{
     titre?:string;
     description?:string;
     created_at?:Date;
+    showFullDescription?: boolean; 
+
     }
 
     

@@ -27,6 +27,8 @@ import { AuthGuardsuperAdmin } from './Composants/supadmin.guard';
 import { AuthGuardsuperVigile } from './Composants/vigile.guard';
 import { PlaceAdminComponent } from './Composants/Admin/place-admin/place-admin.component';
 import { DiagrammeComponent } from './diagramme/diagramme.component';
+import { ReservationAdminComponent } from './reservation-admin/reservation-admin.component';
+import { AutrereservationComponent } from './autrereservation/autrereservation.component';
 
 export const routes: Routes = [
     {path:"",pathMatch:'full',redirectTo:'portail'},
@@ -35,6 +37,7 @@ export const routes: Routes = [
     {path:"liste_trajet", component:TrajetEnCoursComponent},
     {path:"ajoutReservation", component:AjoutReservationComponent},
     { path: 'reservation/:id', component: AjoutReservationComponent},
+    { path: 'Autrereservation/:id', component: AutrereservationComponent},
     {path:"historique_reservation", component:HistoriqueComponent},
     {path:"profil", component:ProfilComponent},
     {path:"inscription_user", component:InscriptionComponent},
@@ -61,6 +64,8 @@ export const routes: Routes = [
     {path:"liste_reservation", component:ReservationComponent,canActivate:[AuthGuardAdmin]},
     {path:'trajet/:id', component:PlaceAdminComponent,canActivate:[AuthGuardAdmin]},
     {path:"diagramme", component:DiagrammeComponent,canActivate:[AuthGuardAdmin]},
+    {path:"reservationAdmin", component:ReservationAdminComponent,canActivate:[AuthGuardAdmin]},
+
 
     
 // vigile

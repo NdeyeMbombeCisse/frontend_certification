@@ -1,0 +1,493 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  /* categorie */
+  .categories {
+    display: flex;
+    gap: 20px; /* Espacement entre les cartes */
+    flex-wrap: wrap; /* Permet de passer à la ligne si nécessaire */
+    justify-content: center; /* Centre les cartes dans le conteneur principal */
+  }
+  
+  .category-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centre le contenu dans la carte */
+    justify-content: center; /* Centre verticalement l'image et le titre */
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 40px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 350px; /* Ajustez selon vos besoins */
+    height: 300px;
+    background-color: #CFEEF1;
+  }
+  
+  .category-card img {
+    width: 10rem; /* Ajustez pour la taille souhaitée */
+    height: 8rem;
+    margin-bottom: 10px; 
+  }
+  
+  .category-card h3 {
+    font-size: 30px;
+    color: #333;
+    margin: 0;
+  }
+  
+  /* phot place */
+  
+  .place-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 10px;
+  
+  }
+  
+  
+  .place-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    min-width: 150px;
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 0.2s;
+  }
+  
+  .place-icon.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  
+  .place-icon.selected {
+    border: 2px solid #227093;
+    opacity: 1;
+    background-color: #227093;
+    align-items: center;
+    border-radius: 40%;
+    color: white;
+    font-weight: 900;
+    font-size: 50px;
+    
+  
+  }
+  
+  .place-icon.selected:hover {
+    border: 2px solid #227093;
+    opacity: 1;
+    align-items: center;
+    border-radius: 40%;
+    color: white;
+    font-weight: 900;
+    font-size: 50px;
+    transform: scale(1.2); /* Agrandir légèrement au survol */
+    cursor: pointer;
+  
+  }
+  
+  
+  
+  
+  /* phot place */
+  
+  body {
+    background-color: #f4f4f4;
+  }
+  
+  .burger-menu {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
+  
+  .burger-menu span {
+    width: 30px;
+    height: 4px;
+    background-color: white;
+    border-radius: 2px;
+  }
+  
+  /* Styles par défaut */
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background-color: #227093;
+  }
+  
+  .logo {
+    width: 150px;
+    margin-left: 30px;
+  }
+  
+  nav ul {
+    display: flex;
+    list-style: none;
+  }
+  
+  nav ul li {
+    margin-left: 60px;
+  }
+  
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+  }
+  
+  
+  .auth-buttons .btn {
+    margin-left: 20px;
+    padding: 20px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #227093;
+  }
+  
+  .register {
+    background-color: white;
+    font-size: 35px;
+    margin-right: 100px;
+    font-weight: bold;
+  }
+  
+  
+  /* formulaire */
+  
+  .reservation {
+      width: 100%;
+      display: flex;
+      justify-content: center; /* Centrer le conteneur */
+      align-items: center;
+      margin: 20px 0;
+    }
+    
+    .reservation-container {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-top: 160px;
+    }
+    
+    .reservation-container img {
+      width: 50%;
+      height: auto;
+      margin-left: 50px;
+    }
+    
+    form {
+      width: 50%;
+      padding: 220px; /* Espacement entre l'image et le formulaire */
+    }
+    
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-family: Arial, sans-serif;
+    }
+    
+    .form-group {
+      margin-bottom: 30px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+      font-family: Arial, sans-serif;
+      font-size: 25px;
+    }
+    
+    .form-group select{
+      width: 800px; /* L'input occupe toute la largeur de son conteneur */
+      height: 85px;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      font-size: 16px;
+    }
+  
+    .boutton {
+      display: flex;
+      flex-direction: column; /* Met les boutons en colonne */
+      align-items: flex-start; /* Aligne les boutons à gauche */
+    }
+    
+  
+    
+    button {
+      width: 800px; /* L'input occupe toute la largeur de son conteneur */
+      height: 90px;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      font-size: 35px;
+      margin-top: 20px;
+      font-weight: 700;
+      background-color:#227093 ;
+      color: white;
+  
+    }
+    h1{
+      font-size: 55px;
+      font-family: "Gilda Display", serif;
+      font-weight: bold;
+      font-style: normal;
+      text-align: center;
+      line-height: 1;
+      color: #227093;
+      margin-right: 350px;
+    }
+  
+    
+    
+    .creer {
+      background-color: #227093;
+      color: white;
+    }
+    
+    .btn-primary:hover,
+    .btn-secondary:hover {
+      opacity: 0.9;
+    }
+  
+    /* responsivite */
+    @media (max-width: 768px) {
+      /* Masquer les éléments de navigation par défaut et afficher le menu burger */
+      nav ul {
+          display: none;
+      }
+  
+      .logo {
+          width: 90px;
+          margin-left: 40px;
+          margin-left: -5px;
+      }
+      .header-content {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 15px;
+          position: fixed;
+          width: 100%;
+          top: 0;
+          left: 0;
+          right: 0;
+          z-index: 1;
+          background-color: #227093;
+      }
+      
+   
+  
+      .burger-menu {
+          display: flex;
+          margin-left: 220px;
+      }
+  
+      .auth-buttons .register {
+          display: none; /* Masquer le bouton d'inscription sur mobile */
+      }
+  
+     
+      
+  
+      /* Afficher le menu quand le burger est activé */
+      .nav-list.active {
+          display: flex;
+          flex-direction: column;
+          position: absolute;
+          top: 60px;
+          left: 0;
+          width: 100%;
+          background-color: rgba(34, 112, 147, 0.95);
+      }
+  
+      .nav-list li {
+          margin: 10px 0;
+          text-align: center;
+      }
+  
+  
+      /* Responsivité pour les écrans de 768px et moins */
+  @media (max-width: 768px) {
+    .reservation-container {
+      display: flex;
+      flex-direction: column; 
+      align-items: center; 
+      padding: 15px; 
+      margin-top: 140px;
+    }
+    .reservation-container img {
+      width: 100%; /* Image occupe toute la largeur */
+      height: auto; /* Hauteur automatique pour éviter la distorsion */
+      margin-bottom: 20px; /* Espacement en bas de l'image */
+      width: 50%;
+      height: auto;
+      margin-left: 50px;
+    }
+  
+    .reservation-container form {
+      width: 100%; /* Formulaire occupe toute la largeur */
+      margin-top: -200px;
+    }
+  
+    .form-group {
+      display: flex;
+      flex-direction: column; /* Aligne les labels et les champs de saisie en colonne */
+      width: 100%; /* Chaque groupe occupe toute la largeur */
+      margin-bottom: 15px; /* Ajoute un espacement entre les groupes de formulaire */
+    }
+  
+    .form-group label {
+      font-size: 16px; /* Taille du texte ajustée pour mobile */
+      margin-bottom: 5px; /* Espacement entre le label et l'input */
+      margin-left: -170px;
+    }
+  
+      
+    .form-group select{
+      width: 360px; /* L'input occupe toute la largeur de son conteneur */
+      height: 55px;
+      margin-left: -190px;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      font-size: 16px;
+    }
+  
+    button[type="submit"] {
+      width: 360px; /* L'input occupe toute la largeur de son conteneur */
+      height: 55px;
+      margin-left: -180px;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      font-size: 16px;
+      background-color: #FEB906; /* Couleur de fond du bouton */
+    }
+  
+  
+  
+  
+  
+    /* categorie */
+  .categories {
+    display: flex;
+    gap: 20px; /* Espacement entre les cartes */
+    flex-wrap: wrap; /* Permet de passer à la ligne si nécessaire */
+    justify-content: center; /* Centre les cartes dans le conteneur principal */
+    width: 300px;
+    margin-left: -150px;
+  }
+  
+  .category-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centre le contenu dans la carte */
+    justify-content: center; /* Centre verticalement l'image et le titre */
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 40px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 550px; /* Ajustez selon vos besoins */
+    height: 300px;
+    background-color: #CFEEF1;
+  }
+  
+  .category-card img {
+    width: 5rem; /* Ajustez pour la taille souhaitée */
+   
+  }
+  
+  .category-card h3 {
+    font-size: 30px;
+    color: #333;
+    margin: 0;
+  }
+  
+  }
+  
+  /* place */
+  
+  
+  .place-icon {
+    cursor: pointer;
+    /* Autres styles */
+  }
+  
+  .place-icon.disabled {
+    opacity: 0.5; /* Réduit l'opacité pour indiquer que la place est réservée */
+    pointer-events: none; /* Empêche le clic sur les places réservées */
+    background-color: #f0f0f0; /* Couleur de fond différente */
+  }
+  
+  .place-icon.selected {
+    border: 2px solid #007BFF; /* Bordure pour la place sélectionnée */
+  }
+  
+  .place-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 10px;
+    margin-left: -240px;
+  }
+  
+  
+  
+  .place-icon {
+    display: flex;
+    flex-direction: row;
+    min-width: 150px;
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 0.2s;
+  }
+  
+  .place-icon.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  
+  .place-icon.selected {
+    border: 2px solid #227093;
+    opacity: 1;
+    background-color: #227093;
+    align-items: center;
+    border-radius: 40%;
+    color: white;
+    font-weight: 900;
+    font-size: 50px;
+  }
+  
+  
+    }
+    

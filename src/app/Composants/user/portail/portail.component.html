@@ -18,7 +18,7 @@
 <body>
     <header>
         <div class="header-content">
-            <img src="../../../../assets/images/logo.png" alt="Cosoma Logo" class="logo">
+            <img src="../../../../assets/images/newlogo.webp" alt="Cosoma Logo" class="logo">
             
             <!-- Menu burger pour mobile -->
             <button class="burger-menu" (click)="toggleMenu()" aria-label="Toggle menu">            <span></span>
@@ -30,13 +30,22 @@
 
             <nav>
                 <ul class="nav-list" [class.active]="isMenuOpen">
-                  <li><a href="portail" class="menu-item" >Acceuil</a></li>
-                  <li><a href="#">Nouvelles Information</a></li>
-                  <li><a href="liste_trajet">Trajets En Cours</a></li>
+                  <li><a href="portail"  >Acceuil</a></li>
+                  <li><a href="portail"  >A propos</a></li>
+                  <li><a href="portail"  >Nos services</a></li>
+                  <li><a href="portail"  >Contact</a></li>
+                  <li><a href="nouvelle_info"> Informations</a></li>
+                  <li><a href="liste_trajet">Horaires et destinations</a></li>
                 </ul>
               </nav>
-            <div class="auth-buttons">
+            <!-- <div class="auth-buttons">
                 <a href="inscription_user" class="btn register">S'inscrire</a>
+            </div> -->
+            <div class="dropdown me-3">
+                <button class="btn btn-secondary dropdown-toggle user-btn" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-user-circle me-2"></i>
+                  S'inscrire
+                </button>
             </div>
         </div>
         <div class="baniere">
@@ -46,7 +55,7 @@
                    votre trajet maritime en quelques clics et profitez d'une expérience fluide et  <br>
                    pratique.</p>
                 <div class="connexion-buttons">
-                    <a href="connexion" class="btn register">Se Connecter</a>
+                    <a href="connexion" class="btn register">Réserver maintenant</a>
                 </div>
             </div>
         </div>

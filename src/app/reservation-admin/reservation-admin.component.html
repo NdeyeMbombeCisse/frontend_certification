@@ -1,0 +1,99 @@
+<div class="contenu">
+
+<div class="sidebar">
+    <div class="logo">
+        <img src="../../../../assets/images/logo.png" alt="Logo">
+    </div>
+    <nav class="menu">
+        <a [routerLink]="['/dasbaord_admin']" class="menu-item" [class.active]="isActive('/dasbaord_admin')">
+            <img src="../../../../assets/images/icons/dashboard.svg" alt="">
+            Dashboard
+        </a>
+
+        <a [routerLink]="['/afficher_trajet']" class="menu-item" [class.active]="isActive('/afficher_trajet')">
+            <i class="fa-solid fa-ship"></i> Trajet
+        </a>
+
+        <a [routerLink]="['/ajouterTrajet']" class="menu-item" [class.active]="isActive('/ajoutTrajet')">
+            <img src="../../../../assets/images/icons/group.svg" alt="">
+            <i class="fa-solid fa-plus"></i> Ajouter un Trajet
+        </a>
+
+        <a [routerLink]="['/liste_reservation']" class="menu-item" [class.active]="isActive('/liste_reservation')">
+            <i class="fa-solid fa-list"></i> Reservations
+        </a>
+
+
+        <a [routerLink]="['/reservationAdmin']" class="menu-item" [class.active]="isActive('/reservationAdmin')">
+          <i class="fa-solid fa-list"></i> Mes reservations
+        </a>
+
+        <a (click)="logout()" class="menu-item">
+            <img src="../../../../assets/images/icons/logout.svg" alt="">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i> Déconnexion
+        </a>
+    </nav>
+</div>
+   
+
+
+<!-- <h1>Historique des Réservations</h1> -->
+<div class="reservation-container">
+  <div *ngIf="tabreservation.length > 0; else noReservations">
+    <table>
+      <thead>
+        <tr>
+          <th>ID Réservation</th>
+          <th>Prénom</th>
+          <th>Nom</th>
+          <th>Téléphone</th>
+          <th>Nationalité</th>
+          <th>Place</th>
+          <th>Date réservation</th>
+          <th>Heure de départ</th>
+          <th>Statut</th>
+          <th>Tarif</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let reservation of getDisplayedReservations()">
+          <td>{{ reservation.id }}</td>
+          <td>{{ reservation.user?.prenom }}</td>
+          <td>{{ reservation.user?.nom }}</td>
+          <td>{{ reservation.user?.telephone }}</td>
+          <td>{{ reservation.user?.nationnalite }}</td>
+          <td>{{ reservation.place?.libelle }}</td>
+          <td>{{ reservation.created_at | date: 'short' }}</td>
+          <td>{{ reservation.trajet?.heure_depart }}</td>
+          <td>{{ reservation.statut ? 'Confirmée' : 'Non Confirmée' }}</td>
+          <td>{{ reservation.tarif?.tarif }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="pagination">
+      <button (click)="previousPage()" [disabled]="currentPage === 1">
+        <i class="fa-solid fa-chevron-left fa-2x"></i>
+      </button>
+      <span>Page {{ currentPage }} sur {{ getTotalPages() }}</span>
+      <button (click)="nextPage()" [disabled]="currentPage === getTotalPages()">
+        <i class="fa-solid fa-chevron-right fa-2x"></i>
+      </button>
+    </div>
+  </div>
+
+  <ng-template #noReservations>
+    <p>Aucune réservation disponible.</p>
+  </ng-template>
+</div>
+  
+  
+  <ng-template #noReservations>
+    <p>Aucune réservation disponible.</p>
+  </ng-template>
+  
+<ng-template #noReservations>
+  <p>Aucune réservation trouvée.</p>
+</ng-template>
+
+</div>

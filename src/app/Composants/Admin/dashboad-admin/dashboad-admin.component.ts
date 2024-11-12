@@ -31,17 +31,12 @@ export class DashboadAdminComponent implements OnInit {
   showNotifications: boolean = false; // État d'affichage
   unreadCount: number = 0;
 
-  
-
   ngOnInit(): void {
     this.loadNotifications();
     this.updateUnreadCount();
-    this.loadTrajets()  ;
-    
+    this.loadTrajets()  ; 
   }
 
- 
- 
   loadTrajets(){
     this.trajetService.getTrajetsEnCours().subscribe(
       (response: any) => {
@@ -54,7 +49,6 @@ export class DashboadAdminComponent implements OnInit {
     );
   }
   
-
   isActive(route: string): boolean {
     return this.router.url === route;
   }

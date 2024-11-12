@@ -6,6 +6,8 @@
 }
 
 /* souligner la page de navigation */
+
+
 .menu-item{
     border-bottom: 5px solid #feb906;
 }
@@ -35,17 +37,19 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 27px;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1;
-    background-color: #227093;
+    /* background-color: #227093; */
+background-color: #227093;
 }
 
 .logo {
-    width: 150px;
+    width: 220px;
+    height: auto;
     margin-left: 30px;
 }
 
@@ -61,18 +65,12 @@ nav ul li {
 nav ul li a {
     color: white;
     text-decoration: none;
-    font-size: 30px;
+    font-size: 25px;
     font-family: 'Inter', sans-serif;
-    font-weight: 700;
+    font-weight: 400;
 }
 
-.auth-buttons .btn {
-    margin-left: 20px;
-    padding: 20px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    color: #227093;
-}
+
 
 .register {
     background-color: white;
@@ -81,60 +79,114 @@ nav ul li a {
     font-weight: bold;
 }
 
+
 .baniere {
     display: flex;
-    justify-content: center; /* Centre horizontalement */
-    align-items: center; /* Centre verticalement */
+    justify-content: center;
+    align-items: center;
     text-align: center;
     width: 100%;
     height: 1260px;
     background: linear-gradient(rgba(106, 176, 204, 0.3), rgba(106, 176, 204, 0.3)), 
                 url('../../../../assets/images/baniere.png') no-repeat center center/cover;
+    background-repeat: no-repeat;
+    background-size: cover;
     color: white;
+    overflow: hidden;
 }
 
-.connexion-buttons .btn {
-    margin-left: 70px;
-    padding: 20px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    color: #227093;
-    font-size: 40px;   
-}
-
-.servicetitle{
-    text-align: center;
-    font-size: 50px;
-    font-family: "Gilda Display", serif;
-    font-weight: 400;
-    font-style: normal;
-    color: #0D8434;
-}
 .baniere-content {
     font-family: 'Times New Roman', Times, serif;
     font-optical-sizing: auto;
     font-style: normal;
     display: flex;
     font-size: 40px;
-    flex-direction: column; /* Affiche le titre et le texte en colonne */
-    gap: 20px; /* Ajoute un espacement entre le titre et le texte */
-    font-weight: 600;
+    flex-direction: column;
+    gap: 20px;
+    font-weight: 400;
+
+    /* Animation avec répétition */
+    opacity: 0;
+    transform: translateY(80px); 
+    animation: slideFadeIn 2s ease-out infinite; /* Répétition infinie */
+    animation-delay: 2s; /* Délai entre les boucles */
 }
+
+/* Animation de glissement et de fondu */
+@keyframes slideFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(80px);
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.connexion-buttons .btn {
+    margin-left: 70px;
+    padding: 20px 20px;
+    border-radius: 40px;
+    text-decoration: none;
+    color: white;
+    font-size: 30px; 
+    background-color:#f7b731;
+  
+
+
+
+    
+}
+
+.servicetitle{
+    text-align: center;
+    font-size: 50px;
+    font-family: "Gilda Display", serif;
+    font-weight: 700;
+    font-style: normal;
+    color: #f7b731;
+}
+
 
 .baniere-content h1 {
     line-height: 1.5; /* Contrôle l'interligne du titre */
 }
 
 .baniere-content p {
-    line-height: 2; /* Contrôle l'interligne du paragraphe */
+    line-height: 1.5; /* Contrôle l'interligne du paragraphe */
 }
+
+
+/* bouton insciption */
+
+.user-btn {
+    background-color:#f7b731;
+    color: white;
+    border-radius: 20px;
+    padding: 8px 15px;
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    border: none;
+    font-weight: 700;
+  }
+  .user-btn i {
+    font-size: 30px;
+    margin-right: 10px;
+  }
 
 /* Style du trait après la bannière */
 header::after {
     content: '';
     display: block;
     height: 5px; /* Épaisseur du trait */
-    background-color: #0D8434; /* Couleur du trait */
+    background-color: #f7b731; /* Couleur du trait */
     width: 346px; /* Ajuste la largeur selon tes préférences */
     margin: 90px auto; /* Centre le trait et ajoute un espacement */
 }
@@ -159,8 +211,9 @@ header::after {
     font-family: "Gilda Display", serif;
     font-weight: 400;
     font-style: normal;
-    color: #0D8434;
+    color: #f7b731;
     line-height: 1.5;
+    font-weight: 700;
 }
 
 .mission-content  p{
@@ -173,8 +226,8 @@ header::after {
     margin-left: 20px;
     padding: 10px 20px;
     border-radius: 5px;
-    background-color: #227093;
-    border: 1px solid #227093;
+    background-color: #f7b731;
+    border: 1px solid #f7b731;
     padding: 15px;
     margin-top: 20px;
     margin-left: 0;
@@ -187,25 +240,30 @@ header::after {
 }
 .mission img {
     width: 60rem; /* Ajuste la taille de l'image */
-    height: auto;  /* Conserve le ratio de l'image */
+    height: auto; /* Conserve le ratio de l'image */
     margin-right: 40px;
-    
-    /* Initialement, l'image est hors écran à gauche (translateX(-100%)) */
-    transform: translateX(-100%);
-    
-    /* Appliquer l'animation */
-    animation: slideIn 2s ease-out forwards; /* L'animation dure 2 secondes et va dans une direction fluide */
-  }
-  
-  /* Définir l'animation de déplacement */
-  @keyframes slideIn {
+
+    /* Initialement, l'image est hors écran à droite */
+    transform: translateX(100%);
+
+    /* Animation avec répétition infinie */
+    animation: slideIn 4s ease-out infinite;
+    animation-delay: 2s; /* Pause de 2 secondes après chaque boucle */
+}
+
+/* Animation de glissement de la droite vers la gauche */
+@keyframes slideIn {
     0% {
-      transform: translateX(-100%); /* L'image commence hors de l'écran à gauche */
+        transform: translateX(100%); /* Commence hors écran à droite */
+    }
+    60% {
+        transform: translateX(-10%); /* Va un peu plus loin vers la gauche */
     }
     100% {
-      transform: translateX(0); /* L'image arrive à sa position normale */
+        transform: translateX(0); /* Position finale */
     }
-  }
+}
+
   
 /* trait apres la section mission */
 
@@ -215,7 +273,7 @@ header::after {
     height: 2px; /* Épaisseur du trait */
     width: 346px; /* Ajuste la largeur selon tes préférences */
     margin: 90px auto; /* Ce de l'espace au-dessus */
-    background-color: #0D8434;
+    background-color: #f7b731;
     height: 7px;
 }
 
@@ -248,8 +306,9 @@ header::after {
     font-family: "Gilda Display", serif;
     font-weight: 400;
     font-style: normal;
-    color: #0D8434;
+    color: #f7b731;
     line-height: 2.5;
+    font-weight: 700;
 }
 .vision-content  p{
     font-size: 30px;
@@ -296,7 +355,7 @@ header::after {
     font-family: "Gilda Display", serif;
     font-weight: 400;
     font-style: normal;
-    color: #0D8434;
+    color: #f7b731;
     line-height: 2;
     margin-top: 30px;
 }

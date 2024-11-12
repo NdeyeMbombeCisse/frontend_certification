@@ -1,0 +1,213 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* souligner la page de navigation */
+.menu-item{
+    border-bottom: 5px solid #feb906;
+}
+
+body {
+    background-color: #f4f4f4;
+}
+
+.vide{
+    color: black;
+    text-align: center;
+    margin-top: 200px;
+    font-size: 30px;
+}
+
+
+
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.burger-menu span {
+    width: 30px;
+    height: 4px;
+    background-color: white;
+    border-radius: 2px;
+}
+
+.information-list h1{
+    color: darkgreen;
+    text-align: center;
+    margin-top: 150px;
+    font-family: gilda;
+    font-size: 50px;
+
+}
+
+
+.information-list h1::after {
+    content: '';
+    display: block;
+    height: 3px; /* Épaisseur du trait */
+    background-color: #0D8434; /* Couleur du trait */
+    width: 330px; /* Ajuste la largeur selon tes préférences */
+    margin: 40px auto; /* Centre le trait et ajoute un espacement */
+}
+
+
+
+.information-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+
+
+.information-list p{
+   
+    font-size: 25px;
+    text-align: justify;
+    margin-top: 40px;
+    line-height: 1.5;
+}
+
+/* Styles par défaut */
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background-color: #227093;
+}
+
+.logo {
+    width: 150px;
+    margin-left: 30px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 60px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+}
+
+.auth-buttons .btn {
+    margin-left: 20px;
+    padding: 20px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #227093;
+}
+
+.register {
+    background-color: white;
+    font-size: 35px;
+    margin-right: 100px;
+    font-weight: bold;
+}
+
+
+
+@media (max-width: 768px) {
+    /* Masquer les éléments de navigation par défaut et afficher le menu burger */
+    nav ul {
+        display: none;
+    }
+    .connexion-buttons .btn {
+        margin-left: 70px;
+        padding: 15px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        color: #227093;
+        font-size: 15px;
+        
+    }
+    .logo {
+        width: 90px;
+        margin-left: 40px;
+        margin-left: -5px;
+    }
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1;
+        background-color: #227093;
+    }
+
+    .burger-menu {
+        display: flex;
+        margin-left: 220px;
+    }
+
+    .nav-list.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: rgba(34, 112, 147, 0.95);
+    }
+    .nav-list li {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .information-list h1{
+        color: darkgreen;
+        text-align: center;
+        margin-top: 70px;
+        font-family: gilda;
+        font-size: 35px;
+    
+    }
+ 
+
+    .information-list h1::after {
+        content: '';
+        display: block;
+        height: 3px; /* Épaisseur du trait */
+        background-color: #0D8434; /* Couleur du trait */
+        width: 200px; /* Ajuste la largeur selon tes préférences */
+        margin: 40px auto; /* Centre le trait et ajoute un espacement */
+    }
+    
+    .information-list p{
+   
+        font-size: 20px;
+        text-align: justify;
+        margin-top: 40px;
+        line-height: 1.5;
+    }
+    
+}

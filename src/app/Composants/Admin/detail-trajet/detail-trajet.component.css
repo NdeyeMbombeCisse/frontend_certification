@@ -28,7 +28,7 @@
 .sidebar {
   background-color: #618062; /* Background color */
   color: #fff;
-  width: 300px;
+  width: 350px;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -142,7 +142,7 @@ line-height: 2;
 }
 
 table {
-    width: 160%;
+    width: 150%;
     background-color: white;
     border-collapse: separate; /* Nécessaire pour border-spacing */
     border-spacing: 0 10px;

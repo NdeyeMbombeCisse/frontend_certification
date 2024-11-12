@@ -2,7 +2,7 @@
 .sidebar {
   background-color: #618062; /* Background color */
   color: #fff;
-  width: 300px;
+  width: 420px;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -246,7 +246,7 @@ h1{
   padding: 15px; /* Espacement interne */
   margin: 10px; /* Espacement entre les places */
   text-align: center; /* Centrer le texte et les images */
-  width: 150px; /* Largeur fixe pour chaque place */
+  width: 70px; /* Largeur fixe pour chaque place */
   transition: transform 0.2s, box-shadow 0.2s; /* Effet de transition pour hover */
   cursor: pointer; /* Changer le curseur en main */
 }
@@ -279,7 +279,7 @@ h1{
   color: #fff; /* Couleur du texte */
   border: none; /* Pas de bordure */
   border-radius: 5px; /* Coins arrondis */
-  padding: 10px 15px; /* Espacement interne du bouton */
+  padding: 5px 10px; /* Espacement interne du bouton */
   cursor: pointer; /* Changer le curseur en main */
   transition: background-color 0.2s; /* Transition de couleur de fond */
   margin-top: 10px; /* Espacement au-dessus du bouton */

@@ -34,10 +34,9 @@
                 <i class="fa-solid fa-list"></i> Reservation
             </a>
 
-            <a [routerLink]="['/liste_placeAdmin']" class="menu-item" [class.active]="isActive('/liste_placeAdmin')">
-                <i class="fa-solid fa-chair"></i>Liste des places
-            </a>
-    
+            <a [routerLink]="['//reservationAdmin']" class="menu-item" [class.active]="isActive('//reservationAdmin')">
+                <i class="fa-solid fa-list"></i> Mes reservations
+              </a>
             <a (click)="logout()" class="menu-item">
                 <img src="../../../../assets/images/icons/logout.svg" alt="">
                 <i class="fa-solid fa-arrow-right-from-bracket"></i> Déconnexion

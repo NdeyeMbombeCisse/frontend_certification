@@ -23,9 +23,8 @@
         <a [routerLink]="['/liste_reservation']" class="menu-item" [class.active]="isActive('/liste_reservation')">
             <i class="fa-solid fa-list"></i> Reservation
         </a>
-
-        <a [routerLink]="['/liste_placeAdmin']" class="menu-item" [class.active]="isActive('/liste_placeAdmin')">
-          <i class="fa-solid fa-chair"></i> Liste des places
+        <a [routerLink]="['//reservationAdmin']" class="menu-item" [class.active]="isActive('//reservationAdmin')">
+          <i class="fa-solid fa-list"></i> Mes reservations
         </a>
 
         <a (click)="logout()" class="menu-item">

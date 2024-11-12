@@ -1,98 +1,59 @@
 
-
-
 <header>
   <div class="header-content">
-      <img src="../../../../assets/images/logo.png" alt="Cosoma Logo" class="logo">
-      
-      <!-- Menu burger pour mobile -->
-      <button class="burger-menu" (click)="toggleMenu()" aria-label="Toggle menu">            <span></span>
-      <span></span>
-      <span></span>
-  </button>
-      
-      <nav>
-          <ul class="nav-list" [class.active]="isMenuOpen">
-            <li><a [routerLink]="['/portail']" class="menu-item" [class.active]="isActive('/portail')">Acceuil</a></li>
-            <li><a href="#">Nouvelles Information</a></li>
-            <li><a href="liste_trajet">Trajets En Cours</a></li>
-            <li><a href="historique_reservation">Mes reservations</a></li>
+    <img src="../../../../assets/images/newlogo.webp" alt="Cosoma Logo" class="logo">
+    
+    <!-- Menu burger pour mobile -->
+    <button class="burger-menu" (click)="toggleMenu()" aria-label="Toggle menu">            <span></span>
+    <span></span>
+    <span></span>
+</button>
+    
+    
 
-          </ul>
-        </nav>
-        <div class="auth-buttons">
-          <a href="inscription_user" class="btn register">Se deconnexion</a>
-      </div>
-  </div>
-</header>
-<!-- <h1>Effectuer ma reservation</h1> -->
+    <nav>
+      <ul class="nav-list" [class.active]="isMenuOpen">
+        <li><a [routerLink]="['/portail']" class="menu-item" [class.active]="isActive('/portail')">Acceuil</a></li>
+        <li><a href="nouvelle_info"> Informations</a></li>
+        <li><a href="liste_trajet">Horaires et destinations</a></li>
+        <li><a href="historique_reservation">Mes reservations</a></li>
 
-<div class="reservation-container">
-  <img src="../../../../assets/images/image_reservation.png" alt="Image de réservation">
-
-
-
-   <form (ngSubmit)="createReservation()" #reservationForm="ngForm">
+      </ul>
+      </nav>
+    <div class="auth-buttons">
+        <a href="inscription_user" class="btn register">Deconnexion</a>
+    </div>
  
+</div>
+</header>
 
+
+<div class="baniere">
+      <h1> Reservation</h1>  
+</div>
+ 
+<div class="reservation-container">
+  <div class="titre">
+    <h1>Nos catégories</h1>
+    <p>Réservez vos places en choisissant une catégorie. </p>
+  </div>
+
+
+    <form (ngSubmit)="createReservation()" #reservationForm="ngForm">
   <div class="categories">
     <div
       *ngFor="let categorie of categories"
-      class="category-card"
+      class="category-card "
       [class.selected]="categorie.id === selectedCategorie"
       (click)="onCategorieSelect(categorie.id, trajetId)" 
+      style="cursor: pointer;  "
+      
     >
-      <img [src]="getIconForCategorie(categorie.id)" alt="{{ categorie.libelle }}" class="category-image" />
-      <h3>{{ categorie.libelle }}</h3>
+    <h3>{{ categorie.libelle }}</h3>
+
     </div>
   </div>
-
 <div class="form-group">
-  <!-- <div class="place-container">
-     <div *ngFor="let place of places" 
-         class="place-icon" 
-         [ngClass]="{
-           'disabled': place.is_reserved === 1,
-           'selected': selectPlaceId === place.id
-         }" 
-         (click)="selectPlace(place)">
-      <img [src]="getImageForCategorie(place.categorie_id)" 
-           alt="{{ place.libelle }}" />
-      <span>{{ place.libelle }}</span>
-    </div> 
-  </div> -->
-
-
-<!-- <div class="place-container">
-    <div *ngFor="let place of places" 
-         class="place-icon" 
-         [ngClass]="{
-           'disabled': isPlaceReserved(place.id),
-           'selected': selectPlaceId === place.id
-         }" 
-         (click)="selectPlace(place)">
-      <img [src]="getImageForCategorie(place.categorie_id)" 
-           alt="{{ place.libelle }}" />
-      <span>{{ place.libelle }}</span>
-    </div> 
-  </div> -->
-
-<!-- 
-  <div class="place-container">
-    <div *ngFor="let place of places" 
-         class="place-icon" 
-         [ngClass]="{
-           'disabled': isPlaceReserved(place.id),
-           'selected': selectPlaceId === place.id
-         }" 
-         (click)="!isPlaceReserved(place.id) && selectPlace(place)"
-         [attr.aria-disabled]="isPlaceReserved(place.id)">
-      <img [src]="getImageForCategorie(place.categorie_id)" 
-           alt="{{ place.libelle }}" />
-      <span>{{ place.libelle }}</span>
-    </div> 
-  </div> -->
-
   <div class="place-container">
     <div *ngFor="let place of places" 
          class="place-icon" 
@@ -102,31 +63,15 @@
          (click)="selectPlace(place)">
       <img [src]="getImageForCategorie(place.categorie_id)" 
            alt="{{ place.libelle }}" />
-      <span>{{ place.libelle }}</span>
-    </div>
+           <span class="rounded-background">{{ place.libelle }}</span>
+          </div>
   </div>
-  
-
-  
-
-  
-  
-
-  
-    
-  
 </div>
+  <!-- Bouton "Réserver", il est désactivé si aucune place n'est sélectionnée -->
+  <button *ngIf="placeSelected" 
+  type="submit">
+Réserver
+</button>
+</form> 
 
-
-
-
-
-
-
-
-  <button type="submit" [disabled]="!reservationForm.form.valid">Réserver</button>
-</form>
-</div>
-
-
-  
+ 

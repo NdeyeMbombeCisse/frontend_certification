@@ -16,7 +16,7 @@
       <nav>
           <ul class="nav-list" [class.active]="isMenuOpen">
             <li><a href="portail"  >Acceuil</a></li>
-            <li><a href="#">Nouvelles Information</a></li>
+            <li><a href="nouvelle_info">Nouvelles Information</a></li>
             <li><a href="liste_trajet" class="menu-item">Trajets En Cours</a></li>
           </ul>
         </nav>
@@ -85,7 +85,9 @@
 
 
             </ul>
-            <button (click)="navigateToReservation(trajet.id)">Réserver mon Billet</button>
+            <!-- <button (click)="navigateToReservation(trajet.id)">Réserver mon Billet</button> -->
+            <button (click)=" openDialog(trajet.id)">Réserver mon Billet</button>
+
           </div>
         </div>
       </ng-container>
@@ -101,15 +103,70 @@
               <li>Heure d'embarquement estimée: {{ trajet.heure_embarquement }}</li>
               <li>Nombre de places restantes: {{ trajet.placesRestantes }}</li>
             </ul>
-            <button (click)="navigateToReservation(trajet.id)">Réserver mon Billet</button>
+            <!-- <button (click)="navigateToReservation(trajet.id)">Réserver mon Billet</button> -->
+            <button (click)="openDialog(trajet.id)">Réserver mon Billet</button>
           </div>
           <img src="../../../../assets/images/destination_dak.png" alt="Destination Dakar">
         </div>
       </ng-template>
     </div>
   </section>
+
+
+
+
+<!-- Premier Popup -->
+<div class="dialog-overlay" *ngIf="isDialogOpen">
+  <div class="dialog">
+    <h1>Choix de reservation</h1>
+    <p>Faire une reservation pour:</p>
+    <button (click)="reserverPourMoi(trajet.id)">Moi</button>
+    <button (click)="reserverPourAutre(trajet.id)">Un autre</button>
+    <a class="close-button" (click)="closeDialog()">X</a>
+  </div>
+</div>
+
+<!-- Deuxième Popup -->
+<div class="dialog-overlay" *ngIf="isSecondDialogOpen">
+  <div class="dialog">
+    <button class="close-button" (click)="closeSecondDialog()">X</button>
+
+    <h2>Formulaire de Réservation pour un autre</h2>
+    <label>Âge:</label>
+    <input type="number" [(ngModel)]="formData.age" (change)="onAgeChange()">
+    <label>Prénom:</label>
+    <input type="text" [(ngModel)]="formData.prenom">
+
+    <label>Nom:</label>
+    <input type="text" [(ngModel)]="formData.nom">
+
+    <label>Numéro de Registre:</label>
+    <input type="text" [(ngModel)]="formData.numero_registre">
+
   
 
+    <label>Nationalité:</label>
+    <input type="text" [(ngModel)]="formData.nationnalite">
+
+    <!-- Champs supplémentaires pour les adultes -->
+    <div *ngIf="!isChildForm">
+      <label>Téléphone:</label>
+      <input type="text" [(ngModel)]="formData.telephone">
+
+      <label>Numéro d'identité:</label>
+      <input type="text" [(ngModel)]="formData.numero_identite">
+    </div>
+
+    <button (click)="submitForm(trajet.id)">Soumettre</button>
+    <!-- <button class="close-button" (click)="closeSecondDialog()">X</button> -->
+  </div>
+</div>
+
+  
+  <!-- Modal principal -->
+  
+  <!-- Formulaire pour réserver pour un autre -->
+ 
 
 
 <!-- footer -->

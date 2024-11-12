@@ -1,0 +1,69 @@
+
+
+
+<header>
+    <div class="header-content">
+        <img src="../../../../assets/images/logo.png" alt="Cosoma Logo" class="logo">
+        
+        <!-- Menu burger pour mobile -->
+        <button class="burger-menu" (click)="toggleMenu()" aria-label="Toggle menu">            <span></span>
+        <span></span>
+        <span></span>
+    </button>
+        
+        <nav>
+            <ul class="nav-list" [class.active]="isMenuOpen">
+              <li><a [routerLink]="['/portail']" class="menu-item" [class.active]="isActive('/portail')">Acceuil</a></li>
+              <li><a href="nouvelle_info">Nouvelles Information</a></li>
+              <li><a href="liste_trajet">Trajets En Cours</a></li>
+              <li><a href="historique_reservation">Mes reservations</a></li>
+  
+            </ul>
+          </nav>
+          <div class="auth-buttons">
+            <a href="inscription_user" class="btn register">Se deconnexion</a>
+        </div>
+    </div>
+  </header>
+  <!-- <h1>Effectuer ma reservation</h1> -->
+   
+  <div class="reservation-container">
+    <img src="../../../../assets/images/image_reservation.png" alt="Image de réservation">
+  
+  
+  
+      <form (ngSubmit)="createReservation()" #reservationForm="ngForm">
+  
+    <div class="categories">
+      <div
+        *ngFor="let categorie of categories"
+        class="category-card"
+        [class.selected]="categorie.id === selectedCategorie"
+        (click)="onCategorieSelect(categorie.id, trajetId)" 
+  
+        style="cursor: pointer;"
+      >
+        <img [src]="getIconForCategorie(categorie.id)" alt="{{ categorie.libelle }}" class="category-image" />
+        <h3>{{ categorie.libelle }}</h3>
+      </div>
+    </div>
+  
+  <div class="form-group">
+    <div class="place-container">
+      <div *ngFor="let place of places" 
+           class="place-icon" 
+           [ngClass]="{
+             'selected': selectPlaceId === place.id
+           }" 
+           
+           (click)="selectPlace(place)">
+        <img [src]="getImageForCategorie(place.categorie_id)" 
+             alt="{{ place.libelle }}" />
+        <span>{{ place.libelle }}</span>
+      </div>
+    </div>
+  </div>
+    <button type="submit" [disabled]="!reservationForm.form.valid">Réserver</button>
+  </form> 
+  
+   

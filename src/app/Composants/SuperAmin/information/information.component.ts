@@ -27,6 +27,7 @@ export class InformationComponent implements OnInit {
   currentPage: number = 1;
   itemsPerPage: number = 9;
   informationId: string | null = null;
+  showFullDescription?: boolean; 
 
   ngOnInit(): void {
     this.fetchInformations();
@@ -75,11 +76,27 @@ export class InformationComponent implements OnInit {
     }
   }
 
+  // fetchInformations() {
+  //   this.informationService.getAllInformations().subscribe(
+  //     (response: any) => {
+  //       if (response.data) {
+  //         this.tabInformation = response.data;
+  //       }
+  //     },
+  //     (error: any) => {
+  //       console.log(error);
+  //     }
+  //   );
+  // }
+
   fetchInformations() {
     this.informationService.getAllInformations().subscribe(
       (response: any) => {
         if (response.data) {
-          this.tabInformation = response.data;
+          this.tabInformation = response.data.map((info: any) => ({
+            ...info,
+            showFullDescription: false // Affichage tronqué par défaut
+          }));
         }
       },
       (error: any) => {
@@ -87,6 +104,9 @@ export class InformationComponent implements OnInit {
       }
     );
   }
+  
+
+ 
 
   // Edit information
   editInformation(id: any) {

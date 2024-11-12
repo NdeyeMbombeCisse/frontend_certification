@@ -178,14 +178,14 @@ form {
 }
 
 table {
-    width: 150%;
+    width: 120%;
     background-color: white;
     border-collapse: separate; /* Nécessaire pour border-spacing */
     border-spacing: 0 10px;
     border-radius: 20px;
     font-size: 21px;
     font-family: inter;
-    margin-left: 150px;
+    margin-left: 10px;
 
 }
 
@@ -257,7 +257,7 @@ button:hover {
   justify-content: center; 
   text-align: center; 
   padding: 20px; 
-  margin-left: 450px;
+  margin-left: 350px;
 
 }
 

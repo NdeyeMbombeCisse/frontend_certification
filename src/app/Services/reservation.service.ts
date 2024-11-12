@@ -8,13 +8,27 @@ import { map, Observable, tap } from "rxjs";
 )
 
 export class ReservationService{
-  // private apiUrl = 'https://api.naboopay.com/api/v1/transaction/create-transaction';
+  private formData: any;
+
     // injection de dependance
     private http = inject(HttpClient);
 
     // methode pour creer
     createReservation(reservation:any){
         return this.http.post(`${apiUrl}/reservations`,reservation);
+    }
+    othiereservation(reservation:any){
+      
+      return this.http.post(`${apiUrl}/reservations/noconnect`,reservation);
+
+    }
+
+    setFormData(formData: any): void {
+      this.formData = formData;
+    }
+  
+    getFormData(): any {
+      return this.formData;
     }
 
 

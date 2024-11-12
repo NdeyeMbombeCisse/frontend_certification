@@ -7,6 +7,9 @@ import { TrajetService } from '../../../Services/trajet.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { NoconectModel } from '../autrereservation';
+import { ReservationService } from '../../../Services/reservation.service';
+import { ReservationModel } from '../reservation.model';
 
 @Component({
   selector: 'app-trajet-en-cours',
@@ -17,6 +20,8 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class TrajetEnCoursComponent implements OnInit {
   private trajetService = inject(TrajetService);
+  private reservationService = inject(ReservationService);
+
   private router = inject(Router);
   currentPage: string = 'portail';
 
@@ -26,6 +31,22 @@ export class TrajetEnCoursComponent implements OnInit {
   selectedDate: string | null = null;
   selectedLieuDepart: string | null = null;
   noTrajetMessage: string = '';
+  // isModalVisible = false;
+  trajet: any;
+  isDialogOpen = false;
+  isSecondDialogOpen = false;
+  isChildForm = false; 
+  reservation: NoconectModel = {};
+  formData: NoconectModel = {
+    prenom: '',
+    nom: '',
+    numero_registre: '',
+    age: undefined,
+    nationnalite: '',
+    telephone: '',
+    numero_identite: ''
+  };
+
 
   ngOnInit(): void {
     this.fetchTrajets();
@@ -103,6 +124,63 @@ export class TrajetEnCoursComponent implements OnInit {
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }
+
+
+
+  openDialog(trajetId: any){
+    this.trajet = { id: trajetId };  
+    this.isDialogOpen = true;
+  }
+
+  closeDialog(): void {
+    this.isDialogOpen = false;
+  }
+  reserverPourMoi(trajetId:any): void {
+    this.isDialogOpen = false;
+  this.router.navigate(['/reservation', trajetId]);  // Rediriger vers la page de réservation
+}
+
+closeSecondDialog(): void {
+  this.isSecondDialogOpen = false;
+}
+
+
+
+onAgeChange(): void {
+  this.isChildForm = (this.formData.age ?? 0) >= 4 && (this.formData.age ?? 0) <= 12;
+}
+
+
+
+submitForm(trajetId:any): void {
+  if (!this.trajet) {
+    console.error('Le trajetId est indéfini');
+    return;
+  }
+
+  // Stocke les données du formulaire dans le service
+  this.reservationService.setFormData(this.formData);
+
+  // Appelle la méthode de navigation pour rediriger vers la page de réservation
+  this.router.navigate(['/Autrereservation', trajetId]);  // Rediriger vers la page de réservation
+}
+
+
+  reserverPourAutre(trajetId:any): void {
+    this.isDialogOpen = false;
+    this.trajet = { id: trajetId };  
+
+    this.isSecondDialogOpen = true;
+    // Logique pour "réserver pour un autre"
+    console.log("Réserver pour un autre");
+  }
+
+
+  
+ 
+
+
+
 }
 
 
