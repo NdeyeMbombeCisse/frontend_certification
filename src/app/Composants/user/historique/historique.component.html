@@ -1,7 +1,7 @@
 
 <header>
   <div class="header-content">
-      <img src="../../../../assets/images/logo.png" alt="Cosoma Logo" class="logo">
+    <img src="../../../../assets/images/newlogo.webp" alt="Cosoma Logo" class="logo">
       
       <!-- Menu burger pour mobile -->
       <button class="burger-menu" (click)="toggleMenu()" aria-label="Toggle menu">            <span></span>
@@ -15,23 +15,28 @@
             <li><a href="#">Nouvelles Information</a></li>
             <li><a href="liste_trajet">Trajets En Cours</a></li>
             <li><a href="historique_reservation" class="menu-item">Mes reservations</a></li>
-            <li><a (click)="logout()" >Se deconnexion</a></li>
-            <li><a href="profil"><img src="../../../../assets/images/account_circle 1.png" alt=""></a></li>
+           
+            <!-- <li><a (click)="logout()" >Se deconnexion</a></li> -->
 
             
 
           </ul>
         </nav>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle user-btn" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            <a href="profil"><i class="fa-regular fa-user" style="color: #ffffff;"></i></a>
+          </button>
+          <button class="btn btn-secondary dropdown-toggle user-btn" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <a (click)="logout()">Deconnexion</a>
+          </button>
+
+      </div>
       
   </div>
-</header>
-    
+</header>  
     <div class="body">
-      <h1>Historique des Réservations</h1>
-
-      
-      
-      
+      <h1>Historique des Réservations</h1> 
       <ng-template #noReservations>
         <p>Aucune réservation trouvée.</p>
       </ng-template>
@@ -44,7 +49,7 @@
 
       <div class="info-perso">
         <div class="titre-section">
-          <div class="logo"><img src="./../../../../assets/images/logo.png" alt=""> <span>COSAMA RESERVATION</span></div>
+          <img src="../../../../assets/images/newlogo.webp" alt="Cosoma Logo" class="logo">
           <div class="titre">
             <h2>ticket de reservation</h2>
           </div>
@@ -75,7 +80,8 @@
         </div>
          </div>
 
-         <div class="info_passager2">
+       <div class="responsive">
+        <div class="info_passager2">
           <div class="info">
             <p>Date de départ: </p>
             <h3>{{ reservation.trajet?.date_depart }}</h3>
@@ -101,6 +107,7 @@
             <img [src]="reservation.qr_code" alt="QR Code de réservation" />
           </div>
         </div>
+       </div>
 
       
         

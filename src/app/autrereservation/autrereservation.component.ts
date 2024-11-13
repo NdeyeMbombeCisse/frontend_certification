@@ -9,6 +9,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { NoconectModel } from '../Composants/user/autrereservation';
+import { HttpErrorResponse } from '@angular/common/http';
+import { AuthService } from '../Services/auth.service';
 
 @Component({
   selector: 'app-autrereservation',
@@ -29,11 +31,15 @@ export class AutrereservationComponent implements OnInit {
   fusion:any;
   error: string | null = null;
   formData: any;
+  placeSelected: boolean = false;
+
+  
   trajetId: number | null = null; // Champ pour stocker l'ID du trajet
 
   private reservationService = inject(ReservationService);
   private router = inject(Router); 
-  private route = inject(ActivatedRoute); // Injecter ActivatedRoute pour accéder aux paramètres de l'URL
+  private route = inject(ActivatedRoute);
+  private authService = inject(AuthService);
 
 
 
@@ -61,8 +67,7 @@ export class AutrereservationComponent implements OnInit {
   
   onCategorieSelect(id: any, trajetId: any) {
     this.selectedCategorie = id;
-    console.log(trajetId);
-    
+  
     // Charger à la fois les places réservées et les places de la catégorie sélectionnée
     forkJoin({
       reservedPlaces: this.reservationService.getReservedPlaces(trajetId),
@@ -80,6 +85,16 @@ export class AutrereservationComponent implements OnInit {
           return !reserved; // Ne garder que les places non réservées
         });
   
+        // Si aucune place n'est disponible pour cette catégorie
+        if (this.places.length === 0) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Aucune place disponible',
+            text: 'Il n\'y a pas de places disponibles pour cette catégorie.',
+            confirmButtonText: 'OK'
+          });
+        }
+  
         console.log('Places non réservées pour la catégorie sélectionnée:', this.places); // Debugging
       },
       error: (error) => {
@@ -87,6 +102,7 @@ export class AutrereservationComponent implements OnInit {
       }
     });
   }
+  
   
 
     // les places deja reserver
@@ -124,6 +140,7 @@ export class AutrereservationComponent implements OnInit {
       // Sélection de la place non réservée
       this.selectPlaceId = place.id;
       this.reservationData.place_id = place.id;
+      this.placeSelected = true; 
     }
   }
 
@@ -155,7 +172,7 @@ getCategories(): void {
 getImageForCategorie(categorieId: any): string {
   switch (categorieId) {
     case 1: // ID pour fauteuils
-      return '../../../../assets/images/fauteil\ pullman.png';
+      return '../../../../assets/images/fauteuilbouna.png';
     case 2: // ID pour cabines
       return '../../../../assets/images/cabines.png';
     default:
@@ -301,6 +318,21 @@ isMenuOpen = false;
 
 toggleMenu() {
   this.isMenuOpen = !this.isMenuOpen;
+}
+
+
+logout(): void {
+  this.authService.logout().subscribe(
+    () => {
+      // Optionnel : Effacer les informations de l'utilisateur
+      localStorage.removeItem('token');
+      // Rediriger vers la page de connexion ou la page d'accueil
+      this.router.navigate(['/portail']);
+    },
+    (error: HttpErrorResponse) => { // Spécifiez le type pour 'error'
+      console.error('Erreur de déconnexion', error);
+    }
+  );
 }
 
 

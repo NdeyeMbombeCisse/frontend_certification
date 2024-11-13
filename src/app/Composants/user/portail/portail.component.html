@@ -30,10 +30,10 @@
 
             <nav>
                 <ul class="nav-list" [class.active]="isMenuOpen">
-                  <li><a href="portail"  >Acceuil</a></li>
-                  <li><a href="portail"  >A propos</a></li>
-                  <li><a href="portail"  >Nos services</a></li>
-                  <li><a href="portail"  >Contact</a></li>
+                  <li><a href="portail" class="menu-item" >Acceuil</a></li>
+                  <li><a href="#presentation"   >A propos</a></li>
+                  <li><a href="#service"  >Nos services</a></li>
+                  <li><a href="#contact"  >Contact</a></li>
                   <li><a href="nouvelle_info"> Informations</a></li>
                   <li><a href="liste_trajet">Horaires et destinations</a></li>
                 </ul>
@@ -44,7 +44,7 @@
             <div class="dropdown me-3">
                 <button class="btn btn-secondary dropdown-toggle user-btn" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-user-circle me-2"></i>
-                  S'inscrire
+                 <a href="inscription_user">S'inscrire</a>
                 </button>
             </div>
         </div>
@@ -55,14 +55,14 @@
                    votre trajet maritime en quelques clics et profitez d'une expérience fluide et  <br>
                    pratique.</p>
                 <div class="connexion-buttons">
-                    <a href="connexion" class="btn register">Réserver maintenant</a>
+                    <a href="liste_trajet" class="btn register">Réserver maintenant</a>
                 </div>
             </div>
         </div>
     </header>
     
 <section class="mission">
-    <div class="mission-content">
+    <div class="mission-content" id="presentation">
         <h1>Présentation de Cosoma Réservation</h1>
         <p>
             Bienvenue dans l'ère numérique avec Cosoma Réservation,  <br>
@@ -99,7 +99,7 @@
 
 <h1 class="servicetitle">Nos Services</h1>
 
-<section class="service">
+<section class="service" id="service">
     <div class="firstpart">
         <!-- consultation -->
         <div class="card">
@@ -398,7 +398,7 @@
 </section>
 
 <h1 class="servicetitle">Nous contacter</h1>
-<div class="form-container">
+<div class="form-container" id="contact">
     <form class="centered-form">
         <div class="input-row">
             <input type="text" placeholder="Prenom et nom">

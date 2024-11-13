@@ -43,8 +43,7 @@ body {
     left: 0;
     right: 0;
     z-index: 1;
-    /* background-color: #227093; */
-background-color: #227093;
+    background-color: #227093;
 }
 
 .logo {
@@ -137,10 +136,6 @@ nav ul li a {
     color: white;
     font-size: 30px; 
     background-color:#f7b731;
-  
-
-
-
     
 }
 
@@ -179,6 +174,10 @@ nav ul li a {
   .user-btn i {
     font-size: 30px;
     margin-right: 10px;
+  }
+  .user-btn a{
+    text-decoration: none;
+    color: white;
   }
 
 /* Style du trait après la bannière */

@@ -3,27 +3,32 @@
 
 <header>
   <div class="header-content">
-      <img src="../../../../assets/images/logo.png" alt="Cosoma Logo" class="logo">
-      
-      <!-- Menu burger pour mobile -->
-      <button class="burger-menu" (click)="toggleMenu()" aria-label="Toggle menu">            <span></span>
-      <span></span>
-      <span></span>
-  </button>
-      
-      
+    <img src="../../../../assets/images/newlogo.webp" alt="Cosoma Logo" class="logo">
+    
+    <!-- Menu burger pour mobile -->
+    <button class="burger-menu" (click)="toggleMenu()" aria-label="Toggle menu">            <span></span>
+    <span></span>
+    <span></span>
+</button>
+    
+    
 
-      <nav>
-          <ul class="nav-list" [class.active]="isMenuOpen">
-            <li><a href="portail"  >Acceuil</a></li>
-            <li><a href="nouvelle_info">Nouvelles Information</a></li>
-            <li><a href="liste_trajet" class="menu-item">Trajets En Cours</a></li>
-          </ul>
-        </nav>
-      <div class="auth-buttons">
-          <a href="inscription_user" class="btn register">S'inscrire</a>
-      </div>
-  </div>
+    <nav>
+        <ul class="nav-list" [class.active]="isMenuOpen">
+          <li><a href="portail"  >Acceuil</a></li>
+          <li><a href="nouvelle_info"> Informations</a></li>
+          <li><a href="liste_trajet">Horaires et destinations</a></li>
+        </ul>
+      </nav>
+    <!-- <div class="auth-buttons">
+        <a href="inscription_user" class="btn register">S'inscrire</a>
+    </div> -->
+    <div class="dropdown me-3">
+        <button class="btn btn-secondary dropdown-toggle user-btn" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+          <a href="connexion">Se connecter</a>
+        </button>
+    </div>
+</div>
   <div class="baniere">
       <div class="baniere-content">
           <h1>Bienvenue Sur Cosoma Reservation</h1>
@@ -127,40 +132,51 @@
 </div>
 
 <!-- Deuxième Popup -->
-<div class="dialog-overlay" *ngIf="isSecondDialogOpen">
-  <div class="dialog">
-    <button class="close-button" (click)="closeSecondDialog()">X</button>
 
-    <h2>Formulaire de Réservation pour un autre</h2>
-    <label>Âge:</label>
-    <input type="number" [(ngModel)]="formData.age" (change)="onAgeChange()">
-    <label>Prénom:</label>
-    <input type="text" [(ngModel)]="formData.prenom">
 
-    <label>Nom:</label>
-    <input type="text" [(ngModel)]="formData.nom">
-
-    <label>Numéro de Registre:</label>
-    <input type="text" [(ngModel)]="formData.numero_registre">
-
+ <div class="dialog-overlay" *ngIf="isSecondDialogOpen">
+     <div class="dialog">
+      <a class="close-button" (click)="closeSecondDialog()">X</a>
+  
+      <h2>Formulaire de Réservation pour un autre</h2>
+      <label>Âge:</label>
+      <input type="number" [(ngModel)]="formData.age" (change)="onAgeChange()">
+      <label>Prénom:</label>
+      <input type="text" [(ngModel)]="formData.prenom">
+  
+      <label>Nom:</label>
+      <input type="text" [(ngModel)]="formData.nom">
+  
+      <label>Numéro de Registre:</label>
+      <input type="text" [(ngModel)]="formData.numero_registre">
+  
+    
+      <!-- <label>Nationalité:</label>
+  
+      <input type="text" [(ngModel)]="formData.nationnalite"> -->
+      <label>Nationalité:</label>
+        <select [(ngModel)]="formData.nationnalite">
+          <option value="senegalais">Sénégalais</option>
+          <option value="etranger resident">Étranger résident</option>
+          <option value="etranger non resident">Étranger non résident</option>
+        </select>
+  
+      <!-- Champs supplémentaires pour les adultes -->
+      <div *ngIf="!isChildForm" class="inputs2">
+        <label>Téléphone:</label>
+        <input type="text" [(ngModel)]="formData.telephone">
+  
+        <label>Numéro d'identité:</label>
+        <input type="text" [(ngModel)]="formData.numero_identite">
+      </div>
+  
+      <button (click)="submitForm(trajet.id)">Soumettre</button>
+      <!-- <button class="close-button" (click)="closeSecondDialog()">X</button> -->
+    </div>
+  </div>
+  
   
 
-    <label>Nationalité:</label>
-    <input type="text" [(ngModel)]="formData.nationnalite">
-
-    <!-- Champs supplémentaires pour les adultes -->
-    <div *ngIf="!isChildForm">
-      <label>Téléphone:</label>
-      <input type="text" [(ngModel)]="formData.telephone">
-
-      <label>Numéro d'identité:</label>
-      <input type="text" [(ngModel)]="formData.numero_identite">
-    </div>
-
-    <button (click)="submitForm(trajet.id)">Soumettre</button>
-    <!-- <button class="close-button" (click)="closeSecondDialog()">X</button> -->
-  </div>
-</div>
 
   
   <!-- Modal principal -->
@@ -172,7 +188,7 @@
 <!-- footer -->
 <footer>
     <!-- <img src="../../../../assets/images/logo.png" alt=""> -->
-    <p>&copy; 2024 Cosoma. All Rights Reserved.</p>
+    <p>&copy; 2024 Cosoma. Tout droit reservé</p>
     <ul class="social-media">
         <li><a href="#">Facebook</a></li>
         <li><a href="#">Google</a></li>

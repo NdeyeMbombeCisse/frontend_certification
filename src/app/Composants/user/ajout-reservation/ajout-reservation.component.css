@@ -22,6 +22,25 @@
   font-size: 30px;
   margin-right: 10px;
 }
+
+.user-btn {
+  background-color:#f7b731;
+  color: white;
+  border-radius: 20px;
+  padding: 8px 15px;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  border: none;
+  font-weight: 700;
+}
+
+
+
+.dropdown{
+  display: flex;
+  gap:5px
+}
 /* place */
 
 .rounded-background {
@@ -136,7 +155,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh; /* Prend toute la hauteur de l'écran */
+  height: 90vh; /* Prend toute la hauteur de l'écran */
   background: linear-gradient(rgba(106, 176, 204, 0.3), rgba(132, 183, 204, 0.3)),
               url('../../../../assets/images/reservationtof.jpg') no-repeat center center;
   background-size: cover;

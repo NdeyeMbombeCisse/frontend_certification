@@ -20,8 +20,17 @@
 
       </ul>
       </nav>
-    <div class="auth-buttons">
-        <a href="inscription_user" class="btn register">Deconnexion</a>
+      <div class="dropdown">
+
+        <a class="btn btn-secondary dropdown-toggle register" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+          <a href="profil"><i class="fa-regular fa-user" style="color: #ffffff;"></i></a>
+        </a>
+        <a class="btn btn-secondary dropdown-toggle register" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <a (click)="logout()">Deconnexion</a>
+        </a>
+
+      
     </div>
  
 </div>

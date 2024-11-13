@@ -1,11 +1,10 @@
-
+<!-- 
 
 
 <header>
     <div class="header-content">
         <img src="../../../../assets/images/logo.png" alt="Cosoma Logo" class="logo">
         
-        <!-- Menu burger pour mobile -->
         <button class="burger-menu" (click)="toggleMenu()" aria-label="Toggle menu">            <span></span>
         <span></span>
         <span></span>
@@ -25,7 +24,6 @@
         </div>
     </div>
   </header>
-  <!-- <h1>Effectuer ma reservation</h1> -->
    
   <div class="reservation-container">
     <img src="../../../../assets/images/image_reservation.png" alt="Image de réservation">
@@ -66,4 +64,91 @@
     <button type="submit" [disabled]="!reservationForm.form.valid">Réserver</button>
   </form> 
   
-   
+    -->
+
+
+<header>
+  <div class="header-content">
+    <img src="../../../../assets/images/newlogo.webp" alt="Cosoma Logo" class="logo">
+    
+    <!-- Menu burger pour mobile -->
+    <button class="burger-menu" (click)="toggleMenu()" aria-label="Toggle menu">            <span></span>
+    <span></span>
+    <span></span>
+</button>
+    
+    
+
+    <nav>
+      <ul class="nav-list" [class.active]="isMenuOpen">
+        <li><a [routerLink]="['/portail']" class="menu-item" [class.active]="isActive('/portail')">Acceuil</a></li>
+        <li><a href="nouvelle_info"> Informations</a></li>
+        <li><a href="liste_trajet">Horaires et destinations</a></li>
+        <li><a href="historique_reservation">Mes reservations</a></li>
+
+      </ul>
+      </nav>
+      <div class="dropdown">
+
+        <a class="btn btn-secondary dropdown-toggle user-btn" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+          <a href="profil"><i class="fa-regular fa-user" style="color: #ffffff;"></i></a>
+        </a>
+        <a class="btn btn-secondary dropdown-toggle user-btn" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <a (click)="logout()">Deconnexion</a>
+        </a>
+
+      
+    </div>
+ 
+</div>
+</header>
+
+
+<div class="baniere">
+      <h1> Reservation</h1>  
+</div>
+ 
+<div class="reservation-container">
+  <div class="titre">
+    <h1>Nos catégories</h1>
+    <p>Réservez vos places en choisissant une catégorie. </p>
+  </div>
+
+
+    <form (ngSubmit)="createReservation()" #reservationForm="ngForm">
+  <div class="categories">
+    <div
+      *ngFor="let categorie of categories"
+      class="category-card "
+      [class.selected]="categorie.id === selectedCategorie"
+      (click)="onCategorieSelect(categorie.id, trajetId)" 
+      style="cursor: pointer;  "
+      
+    >
+    <h3>{{ categorie.libelle }}</h3>
+
+    </div>
+  </div>
+<div class="form-group">
+  <div class="place-container">
+    <div *ngFor="let place of places" 
+         class="place-icon" 
+         [ngClass]="{
+           'selected': selectPlaceId === place.id
+         }" 
+         (click)="selectPlace(place)">
+      <img [src]="getImageForCategorie(place.categorie_id)" 
+           alt="{{ place.libelle }}" />
+           <span class="rounded-background">{{ place.libelle }}</span>
+          </div>
+  </div>
+</div>
+  <!-- Bouton "Réserver", il est désactivé si aucune place n'est sélectionnée -->
+  <button *ngIf="placeSelected" 
+  type="submit">
+Réserver
+</button>
+</form> 
+
+ 
