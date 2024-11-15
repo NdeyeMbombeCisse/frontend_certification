@@ -1,6 +1,6 @@
 .chart-container {
     position: relative;
-    width: 50%; /* Largeur du conteneur : ajustable */
+    width: 80%; /* Largeur du conteneur : ajustable */
     height: auto; /* Laisser l'ajustement dynamique */
     margin: 0 auto; /* Centrer le graphique */
     padding: 20px;

@@ -27,7 +27,7 @@
   z-index: 2; 
 }
  
- .sidebar {
+.sidebar {
   background-color: #618062; 
   color: #fff;
   width: 300px;
@@ -35,20 +35,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  height: 100vh; /* Hauteur de la fenêtre */
   border-radius: 0px 12px 12px 0px;
   background: #227093;
-  overflow-y: hidden;
-  color: #FFF;
+  overflow-y: auto; /* Permet le défilement si le contenu est trop grand */
   font-family: "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
-font-size: 27px;
-font-style: normal; 
-font-weight: 400;
-line-height: 2;
-
-} 
+  font-size: 27px;
+  font-weight: 400;
+  line-height: 2;
+  position: fixed;
+  top: 0; /* Fixe le sidebar en haut */
+  left: 0; /* Fixe le sidebar à gauche */
+  z-index: 1000; /* Pour s'assurer qu'il est au-dessus des autres éléments */
+}
 
 .header {
   position: relative; /* Pour positionner la boîte de notifications relative à l'icône */
@@ -187,7 +186,7 @@ margin-top: 30px;
     width: 92%;
     color: white; /* Couleur du texte */
     border-radius: 50px;
-    margin-top: 100px;
+    margin-top: 30px;
 
 }
 

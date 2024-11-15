@@ -46,6 +46,8 @@ body {
     background-color: #227093;
 }
 
+
+
 .logo {
     width: 220px;
     height: auto;
@@ -103,8 +105,6 @@ nav ul li a {
     flex-direction: column;
     gap: 20px;
     font-weight: 400;
-
-    /* Animation avec répétition */
     opacity: 0;
     transform: translateY(80px); 
     animation: slideFadeIn 2s ease-out infinite; /* Répétition infinie */
@@ -197,6 +197,7 @@ header::after {
     justify-content: space-between; /* Espace entre le contenu et l'image */
     align-items: center; /* Aligne verticalement au centre */
     padding: 20px; /* Ajoute un peu de padding */
+    overflow: hidden; /* Évite les débordements dus à l'animation */
 }
 
 .mission-content {
@@ -696,11 +697,16 @@ footer ul li {
     .connexion-buttons .btn {
         margin-left: 70px;
         padding: 15px 15px;
-        border-radius: 5px;
+        border-radius: 2ppppp
+        
+        5px;
         text-decoration: none;
-        color: #227093;
+        color: white;
         font-size: 15px;
         
+    }
+    .user-btn{
+        display: none;
     }
     .logo {
         width: 90px;
@@ -784,7 +790,7 @@ footer ul li {
         font-family: "Gilda Display", serif;
         font-weight: 400;
         font-style: normal;
-        color: #0D8434;
+        color: #feb906;
         margin-top: 80px;
         line-height: 1.5;
     }
@@ -843,7 +849,7 @@ footer ul li {
         font-family: "Gilda Display", serif;
         font-weight: 400;
         font-style: normal;
-        color: #0D8434;
+        color: #feb906;
         margin-top: 80px;
     }
         .firstpart, .secondpart {
@@ -869,7 +875,7 @@ footer ul li {
             font-family: "Gilda Display", serif;
             font-weight: 400;
             font-style: normal;
-            color: #0D8434;
+            color: #feb906;
             line-height: 2;
             margin-top: 30px;
         }
@@ -922,7 +928,7 @@ footer ul li {
     font-family: "Gilda Display", serif;
     font-weight: 400;
     font-style: normal;
-    color: #0D8434;
+    color: #feb906;
     text-align: center;
     margin-top: -70px;
 

@@ -10,6 +10,10 @@ import { Router, RouterModule } from '@angular/router';
 import { NoconectModel } from '../autrereservation';
 import { ReservationService } from '../../../Services/reservation.service';
 import { ReservationModel } from '../reservation.model';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @Component({
   selector: 'app-trajet-en-cours',
@@ -72,12 +76,29 @@ export class TrajetEnCoursComponent implements OnInit {
     );
   }
 
+  // getActiveDepartureDates() {
+  //   this.dateDepartOptions = this.tabtrajet
+  //     .filter(trajet => trajet.statut === 1)
+  //     .map(trajet => trajet.date_depart ? new Date(trajet.date_depart).toLocaleDateString() : '')
+  //     .filter(date => date !== '');
+  // }
+
   getActiveDepartureDates() {
-    this.dateDepartOptions = this.tabtrajet
-      .filter(trajet => trajet.statut === 1)
-      .map(trajet => trajet.date_depart ? new Date(trajet.date_depart).toLocaleDateString() : '')
-      .filter(date => date !== '');
+    const availableDates = this.tabtrajet
+    .filter(trajet => trajet.statut === 1)
+    .map(trajet => trajet.date_depart ? new Date(trajet.date_depart) : null)
+    .filter(date => date !== null) as Date[]; // Ensure the result is a Date[]
+
+    this.dateDepartOptions = availableDates.map(date => date.toLocaleDateString());
+
   }
+
+  disableUnavailableDates(date: Date): string | undefined {
+    const formattedDate = date.toLocaleDateString();
+    return this.dateDepartOptions.includes(formattedDate) ? '' : 'disabled';
+  }
+  
+  
 
   getActiveDeparturePlaces() {
     this.lieuDepartOptions = this.tabtrajet
@@ -270,123 +291,3 @@ submitForm(trajetId: any): void {
 
 
 
-// <div class="dialog-overlay" *ngIf="isSecondDialogOpen">
-//   <div class="dialog">
-//     <a class="close-button" (click)="closeSecondDialog()">X</a>
-
-//     <h2>Formulaire de Réservation pour un autre</h2>
-//     <label>Âge:</label>
-//     <input type="number" [(ngModel)]="formData.age" (change)="onAgeChange()">
-//     <label>Prénom:</label>
-//     <input type="text" [(ngModel)]="formData.prenom">
-
-//     <label>Nom:</label>
-//     <input type="text" [(ngModel)]="formData.nom">
-
-//     <label>Numéro de Registre:</label>
-//     <input type="text" [(ngModel)]="formData.numero_registre">
-
-  
-//     <!-- <label>Nationalité:</label>
-
-//     <input type="text" [(ngModel)]="formData.nationnalite"> -->
-//     <label>Nationalité:</label>
-//       <select [(ngModel)]="formData.nationnalite">
-//         <option value="senegalais">Sénégalais</option>
-//         <option value="etranger resident">Étranger résident</option>
-//         <option value="etranger non resident">Étranger non résident</option>
-//       </select>
-
-//     <!-- Champs supplémentaires pour les adultes -->
-//     <div *ngIf="!isChildForm" class="inputs2">
-//       <label>Téléphone:</label>
-//       <input type="text" [(ngModel)]="formData.telephone">
-
-//       <label>Numéro d'identité:</label>
-//       <input type="text" [(ngModel)]="formData.numero_identite">
-//     </div>
-
-//     <button (click)="submitForm(trajet.id)">Soumettre</button>
-//     <!-- <button class="close-button" (click)="closeSecondDialog()">X</button> -->
-//   </div>
-// </div>
-
-
-
-// validation
-
-// <div class="dialog-overlay" *ngIf="isSecondDialogOpen">
-//   <div class="dialog">
-//     <a class="close-button" (click)="closeSecondDialog()">X</a>
-
-//     <h2>Formulaire de Réservation pour un autre</h2>
-
-//     <form #reservationForm="ngForm" (ngSubmit)="submitForm(trajet.id)" novalidate>
-
-//       <!-- Âge -->
-//       <label for="age">Âge:</label>
-//       <input type="number" id="age" [(ngModel)]="formData.age" name="age" required #age="ngModel">
-//       <div *ngIf="age.invalid && (age.dirty || age.touched)" class="error">
-//         <small *ngIf="age.errors?.['required']">L'âge est requis.</small>
-//         <small *ngIf="age.errors?.['min']">L'âge doit être supérieur ou égal à 4.</small>
-//       </div>
-
-//       <!-- Prénom -->
-//       <label for="prenom">Prénom:</label>
-//       <input type="text" id="prenom" [(ngModel)]="formData.prenom" name="prenom" required minlength="1" maxlength="20" #prenom="ngModel">
-//       <div *ngIf="prenom.invalid && (prenom.dirty || prenom.touched)" class="error">
-//         <small *ngIf="prenom.errors?.['required']">Le prénom est requis.</small>
-//         <small *ngIf="prenom.errors?.['minlength']">Le prénom doit contenir au moins 1 caractère.</small>
-//         <small *ngIf="prenom.errors?.['maxlength']">Le prénom ne doit pas dépasser 20 caractères.</small>
-//       </div>
-
-//       <!-- Nom -->
-//       <label for="nom">Nom:</label>
-//       <input type="text" id="nom" [(ngModel)]="formData.nom" name="nom" required minlength="1" maxlength="20" #nom="ngModel">
-//       <div *ngIf="nom.invalid && (nom.dirty || nom.touched)" class="error">
-//         <small *ngIf="nom.errors?.['required']">Le nom est requis.</small>
-//         <small *ngIf="nom.errors?.['minlength']">Le nom doit contenir au moins 1 caractère.</small>
-//         <small *ngIf="nom.errors?.['maxlength']">Le nom ne doit pas dépasser 20 caractères.</small>
-//       </div>
-
-//       <!-- Numéro de Registre -->
-//       <label for="numero_registre">Numéro de Registre:</label>
-//       <input type="text" id="numero_registre" [(ngModel)]="formData.numero_registre" name="numero_registre" required pattern="^\d{4}$" #numero_registre="ngModel">
-//       <div *ngIf="numero_registre.invalid && (numero_registre.dirty || numero_registre.touched)" class="error">
-//         <small *ngIf="numero_registre.errors?.['required']">Le numéro de registre est requis.</small>
-//         <small *ngIf="numero_registre.errors?.['pattern']">Le numéro de registre doit être composé de 4 chiffres.</small>
-//       </div>
-
-//       <!-- Nationalité -->
-//       <label for="nationnalite">Nationalité:</label>
-//       <select id="nationnalite" [(ngModel)]="formData.nationnalite" name="nationnalite" required #nationnalite="ngModel">
-//         <option value="senegalais">Sénégalais</option>
-//         <option value="etranger resident">Étranger résident</option>
-//         <option value="etranger non resident">Étranger non résident</option>
-//       </select>
-//       <div *ngIf="nationnalite.invalid && (nationnalite.dirty || nationnalite.touched)" class="error">
-//         <small *ngIf="nationnalite.errors?.['required']">La nationalité est requise.</small>
-//       </div>
-
-//       <!-- Téléphone -->
-//       <div *ngIf="!isChildForm" class="inputs2">
-//         <label for="telephone">Téléphone:</label>
-//         <input type="text" id="telephone" [(ngModel)]="formData.telephone" name="telephone" required pattern="^(77|78|70|76)\d{7}$" #telephone="ngModel">
-//         <div *ngIf="telephone.invalid && (telephone.dirty || telephone.touched)" class="error">
-//           <small *ngIf="telephone.errors?.['required']">Le téléphone est requis.</small>
-//           <small *ngIf="telephone.errors?.['pattern']">Le téléphone doit commencer par 77, 78, 70 ou 76 et contenir exactement 9 chiffres.</small>
-//         </div>
-
-//         <!-- Numéro d'identité -->
-//         <label for="numero_identite">Numéro d'identité:</label>
-//         <input type="text" id="numero_identite" [(ngModel)]="formData.numero_identite" name="numero_identite" required pattern="^\d{13}$" #numero_identite="ngModel">
-//         <div *ngIf="numero_identite.invalid && (numero_identite.dirty || numero_identite.touched)" class="error">
-//           <small *ngIf="numero_identite.errors?.['required']">Le numéro d'identité est requis.</small>
-//           <small *ngIf="numero_identite.errors?.['pattern']">Le numéro d'identité doit être exactement 13 chiffres.</small>
-//         </div>
-//       </div>
-
-//       <button type="submit" [disabled]="reservationForm.invalid">Soumettre</button>
-//     </form>
-//   </div>
-// </div>

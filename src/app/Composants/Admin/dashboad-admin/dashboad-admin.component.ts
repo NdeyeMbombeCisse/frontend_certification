@@ -30,11 +30,42 @@ export class DashboadAdminComponent implements OnInit {
   notifications:any;
   showNotifications: boolean = false; // État d'affichage
   unreadCount: number = 0;
+  userCount: number = 0;
+  nouserCount: number = 0;
+
 
   ngOnInit(): void {
+
+    this.userService.getUserCount().subscribe(
+      (response: any) => {
+        console.log(response); // Affichez la réponse
+        this.userCount = response.user_count; // Assurez-vous que 'user_count' est bien là
+        console.log(this.userCount); // Affichez la valeur de 'userCount'
+      },
+      (error) => {
+        console.error('Erreur lors de la récupération des utilisateurs', error);
+      }
+    );
+
+    this.userService.getnoUserCount().subscribe(
+      (response: any) => {
+        console.log(response); // Affichez la réponse
+        this.nouserCount = response.user_count; // Assurez-vous que 'user_count' est bien là
+        console.log(this.userCount); // Affichez la valeur de 'userCount'
+      },
+      (error) => {
+        console.error('Erreur lors de la récupération des utilisateurs', error);
+      }
+    );
+
+
     this.loadNotifications();
     this.updateUnreadCount();
-    this.loadTrajets()  ; 
+    this.loadTrajets(); 
+    
+    
+    
+
   }
 
   loadTrajets(){
@@ -88,6 +119,19 @@ export class DashboadAdminComponent implements OnInit {
   updateUnreadCount() {
     this.unreadCount = this.notifications.filter((notification: NotificationModel) => !notification.data).length;
 }
+
+
+// loadCountUser() {
+//   this.userService.getUserCount().subscribe(
+//     (response: any) => {
+//       console.log(response); // Vérifiez la réponse complète ici
+//       this.userCount = response.user_count; // Assurez-vous d'utiliser user_count directement
+//     },
+//     (error) => {
+//       console.error('Erreur lors de la récupération des utilisateurs', error);
+//     }
+//   );
+// }
 
 
 

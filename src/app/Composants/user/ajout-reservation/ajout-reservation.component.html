@@ -62,24 +62,42 @@
 
     </div>
   </div>
-<div class="form-group">
-  <div class="place-container">
-    <div *ngFor="let place of places" 
-         class="place-icon" 
-         [ngClass]="{
-           'selected': selectPlaceId === place.id
-         }" 
-         (click)="selectPlace(place)">
-      <img [src]="getImageForCategorie(place.categorie_id)" 
-           alt="{{ place.libelle }}" />
-           <span class="rounded-background">{{ place.libelle }}</span>
+  <div class="form-group">
+    <div class="place-container">
+      <!-- Diviser les chaises en groupes de gauche et droite -->
+      <div class="row">
+        <!-- Groupe de quatre chaises à gauche -->
+        <div class="left-group">
+          <div *ngFor="let place of places.slice(0, 4)" 
+               class="place-icon" 
+               [ngClass]="{
+                 'selected': selectPlaceId === place.id
+               }" 
+               (click)="selectPlace(place)">
+            <img [src]="getImageForCategorie(place.categorie_id)" alt="{{ place.libelle }}" />
+            <span class="rounded-background">{{ place.libelle }}</span>
           </div>
+        </div>
+  
+        <!-- Groupe de quatre chaises à droite -->
+        <div class="right-group">
+          <div *ngFor="let place of places.slice(4, 8)" 
+               class="place-icon" 
+               [ngClass]="{
+                 'selected': selectPlaceId === place.id
+               }" 
+               (click)="selectPlace(place)">
+            <img [src]="getImageForCategorie(place.categorie_id)" alt="{{ place.libelle }}" />
+            <span class="rounded-background">{{ place.libelle }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
   <!-- Bouton "Réserver", il est désactivé si aucune place n'est sélectionnée -->
   <button *ngIf="placeSelected" 
-  type="submit">
-Réserver
+  type="submit" >
+  Réserver 
 </button>
 </form> 
 

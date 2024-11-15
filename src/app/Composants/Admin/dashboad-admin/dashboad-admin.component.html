@@ -2,7 +2,7 @@
 <div class="contenu">
     <div class="sidebar">
         <div class="logo">
-            <img src="../../../../assets/images/logo.png" alt="Logo">
+            <img src="../../../../assets/images/newlogo.webp" alt="Logo">
         </div>
         <nav class="menu">
             <a [routerLink]="['/dasbaord_admin']" class="menu-item" [class.active]="isActive('/dasbaord_admin')">
@@ -75,8 +75,8 @@
                     <i class="fa-solid fa-user fa-3x" style="color: #737f39;"></i>
                 </div>            
                 <div class="statistiques-texte">
-                    <h1>{{ count }}</h1>
-                    <h2>Trajets en cours</h2>
+                    <h1>{{ userCount }}</h1>
+                    <h2>Utilisateurs</h2>
                 </div>
             </div>
         
@@ -95,8 +95,8 @@
                     <i class="fa-solid fa-user fa-3x" style="color: #e74c3c;"></i>
                 </div>            
                 <div class="statistiques-texte">
-                    <h1>{{totalPlacesRestantes }}</h1>
-                    <h2>Places restantes</h2>
+                    <h1>{{ nouserCount }}</h1>
+                    <h2>Reservation sans compte</h2>
                 </div>
             </div> 
             <div class="contenu-statistique">
@@ -109,40 +109,7 @@
                 </div>
             </div> 
         </div>
-        <!-- <div class="titlediv">
-            <h1 class="reservation">Les Trajets en cours</h1>
-
-        </div>
-        <div class="trajets_encours">
-            <table  style="width: 93%; border-collapse: collapse;">
-              <thead>
-                <tr>
-                  <th>Destination</th>
-                  <th>Réservations</th>
-                  <th>Places Restantes</th>
-                  <th>Date de Publication</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Destination Ziguinchor</td>
-                  <td>26 réservations</td>
-                  <td>30 places restantes</td>
-                  <td>Publiée le 12/12/2023</td>
-                  <td><button>Voir les réservations</button></td>
-                </tr>
-                <tr>
-                  <td>Destination Ziguinchor</td>
-                  <td>26 réservations</td>
-                  <td>30 places restantes</td>
-                  <td>Publiée le 12/12/2023</td>
-                  <td><button>Voir les réservations</button></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-           -->
+  
 <div class="diagramme">
     <app-diagramme></app-diagramme>
 </div>

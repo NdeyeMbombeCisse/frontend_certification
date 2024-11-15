@@ -190,7 +190,7 @@ getCategories(): void {
 getImageForCategorie(categorieId: any): string {
   switch (categorieId) {
     case 1: // ID pour fauteuils
-      return '../../../../assets/images/fauteil\ pullman.png';
+    return '../../../../assets/images/fauteuilbouna.png';
     case 2: // ID pour cabines
       return '../../../../assets/images/cabines.png';
     default:

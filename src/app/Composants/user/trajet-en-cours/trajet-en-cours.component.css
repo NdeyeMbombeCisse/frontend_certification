@@ -29,9 +29,9 @@ button:disabled {
   label {
     display: block; 
     margin-bottom: 20px; 
-    font-weight: bold;
     color: white;
     font-size: 30px;
+    margin-left: 35px;
   }
 
 /* souligner la page de navigation */
@@ -66,7 +66,6 @@ button:disabled {
   left: 0;
   right: 0;
   z-index: 1;
-  /* background-color: #227093; */
 background-color: #227093;
 }
 
@@ -222,7 +221,7 @@ nav ul li a.active {
     width: 196px;
     font-weight: bold;
     margin-right: 40px;
-    margin-top: 10px;
+    margin-top: 30px;
 }
 
 /* section des trajet en cours */
@@ -234,7 +233,7 @@ nav ul li a.active {
     font-style: normal;
     margin-top: 50px;
     text-align: center;
-    color: #0D8434;
+    color: #f7b731;
     line-height: 2.5;
 }
 
@@ -283,7 +282,7 @@ nav ul li a.active {
     font-style: normal;
     text-align: center;
     line-height: 2.5;
-    color: #227093;
+    color: #f7b731;
     margin-left: 350px;
 }
 
@@ -304,7 +303,6 @@ nav ul li a.active {
     align-items: center;
     justify-content: center; /* Centre le texte */
     color: #227093;
-    font-weight: 700;
     font-size: 38px; /* Taille du texte */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère */
 }
@@ -312,7 +310,7 @@ nav ul li a.active {
 
 
 .detailTrajet button {
-    background-color: #227093;
+    background-color: #f7b731;
     margin-left: 520px;
     padding: 20px 20px;
     border-radius: 5px;
@@ -323,6 +321,7 @@ nav ul li a.active {
     transition: background-color 0.3s ease;
     border: solid 1px white;
     margin-top: 20px;
+    cursor: pointer;
 }
 
 .detailTrajet button:hover {
@@ -663,7 +662,7 @@ footer ul li {
         font-weight: bold; /* Met le texte en gras */
         color: white;
         margin-left: 40px;
-        font-size: 15px;
+        font-size: 20px;
       }
     
 
@@ -687,7 +686,7 @@ footer ul li {
       font-size: 24px; /* Diminuer la taille du titre */
       margin-left: -15px;
       margin-top: 10px;
-      color: #0D8434;
+      color: #f7b731;
     }
   
     .detailTrajet ul {
@@ -734,7 +733,7 @@ footer ul li {
     
     
     .detailTrajet button {
-        background-color: #227093;
+        background-color: #f7b731;
         margin-left: 0;
         padding: 10px ;
         border-radius: 5px;

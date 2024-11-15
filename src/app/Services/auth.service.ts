@@ -68,6 +68,15 @@ updateProfile(userData: any, id:any) {
 }
 
 
+getUserCount() {
+  return this.http.get(`${apiUrl}/user-count`)
+}
+
+
+
+getnoUserCount() {
+  return this.http.get(`${apiUrl}/nouser-count`)
+}
 
 
 }
