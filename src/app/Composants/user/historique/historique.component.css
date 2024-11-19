@@ -177,19 +177,19 @@
   .titre{
    background: #227093;
    color: white;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-family: Inter;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  letter-spacing: 7.92px;
-  text-transform: uppercase;
-  width: 70%;
-  height: 73px;
-  border-radius: 20px;
-  margin: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 7.92px;
+    text-transform: uppercase;
+    width: 70%;
+    height: 73px;
+    border-radius: 20px;
+    margin: 20px;
   }
   
   

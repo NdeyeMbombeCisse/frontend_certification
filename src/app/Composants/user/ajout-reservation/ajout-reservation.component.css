@@ -85,6 +85,7 @@ nav ul li a {
   text-decoration: none;
   font-size: 20px;
   color: white;
+  cursor: pointer;
 }
 .user-btn i {
   font-size: 30px;
@@ -117,7 +118,7 @@ nav ul li a {
   align-items: center;
   width: 100%;
   height: 90vh; /* Prend toute la hauteur de l'écran */
-  background: linear-gradient(rgba(106, 176, 204, 0.3), rgba(132, 183, 204, 0.3)), url('../../../../assets/images/reservationtof.jpg') no-repeat center center;
+  background: linear-gradient(rgba(129, 226, 255, 0.3), rgba(129, 226, 255, 0.3)), url('../../../../assets/images/reservationtof.jpg') no-repeat center center;
   background-size: cover;
   color: white;
   overflow: hidden;
@@ -134,7 +135,7 @@ nav ul li a {
 }
 
 .baniere h1 {
-  color: white;
+  color:white;
   font-size: 100px;
   text-transform: uppercase;
   letter-spacing: 12px;
@@ -319,6 +320,8 @@ h1{
     color: #227093;
     margin-right: 350px;
 }
+
+
 
  
   /* responsivite */

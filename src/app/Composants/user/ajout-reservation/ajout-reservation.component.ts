@@ -102,33 +102,6 @@ export class AjoutReservationComponent implements OnInit {
   
   }
 
-  // onCategorieSelect(id: any, trajetId: any) {
-  //   this.selectedCategorie = id;
-  
-  //   // Charger à la fois les places réservées et les places de la catégorie sélectionnée
-  //   forkJoin({
-  //     reservedPlaces: this.reservationService.getReservedPlaces(trajetId),
-  //     availablePlaces: this.reservationService.getPlacesByCategorie(id, trajetId)
-  //   }).subscribe({
-  //     next: ({ reservedPlaces, availablePlaces }: any) => {
-  //       // Stocker les places réservées
-  //       this.reservedPlaces = reservedPlaces.data.map((item: any) => item.place.id);
-  //       console.log('Places réservées (IDs):', this.reservedPlaces); // Debugging
-  
-  //       // Filtrer les places disponibles pour ne garder que celles qui ne sont pas réservées
-  //       this.places = availablePlaces.filter((place: any) => {
-  //         const reserved = this.isPlaceReserved(place.id); // Vérifie si la place est réservée
-  //         console.log(`Place ID: ${place.id}, Réservée: ${reserved}`); // Debugging
-  //         return !reserved; // Ne garder que les places non réservées
-  //       });
-  
-  //       console.log('Places non réservées pour la catégorie sélectionnée:', this.places); // Debugging
-  //     },
-  //     error: (error) => {
-  //       console.error('Erreur lors du chargement des données:', error);
-  //     }
-  //   });
-  // }
   
   onCategorieSelect(id: any, trajetId: any) {
     this.selectedCategorie = id;
@@ -234,9 +207,6 @@ getCategories(): void {
 }
 
 
-
-
-
 getImageForCategorie(categorieId: any): string {
   switch (categorieId) {
     case 1: // ID pour fauteuils
@@ -247,9 +217,6 @@ getImageForCategorie(categorieId: any): string {
       return '../../../../assets/images/cabines.png'; // Image par défaut
   }
 }
-
-
-
 
 createReservation() {
   if (!this.trajetId || !this.userId) {

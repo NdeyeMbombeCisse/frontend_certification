@@ -9,11 +9,6 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { NoconectModel } from '../autrereservation';
 import { ReservationService } from '../../../Services/reservation.service';
-import { ReservationModel } from '../reservation.model';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatNativeDateModule } from '@angular/material/core';
 
 @Component({
   selector: 'app-trajet-en-cours',
@@ -76,22 +71,22 @@ export class TrajetEnCoursComponent implements OnInit {
     );
   }
 
-  // getActiveDepartureDates() {
-  //   this.dateDepartOptions = this.tabtrajet
-  //     .filter(trajet => trajet.statut === 1)
-  //     .map(trajet => trajet.date_depart ? new Date(trajet.date_depart).toLocaleDateString() : '')
-  //     .filter(date => date !== '');
-  // }
-
   getActiveDepartureDates() {
-    const availableDates = this.tabtrajet
-    .filter(trajet => trajet.statut === 1)
-    .map(trajet => trajet.date_depart ? new Date(trajet.date_depart) : null)
-    .filter(date => date !== null) as Date[]; // Ensure the result is a Date[]
-
-    this.dateDepartOptions = availableDates.map(date => date.toLocaleDateString());
-
+    this.dateDepartOptions = this.tabtrajet
+      .filter(trajet => trajet.statut === 1)
+      .map(trajet => trajet.date_depart ? new Date(trajet.date_depart).toLocaleDateString() : '')
+      .filter(date => date !== '');
   }
+
+  // getActiveDepartureDates() {
+  //   const availableDates = this.tabtrajet
+  //   .filter(trajet => trajet.statut === 1)
+  //   .map(trajet => trajet.date_depart ? new Date(trajet.date_depart) : null)
+  //   .filter(date => date !== null) as Date[]; // Ensure the result is a Date[]
+
+  //   this.dateDepartOptions = availableDates.map(date => date.toLocaleDateString());
+
+  // }
 
   disableUnavailableDates(date: Date): string | undefined {
     const formattedDate = date.toLocaleDateString();
@@ -108,17 +103,30 @@ export class TrajetEnCoursComponent implements OnInit {
   }
 
   // Méthode pour afficher les trajets filtrés
+  // getDisplayedTrajets() {
+  //   const filteredTrajets = this.tabtrajet.filter(trajet => {
+  //     const dateDepart = trajet.date_depart ? new Date(trajet.date_depart).toLocaleDateString() : '';
+  //     const matchesDate = this.selectedDate ? dateDepart === this.selectedDate : true;
+  //     const matchesLieu = this.selectedLieuDepart ? trajet.lieu_depart === this.selectedLieuDepart : true;
+  //     return trajet.statut === 1 && matchesDate && matchesLieu; // Filtrer par statut et critères
+  //   });
+
+  //   // Limiter à deux trajets distincts
+  //   return filteredTrajets.slice(0, 2);
+  // }
+
   getDisplayedTrajets() {
     const filteredTrajets = this.tabtrajet.filter(trajet => {
       const dateDepart = trajet.date_depart ? new Date(trajet.date_depart).toLocaleDateString() : '';
       const matchesDate = this.selectedDate ? dateDepart === this.selectedDate : true;
       const matchesLieu = this.selectedLieuDepart ? trajet.lieu_depart === this.selectedLieuDepart : true;
-      return trajet.statut === 1 && matchesDate && matchesLieu; // Filtrer par statut et critères
+      const hasAvailableSeats = trajet.placesRestantes !== undefined && trajet.placesRestantes > 0; // Vérifie que placesRestantes n'est pas undefined et est > 0
+      return trajet.statut === 1 && matchesDate && matchesLieu && hasAvailableSeats;
     });
-
-    // Limiter à deux trajets distincts
-    return filteredTrajets.slice(0, 2);
+  
+    return filteredTrajets;
   }
+  
 
   filterTrajets() {
     const displayedTrajets = this.getDisplayedTrajets();

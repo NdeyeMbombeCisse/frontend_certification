@@ -161,16 +161,15 @@ nav ul li a.active {
     display: flex;
     font-size: 40px;
     flex-direction: column; /* Affiche le titre et le texte en colonne */
-    gap: 20px; /* Ajoute un espacement entre le titre et le texte */
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .baniere-content h1 {
-    line-height: 1.5; /* Contrôle l'interligne du titre */
+    line-height: 1.4; /* Contrôle l'interligne du titre */
 }
 
 .baniere-content p {
-    line-height: 2; /* Contrôle l'interligne du paragraphe */
+    line-height: 1.5;
 }
 
 /* section filtre */
@@ -371,7 +370,7 @@ nav ul li a.active {
   font-weight: 700;
   color: white;
   cursor: pointer;
-  background-color: #e0a905;
+  background-color:#f7b731;
 }
 
 /* Close button */
@@ -510,6 +509,11 @@ footer ul li {
     background-color: #feb906; /* Change background on hover */
     color: #000; /* Change color on hover */
   }
+
+  footer ul li a {
+    color: white;
+    text-decoration: none;
+}
   /* responsivite */
   @media (max-width: 768px) {
     /* Masquer les éléments de navigation par défaut et afficher le menu burger */

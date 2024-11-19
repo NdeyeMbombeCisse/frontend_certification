@@ -40,7 +40,7 @@ body {
 }
 
 .information-list h1{
-    color: darkgreen;
+    color:#feb906;
     text-align: center;
     margin-top: 150px;
     font-family: gilda;
@@ -53,7 +53,7 @@ body {
     content: '';
     display: block;
     height: 3px; /* Épaisseur du trait */
-    background-color: #0D8434; /* Couleur du trait */
+    background-color:#f7b731; /* Couleur du trait */
     width: 330px; /* Ajuste la largeur selon tes préférences */
     margin: 40px auto; /* Centre le trait et ajoute un espacement */
 }
@@ -79,11 +79,12 @@ body {
 }
 
 /* Styles par défaut */
+/* Styles par défaut */
 .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 27px;
     position: fixed;
     top: 0;
     left: 0;
@@ -91,11 +92,12 @@ body {
     z-index: 1;
     background-color: #227093;
 }
-
 .logo {
-    width: 150px;
+    width: 220px;
+    height: auto;
     margin-left: 30px;
 }
+
 
 nav ul {
     display: flex;
@@ -109,25 +111,32 @@ nav ul li {
 nav ul li a {
     color: white;
     text-decoration: none;
-    font-size: 30px;
+    font-size: 25px;
     font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}
+
+
+.user-btn {
+    background-color:#f7b731;
+    color: white;
+    border-radius: 20px;
+    padding: 8px 15px;
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    border: none;
     font-weight: 700;
-}
-
-.auth-buttons .btn {
-    margin-left: 20px;
-    padding: 20px 20px;
-    border-radius: 5px;
+  }
+  .user-btn i {
+    font-size: 30px;
+    margin-right: 10px;
+  }
+  .user-btn a{
     text-decoration: none;
-    color: #227093;
-}
+    color: white;
+  }
 
-.register {
-    background-color: white;
-    font-size: 35px;
-    margin-right: 100px;
-    font-weight: bold;
-}
 
 
 

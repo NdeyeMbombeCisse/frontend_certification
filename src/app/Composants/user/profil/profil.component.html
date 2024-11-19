@@ -1,31 +1,42 @@
 
-
 <header>
   <div class="header-content">
-      <img src="../../../../assets/images/logo.png" alt="Cosoma Logo" class="logo">
-      
-      <!-- Menu burger pour mobile -->
-      <button class="burger-menu" (click)="toggleMenu()" aria-label="Toggle menu">            <span></span>
-      <span></span>
-      <span></span>
-  </button>
-      
-      <nav>
-        <ul class="nav-list" [class.active]="isMenuOpen">
-          <li><a  href="portail" >Acceuil</a></li>
-          <li><a href="#">Nouvelles Information</a></li>
-          <li><a href="liste_trajet">Trajets En Cours</a></li>
-          <li><a href="historique_reservation" class="menu-item">Mes reservations</a></li>
-          <li><a (click)="logout()" >Se deconnexion</a></li>
-          <li><a href="profil"><img src="../../../../assets/images/account_circle 1.png" alt=""></a></li>
+    <img src="../../../../assets/images/newlogo.webp" alt="Cosoma Logo" class="logo">
+    
+    <!-- Menu burger pour mobile -->
+    <button class="burger-menu" (click)="toggleMenu()" aria-label="Toggle menu">            <span></span>
+    <span></span>
+    <span></span>
+</button>
+    
+    
 
-          
+    <nav>
+      <ul class="nav-list" [class.active]="isMenuOpen">
+        <li><a [routerLink]="['/portail']" class="menu-item" [class.active]="isActive('/portail')">Acceuil</a></li>
+        <li><a href="nouvelle_info"> Informations</a></li>
+        <li><a href="liste_trajet">Horaires et destinations</a></li>
+        <li><a href="historique_reservation">Mes reservations</a></li>
 
-        </ul>
-        </nav>
-       
-  </div>
+      </ul>
+      </nav>
+      <div class="dropdown">
+
+        <a class="btn btn-secondary dropdown-toggle register" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+          <a href="profil"><i class="fa-regular fa-user" style="color: #ffffff;"></i></a>
+        </a>
+        <a class="btn btn-secondary dropdown-toggle register" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <a (click)="logout()">Deconnexion</a>
+        </a>
+
+      
+    </div>
+ 
+</div>
 </header>
+
+
 <div class="body">
   <div class="body">
     <div class="form-container">

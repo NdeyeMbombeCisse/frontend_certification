@@ -676,7 +676,12 @@ footer ul {
     margin-top: 10px;
 }
 footer ul li {
-    margin-left: 20px;
+    margin-left: 45px;
+}
+
+footer ul li a {
+    color: white;
+    text-decoration: none;
 }
 
 .menu-item {

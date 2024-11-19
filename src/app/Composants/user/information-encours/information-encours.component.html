@@ -1,28 +1,35 @@
 
-
 <header>
-    <div class="header-content">
-        <img src="../../../../assets/images/logo.png" alt="Cosoma Logo" class="logo">
-        
-        <button class="burger-menu" (click)="toggleMenu()" aria-label="Toggle menu">            <span></span>
-        <span></span>
-        <span></span>
-    </button>
-        
-        
+  <div class="header-content">
+      <img src="../../../../assets/images/newlogo.webp" alt="Cosoma Logo" class="logo">
+      
+      <!-- Menu burger pour mobile -->
+      <button class="burger-menu" (click)="toggleMenu()" aria-label="Toggle menu">            <span></span>
+      <span></span>
+      <span></span>
+  </button>
+      
+      
 
-        <nav>
-            <ul class="nav-list" [class.active]="isMenuOpen">
-              <li><a href="portail">Acceuil</a></li>
-              <li><a href="nouvelle_info"  class="menu-item" >Nouvelles Information</a></li>
-              <li><a href="liste_trajet">Trajets En Cours</a></li>
-            </ul>
-          </nav>
-        <div class="auth-buttons">
-            <a href="inscription_user" class="btn register">S'inscrire</a>
-        </div>
-    </div>
-    </header> 
+      <nav>
+          <ul class="nav-list" [class.active]="isMenuOpen">
+            <li><a href="portail" class="menu-item" >Acceuil</a></li>
+            <li><a href="nouvelle_info"> Informations</a></li>
+            <li><a href="liste_trajet">Horaires et destinations</a></li>
+          </ul>
+        </nav>
+      <!-- <div class="auth-buttons">
+          <a href="inscription_user" class="btn register">S'inscrire</a>
+      </div> -->
+      <div class="dropdown me-3">
+          <button class="btn btn-secondary dropdown-toggle user-btn" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-user-circle me-2"></i>
+           <a href="inscription_user">S'inscrire</a>
+          </button>
+      </div>
+  </div>
+ 
+</header>
 <div class="information-container">
     <h2>Informations en cours</h2>
   
@@ -39,4 +46,3 @@
         <p>Aucune information en cours pour le moment.</p>
     </div>
   </div>
-  
